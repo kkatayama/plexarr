@@ -1,5 +1,5 @@
 import config
-from .requests_api import RequestsAPI
+from requests_api import RequestsAPI
 
 
 class RadarrAPI(RequestsAPI):

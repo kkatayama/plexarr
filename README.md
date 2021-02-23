@@ -1,2 +1,2 @@
-# radarr_api
-Python API for Radarr v3 with added features.
+# Plex, Sonarr, Radarr, and Bazarr API Python Wrapper with Added Features
+Unofficial Python Wrapper for the Plex, Sonarr, Radarr, and Bazarr API with Added Features

@@ -1,8 +1,8 @@
-import config
-from requests_api import RequestsAPI
+import .config as config
+from .requests_api import RequestsAPI
 
 
-class Radarr(RequestsAPI):
+class RadarrAPI(RequestsAPI):
     def __init__(self):
         """Constructor requires API-URL and API-KEY
 

@@ -27,7 +27,36 @@ class RequestsAPI:
             path: The endpoint for API
             data: Parameters to pass in dict() format
         """
-
         url = urljoin(self.api_url, path.strip('/'))
         res = self.session.get(url=url, headers=self.headers, params=data)
+        return res.json()
+
+    def post(self, path, data):
+        """Wrapper on session.get()
+        Args:
+            path: The endpoint for API
+            data: Parameters to pass in dict() format
+        """
+        url = urljoin(self.api_url, path.strip('/'))
+        res = self.session.post(url=url, headers=self.headers, json=data)
+        return res.json()
+
+    def put(self, path, data):
+        """Wrapper on session.get()
+        Args:
+            path: The endpoint for API
+            data: Parameters to pass in dict() format
+        """
+        url = urljoin(self.api_url, path.strip('/'))
+        res = self.session.put(url=url, headers=self.headers, json=data)
+        return res.json()
+
+    def delete(self, path, data):
+        """Wrapper on session.get()
+        Args:
+            path: The endpoint for API
+            data: Parameters to pass in dict() format
+        """
+        url = urljoin(self.api_url, path.strip('/'))
+        res = self.session.delete(url=url, headers=self.headers)
         return res.json()

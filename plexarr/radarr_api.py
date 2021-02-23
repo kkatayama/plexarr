@@ -24,7 +24,7 @@ class RadarrAPI(RequestsAPI):
         res = self.get(path=path)
         return res
 
-    def getMovie(self, title='', movie_id=-1):
+    def getMovie(self, title='', movie_id=-1, tmdb_id=-1):
         """Get a movie from the Radarr collection by title or movie_id
 
         Args:
@@ -35,14 +35,24 @@ class RadarrAPI(RequestsAPI):
         Requirements:
             one argument must be provided (title or movie_id)
         """
-        if movie_id:
+        if tmdb_id >=0:
+            path = '/movie'
+            data = {
+                'tmdbId': tmdb_id
+            }
+            res = self.get(path=path, data=data)
+            return res
+
+        if movie_id >= 0:
             path = f'/movie/{movie_id}'
             res = self.get(path=path)
             return res
-        elif title:
+
+        if title:
             movies = self.getMovies()
             movie = next(filter(lambda x: x['title'] == title, movies), None)
             return movie
+        
         return {'ERROR': 'A title or movie_id parameter is required'}
 
     def editMovie(self, movie_data):

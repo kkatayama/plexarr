@@ -21,7 +21,7 @@ class RequestsAPI:
             'Content-Type': 'application/json'
         }
 
-    def get(self, path, data):
+    def get(self, path, data={}):
         """Wrapper on session.get()
         Args:
             path: The endpoint for API
@@ -31,7 +31,7 @@ class RequestsAPI:
         res = self.session.get(url=url, headers=self.headers, params=data)
         return res.json()
 
-    def post(self, path, data):
+    def post(self, path, data={}):
         """Wrapper on session.get()
         Args:
             path: The endpoint for API
@@ -41,7 +41,7 @@ class RequestsAPI:
         res = self.session.post(url=url, headers=self.headers, json=data)
         return res.json()
 
-    def put(self, path, data):
+    def put(self, path, data={}):
         """Wrapper on session.get()
         Args:
             path: The endpoint for API
@@ -51,7 +51,7 @@ class RequestsAPI:
         res = self.session.put(url=url, headers=self.headers, json=data)
         return res.json()
 
-    def delete(self, path, data):
+    def delete(self, path):
         """Wrapper on session.get()
         Args:
             path: The endpoint for API

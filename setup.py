@@ -4,7 +4,7 @@ with open('README.md') as f:
     long_description = f.read()
 
 setuptools.setup(
-    name='filenames',
+    name='plexarr',
     version='0.0.1',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',

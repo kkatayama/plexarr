@@ -3,5 +3,5 @@ import config
 from .radarr_api import RadarrAPI
 
 #__all__ = ['config', 'RadarrAPI', 'RequestsAPI']
-__all__ = ['RadarrAPI']
+__all__ = ['config', 'RadarrAPI']
 

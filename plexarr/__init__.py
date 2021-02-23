@@ -1,4 +1,4 @@
-import .config as config
+import config
 from .requests_api import RequestsAPI
 from .radarr_api import RadarrAPI
 

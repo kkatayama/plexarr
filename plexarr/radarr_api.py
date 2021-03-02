@@ -1,3 +1,6 @@
+import sys
+sys.path.append(os.path.join(os.path.expanduser('~'), '.config'))
+
 import config
 from .utils import camel_case
 from .requests_api import RequestsAPI

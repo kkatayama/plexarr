@@ -16,7 +16,7 @@ class TmdbAPI(RequestsAPI):
             api_key (str): API key for sonarr or radarr.
         """
         self.api_url = config.tmdb.get('api_url')
-        self.api_key = config.tmdb.get('api_key')
+        self.api_key = config.tmdb.get('api_v4')
         super().__init__(api_url=self.api_url, api_key=self.api_key)
 
     def searchMovies(self, query=''):

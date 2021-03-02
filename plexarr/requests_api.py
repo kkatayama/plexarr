@@ -18,6 +18,7 @@ class RequestsAPI:
         self.auth = None
         self.headers = {
             'X-Api-Key': api_key,
+            'Authorization': f"Bearer {api_key}",
             'Content-Type': 'application/json'
         }
 

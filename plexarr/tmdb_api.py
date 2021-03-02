@@ -19,14 +19,14 @@ class TmdbAPI(RequestsAPI):
         self.api_key = config.tmdb.get('api_v4')
         super().__init__(api_url=self.api_url, api_key=self.api_key)
 
-    def searchMovies(self, query=''):
+    def searchMovie(self, query=''):
         """Search for movie in The Movie Database
 
         Args:
             Requires - query (str) - The Movie Title to search
         Returns:
             JSON Array"""
-        path = '/search'
+        path = '/search/movie'
         data = {
             'language': 'en-US',
             'query': query

@@ -1,23 +1,23 @@
+from configparser import ConfigParser
+import tmdbsimple
 import os
-import sys
-sys.path.append(os.path.join(os.path.expanduser('~'), '.config'))
-
-import config
-from .utils import camel_case
-from .requests_api import RequestsAPI
 
 
-class TmdbAPI(RequestsAPI):
+class TmdbAPI():
+    """Wrapper for TMDB API via tmdbsimple
+
+    """
     def __init__(self):
-        """Constructor requires API-URL and API-KEY
+        """Constructor requires API-KEY
 
         From config:
-            api_url (str): API url for sonarr or radarr.
-            api_key (str): API key for sonarr or radarr.
+            api_key (str): API key for TMDB.
         """
-        self.api_url = config.tmdb.get('api_url')
-        self.api_key = config.tmdb.get('api_v4')
-        super().__init__(api_url=self.api_url, api_key=self.api_key)
+        config = ConfigParser()
+        config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+
+        self.tmdb = tmdbsimple
+        self.tmdb.API_KEY = config['tmdb'].get('api_key')
 
     def searchMovie(self, query=''):
         """Search for movie in The Movie Database
@@ -25,12 +25,9 @@ class TmdbAPI(RequestsAPI):
         Args:
             Requires - query (str) - The Movie Title to search
         Returns:
-            JSON Array"""
-        path = '/search/movie'
-        data = {
-            'language': 'en-US',
-            'query': query
-        }
-        res = self.get(path=path, data=data)
-        return res
+            JSON Array
+        """
+        search = self.tmdb.Search()
+
+        return search.movie(query=query)
 

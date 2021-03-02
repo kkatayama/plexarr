@@ -18,9 +18,10 @@ class RequestsAPI:
         self.auth = None
         self.headers = {
             'X-Api-Key': api_key,
-            'Authorization': f"Bearer {api_key}",
             'Content-Type': 'application/json'
         }
+        # 'Authorization': f"Bearer {api_key}",
+
 
     def get(self, path, data={}):
         """Wrapper on session.get()

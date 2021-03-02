@@ -1,10 +1,7 @@
-import os
-import sys
-sys.path.append(os.path.join(os.path.expanduser('~'), '.config'))
-
-import config
+from configparser import ConfigParser
 from .utils import camel_case
 from .requests_api import RequestsAPI
+import os
 
 
 class RadarrAPI(RequestsAPI):
@@ -15,8 +12,11 @@ class RadarrAPI(RequestsAPI):
             api_url (str): API url for sonarr or radarr.
             api_key (str): API key for sonarr or radarr.
         """
-        self.api_url = config.radarr.get('api_url')
-        self.api_key = config.radarr.get('api_key')
+        config = ConfigParser()
+        config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+
+        self.api_url = config['radarr'].get('api_url')
+        self.api_key = config['radarr'].get('api_key')
         super().__init__(api_url=self.api_url, api_key=self.api_key)
 
     def getMovies(self):
@@ -56,7 +56,7 @@ class RadarrAPI(RequestsAPI):
             movies = self.getMovies()
             movie = next(filter(lambda x: x['title'] == title, movies), None)
             return movie
-        
+
         return {'ERROR': 'A title or movie_id parameter is required'}
 
     def editMovie(self, movie_data):
@@ -116,7 +116,7 @@ class RadarrAPI(RequestsAPI):
         Returns:
             JSON Response
         """
-        path = f'/command'
+        path = '/command'
         data = {
             'name': 'DownloadedMoviesScan',
             'path': movie_path,

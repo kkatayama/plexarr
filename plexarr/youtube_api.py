@@ -61,10 +61,9 @@ class YouTubeAPI(object):
         #return metadata
         year = metadata.get('upload_date')[:4]
         title = metadata.get('title', '').replace(":", "-")
-        
 
         info = {
-            'year': year
+            'year': year,
             'title': f'{title} ({year})'
 
         }

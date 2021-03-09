@@ -1,11 +1,15 @@
 import setuptools
 
+
 with open('README.md') as f:
     long_description = f.read()
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 setuptools.setup(
     name='plexarr',
-    version='0.2.4',
+    version='0.2.5',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Unofficial Python Wrapper for the Plex, Sonarr, Radarr, and Bazarr API with Added Features',
@@ -22,4 +26,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=required,
 )

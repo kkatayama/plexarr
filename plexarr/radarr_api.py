@@ -1,6 +1,6 @@
-from configparser import ConfigParser
-from .utils import camel_case
 from .requests_api import RequestsAPI
+from .utils import camel_case
+from configparser import ConfigParser
 import os
 
 

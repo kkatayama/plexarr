@@ -14,4 +14,4 @@ class HTPC_API(object):
         self.imac = config['imac']
         self.mal = config['mal']
         self.og = config['og']
-        
+

@@ -36,7 +36,6 @@ class YouTubeAPI(object):
         self.path = config['youtube'].get('path')
         self.cookies = config['youtube'].get('cookies')
 
-
     def downloadMovie(self, title='', video_url=''):
         """Downlod YouTube video into folder
 
@@ -44,6 +43,7 @@ class YouTubeAPI(object):
             Requires - folder (str) - The video title to store the downloaded video
             Requires - video_url (str) - The link of the YouTube video
         """
+        self.title = title
         self.folder = os.path.join(self.path, title)
         self.f_name = os.path.join(self.path, title, f'{title}.mp4')
         if not os.path.exists(self.folder):
@@ -65,7 +65,6 @@ class YouTubeAPI(object):
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
         return True
-
 
     def getInfo(self, path='', video_url=''):
         """Fetch metadata for YouTube video

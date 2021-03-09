@@ -64,6 +64,7 @@ class YouTubeAPI(object):
         }
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
+        print('FINISHED...')
 
 
     def getInfo(self, path='', video_url=''):

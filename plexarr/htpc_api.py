@@ -40,5 +40,5 @@ class HTPC_API(object):
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
             with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
                 scp.put(files=folder, remote_path=host['movies'], recursive=True)
-        return os.path.join(host['movies'], os.path.split(folder))
+        return os.path.join(host['movies'], os.path.split(folder)[1])
 

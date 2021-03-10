@@ -11,8 +11,8 @@ class PlexAPI(object):
         """Constructor requires config file: plexarr.ini
         """
         config = ConfigParser()
-        self.api_url = config['plex'].get('api_url').strip('/') + '/'
-        self.api_key = config['plex'].get('api_key')
+        self.api_url = config['plexapi'].get('api_url').strip('/') + '/'
+        self.api_key = config['plexapi'].get('api_key')
         self.session = requests.Session()
         self.token = {
             'X-Plex-Token': 'joLt2gmUQrN4fd5Uywsg'

@@ -2,6 +2,7 @@ from configparser import ConfigParser
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import requests
+import os
 
 
 class PlexAPI(object):

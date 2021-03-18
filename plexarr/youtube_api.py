@@ -5,21 +5,27 @@ import os
 
 class MyLogger(object):
     def debug(self, msg):
-        print(msg)
-        # pass
+        # print(msg)
+        pass
 
     def warning(self, msg):
-        print(msg)
-        # pass
+        # print(msg)
+        pass
 
     def error(self, msg):
         print(msg)
 
 
+# -- https://stackoverflow.com/a/58667850/3370913
 def my_hook(d):
     if d['status'] == 'finished':
-        print('Done downloading, now converting ...')
-
+        file_tuple = os.path.split(os.path.abspath(d['filename']))
+        print("Done downloading {}".format(file_tuple[1]))
+    if d['status'] == 'downloading':
+        p = d['_percent_str']
+        p = p.replace('%','')
+        self.progress.setValue(float(p))
+        print(d['filename'], d['_percent_str'], d['_eta_str'])
 
 class YouTubeAPI(object):
     """Wrapper for YouTubeAPI via youtube_dl

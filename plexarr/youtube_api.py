@@ -17,7 +17,7 @@ class MyLogger(object):
 
 
 # -- https://stackoverflow.com/a/58667850/3370913
-def my_hook(d):
+def my_hook(self, d):
     if d['status'] == 'finished':
         file_tuple = os.path.split(os.path.abspath(d['filename']))
         print("Done downloading {}".format(file_tuple[1]))
@@ -66,7 +66,7 @@ class YouTubeAPI(object):
                 'key': 'FFmpegEmbedSubtitle'
             }],
             'logger': MyLogger(),
-            'progress_hooks': [my_hook]
+            'progress_hooks': [self.my_hook]
         }
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])

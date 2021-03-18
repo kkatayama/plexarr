@@ -1,3 +1,4 @@
+from rich.progress import Progress
 from configparser import ConfigParser
 import youtube_dl
 import os
@@ -30,15 +31,22 @@ class YouTubeAPI(object):
 
         self.path = config['youtube'].get('path')
         self.cookies = config['youtube'].get('cookies')
+        self.progress = Progress()
+        self.download_status = False
 
 
     # -- https://stackoverflow.com/a/58667850/3370913
     def my_hook(self, d):
-        print(d)
         if d['status'] == 'finished':
             file_tuple = os.path.split(os.path.abspath(d['filename']))
             print("Done downloading {}".format(file_tuple[1]))
         if d['status'] == 'downloading':
+            if not self.download_status:
+                print('NOT STARTED')
+                print(f'downloaded_bytes: {d["downloaded_bytes"]} | total_bytes: {d["total_bytes"]}')
+                print('\n\n\n')
+                self.download_status = True
+                
             p = d['_percent_str']
             p = p.replace('%','')
             # progress.setValue(float(p))

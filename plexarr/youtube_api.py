@@ -17,14 +17,14 @@ class MyLogger(object):
 
 
 # -- https://stackoverflow.com/a/58667850/3370913
-def my_hook(self, d):
+def my_hook(d):
     if d['status'] == 'finished':
         file_tuple = os.path.split(os.path.abspath(d['filename']))
         print("Done downloading {}".format(file_tuple[1]))
     if d['status'] == 'downloading':
         p = d['_percent_str']
         p = p.replace('%','')
-        self.progress.setValue(float(p))
+        # progress.setValue(float(p))
         print(d['filename'], d['_percent_str'], d['_eta_str'])
 
 class YouTubeAPI(object):
@@ -66,7 +66,7 @@ class YouTubeAPI(object):
                 'key': 'FFmpegEmbedSubtitle'
             }],
             'logger': MyLogger(),
-            'progress_hooks': [self.my_hook]
+            'progress_hooks': [my_hook]
         }
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])

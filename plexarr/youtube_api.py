@@ -22,6 +22,7 @@ def my_hook(d):
         file_tuple = os.path.split(os.path.abspath(d['filename']))
         print("Done downloading {}".format(file_tuple[1]))
     if d['status'] == 'downloading':
+        print(d)
         p = d['_percent_str']
         p = p.replace('%','')
         # progress.setValue(float(p))

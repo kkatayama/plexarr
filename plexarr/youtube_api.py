@@ -16,18 +16,6 @@ class MyLogger(object):
         print(msg)
 
 
-# -- https://stackoverflow.com/a/58667850/3370913
-def my_hook(d):
-    print(d)
-    if d['status'] == 'finished':
-        file_tuple = os.path.split(os.path.abspath(d['filename']))
-        print("Done downloading {}".format(file_tuple[1]))
-    if d['status'] == 'downloading':
-        p = d['_percent_str']
-        p = p.replace('%','')
-        # progress.setValue(float(p))
-        print(d['filename'], d['_percent_str'], d['_eta_str'])
-
 class YouTubeAPI(object):
     """Wrapper for YouTubeAPI via youtube_dl
     """
@@ -42,6 +30,20 @@ class YouTubeAPI(object):
 
         self.path = config['youtube'].get('path')
         self.cookies = config['youtube'].get('cookies')
+
+        
+    # -- https://stackoverflow.com/a/58667850/3370913
+    def my_hook(d):
+        print(d)
+        if d['status'] == 'finished':
+            file_tuple = os.path.split(os.path.abspath(d['filename']))
+            print("Done downloading {}".format(file_tuple[1]))
+        if d['status'] == 'downloading':
+            p = d['_percent_str']
+            p = p.replace('%','')
+            # progress.setValue(float(p))
+            print(d['filename'], d['_percent_str'], d['_eta_str'])
+
 
     def downloadMovie(self, title='', video_url=''):
         """Downlod YouTube video into folder

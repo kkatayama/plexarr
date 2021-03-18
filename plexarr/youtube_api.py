@@ -32,25 +32,31 @@ class YouTubeAPI(object):
         self.path = config['youtube'].get('path')
         self.cookies = config['youtube'].get('cookies')
         self.progress = Progress()
+        self.task = None
+        self.downloaded_bytes = 0
         self.download_status = False
 
 
     # -- https://stackoverflow.com/a/58667850/3370913
     def my_hook(self, d):
         if d['status'] == 'finished':
+            self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))
             print("Done downloading {}".format(file_tuple[1]))
         if d['status'] == 'downloading':
+            self.downloaded_bytes = (int(d["downloaded_bytes"]) - self.downloaded_bytes)
             if not self.download_status:
-                print('NOT STARTED')
-                print(f'downloaded_bytes: {d["downloaded_bytes"]} | total_bytes: {d["total_bytes"]}')
-                print('\n\n\n')
                 self.download_status = True
-                
-            p = d['_percent_str']
-            p = p.replace('%','')
+                self.task = self.progress.add_task("[cyan]Downloading...", total=d["total_bytes"])
+                self.progress.start()
+                # print('NOT STARTED')
+                # print(f'downloaded_bytes: {d["downloaded_bytes"]} | total_bytes: {d["total_bytes"]}')
+                # print('\n\n\n')
+            self.progress.update(self.task, advance=self.downloaded_bytes)
+            # p = d['_percent_str']
+            # p = p.replace('%','')
             # progress.setValue(float(p))
-            print(d['filename'], d['_percent_str'], d['_eta_str'])
+            # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
 
     def downloadMovie(self, title='', video_url=''):

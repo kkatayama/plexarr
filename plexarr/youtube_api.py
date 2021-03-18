@@ -44,20 +44,19 @@ class YouTubeAPI(object):
             file_tuple = os.path.split(os.path.abspath(d['filename']))
             print("Done downloading {}".format(file_tuple[1]))
         if d['status'] == 'downloading':
-            if self.downloaded_bytes < int(d["downloaded_bytes"]):
-                self.downloaded_bytes = int(d["downloaded_bytes"]) - self.downloaded_bytes
-                p = float(d["_percent_str"].replace("%",""))
-                print(f'downloaded_bytes: {d["downloaded_bytes"]} + {self.downloaded_bytes} | total_bytes: {d["total_bytes"]} | {p}%')
             if not self.download_status:
-                pass
-                #self.download_status = True
-                #self.task = self.progress.add_task("[cyan]Downloading...", total=d["total_bytes"])
-                #self.progress.start()
+                self.download_status = True
+                self.task = self.progress.add_task("[cyan]Downloading...", total=d["total_bytes"])
+                self.progress.start()
                 # print('NOT STARTED')
                 # print(f'downloaded_bytes: {d["downloaded_bytes"]} | total_bytes: {d["total_bytes"]}')
                 # print('\n\n\n')
+            if self.downloaded_bytes < int(d["downloaded_bytes"]):
+                self.downloaded_bytes = int(d["downloaded_bytes"]) - self.downloaded_bytes
+                self.progress.update(self.task, advance=self.downloaded_bytes)
+                # p = float(d["_percent_str"].replace("%",""))
+                # print(f'downloaded_bytes: {d["downloaded_bytes"]} + {self.downloaded_bytes} | total_bytes: {d["total_bytes"]} | {p}%')
             pass
-            # self.progress.update(self.task, advance=self.downloaded_bytes)
             # p = d['_percent_str']
             # p = p.replace('%','')
             # progress.setValue(float(p))

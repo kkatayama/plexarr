@@ -31,9 +31,9 @@ class YouTubeAPI(object):
         self.path = config['youtube'].get('path')
         self.cookies = config['youtube'].get('cookies')
 
-        
+
     # -- https://stackoverflow.com/a/58667850/3370913
-    def my_hook(d):
+    def my_hook(self, d):
         print(d)
         if d['status'] == 'finished':
             file_tuple = os.path.split(os.path.abspath(d['filename']))
@@ -69,7 +69,7 @@ class YouTubeAPI(object):
                 'key': 'FFmpegEmbedSubtitle'
             }],
             'logger': MyLogger(),
-            'progress_hooks': [my_hook]
+            'progress_hooks': [self.my_hook]
         }
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
@@ -87,7 +87,7 @@ class YouTubeAPI(object):
         ydl_opts = {
             'cookiefile': self.cookies,
             'logger': MyLogger(),
-            'progress_hooks': [my_hook]
+            'progress_hooks': [self.my_hook]
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             metadata = ydl.extract_info(video_url, download=False)

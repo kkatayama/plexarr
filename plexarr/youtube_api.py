@@ -47,7 +47,7 @@ class YouTubeAPI(object):
             if self.downloaded_bytes < int(d["downloaded_bytes"]):
                 self.downloaded_bytes = int(d["downloaded_bytes"]) - self.downloaded_bytes
                 p = float(d["_percent_str"].replace("%",""))
-                print(f'downloaded_bytes: {d["downloaded_bytes"]} | total_bytes: {d["total_bytes"]} | {p}%')
+                print(f'downloaded_bytes: {d["downloaded_bytes"]} + {self.downloaded_bytes} | total_bytes: {d["total_bytes"]} | {p}%')
             if not self.download_status:
                 pass
                 #self.download_status = True

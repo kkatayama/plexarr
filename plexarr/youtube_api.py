@@ -45,7 +45,7 @@ class YouTubeAPI(object):
         if d['status'] == 'finished':
             self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))
-            print("Done downloading {}".format(file_tuple[1]))
+            print(f'Done downloading "{file_tuple[1]}"')
         if d['status'] == 'downloading':
             if not self.download_status:
                 try:
@@ -72,15 +72,15 @@ class YouTubeAPI(object):
         self.title = title
         self.folder = os.path.join(self.path, title)
         self.f_name = os.path.join(self.path, title, f'{title}.mp4')
-        video_url_path = os.path.join(self.folder, 'video_url.txt')
+        self.video_url_path = os.path.join(self.path, title, 'video_url.txt')
 
         # -- backup video_url and remove stale directories
         if os.path.exists(self.folder):
-            if os.path.exists(video_url_path):
+            if os.path.exists(self.video_url_path):
                 print(f'importing video_url from [magenta]{video_url.txt}[/magenta]')
-                with open(video_url_path) as f:
+                with open(self.video_url_path) as f:
                     video_url = f.readline()
-            print(f'deleting existing directory: {self.folder}')
+            print(f'deleting existing directory: "{self.folder}"')
             shutil.rmtree(self.folder)
 
         # -- create fresh directory and backup video_url
@@ -88,7 +88,7 @@ class YouTubeAPI(object):
         print(f'exporting video_url to [magenta]"video_url.txt"[/magenta]')
         print(f'{{"video_url": {video_url}}}')
         os.mkdir(self.folder)
-        with open(video_url_path, 'w') as f:
+        with open(self.video_url_path, 'w') as f:
             f.write(f'{video_url}\n')
 
         ### Download Movie via YoutubeDL ###

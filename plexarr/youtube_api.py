@@ -40,14 +40,17 @@ class YouTubeAPI(object):
 
     # -- https://stackoverflow.com/a/58667850/3370913
     def my_hook(self, d):
-        print(d)
+        # print(d)
         if d['status'] == 'finished':
             self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))
             print("Done downloading {}".format(file_tuple[1]))
         if d['status'] == 'downloading':
             if not self.download_status:
-                total = int(d["total_bytes"])
+                try:
+                    total = int(d["total_bytes"])
+                except:
+                    total = int(d["total_bytes_estimate"])
                 self.download_status = True
                 self.task = self.progress.add_task("[cyan]Downloading...", total=total)
                 self.progress.start()

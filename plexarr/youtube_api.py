@@ -1,4 +1,5 @@
 from rich.progress import Progress
+from rich import print
 from configparser import ConfigParser
 import youtube_dl
 import os
@@ -39,6 +40,7 @@ class YouTubeAPI(object):
 
     # -- https://stackoverflow.com/a/58667850/3370913
     def my_hook(self, d):
+        print(d)
         if d['status'] == 'finished':
             self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))

@@ -2,6 +2,7 @@ from rich.progress import Progress
 from rich import print
 from configparser import ConfigParser
 import youtube_dl
+import shutil
 import os
 
 
@@ -67,13 +68,30 @@ class YouTubeAPI(object):
             Requires - folder (str) - The video title to store the downloaded video
             Requires - video_url (str) - The link of the YouTube video
         """
+        # -- setting up path configs
         self.title = title
         self.folder = os.path.join(self.path, title)
         self.f_name = os.path.join(self.path, title, f'{title}.mp4')
-        if not os.path.exists(self.folder):
-            print(f'creating directory: "{self.folder}"')
-            os.mkdir(self.folder)
+        video_url_path = os.path.join(self.folder, 'video_url.txt')
 
+        # -- backup video_url and remove stale directories
+        if os.path.exists(self.folder):
+            if os.path.exists(video_url_path):
+                print(f'importing video_url from [magenta]{video_url.txt}[/magenta]')
+                with open(video_url_path) as f:
+                    video_url = f.readline()
+            print(f'deleting existing directory: {self.folder}')
+            shutil.rmtree(self.folder)
+
+        # -- create fresh directory and backup video_url
+        print(f'creating directory: "{self.folder}"')
+        print(f'exporting video_url to [magenta]"video_url.txt"[/magenta]')
+        print(f'{{"video_url": {video_url}}}')
+        os.mkdir(self.folder)
+        with open(video_url_path, 'w') as f:
+            f.write(f'{video_url}\n')
+
+        ### Download Movie via YoutubeDL ###
         ytdl_opts = {
             'writesubtitles': True,
             'subtitle': '--write-sub --sub-lang en',
@@ -88,6 +106,7 @@ class YouTubeAPI(object):
         }
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
+
         return True
 
     def getInfo(self, path='', video_url=''):

@@ -77,7 +77,7 @@ class YouTubeAPI(object):
         # -- backup video_url and remove stale directories
         if os.path.exists(self.folder):
             if os.path.exists(self.video_url_path):
-                print(f'importing video_url from [magenta]{video_url.txt}[/magenta]')
+                print(f'importing video_url from [magenta]{self.video_url_path}[/magenta]')
                 with open(self.video_url_path) as f:
                     video_url = f.readline()
             print(f'deleting existing directory: "{self.folder}"')

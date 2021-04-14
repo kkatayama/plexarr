@@ -7,6 +7,9 @@ import os
 
 
 class MyLogger(object):
+    def info(self, msg):
+        print(msg)
+
     def debug(self, msg):
         # print(msg)
         pass
@@ -16,8 +19,8 @@ class MyLogger(object):
         pass
 
     def error(self, msg):
-        print(msg)
-
+        # print(msg)
+        pass
 
 class YouTubeAPI(object):
     """Wrapper for YouTubeAPI via youtube_dl

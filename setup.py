@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='plexarr',
-    version='0.4.6',
+    version='0.4.7',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Unofficial Python Wrapper for the Plex, Sonarr, Radarr, and Bazarr API with Added Features',

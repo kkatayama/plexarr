@@ -1,4 +1,5 @@
 from configparser import ConfigParser
+from urllib.parse import urljoin
 import pyombi
 import os
 
@@ -25,6 +26,25 @@ class OmbiAPI():
             api_key=config['ombi'].get('api_key')
         )
         self.ombi.authenticate()
+
+    def request(self, path, data=None):
+        import requests
+
+        url = urljoin(self.ombi._base_url, path.strip('/'))
+        headers = {
+            "UserName": self.ombi._username,
+            "ApiKey": self.ombi._api_key
+        }
+
+        if not data:
+            res = requests.get(url=url, headers=headers, timeout=10)
+        else:
+            res = requests.post(url=url, headers=headers, json=data, timeout=10)
+        return res
+
+    def getMovieRequests(self):
+        path = '/Request/movie'
+        return self.request(path=path).json()
 
     def getMovies(self):
         """Get all movies that have not been downloaded

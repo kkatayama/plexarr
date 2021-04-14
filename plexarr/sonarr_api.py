@@ -193,3 +193,8 @@ class SonarrAPI(RequestsAPI):
         data.update({camel_case(key): kwargs.get(key) for key in kwargs})
         res = self.post(path=path, data=data)
         return res
+
+    def getCommandStatus(cmd_id=None):
+        path = f'/command/{cmd_id}'
+        res = self.get(path=path)
+        return res

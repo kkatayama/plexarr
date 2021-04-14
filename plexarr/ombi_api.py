@@ -85,7 +85,7 @@ class OmbiAPI():
         path = '/Radarr/RootFolders'
         return self.request(path=path).json()
 
-    def requestMovie(self, tmdb_id='', language='', quality_id='', folder_id=''):
+    def requestMovie(self, tmdb_id='', language='', quality_id='', path_id=''):
         """Request a Movie to be added to Radarr
 
         Args:

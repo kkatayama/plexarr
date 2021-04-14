@@ -74,7 +74,10 @@ class OmbiAPI():
         """
         if not year:
             return self.ombi.search_movie(query=query)
-        return [m for m in self.ombi.search_movie(query=query) if dt.fromisoformat(m.get('releaseDate')).year == int(year)]
+        try:
+            return [m for m in self.ombi.search_movie(query=query) if dt.fromisoformat(m.get('releaseDate')).year == int(year)]
+        except:
+            return self.ombi.search_movie(query=query)
 
     def getMovieRootPaths(self):
         """Get Radarr paths

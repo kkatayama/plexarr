@@ -194,7 +194,7 @@ class SonarrAPI(RequestsAPI):
         res = self.post(path=path, data=data)
         return res
 
-    def getCommandStatus(cmd_id=None):
+    def getCommandStatus(self, cmd_id=None):
         path = f'/command/{cmd_id}'
         res = self.get(path=path)
         return res

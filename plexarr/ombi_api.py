@@ -75,3 +75,31 @@ class OmbiAPI():
         if not year:
             return self.ombi.search_movie(query=query)
         return [m for m in self.ombi.search_movie(query=query) if dt.fromisoformat(m.get('releaseDate')).year == year]
+
+    def getMovieRootPaths(self):
+        """Get Radarr paths
+
+        Returns:
+            JSON Array
+        """
+        path = '/Radarr/RootFolders'
+        return self.request(path=path).json()
+
+    def requestMovie(self, tmdb_id='', language='', quality_id='', folder_id=''):
+        """Request a Movie to be added to Radarr
+
+        Args:
+            Required - tmdb_id (str) - The Movie DB ID
+            Optional - quality_id (str) - Index of Radarr Quality Profile
+            Optional - folder_id (str) - Index of Radarr Root Path ("4" = "movies5", "5" = "movies_old")
+        Returns:
+            JSON Array
+        """
+        path = '/Request/Movie'
+        data = {
+            "languageCode": language,
+            "qualityPathOverride": quality_id,
+            "rootFolderOverride": folder_id,
+            "theMovieDbId": tmdb_id
+        }
+        return self.request(path=path, data=data).json()

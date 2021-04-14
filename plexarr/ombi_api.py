@@ -99,7 +99,7 @@ class OmbiAPI():
         data = {
             "languageCode": language,
             "qualityPathOverride": quality_id,
-            "rootFolderOverride": folder_id,
+            "rootFolderOverride": path_id,
             "theMovieDbId": tmdb_id
         }
         return self.request(path=path, data=data).json()

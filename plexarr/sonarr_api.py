@@ -106,12 +106,8 @@ class SonarrAPI(RequestsAPI):
             ep_all = self.getEpisodes(title=title)
             ep_info = next(filter(lambda x: x['seasonNumber'] == s_num and x['episodeNumber'] == e_num, ep_all), None)
             episode_id = ep_info["id"]
-        if episode_id >= 0:
-            data = {
-                'id': episode_id
-            }
 
-        path = '/EpisodeFile'
+        path = f'/EpisodeFile/{episode_id}'
         res = self.get(path=path, data=data)
         return res
 

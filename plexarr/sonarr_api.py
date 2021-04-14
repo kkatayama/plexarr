@@ -102,17 +102,17 @@ class SonarrAPI(RequestsAPI):
         res = self.get(path=path, data=data)
         return res
 
-    def getEpisodeFile(self, episode_id=-1, title='', s_num=-1, e_num=-1):
+    def getEpisodeFile(self, episode_file_id=-1, title='', s_num=-1, e_num=-1):
         c = Console()
         if ((s_num >= 0) and (e_num >= 0) and (title)):
             ep_all = self.getEpisodes(title=title)
             ep_info = next(filter(lambda x: x['seasonNumber'] == s_num and x['episodeNumber'] == e_num, ep_all), None)
-            episode_id = ep_info["id"]
+            episode_id = ep_info["episodeFileId"]
             c.print(ep_all)
             c.print(ep_info)
             c.print(episode_id)
 
-        path = f'/EpisodeFile/{episode_id}'
+        path = f'/EpisodeFile/{episode_file_id}'
         res = self.get(path=path)
         return res
 

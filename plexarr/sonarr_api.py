@@ -108,7 +108,7 @@ class SonarrAPI(RequestsAPI):
             episode_id = ep_info["id"]
 
         path = f'/EpisodeFile/{episode_id}'
-        res = self.get(path=path, data=data)
+        res = self.get(path=path)
         return res
 
     def editEpisode(self, episode_data):

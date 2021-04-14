@@ -80,6 +80,16 @@ class SonarrAPI(RequestsAPI):
             res = self.get(path=path, data=data)
             return res
 
+    def getEpisode(self, episode_id=-1, title='', s_num=-1, e_num=-1):
+        c = Console()
+        if ((s_num >= 0) and (e_num >= 0) and (title)):
+            ep_all = self.getEpisodes(title=title)
+            return next(filter(lambda x: x['seasonNumber'] == s_num and x['episodeNumber'] == e_num, ep_all), None)
+
+        path = f'/EpisodeFile/{episode_id}'
+        res = self.get(path=path)
+        return res
+
     def getEpisodeFiles(self, title='', series_id=-1):
         """Returns all episode files for the given seriesId
 

@@ -1,5 +1,6 @@
 from configparser import ConfigParser
 from urllib.parse import urljoin
+from datetime import datetime as dt
 import pyombi
 import os
 
@@ -47,10 +48,30 @@ class OmbiAPI():
         return self.request(path=path).json()
 
     def getMovies(self):
-        """Get all movies that have not been downloaded
+        """Get all movies that have been requested by not yet downloaded
 
         Returns:
             JSON Array
         """
         return [m for m in self.ombi.get_movie_requests() if not m.get('available')]
 
+    def getAllMovies(self):
+        """Get all movies that have been requested
+
+        Returns:
+            JSON Array
+        """
+        return self.ombi.get_movie_requests()
+
+    def searchMovie(self, query='', year=None):
+        """Search for a Movie
+
+        Args:
+            Required - query (str) - Movie title to search for
+            Optional - year (int) - Movie released year to apply as a filter
+        Returns:
+            JSON Array
+        """
+        if not year:
+            return self.ombi.search_movie(query=query)
+        return [m for m in self.ombi.search_movie(query=query) if dt.fromisoformat(m.get('releaseDate')).year == year]

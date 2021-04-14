@@ -61,7 +61,6 @@ class SonarrAPI(RequestsAPI):
         Returns:
             JSON Array
         """
-
         if series_id >= 0:
             path = '/Episode'
             data = {
@@ -79,6 +78,34 @@ class SonarrAPI(RequestsAPI):
             }
             res = self.get(path=path, data=data)
             return res
+
+    def getEpisodeFiles(self, title='', series_id=-1):
+        """Returns all episode files for the given seriesId
+
+        Args:
+            Optional - title (str) - The title of the TV Show
+            Optional - series_id (int) - The Sonarr series_id
+        Returns:
+            JSON Array
+        """
+        if series_id >= 0:
+            path = '/EpisodeFile'
+            data = {
+                'seriesId': series_id
+            }
+            res = self.get(path=path, data=data)
+            return res
+
+        if title:
+            series = self.getSeries()
+            show = next(filter(lambda x: x['title'] == title, series), None)
+            path = '/EpisodeFile'
+            data = {
+                'seriesId': show.get('id')
+            }
+            res = self.get(path=path, data=data)
+            return res
+
 
     def editEpisode(self, episode_data):
         """Edit an Episode

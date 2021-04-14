@@ -63,15 +63,22 @@ class SonarrAPI(RequestsAPI):
         """
 
         if series_id >= 0:
-            path = f'/Episode/{series_id}'
-            res = self.get(path=path)
+            path = '/Episode'
+            data = {
+                'seriesId': series_id
+            }
+            res = self.get(path=path, data=data)
             return res
 
         if title:
             series = self.getSeries()
             show = next(filter(lambda x: x['title'] == title, series), None)
-            path = '/'
-            return show
+            path = '/Episode'
+            data = {
+                'seriesId': show.get('id')
+            }
+            res = self.get(path=path, data=data)
+            return res
 
     def editEpisode(self, episode_data):
         """Edit an Episode

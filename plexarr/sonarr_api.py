@@ -15,8 +15,8 @@ class SonarrAPI(RequestsAPI):
         config = ConfigParser()
         config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
 
-        self.api_url = config['radarr'].get('api_url')
-        self.api_key = config['radarr'].get('api_key')
+        self.api_url = config['sonarr'].get('api_url')
+        self.api_key = config['sonarr'].get('api_key')
         super().__init__(api_url=self.api_url, api_key=self.api_key)
 
     def getSeries(self):
@@ -69,20 +69,19 @@ class SonarrAPI(RequestsAPI):
 
         if title:
             series = self.getSeries()
-            show = next(filter(lambda, ['title'] == title, series), None)
+            show = next(filter(lambda x: x['title'] == title, series), None)
             path = '/'
             return show
 
-
-    def editMovie(self, movie_data):
-        """Edit a Movie
+    def editEpisode(self, episode_data):
+        """Edit an Episode
         Args:
-            Required - movie_data (dict) - data containing Movie changes (do getMovie() first)
+            Required - episode_data (dict) - data containing Episode changes (do getEpisodes() first)
         Returns:
             JSON Response
         """
-        path = '/movie'
-        data = movie_data
+        path = '/Episode'
+        data = episode_data
         res = self.put(path=path, data=data)
         return res
 
@@ -122,11 +121,11 @@ class SonarrAPI(RequestsAPI):
         res = self.put(path=path, data=data)
         return res
 
-    def importDownloadedMovie(self, movie_path, **kwargs):
-        """Scan the provided movie_path for downloaded movie and import to Sonarr collection
+    def importDownloadedEpisode(self, episode_path, **kwargs):
+        """Scan the provided episode_path for downloaded episode and import to Sonarr collection
 
         Args:
-            Required - movie_path (str) - Full path to downloaded movie (folder name should be the release name)
+            Required - episode_path (str) - Full path to downloaded episode (folder name should be {release name}/{Season #})
             Optional - import_mode (str) - "Move", "Copy", or "Hardlink" (default: "Move")
         Returns:
             JSON Response
@@ -134,7 +133,7 @@ class SonarrAPI(RequestsAPI):
         path = '/command'
         data = {
             'name': 'DownloadedEpisodesScan',
-            'path': movie_path,
+            'path': episode_path,
             'importMode': 'Move'
         }
         data.update({camel_case(key): kwargs.get(key) for key in kwargs})

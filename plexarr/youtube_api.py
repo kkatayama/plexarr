@@ -64,7 +64,7 @@ class YouTubeAPI(object):
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
 
-    def downloadMovie(self, title='', video_url=''):
+    def downloadMovie(self, title: str, video_url: str):
         """Downlod YouTube video into folder
 
         Args:
@@ -112,7 +112,7 @@ class YouTubeAPI(object):
 
         return True
 
-    def getInfo(self, path='', video_url=''):
+    def getInfo(self, path: str, video_url: str):
         """Fetch metadata for YouTube video
 
         Args:

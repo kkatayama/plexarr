@@ -64,6 +64,38 @@ class YouTubeAPI(object):
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
 
+    def downloadEpisode(self, video_url: str, mp4_file: str):
+        """Downlod YouTube episode into season path folder
+
+        Args:
+            Requires - folder (str) - The video title to store the downloaded video
+            Requires - video_url (str) - The link of the YouTube video
+        """
+        # -- setting up path configs
+        self.title = os.path.splitext(os.path.split(mp4_file)[1])[0]
+        self.folder = os.path.split(mp4_file)[0]
+        self.f_name = mp4_file
+
+        ### Download Movie via YoutubeDL ###
+        ytdl_opts = {
+            'writesubtitles': True,
+            'subtitle': '--write-sub --sub-lang en',
+            'cookiefile': self.cookies,
+            'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+            'outtmpl': self.f_name,
+            'postprocessors': [{
+                'key': 'FFmpegEmbedSubtitle'
+            }],
+            'logger': MyLogger(),
+            'progress_hooks': [self.my_hook]
+        }
+        with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
+            ytdl.download([video_url])
+
+        return True
+
+
+
     def downloadMovie(self, title: str, video_url: str):
         """Downlod YouTube video into folder
 

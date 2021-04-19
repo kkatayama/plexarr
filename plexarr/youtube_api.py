@@ -79,7 +79,7 @@ class YouTubeAPI(object):
         ### Download Movie via YoutubeDL ###
         ytdl_opts = {
             'writesubtitles': True,
-            'subtitle': '--write-sub --sub-lang en',
+            'subtitle': '--write-sub --embed-subs',
             'cookiefile': self.cookies,
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,

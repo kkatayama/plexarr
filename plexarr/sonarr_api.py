@@ -175,7 +175,12 @@ class SonarrAPI(RequestsAPI):
         res = self.put(path=path, data=data)
         return res
 
-    def importDownloadedEpisode(self, episode_path, **kwargs):
+    def getCommandStatus(self, cmd_id=None):
+        path = f'/command/{cmd_id}'
+        res = self.get(path=path)
+        return res
+
+    def importDownloadedEpisode(self, episode_path: str, **kwargs):
         """Scan the provided episode_path for downloaded episode and import to Sonarr collection
 
         Args:
@@ -194,7 +199,20 @@ class SonarrAPI(RequestsAPI):
         res = self.post(path=path, data=data)
         return res
 
-    def getCommandStatus(self, cmd_id=None):
-        path = f'/command/{cmd_id}'
-        res = self.get(path=path)
+    def renameSeries(self, series_ids: list, **kwargs):
+        """Instruct Sonarr to rename all files in the provided series.
+
+        Args:
+            Required - series_ids (list) - List of Series IDs to rename
+        Returns:
+            JSON Response
+        """
+        path = '/command'
+        data = {
+            'name': 'RenameSeries',
+            'seriesIds': series_ids 
+        }
+        data.update({camel_case(key): kwargs.get(key) for key in kwargs})
+        res = self.post(path=path, data=data)
         return res
+

@@ -26,6 +26,33 @@ class HTPC_API(object):
         self.mal = config['mal']
         self.og = config['og']
 
+    def getMovieDownloads(self):
+        """List all downloaded movies that need to be imported into Radarr
+
+        Returns:
+            movies (list) - The remote paths of the downloaded movies
+        """
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+
+            ftp = ssh.open_sftp()
+            return [os.path.join(host['movies'], movie) for movie in ftp.listdir(host['movies'])]
+
+    def getSeriesDownloads(self):
+        """List all downloaded series that need to be imported into Radarr
+
+        Returns:
+            series (list) - The remote paths of the downloaded movies
+        """
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+
+            ftp = ssh.open_sftp()
+            return [os.path.join(host['series'], series) for series in ftp.listdir(host['series'])]
+
+
     def uploadMovie(self, folder):
         """Upload movie directory containing movie file to host["mal"]
 

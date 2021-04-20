@@ -32,6 +32,7 @@ class HTPC_API(object):
         Returns:
             movies (list) - The remote paths of the downloaded movies
         """
+        host = dict(self.mal.items())
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
@@ -45,6 +46,7 @@ class HTPC_API(object):
         Returns:
             series (list) - The remote paths of the downloaded movies
         """
+        host = dict(self.mal.items())
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])

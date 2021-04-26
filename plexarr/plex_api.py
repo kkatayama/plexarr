@@ -58,3 +58,39 @@ class PlexAPI(object):
         }
         res = self.get(path=path, data=data)
         return res.reason
+
+    def refreshGuide(self):
+        headers = {
+            'Connection': 'keep-alive',
+            'Content-Length': '0',
+            'sec-ch-ua': '"Chromium";v="90", "Opera";v="76", ";Not A Brand";v="99"',
+            'Accept': 'text/plain, */*; q=0.01',
+            'Accept-Language': 'en',
+            'sec-ch-ua-mobile': '?0',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.51 Safari/537.36 OPR/76.0.4017.40 (Edition beta)',
+            'Origin': 'http://192.168.1.214:32400',
+            'Sec-Fetch-Site': 'cross-site',
+            'Sec-Fetch-Mode': 'cors',
+            'Sec-Fetch-Dest': 'empty',
+            'Referer': 'http://192.168.1.214:32400/',
+        }
+
+        params = (
+            ('X-Plex-Product', 'Plex Web'),
+            ('X-Plex-Version', '4.54.5'),
+            ('X-Plex-Client-Identifier', 'amu0kss4i5a7hrz08zih4r6b'),
+            ('X-Plex-Platform', 'Opera'),
+            ('X-Plex-Platform-Version', '76.0'),
+            ('X-Plex-Sync-Version', '2'),
+            ('X-Plex-Features', 'external-media,indirect-media'),
+            ('X-Plex-Model', 'bundled'),
+            ('X-Plex-Device', 'OSX'),
+            ('X-Plex-Device-Name', 'Opera'),
+            ('X-Plex-Device-Screen-Resolution', '1577x981,1920x1080'),
+            ('X-Plex-Token', 'hEYGzJAdKuaBJMYieCQ_'),
+            ('X-Plex-Language', 'en'),
+        )
+
+        res = requests.post('https://192-168-1-214.b4b012fc348842c9b399bb4d103fcd5e.plex.direct:32400/livetv/dvrs/40/reloadGuide', headers=headers, params=params)
+        return res.reason
+    

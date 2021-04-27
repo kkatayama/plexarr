@@ -64,7 +64,7 @@ class YouTubeAPI(object):
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
 
-    def downloadEpisode(self, video_url: str, mp4_file: str, format=''):
+    def downloadEpisode(self, video_url: str, mp4_file: str, quality='', subtitle=''):
         """Downlod YouTube episode into season path folder
 
         Args:
@@ -89,8 +89,10 @@ class YouTubeAPI(object):
             'logger': MyLogger(),
             'progress_hooks': [self.my_hook]
         }
-        if format:
-            ytdl_opts['format'] = format
+        if quality:
+            ytdl_opts['format'] = quality
+        if subtitle:
+            ytdl_opts['subtitle'] = subtitle
 
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])

@@ -38,6 +38,7 @@ class YouTubeAPI(object):
         config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
 
         self.path = config['youtube'].get('path')
+        self.temp_dir = config['youtube'].get('temp_dir')
         self.cookies = config['youtube'].get('cookies')
         self.progress = Progress()
         self.task = None

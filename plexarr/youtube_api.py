@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from rich.progress import Progress
 from rich import print
 from configparser import ConfigParser
@@ -22,9 +23,11 @@ class MyLogger(object):
         # print(msg)
         pass
 
+
 class YouTubeAPI(object):
     """Wrapper for YouTubeAPI via youtube_dl
     """
+
     def __init__(self):
         """Constructor requires API-KEY
 
@@ -40,7 +43,6 @@ class YouTubeAPI(object):
         self.task = None
         self.downloaded_bytes = 0
         self.download_status = False
-
 
     # -- https://stackoverflow.com/a/58667850/3370913
     def my_hook(self, d):
@@ -63,8 +65,7 @@ class YouTubeAPI(object):
             self.progress.update(self.task, advance=step)
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
-
-    def downloadEpisode(self, video_url: str, mp4_file: str, quality='', subtitle=''):
+    def downloadEpisode(self, video_url: str, mp4_file: str, format_quality=None, output_template=None):
         """Downlod YouTube episode into season path folder
 
         Args:
@@ -79,7 +80,7 @@ class YouTubeAPI(object):
         ### Download Movie via YoutubeDL ###
         ytdl_opts = {
             'writesubtitles': True,
-            'subtitle': '--write-sub --write-auto-sub --embed-subs',
+            'writeautomaticsub': True,
             'cookiefile': self.cookies,
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,
@@ -89,17 +90,15 @@ class YouTubeAPI(object):
             'logger': MyLogger(),
             'progress_hooks': [self.my_hook]
         }
-        if quality:
-            ytdl_opts['format'] = quality
-        if subtitle:
-            ytdl_opts['subtitle'] = subtitle
+        if format_quality:
+            ytdl_opts.update({'format': format_quality})
+        if output_template:
+            ytdl_opts.update({'outtmpl': output_template})
 
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
 
         return True
-
-
 
     def downloadMovie(self, title: str, video_url: str):
         """Downlod YouTube video into folder
@@ -125,7 +124,7 @@ class YouTubeAPI(object):
 
         # -- create fresh directory and backup video_url
         print(f'creating directory: "{self.folder}"')
-        print(f'exporting video_url to [magenta]"video_url.txt"[/magenta]')
+        print('exporting video_url to [magenta]"video_url.txt"[/magenta]')
         print(f'{{"video_url": {video_url}}}')
         os.mkdir(self.folder)
         with open(self.video_url_path, 'w') as f:

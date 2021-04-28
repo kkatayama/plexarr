@@ -145,9 +145,8 @@ class YouTubeAPI(object):
         }
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
-        return ytdl
 
-    def getInfo(self, video_url: str, mp4_file: None, format_quality=None, output_template=None):
+    def getInfo(self, video_url: str, mp4_file: None, format_quality=None, output_template=None, download=False):
         """Fetch metadata for YouTube video
 
         Args:
@@ -180,7 +179,7 @@ class YouTubeAPI(object):
             ytdl_opts.update({'outtmpl': output_template})
 
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
-            metadata = ytdl.extract_info(video_url, download=False)
+            metadata = ytdl.extract_info(video_url, download=download)
         return metadata
         # year = metadata.get('upload_date')[:4]
         # title = metadata.get('title', '').replace(":", "-")

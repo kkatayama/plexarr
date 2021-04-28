@@ -146,8 +146,7 @@ class YouTubeAPI(object):
         }
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
-
-        return True
+        return ytdl
 
     def getInfo(self, video_url: str):
         """Fetch metadata for YouTube video
@@ -158,11 +157,29 @@ class YouTubeAPI(object):
         Returns:
             JSON Object
         """
-        ydl_opts = {
+        # -- setting up path configs
+        self.title = os.path.splitext(os.path.split(mp4_file)[1])[0]
+        self.folder = os.path.split(mp4_file)[0]
+        self.f_name = mp4_file
+
+        ### Download Movie via YoutubeDL ###
+        ytdl_opts = {
+            'writesubtitles': True,
+            'writeautomaticsub': True,
             'cookiefile': self.cookies,
+            'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+            'outtmpl': self.f_name,
+            'postprocessors': [{
+                'key': 'FFmpegEmbedSubtitle'
+            }],
             'logger': MyLogger(),
             'progress_hooks': [self.my_hook]
         }
+        if format_quality:
+            ytdl_opts.update({'format': format_quality})
+        if output_template:
+            ytdl_opts.update({'outtmpl': output_template})
+
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             metadata = ydl.extract_info(video_url, download=False)
         return metadata

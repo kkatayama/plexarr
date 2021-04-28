@@ -97,8 +97,7 @@ class YouTubeAPI(object):
 
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
-
-        return True
+        return ytdl
 
     def downloadMovie(self, title: str, video_url: str):
         """Downlod YouTube video into folder
@@ -148,7 +147,7 @@ class YouTubeAPI(object):
             ytdl.download([video_url])
         return ytdl
 
-    def getInfo(self, video_url: str):
+    def getInfo(self, video_url: str, mp4_file: None, format_quality=None, output_template=None):
         """Fetch metadata for YouTube video
 
         Args:

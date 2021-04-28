@@ -179,8 +179,8 @@ class YouTubeAPI(object):
         if output_template:
             ytdl_opts.update({'outtmpl': output_template})
 
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            metadata = ydl.extract_info(video_url, download=False)
+        with youtube_dl.YoutubeDL(ydtl_opts) as ydl:
+            metadata = ytdl.extract_info(video_url, download=False)
         return metadata
         # year = metadata.get('upload_date')[:4]
         # title = metadata.get('title', '').replace(":", "-")

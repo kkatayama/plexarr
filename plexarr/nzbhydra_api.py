@@ -16,7 +16,9 @@ class NZBHydraAPI(RequestsAPI):
         config = ConfigParser()
         config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
 
-        self.api_url = config['radarr'].get('api_url')
-        self.api_key = config['radarr'].get('api_key')
+        self.newznab = config['nzbhydra2'].get('newznab').strip('/') + '/'
+        self.torznab = config['nzbhydra2'].get('torznab').strip('/') + '/'
+        self.api_url = self.newznab
+        self.api_key = config['nzbhydra2'].get('api_key')
         super().__init__(api_url=self.api_url, api_key=self.api_key)
 

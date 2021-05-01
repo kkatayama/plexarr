@@ -44,6 +44,14 @@ class OmbiAPI():
         return res
 
     def getMovieRequests(self):
+        """Get all movies that have been requested
+
+        NOTE: Identical to ombi.getAllMovies()
+
+        Returns:
+            JSON Array
+        """
+
         path = '/Request/movie'
         return self.request(path=path).json()
 

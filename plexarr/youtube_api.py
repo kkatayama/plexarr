@@ -66,7 +66,7 @@ class YouTubeAPI(object):
             self.progress.update(self.task, advance=step)
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
-    def downloadEpisode(self, video_url: str, mp4_file: str, format_quality=None, output_template=None):
+    def downloadEpisode(self, video_url: str, mp4_file: str, format_quality=None, output_template=None, embed_subs=True):
         """Downlod YouTube episode into season path folder
 
         Args:
@@ -95,6 +95,8 @@ class YouTubeAPI(object):
             ytdl_opts.update({'format': format_quality})
         if output_template:
             ytdl_opts.update({'outtmpl': output_template})
+        if not embed_subs:
+            ytdl_opts.pop('postprocessors', None)
 
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])

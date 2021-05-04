@@ -5,7 +5,7 @@ import requests
 import os
 
 
-class NZBHydraAPI(RequestsAPI):
+class NZBHydraAPI(object):
     def __init__(self):
         """Constructor requires API-URL and API-KEY
 

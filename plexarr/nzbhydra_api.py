@@ -1,7 +1,7 @@
-from .requests_api import RequestsAPI
-from .utils import camel_case
 from configparser import ConfigParser
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
+import requests
 import os
 
 
@@ -18,6 +18,18 @@ class NZBHydraAPI(RequestsAPI):
 
         self.newznab = config['nzbhydra2'].get('newznab').strip('/')
         self.torznab = config['nzbhydra2'].get('torznab').strip('/')
-        self.api_url = self.newznab
         self.api_key = config['nzbhydra2'].get('api_key')
+        self.session = requests.Session()
+
+
+    def get(self, path, data={}):
+        """Wrapper on session.get()
+        Args:
+            path: The endpoint for API
+            data: Parameters to pass in dict() format
+        """
+
+        data.update({"apikey": self.api_key})
+        url = urljoin(self.api_url, path.strip('/'))
+        return self.session.get(url=url, params=data)
 

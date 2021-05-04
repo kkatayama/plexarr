@@ -83,6 +83,7 @@ class YouTubeAPI(object):
             'writesubtitles': True,
             'writeautomaticsub': True,
             'cookiefile': self.cookies,
+            'socket_timeout': 15,
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,
             'postprocessors': [{

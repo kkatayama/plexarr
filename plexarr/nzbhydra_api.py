@@ -33,3 +33,5 @@ class NZBHydraAPI(object):
         url = urljoin(self.newznab, path.strip('/'))
         return self.session.get(url=url, params=data).json()
 
+    def tvSearch(self, tvdb_id='', query=''):
+        return self.get(path='/', data={'t': 'tvsearch', 'tvdbid': tvdb_id, 'q': query})

@@ -29,7 +29,7 @@ class NZBHydraAPI(object):
             data: Parameters to pass in dict() format
         """
 
-        data.update({"apikey": self.api_key})
+        data.update({"apikey": self.api_key, "o": "json"})
         url = urljoin(self.newznab, path.strip('/'))
-        return self.session.get(url=url, params=data)
+        return self.session.get(url=url, params=data).json()
 

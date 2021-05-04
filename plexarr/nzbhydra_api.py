@@ -16,8 +16,8 @@ class NZBHydraAPI(object):
         config = ConfigParser()
         config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
 
-        self.newznab = config['nzbhydra2'].get('newznab').strip('/')
-        self.torznab = config['nzbhydra2'].get('torznab').strip('/')
+        self.newznab = config['nzbhydra2'].get('newznab').strip('/') + '/'
+        self.torznab = config['nzbhydra2'].get('torznab').strip('/') + '/'
         self.api_key = config['nzbhydra2'].get('api_key')
         self.session = requests.Session()
 

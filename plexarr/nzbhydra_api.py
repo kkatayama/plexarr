@@ -30,6 +30,6 @@ class NZBHydraAPI(object):
         """
 
         data.update({"apikey": self.api_key})
-        url = urljoin(self.api_url, path.strip('/'))
+        url = urljoin(self.newznab, path.strip('/'))
         return self.session.get(url=url, params=data)
 

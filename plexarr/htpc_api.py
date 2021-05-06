@@ -52,7 +52,7 @@ class HTPC_API(object):
             ftp = ssh.open_sftp()
             return [os.path.join(host['series'], series) for series in ftp.listdir(host['series'])]
 
-    def getSeasonsDownloads(self, series=''):
+    def getSeasonDownloads(self, series=''):
         """List all downloaded seasons for a given series that need to be imported into Radarr
 
         Requires:
@@ -67,6 +67,22 @@ class HTPC_API(object):
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
             ftp = ssh.open_sftp()
             return [os.path.join(series_path, season) for season in ftp.listdir(series_path)]
+
+    def getEpisodeDownloads(self, series='', season=''):
+        """List all downloaded episodes for a given series and season that need to be imported into Radarr
+
+        Requires:
+            series (string) - The title of the TV Series (ex: "Bar Rescue")
+        Returns:
+            episodes (list) - The remote paths of the downloaded episodes
+        """
+        host = dict(self.mal.items())
+        season_path = os.path.join(host['series'], series, season)
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+            ftp = ssh.open_sftp()
+            return [os.path.join(season_path, episode) for episode in ftp.listdir(season_path)]
 
     def uploadMovie(self, folder):
         """Upload movie directory containing movie file to host["mal"]

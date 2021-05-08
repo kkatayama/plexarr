@@ -87,7 +87,8 @@ class YouTubeAPI(object):
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,
             'postprocessors': [{
-                'key': 'FFmpegEmbedSubtitle'
+                'key': 'FFmpegEmbedSubtitle',
+                'key': "FFmpegSubtitlesConvertorPP"
             }],
             'logger': MyLogger(),
             'progress_hooks': [self.my_hook]

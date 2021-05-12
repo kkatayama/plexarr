@@ -79,18 +79,25 @@ class YouTubeAPI(object):
         self.f_name = mp4_file
 
         ### Download Movie via YoutubeDL ###
+        '''
+        'socket_timeout': 15,
+        'ratelimit': '50K',
+        '''
         ytdl_opts = {
             'writesubtitles': True,
             'writeautomaticsub': True,
             'cookiefile': self.cookies,
-            'socket_timeout': 15,
-            'ratelimit': '50K',
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,
-            'postprocessors': [{
-                'key': 'FFmpegEmbedSubtitle',
-                'key': "FFmpegSubtitlesConvertorPP"
-            }],
+            'postprocessors': [
+                {
+                    'key': 'FFmpegEmbedSubtitle'
+                },
+                {
+                    'key': 'FFmpegSubtitlesConvertorPP',
+                    'format': 'srt'
+                }
+            ],
             'logger': MyLogger(),
             'progress_hooks': [self.my_hook]
         }

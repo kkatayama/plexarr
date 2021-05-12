@@ -94,7 +94,7 @@ class YouTubeAPI(object):
                     'key': 'FFmpegEmbedSubtitle'
                 },
                 {
-                    'key': 'FFmpegSubtitlesConvertorPP',
+                    'key': 'FFmpegSubtitlesConvertor',
                     'format': 'srt'
                 }
             ],

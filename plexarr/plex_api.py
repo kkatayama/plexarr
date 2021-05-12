@@ -43,11 +43,12 @@ class PlexAPI(object):
             JSON Response
         """
 
-        path = '/' + urljoin(key)
+        path = '/' + key.strip('/')
         res = self.get(path=path)
         soup = BeautifulSoup(res.content, 'xml')
         if full:
             return soup.select_one('MediaContainer')
+
         metadata = {
             'MediaContainer': soup.select_one('MediaContainer').attrs,
             'Video': soup.select_one('Video').attrs,
@@ -55,7 +56,6 @@ class PlexAPI(object):
             'Streams': soup.select('Stream')
         }
         return metadata
-
 
     def getServerCapabilities(self):
         path = '/'

@@ -116,3 +116,19 @@ class HTPC_API(object):
                 scp.put(files=folder, remote_path=host['series'], recursive=True)
         return os.path.join(host['series'], os.path.split(folder)[1])
 
+
+    def uploadIPTV(self, fname):
+        """Upload XML TV-Guide or M3U playlist file to host["mal"]
+
+        Args:
+            Requires - folder (str) - The local file path of XML or M3U file
+        Returns:
+            file_path (str) - The remote path of the uploaded XML or M3U file
+        """
+        host = dict(self.mal.items())
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+            with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
+                scp.put(files=fname, remote_path=host['iptv'], recursive=False)
+        return os.path.join(host['iptv'], os.path.split(fname)[1])

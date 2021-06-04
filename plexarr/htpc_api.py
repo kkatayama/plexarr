@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 from paramiko import SSHClient
 from scp import SCPClient
+import markdown
 import subprocess
 import sys
 import os
@@ -145,4 +146,4 @@ class HTPC_API(object):
         path = f'/Users/{host["username"]}/bin/{cmd}'
         ssh_cmd = f'ssh -t -p {host["port"]} {host["username"]}@{host["ip"]} "{path}"'
         output = subprocess.run(ssh_cmd, shell=True, capture_output=True, text=True).stdout.strip()
-        return output
+        return markdown.markdown(''.join([f"    {l}\n" for l in output.splitlines()]))

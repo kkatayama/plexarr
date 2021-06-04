@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 from paramiko import SSHClient
 from scp import SCPClient
+import subprocess
 import sys
 import os
 
@@ -116,7 +117,6 @@ class HTPC_API(object):
                 scp.put(files=folder, remote_path=host['series'], recursive=True)
         return os.path.join(host['series'], os.path.split(folder)[1])
 
-
     def uploadIPTV(self, fname):
         """Upload XML TV-Guide or M3U playlist file to host["mal"]
 
@@ -132,3 +132,17 @@ class HTPC_API(object):
             with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
                 scp.put(files=fname, remote_path=host['iptv'], recursive=False)
         return os.path.join(host['iptv'], os.path.split(fname)[1])
+
+    def runCommand(self, cmd):
+        """Run a shell command over ssh
+
+        Args:
+            Requires - cmd (str) - the command to run
+        Returns:
+            std_out (str) - The output of the command
+        """
+        host = dict(self.imac.items())
+        path = f'/Users/{host["username"]}/bin/{cmd}'
+        ssh_cmd = f'ssh -t -p {host["port"]} {host["username"]}@{host["ip"]} "{path}"'
+        output = subprocess.run(ssh_cmd, shell=True, capture_output=True, text=True).stdout.strip()
+        return output

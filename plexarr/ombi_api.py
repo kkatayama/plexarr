@@ -21,7 +21,7 @@ class OmbiAPI():
             ssl=config['ombi'].get('ssl'),
             host=config['ombi'].get('host'),
             port=config['ombi'].get('port'),
-            urlbase=config['ombi'].get('urlbase'),
+            urlbase=config['ombi'].get('urlbase').strip('/'),
             username=config['ombi'].get('username'),
             password=config['ombi'].get('password'),
             api_key=config['ombi'].get('api_key')

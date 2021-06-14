@@ -74,17 +74,21 @@ class OmbiAPI():
         """
         return self.ombi.get_movie_requests()
 
-    def searchMovie(self, query='', year=None):
-        """Search for a Movie
+    def searchMovie(self, query='', year=None, tmdb_id=None):
+        """Search for a Movie [query or tmdb_id required]
 
         Args:
-            Required - query (str) - Movie title to search for
+            Optional - query (str) - Movie title to search for
             Optional - year (int) - Movie released year to apply as a filter
+            Optional - tmdb_id (int) - The Movie Database ID
         Returns:
             JSON Array
         """
         if not year:
             return self.ombi.search_movie(query=query)
+        if not tmdb_id:
+            path = f'/Search/movie/{tmdb_id}'
+            return self.request(path=path, v2=True).json()
         try:
             return [m for m in self.ombi.search_movie(query=query) if dt.fromisoformat(m.get('releaseDate')).year == int(year)]
         except:
@@ -109,7 +113,7 @@ class OmbiAPI():
             'music': music,
             'people': people
         }
-        return self.request(path=path, data=data, v2=True)
+        return self.request(path=path, data=data, v2=True).json()
 
     def getMovieRootPaths(self):
         """Get Radarr paths

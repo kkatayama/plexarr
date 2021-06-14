@@ -28,10 +28,13 @@ class OmbiAPI():
         )
         self.ombi.authenticate()
 
-    def request(self, path, data=None):
+    def request(self, path, data=None, v2=False):
         import requests
 
-        url = urljoin(self.ombi._base_url, path.strip('/'))
+        if v2:
+            url = urljoin(self.ombi._base_url.replace('/v1', '/v2'), path.strip('/'))
+        else:
+            url = urljoin(self.ombi._base_url, path.strip('/'))
         headers = {
             "UserName": self.ombi._username,
             "ApiKey": self.ombi._api_key
@@ -86,6 +89,27 @@ class OmbiAPI():
             return [m for m in self.ombi.search_movie(query=query) if dt.fromisoformat(m.get('releaseDate')).year == int(year)]
         except:
             return self.ombi.search_movie(query=query)
+
+    def searchMulti(self, query='', movie=False, tv=False, music=False, people=False):
+        """Search using Multi
+
+        Args:
+            Required - query (str) - Movie Title to search for
+            Optional - movie (boolean) - Include Movie results
+            Optional - movie (boolean) - Include TV Show results
+            Optional - movie (boolean) - Include Music results
+            Optional - movie (boolean) - Include People results
+        Return:
+            JSON Array
+        """
+        path = f'/Search/multi/{query}'
+        data = {
+            'movies': movie,
+            'tvShows': tv,
+            'music': music,
+            'people': people
+        }
+        return self.request(path=path, data=data, v2=True)
 
     def getMovieRootPaths(self):
         """Get Radarr paths

@@ -20,15 +20,18 @@ class TmdbAPI():
         self.tmdb.API_KEY = config['tmdb'].get('api_key')
         self.tmdb.API_URL = config['tmdb'].get('api_url')
 
-    def searchMovie(self, query=''):
+    def searchMovie(self, query='', year=None):
         """Search for movie in The Movie Database
 
         Args:
             Requires - query (str) - The Movie Title to search
+            Optional - year (str) - The Release Year
         Returns:
             JSON Array
         """
         search = self.tmdb.Search()
 
+        if year:
+            return search.movie(query=query, year=year)
         return search.movie(query=query)
 

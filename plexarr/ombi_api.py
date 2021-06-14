@@ -89,6 +89,8 @@ class OmbiAPI():
         if tmdb_id:
             path = f'/Search/movie/{tmdb_id}'
             return self.request(path=path, v2=True).json()
+        if not query:
+            return '"query" or "tmdb_id" required'
         try:
             return [m for m in self.ombi.search_movie(query=query) if dt.fromisoformat(m.get('releaseDate')).year == int(year)]
         except:

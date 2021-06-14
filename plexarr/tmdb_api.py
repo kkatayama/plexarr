@@ -18,6 +18,7 @@ class TmdbAPI():
 
         self.tmdb = tmdbsimple
         self.tmdb.API_KEY = config['tmdb'].get('api_key')
+        self.tmdb.API_URL = config['tmdb'].get('api_url')
 
     def searchMovie(self, query=''):
         """Search for movie in The Movie Database

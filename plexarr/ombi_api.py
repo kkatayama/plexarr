@@ -84,7 +84,7 @@ class OmbiAPI():
         Returns:
             JSON Array
         """
-        if not year:
+        if query and not year:
             return self.ombi.search_movie(query=query)
         if not tmdb_id:
             path = f'/Search/movie/{tmdb_id}'

@@ -1,12 +1,14 @@
+import os
+import re
+from configparser import ConfigParser
+
 from .requests_api import RequestsAPI
 from .utils import camel_case
-from configparser import ConfigParser
-import os
 
 
 class RadarrAPI(RequestsAPI):
     def __init__(self):
-        """Constructor requires API-URL and API-KEY
+        """Constructor requires API-URL and API-KEY.
 
         From config:
             api_url (str): API url for sonarr or radarr.
@@ -20,26 +22,30 @@ class RadarrAPI(RequestsAPI):
         super().__init__(api_url=self.api_url, api_key=self.api_key)
 
     def getMovies(self):
-        """Get all movies in the Radarr collection
+        """Get all movies in the Radarr collection.
 
         Returns:
-            JSON Array"""
+            movies: JSON Array
+        """
         path = '/movie'
         res = self.get(path=path)
         return res
 
     def getMovie(self, title='', movie_id=-1, tmdb_id=-1):
-        """Get a movie from the Radarr collection by title or movie_id
+        """Get a movie from the Radarr collection by title or movie_id.
 
         Args:
-            Optional - title (str) - The title of the Movie
-            Optional - movie_id (int) - The Radarr movie_id
+            title (str): The title of the Movie
+            movie_id (int): The Radarr movie_id
+            tmdb_id (int): The Movie Database ID
+
         Returns:
-            JSON Object
+            movie: JSON Object
+
         Requirements:
             one argument must be provided (title or movie_id)
         """
-        if tmdb_id >=0:
+        if tmdb_id >= 0:
             path = '/movie'
             data = {
                 'tmdbId': tmdb_id
@@ -54,17 +60,33 @@ class RadarrAPI(RequestsAPI):
 
         if title:
             movies = self.getMovies()
-            movie = next(filter(lambda x: x['title'] == title, movies), None)
+            """
+            If the title contains year, then parse! [ex: "The Manifest (2017)"]
+            {
+                'title': 'The Manifest',
+                'year': '2017'
+            }
+            """
+            if re.search(r'\((?P<year>\d+)\)', title):
+                regex = r'(?P<title>.*(\s.+)*)\s\((?P<year>\d+)\)'
+                r = re.match(regex, title).groupdict()
+                title = r.get('title')
+                year = int(r.get('year'))
+                movie = next(filter(lambda x: x['title'] == title and x['year'] == year, movies), None)
+            else:
+                movie = next(filter(lambda x: x['title'] == title, movies), None)
             return movie
 
         return {'ERROR': 'A title or movie_id parameter is required'}
 
     def editMovie(self, movie_data):
-        """Edit a Movie
+        """Edit a Movie.
+
         Args:
-            Required - movie_data (dict) - data containing Movie changes (do getMovie() first)
+            movie_data (dict): Required; The data containing Movie changes (do getMovie() first)
+
         Returns:
-            JSON Response
+            status: JSON Response
         """
         path = '/movie'
         data = movie_data

@@ -1,10 +1,11 @@
-from configparser import ConfigParser
-from paramiko import SSHClient
-from scp import SCPClient
-import markdown
+import os
 import subprocess
 import sys
-import os
+from configparser import ConfigParser
+
+import markdown
+from paramiko import SSHClient
+from scp import SCPClient
 
 
 def progress4(filename, size, sent, peername):
@@ -126,7 +127,7 @@ class HTPC_API(object):
         Returns:
             file_path (str) - The remote path of the uploaded XML or M3U file
         """
-        host = dict(self.mal.items())
+        host = dict(self.mac.items())
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])

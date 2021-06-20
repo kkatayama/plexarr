@@ -127,7 +127,7 @@ class HTPC_API(object):
         Returns:
             file_path (str) - The remote path of the uploaded XML or M3U file
         """
-        host = dict(self.mac.items())
+        host = dict(self.imac.items())
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])

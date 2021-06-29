@@ -7,4 +7,4 @@ from .plex_api import PlexAPI
 from .nzbhydra_api import NZBHydraAPI
 
 __all__ = ['RadarrAPI', 'SonarrAPI', 'TmdbAPI', 'YouTubeAPI', 'OmbiAPI', 'PlexAPI', 'NZBHydraAPI']
-__version__ = "1.0.18"
+__version__ = "1.0.28"

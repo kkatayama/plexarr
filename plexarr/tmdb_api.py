@@ -1,6 +1,8 @@
-from configparser import ConfigParser
-import tmdbsimple
 import os
+from configparser import ConfigParser
+from urllib.parse import urljoin
+
+import tmdbsimple
 
 
 class TmdbAPI():
@@ -19,6 +21,7 @@ class TmdbAPI():
         self.tmdb = tmdbsimple
         self.tmdb.API_KEY = config['tmdb'].get('api_key')
         self.tmdb.API_URL = config['tmdb'].get('api_url')
+        self.poster_url = "https://image.tmdb.org/3/t/p/w200"
 
     def searchMovie(self, query='', year=None):
         """Search for movie in The Movie Database
@@ -35,3 +38,17 @@ class TmdbAPI():
             return search.movie(query=query, year=year)
         return search.movie(query=query)
 
+    def searchMulti(self, query=''):
+        """Search multi in The Movie Database
+
+        Args:
+            Requires - query (str) - The Movie Title to search
+        Returns:
+            JSON Array
+        """
+        search = self.tmdb.Search()
+        r = search.multi(query=query)
+        for result in r.get("results"):
+            if result.get("poster_path"):
+                result["poster_path"] = urljoin(self.poster_url, result["poster_path"].strip("/"))
+        return r

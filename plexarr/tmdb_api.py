@@ -21,7 +21,7 @@ class TmdbAPI():
         self.tmdb = tmdbsimple
         self.tmdb.API_KEY = config['tmdb'].get('api_key')
         self.tmdb.API_URL = config['tmdb'].get('api_url')
-        self.poster_url = "https://image.tmdb.org/3/t/p/w200"
+        self.poster_url = "https://image.tmdb.org/3/t/p/w200/"
 
     def searchMovie(self, query='', year=None):
         """Search for movie in The Movie Database

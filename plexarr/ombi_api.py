@@ -60,6 +60,14 @@ class OmbiAPI():
         path = '/Request/movie'
         return self.request(path=path).json()
 
+    def getShows(self):
+        """Get all tv-shows that have been requested but not yet downloaded
+
+        Returns:
+            JSON Array
+        """
+        return [s for s in self.ombi.get_tv_requests() if not s["childRequests"][0].get('available')]
+
     def getMovies(self):
         """Get all movies that have been requested but not yet downloaded
 
@@ -68,13 +76,15 @@ class OmbiAPI():
         """
         return [m for m in self.ombi.get_movie_requests() if not m.get('available')]
 
-    def getShows(self):
-        """Get all tv-shows that have been requested but not yet downloaded
+    def findShow(self, title=''):
+        """Find a requested show by title
 
         Returns:
-            JSON Array
+            JSON Object
         """
-        return [s for s in self.ombi.get_tv_requests() if not s["childRequests"][0].get('available')]
+        for s in self.getAllShows():
+            if s.get('title') == title:
+                return s
 
     def getAllShows(self):
         """Get all tv-shows that have been requested

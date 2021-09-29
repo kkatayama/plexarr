@@ -29,7 +29,7 @@ class OmbiAPI():
         )
         self.ombi.authenticate()
 
-    def request(self, path, data=None, v2=False):
+    def request(self, path, data=None, v2=False, update=False):
         """Ombi Wrapper for API requests"""
         import requests
 
@@ -45,7 +45,10 @@ class OmbiAPI():
         if not data:
             res = requests.get(url=url, headers=headers, timeout=10)
         else:
-            res = requests.post(url=url, headers=headers, json=data, timeout=10)
+            if not update:
+                res = requests.post(url=url, headers=headers, json=data, timeout=10)
+            else:
+                res = requests.put(url=url, headers=headers, json=data, timeout=10)
         return res
 
     def getMovieRequests(self):
@@ -85,6 +88,11 @@ class OmbiAPI():
         for s in self.getAllShows():
             if s.get('title') == title:
                 return s
+
+    def updateShow(self, data={}):
+        """Update a tv-show"""
+        path = '/Request/tv'
+        return self.request(path=path, data=data, update=True).json()
 
     def getAllShows(self):
         """Get all tv-shows that have been requested

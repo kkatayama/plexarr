@@ -191,7 +191,7 @@ class OmbiAPI():
 
     def deleteFailedRequests(self, failed_id):
         """Get all failed requests ..."""
-        path = '/RequestRetry/{failed_id}'
+        path = '/requestretry/{failed_id}'
         return self.request(path=path, delete=True).json()
 
     def reProcessRequest(self, request_type, request_id):

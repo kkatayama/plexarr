@@ -1,15 +1,16 @@
-from configparser import ConfigParser
-from urllib.parse import urljoin
-from datetime import datetime as dt
-import pyombi
 import os
+from configparser import ConfigParser
+from datetime import datetime as dt
+from urllib.parse import urljoin
+
+import pyombi
+
 
 class OmbiAPI():
-    """Wrapper for TMDB API via tmdbsimple
+    """Wrapper for TMDB API via tmdbsimple"""
 
-    """
     def __init__(self):
-        """Constructor requires Ombi info
+        """Ombi Constructor requires Ombi info
 
         From config:
             api_key (str): API key.
@@ -29,6 +30,7 @@ class OmbiAPI():
         self.ombi.authenticate()
 
     def request(self, path, data=None, v2=False):
+        """Ombi Wrapper for API requests"""
         import requests
 
         if v2:
@@ -47,24 +49,40 @@ class OmbiAPI():
         return res
 
     def getMovieRequests(self):
-        """Get all movies that have been requested
+        """
+        Get all movies that have been requested
 
         NOTE: Identical to ombi.getAllMovies()
 
         Returns:
             JSON Array
         """
-
         path = '/Request/movie'
         return self.request(path=path).json()
 
     def getMovies(self):
-        """Get all movies that have been requested by not yet downloaded
+        """Get all movies that have been requested but not yet downloaded
 
         Returns:
             JSON Array
         """
         return [m for m in self.ombi.get_movie_requests() if not m.get('available')]
+
+    def getShows(self):
+        """Get all tv-shows that have been requested but not yet downloaded
+
+        Returns:
+            JSON Array
+        """
+        return [s for s in self.ombi.get_tv_requests() if not s["childRequests"][0].get('available')]
+
+    def getAllShows(self):
+        """Get all tv-shows that have been requested
+
+        Returns:
+            JSON Array
+        """
+        return self.ombi.get_tv_requests()
 
     def getAllMovies(self):
         """Get all movies that have been requested

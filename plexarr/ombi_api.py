@@ -43,7 +43,10 @@ class OmbiAPI():
         }
 
         if not data:
-            res = requests.get(url=url, headers=headers, timeout=10)
+            if not delete:
+                res = requests.get(url=url, headers=headers, timeout=10)
+            else:
+                res = requests.delete(url=url, headers=headers, timeout=10)
         else:
             if not update:
                 res = requests.post(url=url, headers=headers, json=data, timeout=10)
@@ -186,6 +189,11 @@ class OmbiAPI():
         path = '/RequestRetry'
         return self.request(path=path).json()
 
+    def deleteFailedRequests(self, failed_id):
+        """Get all failed requests ..."""
+        path = '/RequestRetry/{failed_id}'
+        return self.request(path=path, delete=True).json()
+
     def reProcessRequest(self, request_type, request_id):
         """Reprocess Request"""
         path = f'/Requests/reprocess/{request_type}/{request_id}'
@@ -194,5 +202,4 @@ class OmbiAPI():
             'requestId': request_id
         }
         return self.request(path=path, v2=True, data=data).json()
-
 

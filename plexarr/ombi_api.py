@@ -185,3 +185,13 @@ class OmbiAPI():
         """Get all failed requests ..."""
         path = '/RequestRetry'
         return self.request(path=path).json()
+
+    def reProcessRequest(self, request_type, request_id):
+        """Reprocess Request"""
+        path = f'/Requests/reprocess/{request_type}/{request_id}'
+        data = {
+            'type': request_type,
+            'requestId': request_id
+        }
+        return self.request(path=path, v2=True, data=data).json()
+

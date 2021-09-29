@@ -29,7 +29,7 @@ class OmbiAPI():
         )
         self.ombi.authenticate()
 
-    def request(self, path, data=None, v2=False, update=False):
+    def request(self, path, data=None, v2=False, update=False, delete=False):
         """Ombi Wrapper for API requests"""
         import requests
 

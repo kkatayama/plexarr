@@ -180,3 +180,8 @@ class OmbiAPI():
             "theMovieDbId": tmdb_id
         }
         return self.request(path=path, data=data).json()
+
+    def getFailedRequests(self):
+        """Get all failed requests ..."""
+        path = '/RequestRetry'
+        return self.request(path=path).json()

@@ -110,9 +110,8 @@ class KemoAPI(object):
             xml_chan += f'        <icon src="{tvg_logo}"/>\n'
             xml_chan += '    </channel>\n'
 
-
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
-            #if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
+            # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:
                 try:
                     epg_title = epg_desc.split('@')[0].strip()
@@ -152,7 +151,7 @@ class KemoAPI(object):
             xml_chan += f'        <icon src="{tvg_logo}"/>\n'
             xml_chan += '    </channel>\n'
 
-            epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip()
+            epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
             # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:
                 try:

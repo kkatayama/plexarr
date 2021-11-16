@@ -149,7 +149,7 @@ class KemoAPI(object):
             xml_chan += f'        <icon src="{tvg_logo}"/>\n'
             xml_chan += '    </channel>\n'
 
-            if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip()"USA NBA 14: Chicago Bulls vs Los Angeles Lakers @ 13:00 PM":
+            if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
                 try:
                     epg_title = epg_desc.split('@')[0].strip()
 

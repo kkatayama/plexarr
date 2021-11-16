@@ -59,7 +59,16 @@ class KemoAPI(object):
         streams = chain(streams_1, streams_2)
         return streams
 
-    # def m3uNFL(self):
-    #     """Generate m3u for NFL Streams"""
-    #     m3u = "#EXTM3U\n"
-    #     for stream in self.getStreamsNFL():
+    def m3uNFL(self):
+        """Generate m3u for NFL Streams"""
+        m3u = "#EXTM3U\n"
+        tvg_cuid = 805
+        for i, stream in enumerate(self.getStreamsNFL()):
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0]
+            tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
+            group_title = "NFL Sunday Games"
+
+            m3u.append(f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n')
+            m3u.append(self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n'))
+        return m3u

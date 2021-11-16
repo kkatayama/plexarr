@@ -2,7 +2,10 @@ from configparser import ConfigParser
 from itertools import chain
 from pathlib import Path
 
+import pandas as pd
 import requests
+from pandas.tseries.offsets import Week
+from teddy import convertEPGTime, getEPGTimeNow
 
 
 class KemoAPI(object):
@@ -90,16 +93,36 @@ class KemoAPI(object):
         return m3u
 
     def xmlNFL(self):
-        """Generate m3u for NFL Streams"""
-        xml = "#EXTM3U\n"
-        tvg_cuid = 805
+        """Generate xml for NFL Streams"""
+        xml = '<?xml version="1.0" encoding="utf-8" ?>\n'
+        xml += '<!DOCTYPE tv SYSTEM "xmltv.dtd">\n'
+        xml += '<tv generator-info-name="IPTV" generator-info-url="http://ky-iptv.com:25461/">'
+        xml_chan = ''
+        xml_prog = ''
         for stream in self.getStreamsNFL():
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
             tvg_group = "NFL Sunday Games"
 
-            m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
-            m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
-            tvg_cuid += 1
-        return m3u
+            xml_chan += f'    <channel id="{tvg_id}">\n'
+            xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
+            xml_chan += f'        <icon src="{tvg_logo}"/>\n'
+            xml_chan += '    </channel>\n'
+
+            if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
+                epg_title = epg_desc.split('@')[0].strip()
+
+                date_now = getEPGTimeNow(dt_obj=True).date()
+                game_time = epg_desc.split('@')[1].strip()
+                if date_now.weekday() == 6:
+                    game_datetime = pd.to_datetime(f'{date_now} {game_time}')
+                else:
+                    game_datetime = pd.to_datetime(f'{(getEPGTimeNow(dt_obj=True) + Week(weekday=6)).date()} {game_time}')
+                epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
+                epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
+                xml_prog += f'        <title lang="en">{epg_title}</title>\n'
+                xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
+                xml_prog += '    </programme>\n'
+        return xml + xml_chan + xml_prog

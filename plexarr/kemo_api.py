@@ -1,6 +1,6 @@
 from configparser import ConfigParser
+from itertools import chain
 from pathlib import Path
-from urllib.parse import urljoin
 
 import requests
 
@@ -56,7 +56,7 @@ class KemoAPI(object):
         self.setCategory(query="NBA")
         streams_1 = self.getStreams(terms="USA NBA 0")
         streams_2 = self.getStreams(terms="USA NBA 1")
-        streams = streams_1 + streams_2
+        streams = chain(streams_1, streams_2)
         return streams
 
     # def m3uNFL(self):

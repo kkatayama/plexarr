@@ -67,7 +67,7 @@ class KemoAPI(object):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0]
             tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
-            group_title = "NFL Sunday Games"
+            tvg_group = "NFL Sunday Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
             m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')

@@ -65,10 +65,41 @@ class KemoAPI(object):
         tvg_cuid = 805
         for i, stream in enumerate(self.getStreamsNFL()):
             tvg_id = stream.get("stream_id")
-            tvg_name = stream.get("name").split(":")[0]
+            tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
             tvg_group = "NFL Sunday Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
             m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+            tvg_cuid += 1
+        return m3u
+
+    def m3uNBA(self):
+        """Generate m3u for NBA Streams"""
+        m3u = "#EXTM3U\n"
+        tvg_cuid = 901
+        for i, stream in enumerate(self.getStreamsNBA()):
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "http://ky-iptv.com:25461/images/118ae626674246e6d081a4ff16921b19.png"
+            tvg_group = "NBA Games"
+
+            m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
+            m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+            tvg_cuid += 1
+        return m3u
+
+    def xmlNFL(self):
+        """Generate m3u for NFL Streams"""
+        xml = "#EXTM3U\n"
+        tvg_cuid = 805
+        for stream in self.getStreamsNFL():
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
+            tvg_group = "NFL Sunday Games"
+
+            m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
+            m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+            tvg_cuid += 1
         return m3u

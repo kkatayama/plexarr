@@ -111,20 +111,23 @@ class KemoAPI(object):
             xml_chan += '    </channel>\n'
 
             if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
-                epg_title = epg_desc.split('@')[0].strip()
+                try:
+                    epg_title = epg_desc.split('@')[0].strip()
 
-                date_now = getEPGTimeNow(dt_obj=True).date()
-                game_time = epg_desc.split('@')[1].strip()
-                if date_now.weekday() == 6:
-                    game_datetime = pd.to_datetime(f'{date_now} {game_time}')
-                else:
-                    game_datetime = pd.to_datetime(f'{(getEPGTimeNow(dt_obj=True) + Week(weekday=6)).date()} {game_time}')
-                epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
-                epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-                xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
-                xml_prog += f'        <title lang="en">{epg_title}</title>\n'
-                xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
-                xml_prog += '    </programme>\n'
+                    date_now = getEPGTimeNow(dt_obj=True).date()
+                    game_time = epg_desc.split('@')[1].strip()
+                    if date_now.weekday() == 6:
+                        game_datetime = pd.to_datetime(f'{date_now} {game_time}')
+                    else:
+                        game_datetime = pd.to_datetime(f'{(getEPGTimeNow(dt_obj=True) + Week(weekday=6)).date()} {game_time}')
+                    epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                    xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
+                    xml_prog += f'        <title lang="en">{epg_title}</title>\n'
+                    xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
+                    xml_prog += '    </programme>\n'
+                except Exception:
+                    pass
         xml = xml + xml_chan + xml_prog + '</tv>\n'
         return xml
 
@@ -146,17 +149,20 @@ class KemoAPI(object):
             xml_chan += f'        <icon src="{tvg_logo}"/>\n'
             xml_chan += '    </channel>\n'
 
-            if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
-                epg_title = epg_desc.split('@')[0].strip()
+            if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip()"USA NBA 14: Chicago Bulls vs Los Angeles Lakers @ 13:00 PM":
+                try:
+                    epg_title = epg_desc.split('@')[0].strip()
 
-                date_now = getEPGTimeNow(dt_obj=True).date()
-                game_time = epg_desc.split('@')[1].strip()
-                game_datetime = pd.to_datetime(f'{date_now} {game_time}')
-                epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
-                epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-                xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
-                xml_prog += f'        <title lang="en">{epg_title}</title>\n'
-                xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
-                xml_prog += '    </programme>\n'
+                    date_now = getEPGTimeNow(dt_obj=True).date()
+                    game_time = epg_desc.split('@')[1].strip()
+                    game_datetime = pd.to_datetime(f'{date_now} {game_time}')
+                    epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                    xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
+                    xml_prog += f'        <title lang="en">{epg_title}</title>\n'
+                    xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
+                    xml_prog += '    </programme>\n'
+                except Exception:
+                    pass
         xml = xml + xml_chan + xml_prog + '</tv>\n'
         return xml

@@ -40,7 +40,7 @@ class KemoAPI(object):
     def getStreams(self, terms=''):
         """Get Streams by Category_ID and filtered by 'terms'"""
         payload = self.PARAMS
-        payload.update({'action': 'get_live_live_streams'})
+        payload.update({'action': 'get_live_streams'})
         payload.update({'category_id': self.CATEGORY.get("category_id")})
         r = requests.get(url=self.API_URL, params=payload)
         return [stream for stream in r.json() if terms.lower() in stream.get('name').lower()]

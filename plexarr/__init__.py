@@ -9,4 +9,4 @@ from .tmdb_api import TmdbAPI
 from .youtube_api import YouTubeAPI
 
 __all__ = ['RadarrAPI', 'SonarrAPI', 'TmdbAPI', 'YouTubeAPI', 'OmbiAPI', 'PlexAPI', 'NZBHydraAPI', 'GitHubAPI', 'KemoAPI']
-__version__ = "1.1.22"
+__version__ = "1.1.23"

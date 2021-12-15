@@ -191,3 +191,41 @@ class KemoAPI(object):
                     pass
         xml = xml + xml_chan + xml_prog + '</tv>\n'
         return xml
+
+    def xmlESPN(self, terms=""):
+        """Generate xml NBA Streams"""
+        xml = '<?xml version="1.0" encoding="utf-8" ?>\n'
+        xml += '<!DOCTYPE tv SYSTEM "xmltv.dtd">\n'
+        xml += '<tv generator-info-name="IPTV" generator-info-url="http://ky-iptv.com:25461/">\n'
+        xml_chan = ''
+        xml_prog = ''
+        for stream in self.getStreamsESPN(terms=terms):
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = stream.get("stream_icon")
+            # tvg_group = "ESPN+"
+
+            epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
+            # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
+            if epg_desc:
+                try:
+                    epg_title = epg_desc.split('@')[0].strip()
+                    date_now = getEPGTimeNow(dt_obj=True).date()
+                    game_time = epg_desc.split('@')[1].strip()
+                    game_datetime = pd.to_datetime(f'{date_now} {game_time}')
+                    epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+                    xml_chan += f'    <channel id="{tvg_id}">\n'
+                    xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
+                    xml_chan += f'        <icon src="{tvg_logo}"/>\n'
+                    xml_chan += '    </channel>\n'
+
+                    xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
+                    xml_prog += f'        <title lang="en">{epg_title}</title>\n'
+                    xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
+                    xml_prog += '    </programme>\n'
+                except Exception:
+                    pass
+        xml = xml + xml_chan + xml_prog + '</tv>\n'
+        return xml

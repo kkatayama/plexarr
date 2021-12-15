@@ -209,9 +209,9 @@ class KemoAPI(object):
             # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:
                 try:
-                    epg_title = epg_desc.split('@')[0].strip()
+                    epg_title = epg_desc.split('  ')[0].strip()
                     date_now = getEPGTimeNow(dt_obj=True).date()
-                    game_time = epg_desc.split('@')[1].strip()
+                    game_time = epg_desc.split('  ')[1].split('et')[0].strip()
                     game_datetime = pd.to_datetime(f'{date_now} {game_time}')
                     epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)

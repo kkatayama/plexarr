@@ -12,7 +12,8 @@ from rich.progress import Progress
 
 class MyLogger(object):
     def info(self, msg):
-        print(msg)
+        #print(msg)
+        pass
 
     def debug(self, msg):
         #print(msg)

@@ -102,7 +102,7 @@ class KemoAPI(object):
         """Generate m3u for ESPN PLUS Streams"""
         m3u = "#EXTM3U\n"
         tvg_cuid = 1500
-        for i, stream in enumerate(self.getStreamsESPN()):
+        for i, stream in enumerate(self.getStreamsESPN(terms=terms)):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = stream.get("stream_icon")

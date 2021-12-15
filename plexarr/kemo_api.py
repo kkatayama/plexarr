@@ -105,7 +105,7 @@ class KemoAPI(object):
         for i, stream in enumerate(self.getStreamsESPN()):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = streams.get("stream_icon")
+            tvg_logo = stream.get("stream_icon")
             tvg_group = "NBA Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'

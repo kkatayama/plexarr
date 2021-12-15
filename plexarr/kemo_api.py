@@ -105,7 +105,7 @@ class KemoAPI(object):
         for i, stream in enumerate(self.getStreamsESPN(terms=terms)):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = stream.get("stream_icon")
+            tvg_logo = "https://artwork.espncdn.com/programs/14ef54cc-6fd8-443d-80b8-365c1f64d606/16x9/large_20211213222642.jpg"
             tvg_group = "ESPN+"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
@@ -202,7 +202,7 @@ class KemoAPI(object):
         for stream in self.getStreamsESPN(terms=terms):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = stream.get("stream_icon")
+            tvg_logo = "https://artwork.espncdn.com/programs/14ef54cc-6fd8-443d-80b8-365c1f64d606/16x9/large_20211213222642.jpg"
             # tvg_group = "ESPN+"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()

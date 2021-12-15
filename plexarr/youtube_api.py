@@ -1,10 +1,13 @@
 from __future__ import unicode_literals
-from rich.progress import Progress
-from rich import print
-from configparser import ConfigParser
-import youtube_dl
-import shutil
+
 import os
+import shutil
+from configparser import ConfigParser
+
+import youtube_dl
+import youtube_dl.utils
+from rich import print
+from rich.progress import Progress
 
 
 class MyLogger(object):
@@ -66,7 +69,7 @@ class YouTubeAPI(object):
             self.progress.update(self.task, advance=step)
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
-    def downloadEpisode(self, video_url: str, mp4_file: str, format_quality=None, output_template=None, embed_subs=True):
+    def downloadEpisode(self, video_url: str, mp4_file: str, format_quality=None, output_template=None, embed_subs=True, add_header=None):
         """Downlod YouTube episode into season path folder
 
         Args:
@@ -107,6 +110,8 @@ class YouTubeAPI(object):
             ytdl_opts.update({'outtmpl': output_template})
         if not embed_subs:
             ytdl_opts.pop('postprocessors', None)
+        if add_header:
+            youtube_dl.utils.std_headers.update(add_header)
 
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])

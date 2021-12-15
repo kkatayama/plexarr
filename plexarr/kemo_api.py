@@ -91,7 +91,7 @@ class KemoAPI(object):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://ky-iptv.com:25461/images/118ae626674246e6d081a4ff16921b19.png"
-            tvg_group = "ESPN+"
+            tvg_group = "NBA Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
             m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
@@ -106,7 +106,7 @@ class KemoAPI(object):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = stream.get("stream_icon")
-            tvg_group = "NBA Games"
+            tvg_group = "ESPN+"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
             m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')

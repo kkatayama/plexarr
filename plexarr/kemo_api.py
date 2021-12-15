@@ -49,17 +49,23 @@ class KemoAPI(object):
         return (stream for stream in r.json() if terms.lower() in stream.get('name').lower())
 
     def getStreamsNFL(self):
-        """Set NFL Streams"""
+        """Get NFL Streams"""
         self.setCategory(query="NFL")
         streams = self.getStreams(terms="USA NFL Sunday 7")
         return streams
 
     def getStreamsNBA(self):
-        """Set NFL Streams"""
+        """Get NBA Streams"""
         self.setCategory(query="NBA")
         streams_1 = self.getStreams(terms="USA NBA 0")
         streams_2 = self.getStreams(terms="USA NBA 1")
         streams = chain(streams_1, streams_2)
+        return streams
+
+    def getStreamsESPN(self, terms=""):
+        """GET ESPN PLUS STREAMS"""
+        self.setCategory(query="ESPN")
+        streams = self.getStreams(terms=terms)
         return streams
 
     def m3uNFL(self):
@@ -85,6 +91,21 @@ class KemoAPI(object):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://ky-iptv.com:25461/images/118ae626674246e6d081a4ff16921b19.png"
+            tvg_group = "ESPN+"
+
+            m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
+            m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+            tvg_cuid += 1
+        return m3u
+
+    def m3uESPN(self, terms=""):
+        """Generate m3u for ESPN PLUS Streams"""
+        m3u = "#EXTM3U\n"
+        tvg_cuid = 1500
+        for i, stream in enumerate(self.getStreamsESPN()):
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = streams.get("stream_icon")
             tvg_group = "NBA Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'

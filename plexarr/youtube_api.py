@@ -12,8 +12,8 @@ from rich.progress import Progress
 
 class MyLogger(object):
     def info(self, msg):
-        #print(msg)
-        pass
+        print(msg)
+        #pass
 
     def debug(self, msg):
         #print(msg)
@@ -93,6 +93,7 @@ class YouTubeAPI(object):
             'cookiefile': self.cookies,
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,
+            'external_downloader_args': ['-loglevel', 'warning', '-stats'],
             'postprocessors': [
                 {
                     'key': 'FFmpegEmbedSubtitle'

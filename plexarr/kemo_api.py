@@ -103,19 +103,13 @@ class KemoAPI(object):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
-            tvg_group = "NFL Sunday Games"
-
-            xml_chan += f'    <channel id="{tvg_id}">\n'
-            xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
-            xml_chan += f'        <icon src="{tvg_logo}"/>\n'
-            xml_chan += '    </channel>\n'
+            # tvg_group = "NFL Sunday Games"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
             # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:
                 try:
                     epg_title = epg_desc.split('@')[0].strip()
-
                     date_now = getEPGTimeNow(dt_obj=True).date()
                     game_time = epg_desc.split('@')[1].strip()
                     if date_now.weekday() == 6:
@@ -124,6 +118,12 @@ class KemoAPI(object):
                         game_datetime = pd.to_datetime(f'{(getEPGTimeNow(dt_obj=True) + Week(weekday=6)).date()} {game_time}')
                     epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+                    xml_chan += f'    <channel id="{tvg_id}">\n'
+                    xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
+                    xml_chan += f'        <icon src="{tvg_logo}"/>\n'
+                    xml_chan += '    </channel>\n'
+
                     xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
                     xml_prog += f'        <title lang="en">{epg_title}</title>\n'
                     xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
@@ -144,24 +144,24 @@ class KemoAPI(object):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://ky-iptv.com:25461/images/118ae626674246e6d081a4ff16921b19.png"
-            tvg_group = "NBA Games"
-
-            xml_chan += f'    <channel id="{tvg_id}">\n'
-            xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
-            xml_chan += f'        <icon src="{tvg_logo}"/>\n'
-            xml_chan += '    </channel>\n'
+            # tvg_group = "NBA Games"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
             # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:
                 try:
                     epg_title = epg_desc.split('@')[0].strip()
-
                     date_now = getEPGTimeNow(dt_obj=True).date()
                     game_time = epg_desc.split('@')[1].strip()
                     game_datetime = pd.to_datetime(f'{date_now} {game_time}')
                     epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+                    xml_chan += f'    <channel id="{tvg_id}">\n'
+                    xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
+                    xml_chan += f'        <icon src="{tvg_logo}"/>\n'
+                    xml_chan += '    </channel>\n'
+
                     xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
                     xml_prog += f'        <title lang="en">{epg_title}</title>\n'
                     xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'

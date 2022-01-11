@@ -9,7 +9,7 @@ from scp import SCPClient
 
 
 def progress4(filename, size, sent, peername):
-    sys.stdout.write("(%s:%s) %s\'s progress: %.2f%%   \r" % (peername[0], peername[1], filename, float(sent)/float(size)*100) )
+    sys.stdout.write("(%s:%s) %s\'s progress: %.2f%%   \r" % (peername[0], peername[1], filename.decode(), float(sent)/float(size)*100))
 
 
 class HTPC_API(object):
@@ -104,7 +104,7 @@ class HTPC_API(object):
         return os.path.join(host['movies'], os.path.split(folder)[1])
 
     def uploadSeries(self, folder):
-        """Upload movie directory containing movie file to host["mal"]
+        """Upload series directory containing episode files to host["mal"]
 
         Args:
             Requires - folder (str)  - The local path of the downloaded movie

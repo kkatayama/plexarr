@@ -1,3 +1,4 @@
+from .chapo_api import ChapoAPI
 from .github_api import GitHubAPI
 from .kemo_api import KemoAPI
 from .nzbhydra_api import NZBHydraAPI
@@ -8,5 +9,5 @@ from .sonarr_api import SonarrAPI
 from .tmdb_api import TmdbAPI
 from .youtube_api import YouTubeAPI
 
-__all__ = ['RadarrAPI', 'SonarrAPI', 'TmdbAPI', 'YouTubeAPI', 'OmbiAPI', 'PlexAPI', 'NZBHydraAPI', 'GitHubAPI', 'KemoAPI']
+__all__ = ['RadarrAPI', 'SonarrAPI', 'TmdbAPI', 'YouTubeAPI', 'OmbiAPI', 'PlexAPI', 'NZBHydraAPI', 'GitHubAPI', 'KemoAPI', 'ChapoAPI']
 __version__ = "1.1.29"

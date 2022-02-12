@@ -131,7 +131,17 @@ class HTPC_API(object):
             data = sftp.open(video_file)
             data.prefetch()
             info = MediaInfo.parse(data)
-        return info
+            media = next((t.to_data() for t in info.tracks if t.track_type == "General"), None)
+            video = next((t.to_data() for t in info.tracks if t.track_type == "Video"), None)
+            audio = next((t.to_data() for t in info.tracks if t.track_type == "Audio"), None)
+
+            media = {key: media[key] for key in ["file_name", "file_extension", "file_size", "duration", "overall_bit_rate", "frame_rate"]}
+            video = {key: video[key] for key in ["codec_id", "stream_size", "width", "height", "duration", "bit_rate", "frame_rate"]}
+            audio = {key: audio[key] for key in ["codec_id", "stream_size", "duration", "sampling_rate", "bit_rate"]}
+
+            # for track in [media, video, audio]:
+            #     c.print(track)
+            return media, video, audio
 
     def uploadMovie(self, folder=''):
         """Upload movie directory containing movie file to host["mal"]

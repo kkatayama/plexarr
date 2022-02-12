@@ -93,7 +93,7 @@ class HTPC_API(object):
         Returns:
             artist (list) - The remote paths of the music video artists
         """
-        host = dict(self.htpc.items())
+        host = dict(self.imac.items())
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
@@ -106,7 +106,7 @@ class HTPC_API(object):
         Returns:
             music_videos (list) - The remote file path of the Artist's Music Videos
         """
-        host = dict(self.htpc.items())
+        host = dict(self.imac.items())
         artist_path = os.path.join(host['music_videos'], artist)
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
@@ -120,7 +120,7 @@ class HTPC_API(object):
         Returns:
             music_video (FILE OBJECT) - FILE object pointing to the music video that can be opened and read
         """
-        host = dict(self.htpc.items())
+        host = dict(self.imac.items())
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])

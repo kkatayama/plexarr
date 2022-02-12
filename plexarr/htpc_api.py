@@ -98,7 +98,7 @@ class HTPC_API(object):
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
             sftp = ssh.open_sftp()
-            return [os.path.join(host['music_videos'], artist) for artist in sftp.listdir(host['music_videos'])]
+            return [artist for artist in sftp.listdir(host['music_videos'])]
 
     def getMusicVideos(self, artist=''):
         """List all Music Videos belonging to an Artists

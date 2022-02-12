@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 from configparser import ConfigParser
+from pathlib import Path
 
 import markdown
 from paramiko import SSHClient
@@ -10,7 +11,9 @@ from scp import SCPClient
 
 
 def progress4(filename, size, sent, peername):
-    sys.stdout.write("(%s:%s) %s\'s progress: %.2f%%   \r" % (peername[0], peername[1], filename.decode(), float(sent)/float(size)*100))
+    if isinstance(filename, bytes):
+        filename = filename.decode()
+    sys.stdout.write("(%s:%s) %s\'s progress: %.2f%%   \r" % (peername[0], peername[1], filename, float(sent)/float(size)*100))
 
 
 class HTPC_API(object):
@@ -115,33 +118,25 @@ class HTPC_API(object):
             sftp = ssh.open_sftp()
             return [os.path.join(artist_path, video_file) for video_file in sftp.listdir(artist_path)]
 
-    def readMusicVideo(self, video_file=''):
-        """Open the remote Music Video file for parsing
+    def downloadMusicVideo(self, video_file=''):
+        """Download the remote Music Video file for parsing
 
         Returns:
             music_video (FILE OBJECT) - FILE object pointing to the music video that can be opened and read
         """
         # -- https://stackoverflow.com/questions/58433996/reading-file-opened-with-python-paramiko-sftpclient-open-method-is-slow
         host = dict(self.imac.items())
+        local_path = Path.cwd().joinpath('tmp').as_posix()
+        temp_file = Path(local_path).joinpath(Path(video_file).parts[-1]).as_posix()
+
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
-            sftp = ssh.open_sftp()
 
-            data = sftp.open(video_file)
-            data.prefetch()
-            info = MediaInfo.parse(data)
-            media = next((t.to_data() for t in info.tracks if t.track_type == "General"), None)
-            video = next((t.to_data() for t in info.tracks if t.track_type == "Video"), None)
-            audio = next((t.to_data() for t in info.tracks if t.track_type == "Audio"), None)
+            with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
+                scp.get(remote_path=video_file, local_path=temp_file)
+        return temp_file
 
-            media = {key: media[key] for key in ["file_name", "file_extension", "file_size", "duration", "overall_bit_rate", "frame_rate"]}
-            video = {key: video[key] for key in ["codec_id", "stream_size", "width", "height", "duration", "bit_rate", "frame_rate"]}
-            audio = {key: audio[key] for key in ["codec_id", "stream_size", "duration", "sampling_rate", "bit_rate"]}
-
-            # for track in [media, video, audio]:
-            #     c.print(track)
-            return media, video, audio
 
     def uploadMovie(self, folder=''):
         """Upload movie directory containing movie file to host["mal"]

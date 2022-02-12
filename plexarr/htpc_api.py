@@ -4,8 +4,8 @@ import sys
 from configparser import ConfigParser
 
 import markdown
-import MediaInfo
 from paramiko import SSHClient
+from pymediainfo import MediaInfo
 from scp import SCPClient
 
 

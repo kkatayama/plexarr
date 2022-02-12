@@ -87,7 +87,50 @@ class HTPC_API(object):
             ftp = ssh.open_sftp()
             return [os.path.join(season_path, episode) for episode in ftp.listdir(season_path)]
 
-    def uploadMovie(self, folder):
+    def getMusicVideoArtists(self):
+        """List all Artists in the Music Videos directory
+
+        Returns:
+            artist (list) - The remote paths of the music video artists
+        """
+        host = dict(self.htpc.items())
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+            sftp = ssh.open_sftp()
+            return [os.path.join(host['music_videos'], artist) for artist in sftp.listdir(host['music_videos'])]
+
+    def getMusicVideos(self, artist=''):
+        """List all Music Videos belonging to an Artists
+
+        Returns:
+            music_videos (list) - The remote file path of the Artist's Music Videos
+        """
+        host = dict(self.htpc.items())
+        artist_path = os.path.join(host['music_videos'], artist)
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+            sftp = ssh.open_sftp()
+            return [os.path.join(artist_path, video_file) for video_file in sftp.listdir(artist_path)]
+
+    def readMusicVideo(self, video_file=''):
+        """Open the remote Music Video file for parsing
+
+        Returns:
+            music_video (FILE OBJECT) - FILE object pointing to the music video that can be opened and read
+        """
+        host = dict(self.htpc.items())
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+            sftp = ssh.open_sftp()
+
+            data = sftp.open(video_file)
+            data.prefetch()
+            return data
+
+    def uploadMovie(self, folder=''):
         """Upload movie directory containing movie file to host["mal"]
 
         Args:

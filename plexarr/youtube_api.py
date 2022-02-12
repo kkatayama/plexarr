@@ -33,7 +33,7 @@ class YouTubeAPI(object):
     """
 
     def __init__(self):
-        """Constructor requires API-KEY
+        """Constructor
 
         From config:
             cookies (str): Path to Cookies File

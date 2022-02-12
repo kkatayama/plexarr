@@ -4,6 +4,7 @@ import sys
 from configparser import ConfigParser
 
 import markdown
+import MediaInfo
 from paramiko import SSHClient
 from scp import SCPClient
 
@@ -120,6 +121,7 @@ class HTPC_API(object):
         Returns:
             music_video (FILE OBJECT) - FILE object pointing to the music video that can be opened and read
         """
+        # -- https://stackoverflow.com/questions/58433996/reading-file-opened-with-python-paramiko-sftpclient-open-method-is-slow
         host = dict(self.imac.items())
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
@@ -128,7 +130,8 @@ class HTPC_API(object):
 
             data = sftp.open(video_file)
             data.prefetch()
-            return data
+            info = MediaInfo.parse(data)
+        return info
 
     def uploadMovie(self, folder=''):
         """Upload movie directory containing movie file to host["mal"]

@@ -137,7 +137,6 @@ class HTPC_API(object):
                 scp.get(remote_path=video_file, local_path=temp_file)
         return temp_file
 
-
     def uploadMovie(self, folder=''):
         """Upload movie directory containing movie file to host["mal"]
 

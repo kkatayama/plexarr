@@ -1,10 +1,10 @@
+import re
 from configparser import ConfigParser
 from itertools import chain
 from pathlib import Path
 
 import pandas as pd
 import requests
-import re
 from pandas.tseries.offsets import Week
 from teddy import convertEPGTime, getEPGTimeNow
 
@@ -105,6 +105,10 @@ class ChapoAPI(object):
             # tvg_group = "NFL Sunday Games"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
+
+            ##### THIS IS TEMPORARY FOR SUPER BOWL FIX ####
+            epg_desc = epg_desc.replace("02.11", "02.13")
+
             # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:
                 try:

@@ -19,6 +19,7 @@ class MountAPI(object):
 
         self.mount_path = config["macbook"].get('mount_path')
         self.artists_path = config["macbook"].get('artists_path')
+        self.temp_path  = config["macbook"].get('temp_path')
         self.mountDrive()
 
     def checkMount(self, mount_path):

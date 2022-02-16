@@ -11,15 +11,17 @@ from sh import mount, sudo, umount
 class MountAPI(object):
     """Wrapper for sh.mount()
     """
-    def __init__(self):
+    def __init__(self, machine: str, volume: str):
         """Constructor
         """
         config = ConfigParser()
         config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
 
+        self.volume = volume
+        self.ip = config[machine].get('ip')
         self.mount_path = config["macbook"].get('mount_path')
         self.artists_path = config["macbook"].get('artists_path')
-        self.temp_path  = config["macbook"].get('temp_path')
+        self.temp_path = config["macbook"].get('temp_path')
         self.mountDrive()
 
     def checkMount(self, mount_path):
@@ -44,7 +46,7 @@ class MountAPI(object):
                 "nfs",
                 "-o",
                 "soft,intr,resvport,rw",
-                "192.168.1.214:/Volumes/plex3",
+                f"{self.ip}:{self.volume}",
                 "/Users/katayama/Documents/Fun/nfs/mac_share",
             )
         print(f'[green]"{mount_path}: MOUNTED :)[/green]')
@@ -56,7 +58,7 @@ class MountAPI(object):
             mount_path = self.mount_path
 
         if self.checkMount(mount_path=mount_path):
-            sudo.umount("-h", "192.168.1.214")
+            sudo.umount("-h", f"{self.ip}")
             print(f'[green]"{mount_path}": UNMOUNTED[/green]')
 
     def getArtists(self):
@@ -66,7 +68,7 @@ class MountAPI(object):
         artist_path = Path(self.artists_path).joinpath(artist)
         return (v_file for v_file in artist_path.iterdir() if (v_file.is_file() and v_file.name != ".DS_STORE"))
 
-    def scanMusicVideo(self, video_file=''):
+    def scanVideo(self, video_file=''):
         info = MediaInfo.parse(video_file)
         media = next((t.to_data() for t in info.tracks if t.track_type == "General"), None)
         video = next((t.to_data() for t in info.tracks if t.track_type == "Video"), None)
@@ -79,3 +81,6 @@ class MountAPI(object):
         # for track in [media, video, audio]:
         #     c.print(track)
         return media, video, audio
+
+    def copyVideo(self, video_file=''):
+        vid

@@ -107,7 +107,7 @@ class ChapoAPI(object):
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
 
             ##### THIS IS TEMPORARY FOR SUPER BOWL FIX ####
-            epg_desc = epg_desc.replace("02.11", "02.13")
+            # epg_desc = epg_desc.replace("02.11", "02.13")
 
             # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:

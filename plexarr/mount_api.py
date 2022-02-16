@@ -1,11 +1,14 @@
 import os
 import shutil
+import subprocess
 from configparser import ConfigParser
 from pathlib import Path
 
+from furl import furl
 from pymediainfo import MediaInfo
 from rich import print
 from sh import mount, sudo, umount
+from teddy import find_cmd, process_handbrake_output
 
 
 class MountAPI(object):
@@ -21,7 +24,8 @@ class MountAPI(object):
         self.ip = config[machine].get('ip')
         self.mount_path = config["macbook"].get('mount_path')
         self.artists_path = config["macbook"].get('artists_path')
-        self.temp_path = config["macbook"].get('temp_path')
+        self.temp_source = config["macbook"].get('temp_source')
+        self.temp_output = config["macbook"].get('temp_output')
         self.mountDrive()
 
     def checkMount(self, mount_path):
@@ -85,5 +89,44 @@ class MountAPI(object):
         #     c.print(track)
         return media, video, audio
 
-    def copyVideo(self, video_file=''):
-        return shutil.copy2(video_file, self.temp_path)
+    def copyVideo(self, source='', destination=''):
+        if not destination:
+            destination = Path(self.temp_source).joinpath(Path(source).name)
+            self.temp_video_source = destination
+        print('[green]copying...[/green]')
+        print(f'[cyan]source[/cyan]: "{source}"')
+        print(f'[cyan]output[/cyan]: "{destination}"')
+        return shutil.copy2(source, destination)
+
+    def convertVideo(self, source_file='', output_file='', preset=''):
+        if not source_file:
+            source_file = self.temp_video_source
+        source_file = Path(source_file)
+        if not output_file:
+            output_file = Path(self.temp_output).joinpath(source_file.name)
+        output_file = Path(output_file)
+        self.temp_video_output = output_file
+        print(f'[yellow]converting video[/yellow]: "{output_file.name}"')
+
+        HandBrakeCLI = find_cmd('handbrakecli')
+        if not preset:
+            preset = 'Very Fast 1080p30'
+        cmd = [
+            HandBrakeCLI,
+            '-i', '{}'.format(source_file),
+            '-o', '{}'.format(output_file),
+            '-Z', '{}'.format(preset),
+            '-O', '--all-subtitles', '--subtitle-lang-list', 'eng'
+        ]
+        print(' '.join(cmd))
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+        process_handbrake_output(p)
+        retcode = p.wait()
+        if retcode != 0:
+            raise subprocess.CalledProcessError(retcode, cmd)
+
+        # print('RETURN CODE: {}'.format(p.wait()))
+        print(f'[magenta]conversion finished...[/magenta]')
+        return output_file
+
+    

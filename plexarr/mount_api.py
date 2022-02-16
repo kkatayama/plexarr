@@ -65,7 +65,7 @@ class MountAPI(object):
         artist_path = Path(self.artists_path).joinpath(artist)
         return (v_file for v_file in artist_path.iterdir() if (v_file.is_file() and v_file.name != ".DS_STORE"))
 
-    def scanMusicVideo(video_file=''):
+    def scanMusicVideo(self, video_file=''):
         info = MediaInfo.parse(video_file)
         media = next((t.to_data() for t in info.tracks if t.track_type == "General"), None)
         video = next((t.to_data() for t in info.tracks if t.track_type == "Video"), None)

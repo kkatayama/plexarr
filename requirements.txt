@@ -1,3 +1,4 @@
 requests
 paramiko
 scp
+sh

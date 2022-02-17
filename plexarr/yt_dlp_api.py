@@ -1,4 +1,5 @@
 import os
+import shutil
 from configparser import ConfigParser
 
 import yt_dlp
@@ -103,3 +104,58 @@ class YouTubeDLP(object):
             print(f'results: {len(results["entries"])}, matches: {len(matches)}')
             return matches
 
+    def downloadVideo(self, title, video_url):
+        """Downlod YouTube video into folder
+
+        Args:
+            Requires - folder (str) - The video title to store the downloaded video
+            Requires - video_url (str) - The link of the YouTube video
+        """
+        # -- setting up path configs
+        self.title = title
+        self.folder = os.path.join(self.path, title)
+        self.f_name = os.path.join(self.path, title, f'{title}.mp4')
+        # self.video_url_path = os.path.join(self.path, title, 'video_url.txt')
+
+        # -- backup video_url and remove stale directories
+        if os.path.exists(self.folder):
+            if os.path.exists(self.video_url_path):
+                print(f'importing video_url from [magenta]{self.video_url_path}[/magenta]')
+                with open(self.video_url_path) as f:
+                    video_url = f.readline()
+            print(f'deleting existing directory: "{self.folder}"')
+            shutil.rmtree(self.folder)
+
+        # -- create fresh directory and backup video_url
+        print(f'creating directory: "{self.folder}"')
+        print('exporting video_url to [magenta]"video_url.txt"[/magenta]')
+        print(f'{{"video_url": {video_url}}}')
+        os.mkdir(self.folder)
+        # with open(self.video_url_path, 'w') as f:
+        #     f.write(f'{video_url}\n')
+
+        ### Download Movie via YoutubeDL ###
+        # 'subtitle': '--write-sub --sub-lang en',
+        ytdl_opts = {
+            'writesubtitles': True,
+            'writeautomaticsub': True,
+            'subtitlesformat': 'vtt',
+            'subtitleslangs': 'en.*',
+            'cookiefile': self.cookies,
+            'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+            'outtmpl': self.f_name,
+            'postprocessors': [{
+                'key': 'FFmpegMetadata',
+                'add_chapters': True,
+                'add_metadata': True,
+            },{
+                'key': 'FFmpegSubtitlesConvertor',
+                'format': 'vtt'
+            }],
+            'logger': MyLogger(),
+            'progress_hooks': [self.my_hook]
+        }
+        with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
+            ytdl.download([video_url])
+            return ytdl
+        

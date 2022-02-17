@@ -126,7 +126,7 @@ class MountAPI(object):
             raise subprocess.CalledProcessError(retcode, cmd)
 
         # print('RETURN CODE: {}'.format(p.wait()))
-        print(f'[magenta]conversion finished...[/magenta]')
+        print('[magenta]conversion finished...[/magenta]')
         return output_file
 
-    
+

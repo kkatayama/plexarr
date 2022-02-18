@@ -105,7 +105,7 @@ class YouTubeDLP(object):
             print(f'results: {len(results["entries"])}, matches: {len(matches)}')
             return matches
 
-    def downloadVideo(self, title, video_url):
+    def downloadVideo(self, title='', video_url='', path='', headers={}):
         """Downlod YouTube video into folder
 
         Args:
@@ -114,6 +114,7 @@ class YouTubeDLP(object):
         """
         # -- setting up path configs
         self.title = title
+        self.path = path
         self.folder = os.path.join(self.path, title)
         self.f_name = os.path.join(self.path, title, f'{title}.mp4')
         # self.video_url_path = os.path.join(self.path, title, 'video_url.txt')
@@ -125,7 +126,7 @@ class YouTubeDLP(object):
 
         ### Download Movie via yt-dlp ###
         ytdl_opts = {
-            'std_headers': self.headers,
+            'std_headers': self.headers.update(headers),
             'writesubtitles': True,
             'writeautomaticsub': True,
             'subtitlesformat': 'vtt',
@@ -145,6 +146,8 @@ class YouTubeDLP(object):
             'progress_hooks': [self.my_hook]
         }
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
-            ytdl.download([video_url])
-            return ytdl
+            return ytdl.download_with_info_file([video_url])
+            # print(json.dumps(ytdl.sanitize_info(info)))
+            # ytdl.download([video_url])
+            # return ytdl
 

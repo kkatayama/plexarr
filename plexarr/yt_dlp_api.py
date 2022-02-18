@@ -30,6 +30,13 @@ class MyLogger(object):
         # print(msg)
         pass
 
+class FinishedPP(object):
+    """
+    THIS IS CALLED AFTER DOWNLOADING ALL PARTS!
+    """
+    def run(self, info):
+        self.to_screen("Finalizing Conversion....")
+        return [], info
 
 class YouTubeDLP(object):
     """Wrapper for YouTubeDLP via yt_dlp
@@ -52,10 +59,13 @@ class YouTubeDLP(object):
         self.downloaded_bytes = 0
         self.download_status = False
 
-    # -- https://stackoverflow.com/a/58667850/3370913
-    def my_hook(self, d):
-        print(d)
+    def d_hook(self, d):
+        """
+        SEE: https://stackoverflow.com/a/58667850/3370913
 
+        THIS IS POLLED WHILE DOWNLOADING...
+        """
+        # print(d)
         if d['status'] == 'finished':
             self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))
@@ -73,7 +83,7 @@ class YouTubeDLP(object):
                 self.download_status = True
                 self.task = self.progress.add_task("[cyan]Downloading...", total=total)
                 self.progress.start()
-                
+
             step = int(d["downloaded_bytes"]) - int(self.downloaded_bytes)
             self.downloaded_bytes = int(d["downloaded_bytes"])
             self.progress.update(self.task, advance=step)
@@ -102,7 +112,7 @@ class YouTubeDLP(object):
             'default_search': 'ytsearch10',
             'format': f'{video_format}+{audio_format}',
             'logger': MyLogger(),
-            'progress_hooks': [self.my_hook]
+            'progress_hooks': [self.d_hook]
         }
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
@@ -157,6 +167,7 @@ class YouTubeDLP(object):
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
             # return ytdl.download_with_info_file(video_url)
+            ytdl.add_post_processor(FinishedPP())
             data = ytdl.extract_info(video_url)
             info = json.dumps(ytdl.sanitize_info(data))
             self.data = data

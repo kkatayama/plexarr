@@ -149,8 +149,7 @@ class YouTubeDLP(object):
             yt_dlp.utils.std_headers.update(headers)
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
-            return ytdl.download_with_info_file(video_url)
-            # print(json.dumps(ytdl.sanitize_info(info)))
-            # ytdl.download([video_url])
-            # return ytdl
+            # return ytdl.download_with_info_file(video_url)
+            data = ytdl.extract_info(video_url)
+            info = json.dumps(ytdl.sanitize_info(data))
 

@@ -129,7 +129,7 @@ class YouTubeDLP(object):
             'writesubtitles': True,
             'writeautomaticsub': True,
             'subtitlesformat': 'vtt',
-            'subtitleslangs': r'en.*',
+            'subtitleslangs': 'en',
             'cookiefile': self.cookies,
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,

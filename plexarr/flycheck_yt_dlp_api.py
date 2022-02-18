@@ -60,15 +60,20 @@ class YouTubeDLP(object):
             self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))
             print(f'Done downloading "{file_tuple[1]}"')
+
         if d['status'] == 'downloading':
             if not self.download_status:
-                try:
-                    total = int(d["total_bytes"])
-                except Exception:
-                    total = int(d["total_bytes_estimate"])
+                if d.get('total_bytes'):
+                    total = d["total_bytes"]
+                elif d.get("total_bytes_estimate"):
+                    total = d["total_bytes_estimate"]
+                else:
+                    total = 1
+
                 self.download_status = True
                 self.task = self.progress.add_task("[cyan]Downloading...", total=total)
                 self.progress.start()
+                
             step = int(d["downloaded_bytes"]) - int(self.downloaded_bytes)
             self.downloaded_bytes = int(d["downloaded_bytes"])
             self.progress.update(self.task, advance=step)

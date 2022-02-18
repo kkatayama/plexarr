@@ -143,7 +143,6 @@ class YouTubeDLP(object):
         self.path = path
         self.folder = os.path.join(self.path, title)
         self.f_name = os.path.join(self.path, title, f'{title}.mp4')
-        # self.video_url_path = os.path.join(self.path, title, 'video_url.txt')
 
         # -- create fresh directory
         print(f'creating directory: "{self.folder}"')

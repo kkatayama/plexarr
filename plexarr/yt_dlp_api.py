@@ -153,4 +153,6 @@ class YouTubeDLP(object):
             # return ytdl.download_with_info_file(video_url)
             data = ytdl.extract_info(video_url)
             info = json.dumps(ytdl.sanitize_info(data))
-            return info
+            self.data = data
+            self.info = info
+            return("Done Downloading...")

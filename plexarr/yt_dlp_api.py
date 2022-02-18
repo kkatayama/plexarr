@@ -127,8 +127,16 @@ class YouTubeDLP(object):
         """Downlod YouTube video into folder
 
         Args:
-            Requires - folder (str) - The video title to store the downloaded video
+            Requires - title (str)     - The video title
             Requires - video_url (str) - The link of the YouTube video
+            Requires - path (str)      - The output directory!
+
+        Example:
+            from plexarr import YouTubeDLP
+
+            youtube = YouTubeDLP()
+            youtube.downloadVideo(title=title, video_url=url, path=lib_path)
+
         """
         # -- setting up path configs
         self.title = title

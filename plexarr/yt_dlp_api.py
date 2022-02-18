@@ -30,7 +30,7 @@ class MyLogger(object):
         # print(msg)
         pass
 
-class FinishedPP(object):
+class FinishedPP(yt_dlp.postprocessor.PostProcessor):
     """
     THIS IS CALLED AFTER DOWNLOADING ALL PARTS!
     """

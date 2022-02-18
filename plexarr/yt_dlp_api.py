@@ -45,6 +45,7 @@ class YouTubeDLP(object):
         self.path = config['youtube'].get('path')
         self.temp_dir = config['youtube'].get('temp_dir')
         self.cookies = config['youtube'].get('cookies')
+        self.headers = None
         self.progress = Progress()
         self.task = None
         self.downloaded_bytes = 0
@@ -117,30 +118,18 @@ class YouTubeDLP(object):
         self.f_name = os.path.join(self.path, title, f'{title}.mp4')
         # self.video_url_path = os.path.join(self.path, title, 'video_url.txt')
 
-        # -- backup video_url and remove stale directories
-        if os.path.exists(self.folder):
-            if os.path.exists(self.video_url_path):
-                print(f'importing video_url from [magenta]{self.video_url_path}[/magenta]')
-                with open(self.video_url_path) as f:
-                    video_url = f.readline()
-            print(f'deleting existing directory: "{self.folder}"')
-            shutil.rmtree(self.folder)
-
-        # -- create fresh directory and backup video_url
+        # -- create fresh directory
         print(f'creating directory: "{self.folder}"')
-        print('exporting video_url to [magenta]"video_url.txt"[/magenta]')
         print(f'{{"video_url": {video_url}}}')
-        os.mkdir(self.folder)
-        # with open(self.video_url_path, 'w') as f:
-        #     f.write(f'{video_url}\n')
+        os.makedirs(self.folder, exist_ok=True)
 
-        ### Download Movie via YoutubeDL ###
-        # 'subtitle': '--write-sub --sub-lang en',
+        ### Download Movie via yt-dlp ###
         ytdl_opts = {
+            'std_headers': self.headers,
             'writesubtitles': True,
             'writeautomaticsub': True,
             'subtitlesformat': 'vtt',
-            'subtitleslangs': 'en.*',
+            'subtitleslangs': r'en.*',
             'cookiefile': self.cookies,
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             'outtmpl': self.f_name,
@@ -158,4 +147,4 @@ class YouTubeDLP(object):
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
             ytdl.download([video_url])
             return ytdl
-        
+

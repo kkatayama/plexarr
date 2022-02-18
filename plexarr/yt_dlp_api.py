@@ -159,7 +159,7 @@ class YouTubeDLP(object):
                 'format': 'vtt'
             }],
             'logger': MyLogger(),
-            'progress_hooks': [self.my_hook]
+            'progress_hooks': [self.d_hook]
         }
 
         if headers:

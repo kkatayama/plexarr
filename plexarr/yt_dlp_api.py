@@ -54,8 +54,8 @@ class YouTubeDLP(object):
 
     # -- https://stackoverflow.com/a/58667850/3370913
     def my_hook(self, d):
-        inspect(d, all=True)
-        
+        print(d)
+
         if d['status'] == 'finished':
             self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))

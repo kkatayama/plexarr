@@ -106,6 +106,7 @@ class YouTubeDLP(object):
         ytdl_opts = {
             'quiet': self.quiet,
             'verbose': self.verbose,
+            'overwrites': None,
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
             'noplaylist': True,

@@ -90,7 +90,37 @@ class YouTubeDLP(object):
             self.progress.update(self.task, advance=step)
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
-    def getInfo(self, media, video, audio):
+    def getInfo(self, **kwargs):
+        self.video_url = None
+        self.headers = None
+        self.writethumbnail = False
+        self.writeinfojson = False
+        self.__dict__.update(kwargs)
+
+        if not self.video_url:
+            print('[red]YOU NEED TO SET: video_url[/]')
+            return
+
+        ytdl_opts = {
+            'writethumbnail': self.writethumbnail,
+            'writeinfojson': self.writeinfojson,
+            'ignoreerrors': True,
+            'cookiefile': self.cookies,
+            'default_search': 'ytsearch10',
+            'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+            'logger': MyLogger(),
+            'progress_hooks': [self.d_hook]
+        }
+
+        with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
+            data = ytdl.extract_info(self.video_url, download=False)
+            info = json.dumps(ytdl.sanitize_info(data))
+            self.data = data
+            self.info = info
+            return info
+
+    def searchInfo(self, media, video, audio, **kwargs):
+        self.__dict__.update(kwargs)
         vsize = video["stream_size"]
         asize = audio["stream_size"]
         width = video["width"]
@@ -123,26 +153,36 @@ class YouTubeDLP(object):
             print(f'results: {len(results["entries"])}, matches: {len(matches)}')
             return matches
 
-    def downloadVideo(self, title='', video_url='', path='', headers={}):
-        """Downlod YouTube video into folder
+    def downloadvideo(self, title='', video_url='', path='', **kwargs):
+        """downlod youtube video into folder
 
-        Args:
-            Requires - title (str)     - The video title
-            Requires - video_url (str) - The link of the YouTube video
-            Requires - path (str)      - The output directory!
+        args:
+            requires - title (str)     - the video title
+            requires - video_url (str) - the link of the youtube video
+            requires - path (str)      - the output directory!
 
-        Example:
-            from plexarr import YouTubeDLP
+        example:
+            from plexarr import youtubedlp
 
-            youtube = YouTubeDLP()
-            youtube.downloadVideo(title=title, video_url=url, path=lib_path)
+            youtube = youtubedlp()
+            youtube.downloadvideo(title=title, video_url=url, path=lib_path)
 
         """
         # -- setting up path configs
+        self.title = None
+        self.video_url = None
+        self.path = None
+        self.headers = None
+        self.writethumbnail = False
+        self.writeinfojson = False
+        self.writesubtitles = True
+        self.writeautomaticDsub = False
+        self.__dict__.update(kwargs)
+
         self.title = title
         self.path = path
-        self.folder = os.path.join(self.path, title)
-        self.f_name = os.path.join(self.path, title, f'{title}.mp4')
+        self.folder = os.path.join(self.path, self.title)
+        self.f_name = os.path.join(self.path, self.title, f'{self.title}.mp4')
 
         # -- create fresh directory
         print(f'creating directory: "{self.folder}"')
@@ -151,8 +191,10 @@ class YouTubeDLP(object):
 
         ### Download Movie via yt-dlp ###
         ytdl_opts = {
-            'writesubtitles': True,
-            'writeautomaticsub': False,
+            'writethumbnail': self.writethumbnail,
+            'writeinfojson': self.writeinfojson,
+            'writesubtitles': self.writesubtitles,
+            'writeautomaticsub': self.writeautomaticsub,
             'subtitlesformat': 'vtt',
             'subtitleslangs': ['en'],
             'cookiefile': self.cookies,
@@ -170,8 +212,8 @@ class YouTubeDLP(object):
             'progress_hooks': [self.d_hook]
         }
 
-        if headers:
-            yt_dlp.utils.std_headers.update(headers)
+        if self.headers:
+            yt_dlp.utils.std_headers.update(self.headers)
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
             # return ytdl.download_with_info_file(video_url)
@@ -180,4 +222,4 @@ class YouTubeDLP(object):
             info = json.dumps(ytdl.sanitize_info(data))
             self.data = data
             self.info = info
-            return("Done Downloading...")
+            return info

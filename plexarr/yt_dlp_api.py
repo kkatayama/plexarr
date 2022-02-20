@@ -176,7 +176,7 @@ class YouTubeDLP(object):
         self.writethumbnail = False
         self.writeinfojson = False
         self.writesubtitles = True
-        self.writeautomaticDsub = False
+        self.writeautomaticsub = False
         self.__dict__.update(kwargs)
 
         self.title = title

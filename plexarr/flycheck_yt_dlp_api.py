@@ -92,6 +92,7 @@ class YouTubeDLP(object):
 
     def getInfo(self, video_url='', **kwargs):
         self.video_url = video_url
+        self.quiet = False
         self.outtmpl = None
         self.writethumbnail = False
         self.writeinfojson = False
@@ -102,6 +103,7 @@ class YouTubeDLP(object):
             return
 
         ytdl_opts = {
+            'quiet': self.quiet,
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
             'clean_infojson': False,

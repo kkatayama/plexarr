@@ -104,6 +104,7 @@ class YouTubeDLP(object):
         ytdl_opts = {
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
+            'clean_infojson': False,
             'outtmpl': self.outtmpl,
             'ignoreerrors': True,
             'cookiefile': self.cookies,

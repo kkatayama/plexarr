@@ -103,6 +103,7 @@ class YouTubeDLP(object):
             return
 
         ytdl_opts = {
+            'verbose': True,
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
             'clean_infojson': False,

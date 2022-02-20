@@ -119,7 +119,7 @@ class YouTubeDLP(object):
         }
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
-            ytdl.add_post_processor(FinishedPP())
+            # ytdl.add_post_processor(FinishedPP())
             data = ytdl.extract_info(self.video_url, download=False)
             info = ytdl.sanitize_info(data)
             self.data = data

@@ -92,6 +92,7 @@ class YouTubeDLP(object):
 
     def getInfo(self, video_url='', **kwargs):
         self.video_url = video_url
+        self.outtmpl = None
         self.writethumbnail = False
         self.writeinfojson = False
         self.__dict__.update(kwargs)
@@ -103,6 +104,7 @@ class YouTubeDLP(object):
         ytdl_opts = {
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
+            'outtmpl': self.outtmpl,
             'ignoreerrors': True,
             'cookiefile': self.cookies,
             'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",

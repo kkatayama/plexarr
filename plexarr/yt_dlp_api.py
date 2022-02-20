@@ -90,7 +90,7 @@ class YouTubeDLP(object):
             self.progress.update(self.task, advance=step)
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
-    def getInfo(self, **kwargs):
+    def getInfo(self, video_url='', **kwargs):
         self.video_url = None
         self.headers = None
         self.writethumbnail = False
@@ -114,7 +114,7 @@ class YouTubeDLP(object):
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
             data = ytdl.extract_info(self.video_url, download=False)
-            info = json.dumps(ytdl.sanitize_info(data))
+            info = ytdl.sanitize_info(data)
             self.data = data
             self.info = info
             return info

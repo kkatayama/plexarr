@@ -91,10 +91,7 @@ class YouTubeDLP(object):
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
     def getInfo(self, video_url='', **kwargs):
-        self.video_url = None
-        self.headers = None
-        self.writethumbnail = False
-        self.writeinfojson = False
+        self.video_url = video_url
         self.__dict__.update(kwargs)
 
         if not self.video_url:
@@ -169,10 +166,10 @@ class YouTubeDLP(object):
 
         """
         # -- setting up path configs
-        self.title = None
-        self.video_url = None
-        self.path = None
-        self.headers = None
+        self.title = title
+        self.video_url = video_url
+        self.path = path
+        self.headers = False
         self.writethumbnail = False
         self.writeinfojson = False
         self.writesubtitles = True

@@ -36,7 +36,7 @@ class FinishedPP(yt_dlp.postprocessor.PostProcessor):
     def run(self, info):
         # self.to_screen("Finalizing Conversion....")
         print("Finalizing Conversion....")
-        print(inspect(info))
+        # print(inspect(info))
         return [], info
 
 class YouTubeDLP(object):
@@ -92,7 +92,7 @@ class YouTubeDLP(object):
 
     def getInfo(self, video_url='', **kwargs):
         self.video_url = video_url
-        self.quiet = False
+        self.quiet = True
         self.verbose = False
         self.outtmpl = None
         self.writethumbnail = False

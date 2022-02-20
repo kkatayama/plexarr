@@ -12,4 +12,4 @@ from .youtube_api import YouTubeAPI
 from .yt_dlp_api import YouTubeDLP
 
 __all__ = ['RadarrAPI', 'SonarrAPI', 'TmdbAPI', 'YouTubeAPI', 'YouTubeDLP', 'OmbiAPI', 'PlexAPI', 'NZBHydraAPI', 'GitHubAPI', 'KemoAPI', 'ChapoAPI', 'MountAPI']
-__version__ = "1.1.76"
+__version__ = "1.1.77"

@@ -106,6 +106,7 @@ class YouTubeDLP(object):
             'quiet': self.quiet,
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
+            'noplaylist': True,
             'clean_infojson': False,
             'outtmpl': self.outtmpl,
             'ignoreerrors': True,

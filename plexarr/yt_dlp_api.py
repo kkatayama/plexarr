@@ -11,7 +11,7 @@ from rich.progress import Progress
 
 class MyLogger(object):
     def info(self, msg):
-        print(msg)
+        # print(msg)
         pass
 
     def debug(self, msg):
@@ -128,7 +128,7 @@ class YouTubeDLP(object):
             self.info = info
             return info
 
-    def searchInfo(self, media, video, audio, **kwargs):
+    def searchInfo(self, media, video, audio, query, **kwargs):
         self.__dict__.update(kwargs)
         vsize = video["stream_size"]
         asize = audio["stream_size"]
@@ -140,7 +140,6 @@ class YouTubeDLP(object):
         fps = round(float(video["frame_rate"]))
         ext = media["file_extension"]
         asr = audio["sampling_rate"]
-        query = media["file_name"]
 
         video_format = f'bestvideo[height={height}][width={width}][ext={ext}][fps={fps}][vcodec*={vcodec}][filesize>={vsize}]'
         audio_format = f'bestaudio[acodec*={acodec}][asr={asr}][filesize>={asize}]'

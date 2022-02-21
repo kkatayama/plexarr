@@ -110,6 +110,7 @@ class YouTubeDLP(object):
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
             'noplaylist': True,
+            'skip_download': True,
             'clean_infojson': False,
             'outtmpl': self.outtmpl,
             'ignoreerrors': False,

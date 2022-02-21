@@ -51,7 +51,7 @@ class MountAPI(object):
                 "-o",
                 "soft,intr,resvport,rw",
                 f"{self.ip}:{self.volume}",
-                "/Users/katayama/Documents/Fun/nfs/mac_share",
+                f"{self.mount_path}",
             )
         print(f'[green]"{mount_path}: MOUNTED :)[/green]')
 

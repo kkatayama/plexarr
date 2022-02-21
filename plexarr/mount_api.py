@@ -24,6 +24,7 @@ class MountAPI(object):
         self.ip = config[machine].get('ip')
         self.mount_path = config["macbook"].get('mount_path')
         self.artists_path = config["macbook"].get('artists_path')
+        self.library_path = config["macbook"].get('library_path')
         self.temp_source = config["macbook"].get('temp_source')
         self.temp_output = config["macbook"].get('temp_output')
         self.mountDrive()

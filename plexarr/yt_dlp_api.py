@@ -22,11 +22,11 @@ class MyLogger(object):
         pass
 
     def warning(self, msg):
-        print(msg)
+        # print(msg)
         pass
 
     def error(self, msg):
-        print(msg)
+        # print(msg)
         pass
 
 class FinishedPP(yt_dlp.postprocessor.PostProcessor):

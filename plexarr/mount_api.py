@@ -7,7 +7,7 @@ from pathlib import Path
 from furl import furl
 from pymediainfo import MediaInfo
 from rich import print
-from sh import mount, sudo, umount
+from sh import sudo
 from teddy import find_cmd, process_handbrake_output
 
 
@@ -46,13 +46,14 @@ class MountAPI(object):
 
         if not self.checkMount(mount_path=mount_path):
             print(f'[yellow]"{mount_path}": NOT MOUNTED![/yellow]')
+            sudo.mkdir(mount_path)
             sudo.mount(
                 "-t",
                 "nfs",
                 "-o",
                 "soft,intr,resvport,rw",
                 f"{self.ip}:{self.volume}",
-                f"{self.mount_path}",
+                f"{mount_path}",
             )
         print(f'[green]"{mount_path}: MOUNTED :)[/green]')
 

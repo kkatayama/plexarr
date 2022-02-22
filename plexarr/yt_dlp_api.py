@@ -148,7 +148,7 @@ class YouTubeDLP(object):
             'noplaylist': True,
             'ignoreerrors': True,
             'cookiefile': self.cookies,
-            'default_search': 'ytsearch10',
+            'default_search': 'ytsearch15',
             'skip_download': True,
             'format': f'{video_format}+{audio_format}',
             'logger': MyLogger(),

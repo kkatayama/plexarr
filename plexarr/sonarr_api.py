@@ -1,8 +1,10 @@
+import os
+from configparser import ConfigParser
+
+from rich.console import Console
+
 from .requests_api import RequestsAPI
 from .utils import camel_case
-from configparser import ConfigParser
-from rich.console import Console
-import os
 
 
 class SonarrAPI(RequestsAPI):
@@ -216,3 +218,18 @@ class SonarrAPI(RequestsAPI):
         res = self.post(path=path, data=data)
         return res
 
+    def getHistory(self, sort_key: str, **kwargs):
+        """Get Download History (grabs / failures / completed)
+
+        Args:
+            Required - sort_key (str) - "series.title" or "data"
+        Returns:
+            JSON Array
+        """
+        path = '/history'
+        data = {
+            'sortKey': sort_key
+        }
+        data.update({camel_case(key): kwargs.get(key) for key in kwargs})
+        res = self.get(path=path, data=data)
+        return res

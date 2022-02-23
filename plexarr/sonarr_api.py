@@ -233,3 +233,33 @@ class SonarrAPI(RequestsAPI):
         data.update({camel_case(key): kwargs.get(key) for key in kwargs})
         res = self.get(path=path, data=data)
         return res
+
+    def getIndexerStats(self):
+        """Get Indexer Stats (grabs)
+        Args:
+            None
+        Returns:
+            DICT Array
+        """
+        query = self.getHistory(
+            sort_key="date",
+            page=1,
+            page_size=10,
+            sort_direction="ascending",
+            event_type=1
+        )
+        page_size = round(query["totalRecords"] / 10) * 10
+        results = self.getHistory(
+            sort_key="date",
+            page=1,
+            page_size=page_size,
+            sort_direction="ascending",
+            event_type=1
+        )
+        dates = []
+        indexers = []
+        for record in results["records"]:
+            dates.append(record["date"])
+            indexers.append(record["data"]["indexer"])
+        return {"date": dates, "indexer": indexers}
+    

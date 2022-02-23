@@ -47,11 +47,12 @@ class MountAPI(object):
         if not self.checkMount(mount_path=mount_path):
             print(f'[yellow]"{mount_path}": NOT MOUNTED![/yellow]')
             sudo.mkdir(mount_path)
+            # "soft,intr,resvport,rw",
             sudo.mount(
                 "-t",
                 "nfs",
                 "-o",
-                "soft,intr,resvport,rw",
+                "soft,intr,rsize=8192,wsize=8192,timeo=900,retrans=3,proto=tcp",
                 f"{self.ip}:{self.volume}",
                 f"{mount_path}",
             )

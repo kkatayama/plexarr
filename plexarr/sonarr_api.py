@@ -258,8 +258,23 @@ class SonarrAPI(RequestsAPI):
         )
         dates = []
         indexers = []
+        release_groups = []
+        qualities = []
+        resolutions = []
+        source_types = []
         for record in results["records"]:
             dates.append(record["date"])
             indexers.append(record["data"]["indexer"])
-        return {"date": dates, "indexer": indexers}
-    
+            release_groups.append(record["date"]["releaseGroup"])
+            qualities.append(record["quality"]["quality"]["name"])
+            resolutions.append(record["quality"]["quality"]["resolution"])
+            source_types.append(record["quality"]["quality"]["source"])
+        return {
+            "date": dates,
+            "indexer": indexers,
+            "release_groups": release_groups,
+            "quality": qualities,
+            "resolution": resolutions,
+            "source_types": source_types,
+        }
+

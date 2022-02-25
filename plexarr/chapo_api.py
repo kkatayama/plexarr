@@ -7,7 +7,7 @@ import pandas as pd
 import requests
 from pandas.tseries.offsets import Week
 from rich import inspect
-from teddy import convertEPGTime, getEPGTimeNow, rtEPGTime
+from teddy import convertEPGTime, getEPGTimeNow
 
 from .utils import gen_xmltv_xml
 
@@ -131,9 +131,9 @@ class ChapoAPI(object):
         return gen_xmltv_xml(channels=channels, programs=programs)
 
     """Generate xml for NBA Streams"""
-    channels = []
-    programs = []
     def xmlNBA(self):
+        channels = []
+        programs = []
         for stream in self.getStreamsNBA():
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()

@@ -1,5 +1,7 @@
 import re
 
+from furl import furl
+
 
 # -- https://stackoverflow.com/a/41510011/3370913
 def camel_case(s):
@@ -16,7 +18,7 @@ def camel_case(s):
     return ''
 
 
-def gen_xmltv_xml(channels=[], programs=[]):
+def gen_xmltv_xml(channels=[], programs=[], url=''):
     """Template for generating XMLTV TV Guide!.
 
     Args:
@@ -40,10 +42,10 @@ def gen_xmltv_xml(channels=[], programs=[]):
         }
     """
 
-    xml_header = """\
+    xml_header = f"""\
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE tv SYSTEM "xmltv.dtd">
-<tv generator-info-name="IPTV" generator-info-url="http://jlwmedia.xyz:25461/">
+<tv generator-info-name="IPTV" generator-info-url="{furl(url).origin}">
 """
 
     xml_channels = ""

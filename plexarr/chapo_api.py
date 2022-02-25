@@ -129,7 +129,7 @@ class ChapoAPI(object):
                 except Exception as e:
                     inspect(e)
                     pass
-        return gen_xmltv_xml(channels=channels, programs=programs)
+        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
 
     """Generate xml for NBA Streams"""
     def xmlNBA(self):
@@ -163,5 +163,5 @@ class ChapoAPI(object):
                 except Exception as e:
                     inspect(e)
                     pass
-        return gen_xmltv_xml(channels=channels, programs=programs)
+        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
 

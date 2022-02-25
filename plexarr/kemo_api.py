@@ -7,6 +7,8 @@ import requests
 from pandas.tseries.offsets import Week
 from teddy import convertEPGTime, getEPGTimeNow
 
+from .utils import gen_xmltv_xml
+
 
 class KemoAPI(object):
     """REST API Wrapper for GitHub"""
@@ -115,11 +117,8 @@ class KemoAPI(object):
 
     def xmlNFL(self):
         """Generate xml for NFL Streams"""
-        xml = '<?xml version="1.0" encoding="utf-8" ?>\n'
-        xml += '<!DOCTYPE tv SYSTEM "xmltv.dtd">\n'
-        xml += '<tv generator-info-name="IPTV" generator-info-url="http://ky-iptv.com:25461/">\n'
-        xml_chan = ''
-        xml_prog = ''
+        channels = []
+        programs = []
         for stream in self.getStreamsNFL():
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
@@ -140,27 +139,20 @@ class KemoAPI(object):
                     epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
 
-                    xml_chan += f'    <channel id="{tvg_id}">\n'
-                    xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
-                    xml_chan += f'        <icon src="{tvg_logo}"/>\n'
-                    xml_chan += '    </channel>\n'
+                    if ((date_now - game_datetime.date()).days < 5):
+                        channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+                        programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
 
-                    xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
-                    xml_prog += f'        <title lang="en">{epg_title}</title>\n'
-                    xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
-                    xml_prog += '    </programme>\n'
+
                 except Exception:
                     pass
-        xml = xml + xml_chan + xml_prog + '</tv>\n'
-        return xml
+
+        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
 
     def xmlNBA(self):
         """Generate xml NBA Streams"""
-        xml = '<?xml version="1.0" encoding="utf-8" ?>\n'
-        xml += '<!DOCTYPE tv SYSTEM "xmltv.dtd">\n'
-        xml += '<tv generator-info-name="IPTV" generator-info-url="http://ky-iptv.com:25461/">\n'
-        xml_chan = ''
-        xml_prog = ''
+        channels = []
+        programs = []
         for stream in self.getStreamsNBA():
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
@@ -178,19 +170,13 @@ class KemoAPI(object):
                     epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
 
-                    xml_chan += f'    <channel id="{tvg_id}">\n'
-                    xml_chan += f'        <display-name>{tvg_name}</display-name>\n'
-                    xml_chan += f'        <icon src="{tvg_logo}"/>\n'
-                    xml_chan += '    </channel>\n'
+                    if ((date_now - game_datetime.date()).days < 5):
+                        channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+                        programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
 
-                    xml_prog += f'    <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">\n'
-                    xml_prog += f'        <title lang="en">{epg_title}</title>\n'
-                    xml_prog += f'        <desc lang="en">{epg_desc}</desc>\n'
-                    xml_prog += '    </programme>\n'
                 except Exception:
                     pass
-        xml = xml + xml_chan + xml_prog + '</tv>\n'
-        return xml
+        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
 
     def xmlESPN(self, terms=""):
         """Generate xml NBA Streams"""

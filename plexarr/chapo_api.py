@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 import requests
-from pandas.tseries.offsets import Week
+# from pandas.tseries.offsets import Week
 from rich import inspect
 from teddy import convertEPGTime, getEPGTimeNow
 
@@ -105,7 +105,6 @@ class ChapoAPI(object):
             # tvg_group = "NFL Sunday Games"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
-            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
             ##### THIS IS TEMPORARY FOR SUPER BOWL FIX ####
             # epg_desc = epg_desc.replace("02.11", "02.13")
 
@@ -123,7 +122,9 @@ class ChapoAPI(object):
                     epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
 
-                    programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+                    if ((date_now - game_datetime.date()).days < 5):
+                        channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+                        programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
 
                 except Exception as e:
                     inspect(e)
@@ -141,7 +142,6 @@ class ChapoAPI(object):
             # tvg_group = "NFL Sunday Games"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
-            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
             # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
             if epg_desc:
                 try:
@@ -156,7 +156,9 @@ class ChapoAPI(object):
                     epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
 
-                    programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+                    if ((date_now - game_datetime.date()).days < 5):
+                        channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+                        programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
 
                 except Exception as e:
                     inspect(e)

@@ -22,6 +22,7 @@ class PlexPy(PlexServer):
         config = ConfigParser()
         config.read(Path.home().joinpath(".config", "plexarr.ini"))
         self.ALERT_TYPES = literal_eval(config['plex'].get('ALERT_TYPES'))
+        self.utils = utils
         if int(float(server)) == 1:
             self.api_url = config['plex'].get('api_url').strip('/') + '/'
             self.api_key = config['plex'].get('api_key')

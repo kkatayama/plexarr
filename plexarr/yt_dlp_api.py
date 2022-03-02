@@ -49,7 +49,8 @@ class YouTubeDLP(object):
             cookies (str): Path to Cookies File
         """
         config = ConfigParser()
-        config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+        # config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+        config.read(Path.home().joinpath(".config", "plexarr.ini"))
 
         self.path = config['youtube'].get('path')
         self.temp_dir = config['youtube'].get('temp_dir')

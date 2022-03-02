@@ -1,8 +1,34 @@
 from configparser import ConfigParser
+from pathlib import Path
 from urllib.parse import urljoin
-from bs4 import BeautifulSoup
+
 import requests
-import os
+from bs4 import BeautifulSoup
+from plexapi import utils
+from plexapi.server import PlexServer
+from rich import print
+from rich.traceback import install
+
+# -- Initialize -- #
+install(show_locals=False)
+
+
+class PlexPy(PlexServer):
+    """Wrapper for python-plexapi
+    """
+    def __init__(self, server=1):
+        """Constructor, requires API-URL and API-KEY"""
+        config = ConfigParser()
+        config.read(Path.home().joinpath(".config", "plexarr.ini"))
+        self.ALERT_TYPES = literal_eval(config['plex'].get('ALERT_TYPES'))
+        if int(float(server)) == 1:
+            self.api_url = config['plex'].get('api_url').strip('/') + '/'
+            self.api_key = config['plex'].get('api_key')
+            super().__init__(baseurl=self.api_url, token=self.api_key)
+        else:
+            self.api_url = config['plex2'].get('api_url').strip('/') + '/'
+            self.api_key = config['plex2'].get('api_key')
+            super().__init__(baseurl=self.api_url, token=self.api_key)
 
 
 class PlexAPI(object):
@@ -13,7 +39,7 @@ class PlexAPI(object):
         """Constructor requires config file: plexarr.ini
         """
         config = ConfigParser()
-        config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+        config.read(Path.home().joinpath(".config", "plexarr.ini"))
 
         self.api_url = config['plex'].get('api_url').strip('/') + '/'
         self.api_key = config['plex'].get('api_key')

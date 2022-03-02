@@ -1,5 +1,5 @@
-import os
 from configparser import ConfigParser
+from pathlib import Path
 
 from rich.console import Console
 
@@ -16,7 +16,8 @@ class SonarrAPI(RequestsAPI):
             api_key (str): API key for sonarr or radarr.
         """
         config = ConfigParser()
-        config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+        # config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+        config.read(Path.home().joinpath(".config", "plexarr.ini"))
 
         self.api_url = config['sonarr'].get('api_url')
         self.api_key = config['sonarr'].get('api_key')

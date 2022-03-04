@@ -7,6 +7,7 @@ import yt_dlp
 import yt_dlp.utils
 from rich import inspect, print
 from rich.progress import Progress
+from pathlib import Path
 
 
 class MyLogger(object):

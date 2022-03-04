@@ -14,20 +14,24 @@ from teddy import find_cmd, process_handbrake_output
 class MountAPI(object):
     """Wrapper for sh.mount()
     """
-    def __init__(self, machine: str, volume: str):
+    def __init__(self, machine="", volume=""):
         """Constructor
         """
         config = ConfigParser()
+        config.read(Path(Path.home(), ".config", "plexarr.ini"))
         config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
 
-        self.volume = volume
-        self.ip = config[machine].get('ip')
         self.mount_path = config["macbook"].get('mount_path')
         self.artists_path = config["macbook"].get('artists_path')
         self.library_path = config["macbook"].get('library_path')
         self.temp_source = config["macbook"].get('temp_source')
         self.temp_output = config["macbook"].get('temp_output')
-        self.mountDrive()
+        self.machine = machine
+        self.volume = volume
+
+        if ((machine) and (volume)):
+            self.ip = config[machine].get('ip')
+            self.mountDrive()
 
     def checkMount(self, mount_path):
         """checkMount

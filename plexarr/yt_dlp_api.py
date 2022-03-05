@@ -2,12 +2,12 @@ import json
 import os
 import shutil
 from configparser import ConfigParser
+from pathlib import Path
 
 import yt_dlp
 import yt_dlp.utils
 from rich import inspect, print
 from rich.progress import Progress
-from pathlib import Path
 
 
 class MyLogger(object):
@@ -161,6 +161,7 @@ class YouTubeDLP(object):
             ytdl.add_post_processor(FinishedPP())
             msize = media["file_size"]
             results = ytdl.extract_info(query, download=False)
+            self.search_results = results
             matches = [r for r in results["entries"] if ((r is not None) and (abs(msize-r["filesize_approx"]) < 1000000))]
             print(f'results: {len(results["entries"])}, matches: {len(matches)}')
             return matches

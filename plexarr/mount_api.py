@@ -50,7 +50,7 @@ class MountAPI(object):
 
         if not self.checkMount(mount_path=mount_path):
             print(f'[yellow]"{mount_path}": NOT MOUNTED![/yellow]')
-            sudo.mkdir(mount_path)
+            sudo.mkdir("-p", mount_path)
             # "soft,intr,rsize=8192,wsize=8192,timeo=900,retrans=3,proto=tcp",
             sudo.mount(
                 "-t",

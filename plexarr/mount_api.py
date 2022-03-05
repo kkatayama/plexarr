@@ -86,11 +86,11 @@ class MountAPI(object):
         audio = next((t.to_data() for t in info.tracks if t.track_type == "Audio"), None)
 
         if media.get("comment"):
-            media = {key: media[key] for key in ["file_name", "file_extension", "file_size", "comment", "duration", "overall_bit_rate", "frame_rate"]}
+            media = {key: media.get(key) for key in ["file_name", "file_extension", "file_size", "comment", "duration", "overall_bit_rate", "frame_rate"]}
         else:
-            media = {key: media[key] for key in ["file_name", "file_extension", "file_size", "duration", "overall_bit_rate", "frame_rate"]}
-        video = {key: video[key] for key in ["codec_id", "stream_size", "width", "height", "duration", "bit_rate", "frame_rate"]}
-        audio = {key: audio[key] for key in ["codec_id", "stream_size", "duration", "sampling_rate", "bit_rate"]}
+            media = {key: media.get(key) for key in ["file_name", "file_extension", "file_size", "duration", "overall_bit_rate", "frame_rate"]}
+        video = {key: video.get(key) for key in ["codec_id", "stream_size", "width", "height", "duration", "bit_rate", "frame_rate"]}
+        audio = {key: audio.get(key) for key in ["codec_id", "stream_size", "duration", "sampling_rate", "bit_rate"]}
 
         # for track in [media, video, audio]:
         #     c.print(track)

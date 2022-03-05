@@ -26,4 +26,4 @@ __all__ = [
     'ChapoAPI',
     'MountAPI'
 ]
-__version__ = "1.1.112"
+__version__ = "1.1.113"

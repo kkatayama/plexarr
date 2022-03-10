@@ -8,22 +8,24 @@ from .plex_api import PlexAPI, PlexPy
 from .radarr_api import RadarrAPI
 from .sonarr_api import SonarrAPI
 from .tmdb_api import TmdbAPI
+from .utorrent_api import uTorrentAPI
 from .youtube_api import YouTubeAPI
 from .yt_dlp_api import YouTubeDLP
 
 __all__ = [
-    'RadarrAPI',
-    'SonarrAPI',
-    'TmdbAPI',
-    'YouTubeAPI',
-    'YouTubeDLP',
+    'ChapoAPI',
+    'GitHubAPI',
+    'KemoAPI',
+    'MountAPI',
+    'NZBHydraAPI',
     'OmbiAPI',
     'PlexAPI',
     'PlexPy',
-    'NZBHydraAPI',
-    'GitHubAPI',
-    'KemoAPI',
-    'ChapoAPI',
-    'MountAPI'
+    'RadarrAPI',
+    'SonarrAPI',
+    'TmdbAPI',
+    'uTorrentAPI',
+    'YouTubeAPI',
+    'YouTubeDLP'
 ]
 __version__ = "1.1.115"

@@ -194,7 +194,8 @@ class HTPC_API(object):
             std_out (str) - The output of the command
         """
         host = dict(self.imac.items())
-        path = f'/Users/{host["username"]}/bin/{cmd}'
+        # path = f'/Users/{host["username"]}/bin/{cmd}'
+        path = f'{cmd}'
         ssh_cmd = f'ssh -t -p {host["port"]} {host["username"]}@{host["ip"]} "{path}"'
         output = subprocess.run(ssh_cmd, shell=True, capture_output=True, text=True).stdout.strip()
         return markdown.markdown(''.join([f"    {l}\n" for l in output.splitlines()]))

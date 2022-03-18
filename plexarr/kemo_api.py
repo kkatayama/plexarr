@@ -77,7 +77,7 @@ class KemoAPI(object):
         for i, stream in enumerate(self.getStreamsNFL()):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
+            tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
             tvg_group = "NFL Sunday Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
@@ -92,7 +92,7 @@ class KemoAPI(object):
         for i, stream in enumerate(self.getStreamsNBA()):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = "http://ky-iptv.com:25461/images/118ae626674246e6d081a4ff16921b19.png"
+            tvg_logo = "http://line.lemotv.cc/images/118ae626674246e6d081a4ff16921b19.png"
             tvg_group = "NBA Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
@@ -122,7 +122,7 @@ class KemoAPI(object):
         for stream in self.getStreamsNFL():
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = "http://ky-iptv.com:25461/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
+            tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
             # tvg_group = "NFL Sunday Games"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
@@ -156,7 +156,7 @@ class KemoAPI(object):
         for stream in self.getStreamsNBA():
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = "http://ky-iptv.com:25461/images/118ae626674246e6d081a4ff16921b19.png"
+            tvg_logo = "http://line.lemotv.cc/images/118ae626674246e6d081a4ff16921b19.png"
             # tvg_group = "NBA Games"
 
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()

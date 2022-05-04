@@ -10,11 +10,6 @@ from bottle import template
 from furl import furl
 # from .utils import gen_xmltv_xml
 
-import pkg_resources
-
-tpl = pkg_resources.resource_filename('plexarr.templates', 'epg.tpl')
-
-
 
 class KemoAPI(object):
     """REST API Wrapper for GitHub"""
@@ -155,7 +150,7 @@ class KemoAPI(object):
 
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
-        return template(tpl, channels=channels, programs=programs, url=url)
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
 
     def xmlNBA(self):
         """Generate xml NBA Streams"""
@@ -186,7 +181,7 @@ class KemoAPI(object):
                     pass
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
-        return template(tpl, channels=channels, programs=programs, url=url)
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
 
     def xmlESPN(self, terms=""):
         """Generate xml NBA Streams"""
@@ -216,4 +211,4 @@ class KemoAPI(object):
                     pass
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
-        return template(tpl, channels=channels, programs=programs, url=url)
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)

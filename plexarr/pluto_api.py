@@ -1,4 +1,5 @@
 from teddy import getEPGTimeNow, convertEPGTime
+from .chapo_api import ChapoAPI
 from pathlib import Path
 from bottle import template
 from furl import furl
@@ -6,16 +7,17 @@ import pandas as pd
 import requests
 
 
-class PlutoAPI(object):
+class PlutoAPI(ChapoAPI):
     """REST API Wrapper for PlutoTV"""
     def __init__(self):
         """Init"""
-        self.api_url = "http://api.pluto.tv/v2/channels"
+        self.api_pluto_url = "http://api.pluto.tv/v2/channels"
         self.today = getEPGTimeNow(dt_obj=True)
         self.start = self.today.strftime("%Y-%m-%d %H:%M:%S.000%z")
         self.stop = (self.today + pd.DateOffset(days=2)).strftime("%Y-%m-%d %H:%M:%S.000%z")
         self.channels = {}
         self.episodes = {}
+        super().__init__()
 
     def setChannels(self, start="", stop=""):
         """Save All Pluto Channels"""
@@ -27,7 +29,7 @@ class PlutoAPI(object):
             "start": start,
             "stop": stop,
         }
-        r = requests.get(self.api_url, params=params)
+        r = requests.get(self.api_pluto_url, params=params)
         channels = r.json()
         self.channels = channels
 
@@ -48,6 +50,22 @@ class PlutoAPI(object):
         self.channel_info = info
         self.channel_episodes = episodes
         return info, episodes
+
+    def m2uScience(self):
+        """Generate m3u For Pluto Science"""
+        channel_info, episodes = self.getChannel(term="science")
+        stream = next(self.getStreams(terms="Pluto: Science", bad_terms="2"))
+
+        tvg_cuid = 280
+        tvg_id = stream.get("stream_id")
+        tvg_name = stream.get("name")
+        tvg_logo = self.channel_info["featuredImage"]["path"]
+        tvg_group = "Pluto TV"
+
+        m3u = "#EXTM3U\n"
+        m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
+        m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+        return m3u
 
     def xmlScience(self):
         """Generate EPG XML for Pluto Science"""

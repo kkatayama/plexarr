@@ -12,6 +12,7 @@ from .tmdb_api import TmdbAPI
 from .utorrent_api import uTorrentAPI
 from .youtube_api import YouTubeAPI
 from .yt_dlp_api import YouTubeDLP
+from .templates import *
 
 __all__ = [
     'ChapoAPI',

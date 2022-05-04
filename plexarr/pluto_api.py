@@ -56,7 +56,7 @@ class PlutoAPI(object):
         channels = []
         tvg_id = "SCIENCE"
         tvg_name = "Pluto: Science"
-        tvg_logo = self.channel_info["featuredImage"]
+        tvg_logo = self.channel_info["featuredImage"]["path"]
         channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo})
 
         programs = []

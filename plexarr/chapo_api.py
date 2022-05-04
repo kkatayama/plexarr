@@ -1,6 +1,6 @@
 import re
 from configparser import ConfigParser
-from itertools import chain
+# from itertools import chain
 from pathlib import Path
 
 import pandas as pd
@@ -8,8 +8,9 @@ import requests
 # from pandas.tseries.offsets import Week
 from rich import inspect
 from teddy import convertEPGTime, getEPGTimeNow
-
-from .utils import gen_xmltv_xml
+from bottle import template
+from furl import furl
+# from .utils import gen_xmltv_xml
 
 
 class ChapoAPI(object):
@@ -129,10 +130,12 @@ class ChapoAPI(object):
                 except Exception as e:
                     inspect(e)
                     pass
-        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
 
-    """Generate xml for NBA Streams"""
     def xmlNBA(self):
+        """Generate xml for NBA Streams"""
         channels = []
         programs = []
         for stream in self.getStreamsNBA():
@@ -163,5 +166,6 @@ class ChapoAPI(object):
                 except Exception as e:
                     inspect(e)
                     pass
-        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
-
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)

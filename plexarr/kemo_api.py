@@ -6,8 +6,9 @@ import pandas as pd
 import requests
 from pandas.tseries.offsets import Week
 from teddy import convertEPGTime, getEPGTimeNow
-
-from .utils import gen_xmltv_xml
+from bottle import template
+from furl import furl
+# from .utils import gen_xmltv_xml
 
 
 class KemoAPI(object):
@@ -147,7 +148,9 @@ class KemoAPI(object):
                 except Exception:
                     pass
 
-        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
 
     def xmlNBA(self):
         """Generate xml NBA Streams"""
@@ -176,7 +179,9 @@ class KemoAPI(object):
 
                 except Exception:
                     pass
-        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
 
     def xmlESPN(self, terms=""):
         """Generate xml NBA Streams"""
@@ -204,4 +209,6 @@ class KemoAPI(object):
                         programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
                 except Exception:
                     pass
-        return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)

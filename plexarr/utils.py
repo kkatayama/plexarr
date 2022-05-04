@@ -60,7 +60,10 @@ def gen_xmltv_xml(channels=[], programs=[], url=''):
 
     xml_programs = ""
     for program in programs:
-        tvg_id, epg_title, epg_start, epg_stop, epg_desc = program.values()
+        if len(program.values()) == 5:
+            tvg_id, epg_title, epg_start, epg_stop, epg_desc = program.values()
+        else:
+            tvg_id, epg_title, epg_start, epg_stop, epg_desc, epg_icon = program.values()
         xml_programs += f"""\
     <programme channel="{tvg_id}" start="{epg_start}" stop="{epg_stop}">'
         <title lang="en">{epg_title}</title>'

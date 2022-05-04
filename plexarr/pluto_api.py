@@ -7,7 +7,7 @@ import requests
 import pkg_resources
 
 
-tpl = pkg_resources.resource_filename('templates', 'epg.tpl')
+tpl = pkg_resources.resource_filename('plexarr.templates', 'epg.tpl')
 
 class PlutoAPI(object):
     """REST API Wrapper for PlutoTV"""

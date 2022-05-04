@@ -1,14 +1,10 @@
 # coding: utf-8
+from .templates import *
 from teddy import getEPGTimeNow, convertEPGTime
 from bottle import template
 from furl import furl
 import pandas as pd
 import requests
-try:
-    from importlib.resources import files
-except ImportError:
-    from importlib_resources import files
-
 
 class PlutoAPI(object):
     """REST API Wrapper for PlutoTV"""

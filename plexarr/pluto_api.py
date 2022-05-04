@@ -55,16 +55,17 @@ class PlutoAPI(ChapoAPI):
         """Generate m3u For Pluto Science"""
         channel_info, episodes = self.getChannel(term="science")
         stream = next(self.getStreams(terms="Pluto: Science", bad_terms="2"))
+        stream_id = stream.get("stream_id")
 
         tvg_cuid = 280
-        tvg_id = stream.get("stream_id")
+        tvg_id = "SCIENCE"
         tvg_name = stream.get("name")
         tvg_logo = self.channel_info["featuredImage"]["path"]
         tvg_group = "Pluto TV"
 
         m3u = "#EXTM3U\n"
         m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
-        m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+        m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{stream_id}\n')
         return m3u
 
     def xmlScience(self):

@@ -132,7 +132,8 @@ class ChapoAPI(object):
                     pass
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
-        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
+        tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))
+        return template(tpl, channels=channels, programs=programs, url=url)
 
     def xmlNBA(self):
         """Generate xml for NBA Streams"""
@@ -168,4 +169,5 @@ class ChapoAPI(object):
                     pass
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
-        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
+        tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))
+        return template(tpl, channels=channels, programs=programs, url=url)

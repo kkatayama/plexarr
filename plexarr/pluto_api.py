@@ -1,10 +1,13 @@
 # coding: utf-8
-from .templates import *
 from teddy import getEPGTimeNow, convertEPGTime
 from bottle import template
 from furl import furl
 import pandas as pd
 import requests
+import pkg_resources
+
+
+tpl = pkg_resources.resource_filename('templates', 'epg.tpl')
 
 class PlutoAPI(object):
     """REST API Wrapper for PlutoTV"""
@@ -70,7 +73,7 @@ class PlutoAPI(object):
                              "epg_desc": epg_desc, "epg_icon": epg_icon})
 
         url = furl(self.api_url).origin
-        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
+        return template(tpl, channels=channels, programs=programs, url=url)
             
 # pluto = PlutoAPI()
 # pluto.xmlScience()

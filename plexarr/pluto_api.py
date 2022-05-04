@@ -59,9 +59,9 @@ class PlutoAPI(ChapoAPI):
 
         tvg_cuid = 280
         tvg_id = "SCIENCE"
-        tvg_name = stream.get("name")
+        tvg_name = "Pluto Science"
         tvg_logo = self.channel_info["featuredImage"]["path"]
-        tvg_group = "Pluto TV"
+        tvg_group = "Pluto Science TV"
 
         m3u = "#EXTM3U\n"
         m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
@@ -74,7 +74,7 @@ class PlutoAPI(ChapoAPI):
 
         channels = []
         tvg_id = "SCIENCE"
-        tvg_name = "Pluto: Science"
+        tvg_name = "Pluto Science"
         tvg_logo = self.channel_info["featuredImage"]["path"]
         channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo})
 

@@ -51,7 +51,7 @@ class PlutoAPI(ChapoAPI):
         self.channel_episodes = episodes
         return info, episodes
 
-    def m2uScience(self):
+    def m3uScience(self):
         """Generate m3u For Pluto Science"""
         channel_info, episodes = self.getChannel(term="science")
         stream = next(self.getStreams(terms="Pluto: Science", bad_terms="2"))

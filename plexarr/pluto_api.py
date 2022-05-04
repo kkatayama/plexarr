@@ -4,6 +4,10 @@ from bottle import template
 from furl import furl
 import pandas as pd
 import requests
+try:
+    from importlib.resources import files
+except ImportError:
+    from importlib_resources import files
 
 
 class PlutoAPI(object):

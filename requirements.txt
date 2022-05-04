@@ -2,3 +2,4 @@ requests
 paramiko
 scp
 sh
+importlib_resources; python_version < "3.9"

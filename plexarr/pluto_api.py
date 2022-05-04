@@ -1,4 +1,5 @@
 from teddy import getEPGTimeNow, convertEPGTime
+from pathlib import Path
 from bottle import template
 from furl import furl
 import pandas as pd
@@ -69,7 +70,8 @@ class PlutoAPI(object):
                              "epg_desc": epg_desc, "epg_icon": epg_icon})
 
         url = furl(self.api_url).origin
-        return template("templates/epg.tpl", channels=channels, programs=programs, url=url)
+        tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))
+        return template(tpl, channels=channels, programs=programs, url=url)
             
 # pluto = PlutoAPI()
 # pluto.xmlScience()

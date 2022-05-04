@@ -87,7 +87,7 @@ class PlutoAPI(ChapoAPI):
             programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop,
                              "epg_desc": epg_desc, "epg_icon": epg_icon})
 
-        url = furl(self.api_plut_url).origin
+        url = furl(self.api_pluto_url).origin
         tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))
         return template(tpl, channels=channels, programs=programs, url=url)
             

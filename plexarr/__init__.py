@@ -5,6 +5,7 @@ from .mount_api import MountAPI
 from .nzbhydra_api import NZBHydraAPI
 from .ombi_api import OmbiAPI
 from .plex_api import PlexAPI, PlexPy
+from .pluto_api import PlutoAPI
 from .radarr_api import RadarrAPI
 from .sonarr_api import SonarrAPI
 from .tmdb_api import TmdbAPI
@@ -21,6 +22,7 @@ __all__ = [
     'OmbiAPI',
     'PlexAPI',
     'PlexPy',
+    'PlutoAPI',
     'RadarrAPI',
     'SonarrAPI',
     'TmdbAPI',

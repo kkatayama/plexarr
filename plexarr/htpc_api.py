@@ -17,10 +17,9 @@ def progress4(filename, size, sent, peername):
 
 
 class HTPC_API(object):
-    """Wrapper for htpc_api (Your Home Theater System)
-    """
+    """Wrapper for htpc_api (Your Home Theater System)"""
     def __init__(self):
-        """Constructor
+        """Init Constructor
 
         From config:
             imac (object): Server Details
@@ -185,7 +184,7 @@ class HTPC_API(object):
                 scp.put(files=fname, remote_path=host['iptv'], recursive=False)
         return os.path.join(host['iptv'], os.path.split(fname)[1])
 
-    def runCommand(self, cmd):
+    def runCommand(self, cmd, host='imac'):
         """Run a shell command over ssh
 
         Args:
@@ -193,7 +192,14 @@ class HTPC_API(object):
         Returns:
             std_out (str) - The output of the command
         """
-        host = dict(self.imac.items())
+
+        if host == 'imac':
+            host = dict(self.imac.items())
+        elif host == 'mal':
+            host = dict(self.mal.items())
+        elif host == 'og':
+            host = dict(self.og.items())
+
         # path = f'/Users/{host["username"]}/bin/{cmd}'
         path = f'{cmd}'
         ssh_cmd = f'ssh -t -p {host["port"]} {host["username"]}@{host["ip"]} \'{path}\''

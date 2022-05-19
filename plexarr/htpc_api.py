@@ -159,7 +159,7 @@ class HTPC_API(object):
         Args:
             Requires - folder (str)  - The local path of the downloaded movie
         Returns:
-            movie_path (str) - The remote path of the uploaded movie (folder)
+            series_path (str) - The remote path of the uploaded series (folder)
         """
         host = dict(self.mal.items())
         with SSHClient() as ssh:

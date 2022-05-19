@@ -1,21 +1,25 @@
 import json
 import os
-import shutil
+# import shutil
 from configparser import ConfigParser
 from pathlib import Path
 
 import yt_dlp
 import yt_dlp.utils
-from rich import inspect, print
+from rich import print
 from rich.progress import Progress
 
 
 class MyLogger(object):
+    """Handle Log Output"""
+
     def info(self, msg):
+        """Info"""
         # print(msg)
         pass
 
     def debug(self, msg):
+        """Debug"""
         if msg.startswith('[debug] '):
             pass
         else:
@@ -23,28 +27,32 @@ class MyLogger(object):
         pass
 
     def warning(self, msg):
+        """Warning"""
         # print(msg)
         pass
 
     def error(self, msg):
+        """Error"""
         # print(msg)
         pass
 
+
 class FinishedPP(yt_dlp.postprocessor.PostProcessor):
-    """
-    THIS IS CALLED AFTER DOWNLOADING ALL PARTS!
-    """
+    """CALLED AFTER DOWNLOADING ALL PARTS!"""
+
     def run(self, info):
+        """Only Function"""
         # self.to_screen("Finalizing Conversion....")
         print("Finalizing Conversion....")
         # print(inspect(info))
         return [], info
 
+
 class YouTubeDLP(object):
-    """Wrapper for YouTubeDLP via yt_dlp
-    """
+    """Wrapper for YouTubeDLP via yt_dlp"""
+
     def __init__(self):
-        """Constructor
+        """Init Constructor
 
         From config:
             cookies (str): Path to Cookies File
@@ -93,6 +101,7 @@ class YouTubeDLP(object):
             # print(d['filename'], d['_percent_str'], d['_eta_str'])
 
     def getInfo(self, video_url='', **kwargs):
+        """Info JSON"""
         self.video_url = video_url
         self.quiet = True
         self.verbose = False
@@ -131,6 +140,7 @@ class YouTubeDLP(object):
             return info
 
     def searchInfo(self, media, video, audio, query, **kwargs):
+        """Search for Matching Video by MetaData"""
         self.__dict__.update(kwargs)
         vsize = video["stream_size"]
         asize = audio["stream_size"]
@@ -167,12 +177,12 @@ class YouTubeDLP(object):
             return matches
 
     def downloadVideo(self, title='', video_url='', path='', **kwargs):
-        """downlod youtube video into folder
+        """Downlod youtube video into folder
 
-        args:
-            requires - title (str)     - the video title
-            requires - video_url (str) - the link of the youtube video
-            requires - path (str)      - the output directory!
+        Args:
+            title (str):     (Required) - the video title
+            video_url (str): (Required) - the link of the youtube video
+            path (str):      (Required) - the output directory!
 
         example:
             from plexarr import youtubedlp
@@ -232,6 +242,77 @@ class YouTubeDLP(object):
             # return ytdl.download_with_info_file(video_url)
             ytdl.add_post_processor(FinishedPP())
             data = ytdl.extract_info(video_url)
+            info = json.dumps(ytdl.sanitize_info(data))
+            self.data = data
+            self.info = info
+            return "Download Finished!"
+
+    def downloadEpisode(self, url='', mp4_file='', **kwargs):
+        """Downlod Episode into Season Path Folder
+
+        Args:
+            url (str):      (Required) - the video title
+            mp4_file (str): (Required) - the link of the youtube video
+
+        example:
+            from plexarr import youtubedlp
+
+            youtube = youtubedlp()
+            youtube.downloadEpisode(video_url=url, mp4_file=mp4_file, format=format_quality)
+
+        """
+        # -- settings passed indirectly
+        self.video_url = url
+        self.f_name = mp4_file
+        self.format = "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"
+        self.headers = False
+
+        # -- settings passed directly
+        self.writethumbnail = False
+        self.writeinfojson = False
+        self.writesubtitles = True
+        self.writeautomaticsub = False
+        self.subtitlesformat = 'srt'
+        self.subtitleslangs = ['en']
+        self.__dict__.update(kwargs)
+
+        # -- create fresh directory
+        self.folder = Path(self.f_name).parent
+        print(f'creating directory: "{self.folder}"')
+        print(f'{{"video_url": {self.video_url}}}')
+        # os.makedirs(self.folder, exist_ok=True)
+        self.folder.mkdir(exist_ok=True)
+
+        # -- Download Movie via yt-dlp -- #
+        ytdl_opts = {
+            'writethumbnail': self.writethumbnail,
+            'writeinfojson': self.writeinfojson,
+            'writesubtitles': self.writesubtitles,
+            'writeautomaticsub': self.writeautomaticsub,
+            'subtitlesformat': self.subtitlesformat,
+            'subtitleslangs': self.subtitleslangs,
+            'cookiefile': self.cookies,
+            'format': self.format,
+            'outtmpl': self.f_name,
+            'postprocessors': [{
+                'key': 'FFmpegMetadata',
+                'add_chapters': True,
+                'add_metadata': True,
+            },{
+                'key': 'FFmpegSubtitlesConvertor',
+                'format': self.subtitlesformat
+            }],
+            'logger': MyLogger(),
+            'progress_hooks': [self.d_hook]
+        }
+
+        if self.headers:
+            yt_dlp.utils.std_headers.update(self.headers)
+
+        with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
+            # return ytdl.download_with_info_file(video_url)
+            ytdl.add_post_processor(FinishedPP())
+            data = ytdl.extract_info(self.video_url)
             info = json.dumps(ytdl.sanitize_info(data))
             self.data = data
             self.info = info

@@ -78,6 +78,7 @@ class YouTubeDLP(object):
         """
         # print(d)
         if d['status'] == 'finished':
+            self.download_status = False
             self.progress.stop()
             file_tuple = os.path.split(os.path.abspath(d['filename']))
             print(f'Done downloading "{file_tuple[1]}"')
@@ -90,9 +91,9 @@ class YouTubeDLP(object):
                     total = d["total_bytes_estimate"]
                 else:
                     total = 1
-
+                file_tuple = os.path.split(os.path.abspath(d["filename"]))
                 self.download_status = True
-                self.task = self.progress.add_task("[cyan]Downloading...", total=total)
+                self.task = self.progress.add_task(f'[cyan]Downloading[/]: [yellow]"{file_tuple[1]}"[/]', total=total)
                 self.progress.start()
 
             step = int(d["downloaded_bytes"]) - int(self.downloaded_bytes)

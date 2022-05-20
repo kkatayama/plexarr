@@ -66,6 +66,18 @@ class OmbiAPI():
         path = '/Request/movie'
         return self.request(path=path).json()
 
+    def getTvRequests(self):
+        """
+        Get all tv-shows that have been requested
+
+        NOTE: Identical to ombi.getAllShows()
+
+        Returns:
+            JSON Array
+        """
+        path = '/Request/tv'
+        return self.request(path=path).json()
+
     def getShows(self):
         """Get all tv-shows that have been requested but not yet downloaded
 

@@ -54,6 +54,16 @@ class OmbiAPI():
                 res = requests.put(url=url, headers=headers, json=data, timeout=10)
         return res
 
+    def getUsers(self):
+        """
+        Get all users for drpodown purposes
+
+        Return:
+            JSON Array
+        """
+        path = '/Identity/dropdown/Users'
+        return self.request(path=path).json()
+
     def getMovieRequests(self):
         """
         Get all movies that have been requested

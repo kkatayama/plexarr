@@ -1,5 +1,5 @@
 import re
-
+import json
 from furl import furl
 
 
@@ -77,3 +77,38 @@ def gen_xmltv_xml(channels=[], programs=[], url=''):
 
     xmltv = xml_header + xml_channels + xml_programs + xml_footer
     return xmltv
+
+
+def m3u_to_json(src):
+    temp = src.splitlines()
+    temp_info = temp.pop(0)
+
+    data = {}
+    regex_info = r'#EXTM3U url-tvg="(?P<url_tvg>.*)" x-tvg-url="(?P<x_tvg_url>.*)"'
+    info = re.search(regex_info, temp_info).groupdict()
+    data.update(info)
+
+    streams = []
+    regex_stream = r"""
+        [#]EXTINF:(?P<ext_inf>\d+)                          | # TODO
+        channelID=["](?P<channelID>[^"]+)["]     | # Channel ID
+        tvg-chno=["](?P<tvg_chno>[^"]+)["]       | # TVG Number
+        tvg-name=["](?P<tvg_name>[^"]+)["]       | # TVG Name
+        tvg-id=["](?P<tvg_id>[^"]+)["]           | # TVG ID
+        tvg-logo=["](?P<tvg_logo>[^"]+)["]       | # TVG LOGO
+        group-title=["](?P<group_title>[^"]+)["] | # Group Title
+        ,(?P<chan_name>.*)                       | # Channel Name == TVG Name
+        (?P<stream_url>(http://\d+.\d+.\d+.\d+\:\d+/stream/.*))
+    """
+    r_stream = re.compile(regex_stream, re.VERBOSE)
+    for line in list(map("\n".join, zip(temp[0::2], temp[1::2]))):
+        streams.append(
+            {
+                k: v
+                for m in r_stream.finditer(line)
+                for k, v in m.groupdict().items()
+                if v
+            }
+        )
+    data.update({"streams": streams})
+    return json.dumps(data)

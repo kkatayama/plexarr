@@ -318,3 +318,74 @@ class YouTubeDLP(object):
             self.data = data
             self.info = info
             return "Download Finished!"
+
+    def dVideo(self, title='', video_url='', path='', **kwargs):
+        """Downlod youtube video into folder
+
+        Args:
+            title (str):     (Required) - the video title
+            video_url (str): (Required) - the link of the youtube video
+            path (str):      (Required) - the output directory!
+
+        example:
+            from plexarr import youtubedlp
+
+            youtube = youtubedlp()
+            youtube.downloadvideo(title=title, video_url=url, path=lib_path)
+
+        """
+        # -- setting up path configs
+        self.title = title
+        self.video_url = video_url
+        self.path = path
+        self.headers = False
+        self.writethumbnail = False
+        self.writeinfojson = False
+        self.writesubtitles = True
+        self.writeautomaticsub = False
+        self.__dict__.update(kwargs)
+
+        self.title = title
+        self.path = path
+        self.folder = self.path
+        self.f_name = os.path.join(self.path, f'{self.title}.mp4')
+
+        # -- create fresh directory
+        print(f'creating directory: "{self.folder}"')
+        print(f'{{"video_url": {video_url}}}')
+        os.makedirs(self.folder, exist_ok=True)
+
+        ### Download Movie via yt-dlp ###
+        ytdl_opts = {
+            'writethumbnail': self.writethumbnail,
+            'writeinfojson': self.writeinfojson,
+            'writesubtitles': self.writesubtitles,
+            'writeautomaticsub': self.writeautomaticsub,
+            'subtitlesformat': 'vtt',
+            'subtitleslangs': ['en'],
+            'cookiefile': self.cookies,
+            'format': "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+            'outtmpl': self.f_name,
+            'postprocessors': [{
+                'key': 'FFmpegMetadata',
+                'add_chapters': True,
+                'add_metadata': True,
+            },{
+                'key': 'FFmpegSubtitlesConvertor',
+                'format': 'vtt'
+            }],
+            'logger': MyLogger(),
+            'progress_hooks': [self.d_hook]
+        }
+
+        if self.headers:
+            yt_dlp.utils.std_headers.update(self.headers)
+
+        with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
+            # return ytdl.download_with_info_file(video_url)
+            ytdl.add_post_processor(FinishedPP())
+            data = ytdl.extract_info(video_url)
+            info = json.dumps(ytdl.sanitize_info(data))
+            self.data = data
+            self.info = info
+            return "Download Finished!"

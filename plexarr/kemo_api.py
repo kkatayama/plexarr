@@ -29,6 +29,13 @@ class KemoAPI(object):
         self.CATEGORY = {}
         self.STREAMS = {}
 
+    def getCategories(self, groups):
+        """Get All Categories in Matching Groups"""
+        payload = self.PARAMS
+        payload.update({'action': 'get_live_categories'})
+        r = requests.get(url=self.API_URL, params=payload)
+        return list(filter(lambda x: x["category_name"] in lemo_groups, r))
+
     def getCategory(self, query=''):
         """Get Category using query filter"""
         payload = self.PARAMS

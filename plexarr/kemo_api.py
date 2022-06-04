@@ -34,7 +34,7 @@ class KemoAPI(object):
         payload = self.PARAMS
         payload.update({'action': 'get_live_categories'})
         r = requests.get(url=self.API_URL, params=payload)
-        return list(filter(lambda x: x["category_name"] in lemo_groups, r))
+        return list(filter(lambda x: x["category_name"] in groups, r.json()))
 
     def getCategory(self, query=''):
         """Get Category using query filter"""

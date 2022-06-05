@@ -20,7 +20,7 @@ class LemoAPI:
         self.groups = literal_eval(config["lemo"].get("lemo_groups"))
         self.params = {"username": self.username, "password": self.password}
         self.category = {}
-        self.streams = {}
+        self.streams = []
 
     def genInfo(self, s):
         tvg_id = s["epg_channel_id"] if s.get("epg_channel_id") else ""
@@ -36,8 +36,10 @@ class LemoAPI:
         )
 
     def process(self, r, **kwargs):
+        streams = r.json()
+        self.streams += streams
         m3u_streams = []
-        for s in r.json():
+        for s in streams:
             m3u_streams += [self.genInfo(s)] + [self.genM3u(s)]
         return m3u_streams
 
@@ -48,7 +50,7 @@ class LemoAPI:
         r = requests.get(url=self.api_url, params=payload)
         return list(filter(lambda x: x["category_name"] in self.groups, r.json()))
 
-    def parseCategories(self, extract_streams=False, extract_categories=False):
+    def parseCategories(self, extract_categories=False):
         self.m3u_items = ["#EXTM3U\n"]
         p = self.params
         p.update({"action": "get_live_streams"})
@@ -57,11 +59,11 @@ class LemoAPI:
         self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
 
         self.m3u = "".join(self.m3u_items)
-        self.streams = list(chain(*(r.json() for r in grequests.map(gs)))) if extract_streams else None
         self.categories = categories if extract_categories else None
         return self.m3u
 
     def getM3U(self, extract_streams=False, extract_categories=False):
+        self.streams = []
         self.cats = self.getCategories()
         return self.parseCategories(extract_streams, extract_categories)
 

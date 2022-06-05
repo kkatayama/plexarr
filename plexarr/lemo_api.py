@@ -9,7 +9,7 @@ import requests
 class LemoAPI:
     """MultiThreaded API For LemoIPTV"""
 
-    def __init__(self, groups={}):
+    def __init__(self):
         """Configs"""
         config = ConfigParser()
         config.read(Path(Path.home(), ".config/plexarr.ini"))
@@ -21,7 +21,6 @@ class LemoAPI:
         self.params = {"username": self.username, "password": self.password}
         self.category = {}
         self.streams = {}
-        self.groups = groups
 
     def genInfo(self, s):
         tvg_id = s["epg_channel_id"] if s.get("epg_channel_id") else ""

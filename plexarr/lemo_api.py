@@ -1,6 +1,6 @@
-# coding: utf-8
 import grequests
 from configparser import ConfigParser
+from ast import literal_eval
 from pathlib import Path
 from itertools import chain
 import requests
@@ -14,9 +14,10 @@ class LemoAPI:
         config = ConfigParser()
         config.read(Path(Path.home(), ".config/plexarr.ini"))
 
-        self.api_url = config["kemo"].get("api_url")
-        self.username = config["kemo"].get("username")
-        self.password = config["kemo"].get("password")
+        self.api_url = config["lemo"].get("api_url")
+        self.username = config["lemo"].get("username")
+        self.password = config["lemo"].get("password")
+        self.groups = literal_eval(config["lemo"].get("lemo_groups"))
         self.params = {"username": self.username, "password": self.password}
         self.category = {}
         self.streams = {}
@@ -73,20 +74,11 @@ class LemoAPI:
                 print(line)
 
 
-lemo_groups = {
-    "USA Documentary",
-    "USA Entertainment",
-    "USA Local - MISC",
-    "USA Local - NBC",
-    "USA NBA",
-    "USA NBC Sports",
-    "USA NFL - Sunday Ticket",
-    "USA Sports",
-}
 
-lemo = LemoAPI(groups=lemo_groups)
-lemo_m3u = lemo.getM3U(extract_streams=True, extract_categories=True)
-#lemo.validateM3U()
+# -- TESTING -- #
+# lemo = LemoAPI(groups=lemo_groups)
+# lemo_m3u = lemo.getM3U(extract_streams=True, extract_categories=True)
+# lemo.validateM3U()
 
 # print("\n".join(lemo_m3u.splitlines()[:20]))
 # print("".join(lemo.m3u_items[:10]))

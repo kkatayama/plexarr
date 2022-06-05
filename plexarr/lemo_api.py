@@ -62,10 +62,10 @@ class LemoAPI:
         self.categories = categories if extract_categories else None
         return self.m3u
 
-    def getM3U(self, extract_streams=False, extract_categories=False):
+    def getM3U(self, extract_categories=False):
         self.streams = []
         self.cats = self.getCategories()
-        return self.parseCategories(extract_streams, extract_categories)
+        return self.parseCategories(extract_categories)
 
     def validateM3U(self, m3u_file="/Users/katayama/Documents/MangoBoat/IP_TV_Stuff/KEMO_iPTV/lemo.m3u"):
         with open(m3u_file) as f:

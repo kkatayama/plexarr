@@ -8,9 +8,9 @@
     </channel>
 % end
 % for program in programs:
-    <programme channel="{{program['tvg_id']}}" start="{{program['epg_start']}}" stop="{{program['epg_stop']}}">'
-        <title lang="en">{{program['epg_title']}}</title>'
-        <desc lang="en">{{program['epg_desc']}}</desc>'
+    <programme channel="{{program['tvg_id']}}" start="{{program['epg_start']}}" stop="{{program['epg_stop']}}">
+        <title lang="en">{{program['epg_title']}}</title>
+        <desc lang="en">{{program['epg_desc']}}</desc>
     % if program.get('epg_icon'):
         <icon src="{{program['epg_icon']}}"/>
     % end

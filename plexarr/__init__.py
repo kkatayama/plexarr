@@ -1,6 +1,7 @@
 from .chapo_api import ChapoAPI
 from .github_api import GitHubAPI
 from .kemo_api import KemoAPI
+from .lemo_api import LemoAPI
 from .mount_api import MountAPI
 from .nzbhydra_api import NZBHydraAPI
 from .ombi_api import OmbiAPI
@@ -18,6 +19,7 @@ __all__ = [
     'ChapoAPI',
     'GitHubAPI',
     'KemoAPI',
+    'LemoAPI'
     'MountAPI',
     'NZBHydraAPI',
     'OmbiAPI',

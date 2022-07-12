@@ -19,7 +19,6 @@ class uTorrentAPI(object):
         self.headers = {"Authorization": f"Basic {self.api_key}"}
         self.session = requests.Session()
         self.session.headers.update(self.headers)
-        self.token = self.getToken()
 
     def getToken(self):
         """Get Token and Cookie Session"""
@@ -28,8 +27,11 @@ class uTorrentAPI(object):
         regex = r"<div.*>(?P<token>.+)</div>"
         r = re.search(regex, s.text)
         if r:
-            return r.groupdict()["token"]
-        return s.text
+            token = r.groupdict()["token"]
+        else:
+        token = s.text
+        self.token = token
+        return token
 
     def get(self, path="", data={}):
         """Session GET Wrapper"""

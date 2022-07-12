@@ -29,7 +29,7 @@ class uTorrentAPI(object):
         if r:
             token = r.groupdict()["token"]
         else:
-        token = s.text
+            token = s.text
         self.token = token
         return token
 

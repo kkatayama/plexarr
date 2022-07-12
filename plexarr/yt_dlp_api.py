@@ -122,7 +122,7 @@ class YouTubeDLP(object):
             'overwrites': None,
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
-            'extract_flat': self.extract_flat,xs
+            'extract_flat': self.extract_flat,
             'noplaylist': True,
             'skip_download': True,
             'clean_infojson': False,

@@ -110,6 +110,7 @@ class YouTubeDLP(object):
         self.writethumbnail = False
         self.writeinfojson = False
         self.extract_flat = False
+        self.forcethumbnail = False
         self.__dict__.update(kwargs)
 
         if not self.video_url:
@@ -123,6 +124,7 @@ class YouTubeDLP(object):
             'writethumbnail': self.writethumbnail,
             'writeinfojson': self.writeinfojson,
             'extract_flat': self.extract_flat,
+            'forcethumbnail': self.forcethumbnail,
             'noplaylist': True,
             'skip_download': True,
             'clean_infojson': False,

@@ -283,6 +283,7 @@ class YouTubeDLP(object):
         self.__dict__.update(kwargs)
 
         if '%' not in self.f_name:
+            print(f'self.f_name = "{self.f_name}"')
             # -- create fresh directory
             self.folder = Path(self.f_name).parent
             print(f'creating directory: "{self.folder}"')

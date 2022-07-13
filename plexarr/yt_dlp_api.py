@@ -282,15 +282,15 @@ class YouTubeDLP(object):
         self.download_archive = False
         self.__dict__.update(kwargs)
 
-        try:
+        if '%' not in self.f_name:
             # -- create fresh directory
             self.folder = Path(self.f_name).parent
             print(f'creating directory: "{self.folder}"')
             print(f'{{"video_url": {self.video_url}}}')
             # os.makedirs(self.folder, exist_ok=True)
             self.folder.mkdir(exist_ok=True)
-        except Exception:
-            print(f'nevermind: "{self.folder}" is a (template)...')
+        else:
+            print(f'"{self.f_name}": is a (template)...')
 
         # -- Download Movie via yt-dlp -- #
         ytdl_opts = {

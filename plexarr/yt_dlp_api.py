@@ -279,6 +279,7 @@ class YouTubeDLP(object):
         self.writeautomaticsub = False
         self.subtitlesformat = 'srt'
         self.subtitleslangs = ['en']
+        self.download_archive = False
         self.__dict__.update(kwargs)
 
         # -- create fresh directory
@@ -296,6 +297,7 @@ class YouTubeDLP(object):
             'writeautomaticsub': self.writeautomaticsub,
             'subtitlesformat': self.subtitlesformat,
             'subtitleslangs': self.subtitleslangs,
+            'download_archive': self.download_archive,
             'cookiefile': self.cookies,
             'format': self.format,
             'outtmpl': self.f_name,

@@ -138,6 +138,120 @@ class HTPC_API(object):
             sftp = ssh.open_sftp()
             return [os.path.join(artist_path, video_file) for video_file in sftp.listdir(artist_path)]
 
+    def getYouTubeShows(self):
+        """List all YouTube shows (folders) in imac['yt_series]
+
+        Returns:
+            series_paths (list) - The remote paths of the youtube series (folder)
+        """
+        jump = dict(self.jump.items())
+        imac = dict(self.imac.items())
+        vm_channel = None
+        net_host = getNetHost()
+        print(f'HOST NETWORK: "{net_host}"')
+
+        # -- NEED TO USE JUMP HOST ??? -- #
+        if "windy.pickle" not in net_host:
+            print(f' + jump host: {jump}')
+            ssh_jump = SSHClient()
+            ssh_jump.load_system_host_keys()
+            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"])
+
+            vm_transport = ssh_jump.get_transport()
+            dest_addr = (imac["ip"], int(imac["port"]))
+            local_addr = (jump["host"], int(jump["port"]))
+            vm_channel = vm_transport.open_channel("direct-tcpip", dest_addr, local_addr)
+
+        # -- PROBE IMAC -- #
+        print(f' + dest host: {imac}')
+        with SSHClient() as ssh_imac:
+            ssh_imac.load_system_host_keys()
+            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
+            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+                sftp = ssh_imac.open_sftp()
+                shows = [s for s in sftp.listdir(imac["yt_series"])]
+
+        # -- CLOSE JUMP HOST CONNECTION IF USED -- #
+        ssh_jump.close() if vm_channel else None
+
+        return shows
+
+    def getYouTubeSeasons(self, show=''):
+        """List all YouTube seasons (folders) for show in imac['yt_series]
+
+        Returns:
+            seasons_paths (list) - The remote seasons paths of the youtube series (folder)
+        """
+        jump = dict(self.jump.items())
+        imac = dict(self.imac.items())
+        vm_channel = None
+        net_host = getNetHost()
+        print(f'HOST NETWORK: "{net_host}"')
+
+        # -- NEED TO USE JUMP HOST ??? -- #
+        if "windy.pickle" not in net_host:
+            print(f' + jump host: {jump}')
+            ssh_jump = SSHClient()
+            ssh_jump.load_system_host_keys()
+            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"])
+
+            vm_transport = ssh_jump.get_transport()
+            dest_addr = (imac["ip"], int(imac["port"]))
+            local_addr = (jump["host"], int(jump["port"]))
+            vm_channel = vm_transport.open_channel("direct-tcpip", dest_addr, local_addr)
+
+        # -- PROBE IMAC -- #
+        print(f' + dest host: {imac}')
+        with SSHClient() as ssh_imac:
+            ssh_imac.load_system_host_keys()
+            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
+            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+                sftp = ssh_imac.open_sftp()
+                seasons = [s for s in sftp.listdir(str(Path(imac["yt_series"], show)))]
+
+        # -- CLOSE JUMP HOST CONNECTION IF USED -- #
+        ssh_jump.close() if vm_channel else None
+
+        return seasons
+
+    def getYouTubeSeasons(self, show='', season):
+        """List all YouTube episodes (files) for season of show in imac['yt_series]
+
+        Returns:
+            episodes_paths (list) - The remote episodes paths for season of the youtube series (folder)
+        """
+        jump = dict(self.jump.items())
+        imac = dict(self.imac.items())
+        vm_channel = None
+        net_host = getNetHost()
+        print(f'HOST NETWORK: "{net_host}"')
+
+        # -- NEED TO USE JUMP HOST ??? -- #
+        if "windy.pickle" not in net_host:
+            print(f' + jump host: {jump}')
+            ssh_jump = SSHClient()
+            ssh_jump.load_system_host_keys()
+            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"])
+
+            vm_transport = ssh_jump.get_transport()
+            dest_addr = (imac["ip"], int(imac["port"]))
+            local_addr = (jump["host"], int(jump["port"]))
+            vm_channel = vm_transport.open_channel("direct-tcpip", dest_addr, local_addr)
+
+        # -- PROBE IMAC -- #
+        print(f' + dest host: {imac}')
+        with SSHClient() as ssh_imac:
+            ssh_imac.load_system_host_keys()
+            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
+            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+                sftp = ssh_imac.open_sftp()
+                episodes = [s for s in sftp.listdir(str(Path(imac["yt_series"], show, season)))]
+
+        # -- CLOSE JUMP HOST CONNECTION IF USED -- #
+        ssh_jump.close() if vm_channel else None
+
+        return episodes
+
     def downloadMusicVideo(self, video_file=''):
         """Download the remote Music Video file for parsing
 
@@ -191,8 +305,8 @@ class HTPC_API(object):
                 scp.put(files=folder, remote_path=host['series'], recursive=True)
         return os.path.join(host['series'], os.path.split(folder)[1])
 
-    def uploadYouTubeSeries(self, folder=''):
-        """Upload YouTube series folder containing episode files to host["imac"]
+    def uploadYouTubeShow(self, folder=''):
+        """Upload YouTube show folder containing episode files to host["imac"]
 
         Args:
             Requires - folder (str)  - The local path of the downloaded series

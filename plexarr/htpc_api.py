@@ -211,7 +211,7 @@ class HTPC_API(object):
             ssh_jump = SSHClient()
             ssh_jump.set_missing_host_key_policy(AutoAddPolicy())
             ssh_jump.load_system_host_keys()
-            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"], banner_timeout=60)
+            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"], banner_timeout=200)
 
             vm_transport = ssh_jump.get_transport()
             dest_addr = (imac["ip"], int(imac["port"]))
@@ -223,7 +223,7 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.set_missing_host_key_policy(AutoAddPolicy())
             ssh_imac.load_system_host_keys()
-            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], banner_timeout=60, sock=vm_channel)
+            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], banner_timeout=200, sock=vm_channel)
             with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
                 scp.put(files=folder, remote_path=imac['yt_series'], recursive=True)
 

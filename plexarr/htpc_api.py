@@ -1,19 +1,39 @@
-import os
-import subprocess
-import sys
+# -- sys utils -- #
 from configparser import ConfigParser
 from pathlib import Path
+import subprocess
+import sys
+import os
 
-import markdown
-from paramiko import SSHClient
+# -- video utils -- #
 from pymediainfo import MediaInfo
+
+# -- network utils -- #
+# import wget
+# import markdown
+from paramiko import SSHClient, AutoAddPolicy
 from scp import SCPClient
+import tldextract
+import netifaces
+import socket
 
 
 def progress4(filename, size, sent, peername):
     if isinstance(filename, bytes):
         filename = filename.decode()
     sys.stdout.write("(%s:%s) %s\'s progress: %.2f%%   \r" % (peername[0], peername[1], filename, float(sent)/float(size)*100))
+
+
+def getNetHost():
+    dns_domain = socket.getfqdn(netifaces.gateways()["default"][2][0])
+    tld_extract = tldextract.TLDExtract(
+        suffix_list_urls=["https://proxy.hopto.org/suffixes"],
+        cache_dir="/tmp/",
+        fallback_to_snapshot=False,
+    )
+    net_info = tld_extract(dns_domain)
+    net_host = f'{dns_info.domain}.{dns_info.suffix}'           # udel.edu, windy.pickle
+    return net_host
 
 
 class HTPC_API(object):
@@ -28,6 +48,7 @@ class HTPC_API(object):
         """
         config = ConfigParser()
         config.read(os.path.join(os.path.expanduser('~'), '.config', 'plexarr.ini'))
+        self.jump = config['jump']
         self.imac = config['imac']
         self.mal = config['mal']
         self.og = config['og']
@@ -152,21 +173,63 @@ class HTPC_API(object):
                 scp.put(files=folder, remote_path=host['movies'], recursive=True)
         return os.path.join(host['movies'], os.path.split(folder)[1])
 
-    def uploadSeries(self, folder):
+    def uploadSeries(self, folder='', host={}):
         """Upload series directory containing episode files to host["mal"]
 
         Args:
-            Requires - folder (str)  - The local path of the downloaded movie
+            Requires - folder (str)  - The local path of the downloaded series
+            Optional - host (dict) - object contain remote host network info
         Returns:
             series_path (str) - The remote path of the uploaded series (folder)
         """
-        host = dict(self.mal.items())
+        host = dict(self.mal.items()) if not host else host
+
         with SSHClient() as ssh:
             ssh.load_system_host_keys()
             ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
             with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
                 scp.put(files=folder, remote_path=host['series'], recursive=True)
         return os.path.join(host['series'], os.path.split(folder)[1])
+
+    def uploadYouTubeSeries(self, folder=''):
+        """Upload YouTube series folder containing episode files to host["imac"]
+
+        Args:
+            Requires - folder (str)  - The local path of the downloaded series
+        Returns:
+            series_path (str) - The remote path of the uploaded series (folder)
+        """
+        jump = dict(self.jump.items())
+        imac = dict(self.imac.items())
+        vm_channel = None
+        net_host = getNetHost()
+        print(f'HOST NETWORK: "{net_host}"')
+
+        # -- NEED TO USE JUMP HOST ??? -- #
+        if "windy.pickle" not in net_host:
+            print(f' + jump host: {jump}')
+            ssh_jump = SSHClient()
+            ssh_jump.load_system_host_keys()
+            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"])
+
+            vm_transport = ssh_jump.get_transport()
+            dest_addr = (imac["ip"], int(imac["port"]))
+            local_addr = (jump["host"], int(jump["port"]))
+            vm_channel = vm_transport.open_channel("direct-tcpip", dest_addr, local_addr)
+
+        # -- TRANSFER TO IMAC -- #
+        print(f' + dest host: {imac}')
+        with SSHClient() as ssh_imac:
+            # -- ssh_imac.set_missing_host_key_policy(AutoAddPolicy())
+            ssh_imac.load_system_host_keys()
+            ssh_jump.connect(hostname=imac["host"], port=imac["port"], username=imac["username"], sock=vm_channel)
+            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+                scp.put(files=folder, remote_path=imac['yt_series'], recursive=True)
+
+        # -- CLOSE JUMP HOST CONNECTION IF USED -- #
+        ssh_jump.close() if vm_channel else None
+
+        return str(Path(imac['yt_series'], Path(folder).name))
 
     def uploadIPTV(self, fname):
         """Upload XML TV-Guide or M3U playlist file to host["mal"]

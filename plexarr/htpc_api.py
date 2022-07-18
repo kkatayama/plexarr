@@ -222,7 +222,7 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             # -- ssh_imac.set_missing_host_key_policy(AutoAddPolicy())
             ssh_imac.load_system_host_keys()
-            ssh_jump.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
+            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
             with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
                 scp.put(files=folder, remote_path=imac['yt_series'], recursive=True)
 

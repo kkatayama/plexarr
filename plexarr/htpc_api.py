@@ -32,7 +32,7 @@ def getNetHost():
         fallback_to_snapshot=False,
     )
     net_info = tld_extract(dns_domain)
-    net_host = f'{dns_info.domain}.{dns_info.suffix}'           # udel.edu, windy.pickle
+    net_host = f'{net_info.domain}.{net_info.suffix}'           # udel.edu, windy.pickle
     return net_host
 
 

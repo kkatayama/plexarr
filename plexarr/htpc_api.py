@@ -214,7 +214,7 @@ class HTPC_API(object):
 
         return seasons
 
-    def getYouTubeSeasons(self, show='', season):
+    def getYouTubeEpisodes(self, show='', season=''):
         """List all YouTube episodes (files) for season of show in imac['yt_series]
 
         Returns:

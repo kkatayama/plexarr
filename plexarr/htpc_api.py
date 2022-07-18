@@ -209,6 +209,7 @@ class HTPC_API(object):
         if "windy.pickle" not in net_host:
             print(f' + jump host: {jump}')
             ssh_jump = SSHClient()
+            ssh_jump.set_missing_host_key_policy(AutoAddPolicy())
             ssh_jump.load_system_host_keys()
             ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"])
 
@@ -220,7 +221,7 @@ class HTPC_API(object):
         # -- TRANSFER TO IMAC -- #
         print(f' + dest host: {imac}')
         with SSHClient() as ssh_imac:
-            # -- ssh_imac.set_missing_host_key_policy(AutoAddPolicy())
+            ssh_imac.set_missing_host_key_policy(AutoAddPolicy())
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
             with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:

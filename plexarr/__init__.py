@@ -1,4 +1,4 @@
-from .lemo_api import LemoAPI
+#from .lemo_api import LemoAPI
 from .chapo_api import ChapoAPI
 from .github_api import GitHubAPI
 from .kemo_api import KemoAPI
@@ -19,7 +19,7 @@ __all__ = [
     'ChapoAPI',
     'GitHubAPI',
     'KemoAPI',
-    'LemoAPI'
+    # 'LemoAPI'
     'MountAPI',
     'NZBHydraAPI',
     'OmbiAPI',

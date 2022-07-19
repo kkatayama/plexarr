@@ -325,7 +325,7 @@ class YouTubeDLP(object):
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
             # return ytdl.download_with_info_file(video_url)
             ytdl.add_post_processor(FinishedPP())
-            data = ytdl.extract_info(self.video_url)
+            data = ytdl.extract_info(self.video_url, download=True)
             info = json.dumps(ytdl.sanitize_info(data))
             self.data = data
             self.info = info

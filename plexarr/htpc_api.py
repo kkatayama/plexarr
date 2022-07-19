@@ -313,10 +313,10 @@ class HTPC_API(object):
         Returns:
             series_path (str) - The remote path of the uploaded series (folder)
         """
-        folder = show_path
-        remote_folder = imac["yt_series"]
         jump = dict(self.jump.items())
         imac = dict(self.imac.items())
+        folder = show_path
+        remote_folder = imac["yt_series"]
         vm_channel = None
         net_host = getNetHost()
         print(f'HOST NETWORK: "{net_host}"')
@@ -354,10 +354,10 @@ class HTPC_API(object):
         Returns:
             None
         """
-        folder = season_path
-        remote_folder = str(Path(imac["yt_series"], show))
         jump = dict(self.jump.items())
         imac = dict(self.imac.items())
+        folder = season_path
+        remote_folder = str(Path(imac["yt_series"], show))
         vm_channel = None
         net_host = getNetHost()
         print(f'HOST NETWORK: "{net_host}"')
@@ -395,10 +395,10 @@ class HTPC_API(object):
         Returns:
             None
         """
-        fname = episode_path
-        remote_folder = str(Path(imac["yt_series"], show, season))
         jump = dict(self.jump.items())
         imac = dict(self.imac.items())
+        fname = episode_path
+        remote_folder = str(Path(imac["yt_series"], show, season))
         vm_channel = None
         net_host = getNetHost()
         print(f'HOST NETWORK: "{net_host}"')
@@ -427,8 +427,6 @@ class HTPC_API(object):
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
-
-
 
     def uploadIPTV(self, fname):
         """Upload XML TV-Guide or M3U playlist file to host["mal"]

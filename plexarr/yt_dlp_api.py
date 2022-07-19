@@ -305,8 +305,6 @@ class YouTubeDLP(object):
             'cookiefile': self.cookies,
             'format': self.format,
             'outtmpl': self.f_name,
-            'restrictfilenames': True,
-            'forcefilename':True,
             'postprocessors': [{
                 'key': 'FFmpegMetadata',
                 'add_chapters': True,
@@ -325,13 +323,12 @@ class YouTubeDLP(object):
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
             # return ytdl.download_with_info_file(video_url)
             ytdl.add_post_processor(FinishedPP())
-            data = ytdl.extract_info(self.video_url, download=True)
+            data = ytdl.extract_info(self.video_url)
             info = json.dumps(ytdl.sanitize_info(data))
             self.data = data
             self.info = info
-            # return "Download Finished!"
-            # self.filename = ytdl.prepare_filename(data)
-            return ytdl # .get_output_path()
+            return "Download Finished!"
+
 
     def dVideo(self, title='', video_url='', path='', **kwargs):
         """Downlod youtube video into folder

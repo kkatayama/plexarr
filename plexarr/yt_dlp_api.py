@@ -328,7 +328,7 @@ class YouTubeDLP(object):
             self.data = data
             self.info = info
             # return "Download Finished!"
-            retrun ytdl
+            retrun ytdl.get_output_path()
 
     def dVideo(self, title='', video_url='', path='', **kwargs):
         """Downlod youtube video into folder

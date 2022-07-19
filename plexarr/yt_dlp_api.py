@@ -292,6 +292,7 @@ class YouTubeDLP(object):
             self.folder.mkdir(exist_ok=True)
         else:
             print(f'"{self.f_name}": is a (template)...')
+            print(f'"{url}"')
 
         # -- Download Movie via yt-dlp -- #
         ytdl_opts = {

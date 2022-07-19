@@ -15,12 +15,13 @@ class MyLogger(object):
 
     def info(self, msg):
         """Info"""
-        # print(msg)
+        print(msg)
         pass
 
     def debug(self, msg):
         """Debug"""
         if msg.startswith('[debug] '):
+            print(msg)
             pass
         else:
             self.info(msg)
@@ -28,12 +29,12 @@ class MyLogger(object):
 
     def warning(self, msg):
         """Warning"""
-        # print(msg)
+        print(msg)
         pass
 
     def error(self, msg):
         """Error"""
-        # print(msg)
+        print(msg)
         pass
 
 

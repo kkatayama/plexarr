@@ -168,9 +168,9 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
-            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
-                sftp = ssh_imac.open_sftp()
-                shows = [s for s in sftp.listdir(imac["yt_series"])]
+            # with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+            sftp = ssh_imac.open_sftp()
+            shows = [s for s in sftp.listdir(imac["yt_series"])]
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
@@ -206,9 +206,9 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
-            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
-                sftp = ssh_imac.open_sftp()
-                seasons = [s for s in sftp.listdir(str(Path(imac["yt_series"], show)))]
+            # with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+            sftp = ssh_imac.open_sftp()
+            seasons = [s for s in sftp.listdir(str(Path(imac["yt_series"], show)))]
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
@@ -244,9 +244,9 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
-            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
-                sftp = ssh_imac.open_sftp()
-                episodes = [s for s in sftp.listdir(str(Path(imac["yt_series"], show, season)))]
+            # with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+            sftp = ssh_imac.open_sftp()
+            episodes = [s for s in sftp.listdir(str(Path(imac["yt_series"], show, season)))]
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
@@ -444,6 +444,45 @@ class HTPC_API(object):
             with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
                 scp.put(files=fname, remote_path=host['iptv'], recursive=False)
         return os.path.join(host['iptv'], os.path.split(fname)[1])
+
+    def linkYouTubeEpisodes(self, downloaded_videos, linked_videos):
+        """Symlink all YouTube Episode (files)
+
+        Returns:
+            none
+        """
+        jump = dict(self.jump.items())
+        imac = dict(self.imac.items())
+        vm_channel = None
+        net_host = getNetHost()
+        print(f'HOST NETWORK: "{net_host}"')
+
+        # -- NEED TO USE JUMP HOST ??? -- #
+        if "windy.pickle" not in net_host:
+            print(f' + jump host: {jump}')
+            ssh_jump = SSHClient()
+            ssh_jump.load_system_host_keys()
+            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"])
+
+            vm_transport = ssh_jump.get_transport()
+            dest_addr = (imac["ip"], int(imac["port"]))
+            local_addr = (jump["host"], int(jump["port"]))
+            vm_channel = vm_transport.open_channel("direct-tcpip", dest_addr, local_addr)
+
+        # -- PROBE IMAC -- #
+        print(f' + dest host: {imac}')
+        with SSHClient() as ssh_imac:
+            ssh_imac.load_system_host_keys()
+            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
+            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
+                sftp = ssh_imac.open_sftp()
+                shows = [s for s in sftp.listdir(imac["yt_series"])]
+
+        # -- CLOSE JUMP HOST CONNECTION IF USED -- #
+        ssh_jump.close() if vm_channel else None
+
+        return shows
+
 
     def runCommand(self, cmd, host='imac'):
         """Run a shell command over ssh

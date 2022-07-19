@@ -305,6 +305,8 @@ class YouTubeDLP(object):
             'cookiefile': self.cookies,
             'format': self.format,
             'outtmpl': self.f_name,
+            'restrictfilenames': True,
+            'forcefilename':True,
             'postprocessors': [{
                 'key': 'FFmpegMetadata',
                 'add_chapters': True,
@@ -328,7 +330,7 @@ class YouTubeDLP(object):
             self.data = data
             self.info = info
             # return "Download Finished!"
-            filename = ytdl.prepare_filename(info)
+            self.filename = ytdl.prepare_filename(info)
             return ytdl # .get_output_path()
 
     def dVideo(self, title='', video_url='', path='', **kwargs):

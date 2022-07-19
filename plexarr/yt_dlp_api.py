@@ -330,7 +330,7 @@ class YouTubeDLP(object):
             self.data = data
             self.info = info
             # return "Download Finished!"
-            self.filename = ytdl.prepare_filename(data)
+            # self.filename = ytdl.prepare_filename(data)
             return ytdl # .get_output_path()
 
     def dVideo(self, title='', video_url='', path='', **kwargs):

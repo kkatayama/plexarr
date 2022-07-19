@@ -6,7 +6,7 @@ from pathlib import Path
 
 import yt_dlp
 import yt_dlp.utils
-from rich import print
+from rich import print, inspect
 from rich.progress import Progress
 
 
@@ -15,13 +15,12 @@ class MyLogger(object):
 
     def info(self, msg):
         """Info"""
-        print(msg)
+        # print(msg)
         pass
 
     def debug(self, msg):
         """Debug"""
         if msg.startswith('[debug] '):
-            print(msg)
             pass
         else:
             self.info(msg)
@@ -29,12 +28,12 @@ class MyLogger(object):
 
     def warning(self, msg):
         """Warning"""
-        print(msg)
+        # print(msg)
         pass
 
     def error(self, msg):
         """Error"""
-        print(msg)
+        # print(msg)
         pass
 
 
@@ -45,7 +44,7 @@ class FinishedPP(yt_dlp.postprocessor.PostProcessor):
         """Only Function"""
         # self.to_screen("Finalizing Conversion....")
         print("Finalizing Conversion....")
-        # print(inspect(info))
+        print(inspect(info))
         return [], info
 
 
@@ -328,7 +327,8 @@ class YouTubeDLP(object):
             info = json.dumps(ytdl.sanitize_info(data))
             self.data = data
             self.info = info
-            return "Download Finished!"
+            # return "Download Finished!"
+            retrun ytdl.
 
     def dVideo(self, title='', video_url='', path='', **kwargs):
         """Downlod youtube video into folder

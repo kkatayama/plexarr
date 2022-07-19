@@ -1,6 +1,7 @@
 # -- sys utils -- #
 from configparser import ConfigParser
 from pathlib import Path
+from rich import print
 import subprocess
 import sys
 import os

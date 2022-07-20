@@ -12,7 +12,7 @@ from pymediainfo import MediaInfo
 # -- network utils -- #
 # import wget
 # import markdown
-from paramiko import SSHClient, AutoAddPolicy
+from paramiko import SSHClient, SFTPClient, AutoAddPolicy
 from scp import SCPClient
 import tldextract
 import netifaces

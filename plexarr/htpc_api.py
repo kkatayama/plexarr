@@ -168,9 +168,9 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
-            # with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
-            sftp = ssh_imac.open_sftp()
-            shows = [s for s in sftp.listdir(imac["yt_series"])]
+            with SFTPClient.from_transport(ssh_imac.get_transport()) as sftp:
+                # --sftp = ssh_imac.open_sftp()
+                shows = [s for s in sftp.listdir(imac["yt_series"])]
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
@@ -206,9 +206,8 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
-            # with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
-            sftp = ssh_imac.open_sftp()
-            seasons = [s for s in sftp.listdir(str(Path(imac["yt_series"], show)))]
+            with SFTPClient.from_transport(ssh_imac.get_transport()) as sftp:
+                seasons = [s for s in sftp.listdir(str(Path(imac["yt_series"], show)))]
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
@@ -244,9 +243,8 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
-            # with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
-            sftp = ssh_imac.open_sftp()
-            episodes = [s for s in sftp.listdir(str(Path(imac["yt_series"], show, season)))]
+            with SFTPClient.from_transport(ssh_imac.get_transport()) as sftp:
+                episodes = [s for s in sftp.listdir(str(Path(imac["yt_series"], show, season)))]
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
@@ -474,14 +472,21 @@ class HTPC_API(object):
         with SSHClient() as ssh_imac:
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
-            with SCPClient(ssh_imac.get_transport(), progress4=progress4) as scp:
-                sftp = ssh_imac.open_sftp()
-                shows = [s for s in sftp.listdir(imac["yt_series"])]
+            with SFTPClient.from_transport(ssh_imac.get_transport()) as sftp:
+                print('creating symlinks...')
+                for video_id in linked_videos:
+                    src_video = downloaded_videos[video_id]
+                    src_path = str(Path(imac["yt_series"], src_video))
+                    for dst_video in linked_videos[video_id]:
+                        dst_path = str(Path(imac["yt_series"], dst_video))
+                        b1 = "["
+                        b2 = "/["
+                        print(f"src_path: {src_path.replace(b1, b2)}")
+                        print(f"dst_path: {dst_path.replace(b1, b2)}")
+                        sftp.symlink(src_path, dst_path)
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
-
-        return shows
 
 
     def runCommand(self, cmd, host='imac'):

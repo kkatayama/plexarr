@@ -443,7 +443,7 @@ class HTPC_API(object):
                 scp.put(files=fname, remote_path=host['iptv'], recursive=False)
         return os.path.join(host['iptv'], os.path.split(fname)[1])
 
-    def linkYouTubeEpisodes(self, downloaded_videos, linked_videos):
+    def linkYouTubeEpisodes(self, base_path, downloaded_videos, linked_videos):
         """Symlink all YouTube Episode (files)
 
         Returns:

@@ -476,17 +476,24 @@ class HTPC_API(object):
                 print('creating symlinks...')
                 for video_id in linked_videos:
                     src_video = downloaded_videos[video_id]
-                    src_path = str(Path(imac["yt_series"], src_video))
-                    src_info = src_path.replace(Path(src_path).suffix, 'info.json')
+                    tmp_ep = Path(src_video).name.split()[0]
+                    tmp_p = Path(src_video).parent
+                    tmp_path = Path(base_path, tmp_p).rglob(f"{tmp_ep}*")
+                    exts = [tmp.suffix if "json" not in tmp.suffix else ''.join(tmp.suffixes[-2:]) for tmp in tmp_path]
+
                     for dst_video in linked_videos[video_id]:
-                        dst_path = str(Path(imac["yt_series"], dst_video))
-                        dst_info = src_path.replace(Path(dst_path).suffix, 'info.json')
-                        b1 = "["
-                        b2 = "/["
-                        print(f"src_path: {src_path}")
-                        print(f"dst_path: {dst_path}")
-                        sftp.symlink(src_path, dst_path)
-                        sftp.symlink(src_info, dst_info)
+                        for ext in exts:
+                            src_path = str(Path(imac["yt_series"], src_video).with_suffix(ext))
+                            dst_path = str(Path(imac["yt_series"], dst_video).with_suffix(ext))
+
+                            b1, b2 = ("[", "\[")
+                            print(f"src_path: {src_path}")
+                            print(f"dst_path: {dst_path}")
+
+                            try:
+                                sftp.symlink(src_path, dst_path)
+                            except Exception:
+                                pass
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None

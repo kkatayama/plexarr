@@ -499,6 +499,63 @@ class HTPC_API(object):
         ssh_jump.close() if vm_channel else None
 
 
+    def copyYouTubeEpisodes(self, base_path, downloaded_videos, linked_videos):
+        """Symlink all YouTube Episode (files)
+
+        Returns:
+            none
+        """
+        jump = dict(self.jump.items())
+        imac = dict(self.imac.items())
+        vm_channel = None
+        net_host = getNetHost()
+        print(f'HOST NETWORK: "{net_host}"')
+
+        # -- NEED TO USE JUMP HOST ??? -- #
+        if "windy.pickle" not in net_host:
+            print(f' + jump host: {jump}')
+            ssh_jump = SSHClient()
+            ssh_jump.load_system_host_keys()
+            ssh_jump.connect(hostname=jump["host"], port=jump["port"], username=jump["username"])
+
+            vm_transport = ssh_jump.get_transport()
+            dest_addr = (imac["ip"], int(imac["port"]))
+            local_addr = (jump["host"], int(jump["port"]))
+            vm_channel = vm_transport.open_channel("direct-tcpip", dest_addr, local_addr)
+
+        # -- PROBE IMAC -- #
+        print(f' + dest host: {imac}')
+        with SSHClient() as ssh_imac:
+            ssh_imac.load_system_host_keys()
+            ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
+            print('copy files...')
+            for video_id in linked_videos:
+                src_video = downloaded_videos[video_id]
+                tmp_ep = Path(src_video).name.split()[0]
+                tmp_p = Path(src_video).parent
+                tmp_path = Path(base_path, tmp_p).rglob(f"{tmp_ep}*")
+                exts = [tmp.suffix if "json" not in tmp.suffix else ''.join(tmp.suffixes[-2:]) for tmp in tmp_path]
+
+                for dst_video in linked_videos[video_id]:
+                    for ext in exts:
+                        src_path = str(Path(imac["yt_series"], src_video).with_suffix(ext))
+                        dst_path = str(Path(imac["yt_series"], dst_video).with_suffix(ext))
+
+                        b1, b2 = ("[", "\[")
+                        print(f"src_path: {src_path}")
+                        print(f"dst_path: {dst_path}")
+
+                        try:
+                            stdin, stdout, stderr = ssh_imac.exec_command(f'cp {src_path} {dst_path}')
+                            print(stderr)
+                        except Exception:
+                            pass
+
+        # -- CLOSE JUMP HOST CONNECTION IF USED -- #
+        ssh_jump.close() if vm_channel else None
+
+
+
     def runCommand(self, cmd, host='imac'):
         """Run a shell command over ssh
 

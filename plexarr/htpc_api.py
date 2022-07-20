@@ -546,8 +546,9 @@ class HTPC_API(object):
                         print(f"dst_path: {dst_path}")
 
                         try:
-                            stdin, stdout, stderr = ssh_imac.exec_command(f'cp {src_path} {dst_path}')
-                            print(stderr)
+                            cmd = f'cp {src_path} {dst_path}'
+                            stdin, stdout, stderr = ssh_imac.exec_command(cmd)
+                            print(f"cmd: {cmd.replace(b1, b2)}")
                         except Exception:
                             pass
 

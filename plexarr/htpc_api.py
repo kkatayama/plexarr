@@ -477,13 +477,16 @@ class HTPC_API(object):
                 for video_id in linked_videos:
                     src_video = downloaded_videos[video_id]
                     src_path = str(Path(imac["yt_series"], src_video))
+                    src_info = src_path.replace(Path(src_path).suffix, 'info.json')
                     for dst_video in linked_videos[video_id]:
                         dst_path = str(Path(imac["yt_series"], dst_video))
+                        dst_info = src_path.replace(Path(dst_path).suffix, 'info.json')
                         b1 = "["
                         b2 = "/["
-                        print(f"src_path: {src_path.replace(b1, b2)}")
-                        print(f"dst_path: {dst_path.replace(b1, b2)}")
+                        print(f"src_path: {src_path}")
+                        print(f"dst_path: {dst_path}")
                         sftp.symlink(src_path, dst_path)
+                        sftp.symlink(src_info, dst_info)
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None

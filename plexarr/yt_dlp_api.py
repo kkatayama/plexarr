@@ -251,7 +251,8 @@ class YouTubeDLP(object):
             info = json.dumps(ytdl.sanitize_info(data))
             self.data = data
             self.info = info
-            return "Download Finished!"
+            # return "Download Finished!"
+        return ytdl
 
     def downloadEpisode(self, url='', mp4_file='', **kwargs):
         """Downlod Episode into Season Path Folder

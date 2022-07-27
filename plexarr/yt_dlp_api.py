@@ -208,8 +208,8 @@ class YouTubeDLP(object):
         self.writeautomaticsub = False
         self.__dict__.update(kwargs)
 
-        self.title = title
-        self.path = path
+        # self.title = title
+        # self.path = path
         self.folder = os.path.join(self.path, self.title)
         self.f_name = os.path.join(self.path, self.title, f'{self.title}.mp4')
 

@@ -181,7 +181,8 @@ class YouTubeDLP(object):
             print(f'results: {len(results["entries"])}, matches: {len(matches)}')
             return matches
 
-    def downloadVideo(self, title='', video_url='', path='', **kwargs):
+    # def downloadVideo(self, title='', video_url='', path='', **kwargs):
+    def downloadVideo(self, title='', video_url='', **kwargs):
         """Downlod youtube video into folder
 
         Args:
@@ -199,7 +200,7 @@ class YouTubeDLP(object):
         # -- setting up path configs
         self.title = title
         self.video_url = video_url
-        self.path = path
+        # self.path = path
         self.headers = False
         self.writethumbnail = False
         self.writeinfojson = False

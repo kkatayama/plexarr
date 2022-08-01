@@ -103,12 +103,12 @@ class RadarrAPI(RequestsAPI):
             status: JSON Response
         """
         m_id = movie_data["id"]
-        path = '/movie/{m_id}'
+        path = f'/movie/{m_id}'
         data = movie_data
         res = self.put(path=path, data=data)
         return res
 
-    def getIndexers(self):
+    def getIndeexers(self):
         """Get a list of all Download Indexers
 
         Returns:

@@ -90,6 +90,21 @@ class RadarrAPI(RequestsAPI):
         """
         path = '/movie'
         data = movie_data
+        res = self.post(path=path, data=data)
+        return res
+
+    def updateMovie(self, movie_data):
+        """Edit a Movie.
+
+        Args:
+            movie_data (dict): Required; The data containing Movie changes (do getMovie() first)
+
+        Returns:
+            status: JSON Response
+        """
+        m_id = movie_data["id"]
+        path = '/movie/{m_id}'
+        data = movie_data
         res = self.put(path=path, data=data)
         return res
 

@@ -150,10 +150,24 @@ class KemoAPI(object):
                     if ((date_now - game_datetime.date()).days < 5):
                         channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
                         programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
-
-
                 except Exception:
-                    pass
+                    try:
+                        epg_title = epg_desc.split('@')[0].strip()
+                        date_now = getEPGTimeNow(dt_obj=True).date()
+                        game_time = epg_desc.split('(')[1].split('ET')[0].strip().replace(" p", ":00 p")
+                        if date_now.weekday() == 6:
+                            game_datetime = pd.to_datetime(f'{date_now} {game_time}')
+                        else:
+                            game_datetime = pd.to_datetime(f'{(getEPGTimeNow(dt_obj=True) + Week(weekday=6)).date()} {game_time}')
+                        epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+                        if ((date_now - game_datetime.date()).days < 5):
+                            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+                            programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+
+                    except Exception:
+                        pass
 
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin

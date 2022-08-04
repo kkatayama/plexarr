@@ -57,7 +57,7 @@ class ChapoAPI(object):
         """Get NFL Streams"""
         self.setCategory(query="NFL")
         # streams = self.getStreams(terms="Gamepass")
-        streams = self.getStreams(terms="Premium")
+        streams = self.getStreams(terms="PM")
         return streams
 
     def getStreamsNBA(self):

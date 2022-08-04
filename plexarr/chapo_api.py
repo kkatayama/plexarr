@@ -129,8 +129,21 @@ class ChapoAPI(object):
                         programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
 
                 except Exception as e:
-                    inspect(e)
-                    pass
+                    try:
+                        epg_title = epg_desc.split('(')[0].strip()
+                        date_now = getEPGTimeNow(dt_obj=True).date()
+                        year_now = str(date_now.year)[-2:]
+                        game_time = epg_desc.split("PM")[0].strip() + ":00 PM"
+
+                        game_datetime = pd.to_datetime(game_time)
+                        epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                        if ((date_now - game_datetime.date()).days < 5):
+                            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+                            programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+                    except Exception as e:
+                        inspect(e)
+                        pass
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
         tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))

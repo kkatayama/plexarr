@@ -3,9 +3,11 @@ from configparser import ConfigParser
 from ast import literal_eval
 from pathlib import Path
 from itertools import chain
+from teddy import getLogger
 import requests
 
 
+log = getLogger()
 class LemoAPI:
     """MultiThreaded API For LemoIPTV"""
 
@@ -55,8 +57,13 @@ class LemoAPI:
         p = self.params
         p.update({"action": "get_live_streams"})
         categories = [dict(**p, **{"category_id": c["category_id"]}) for c in self.cats]
-        gs = (grequests.get(self.api_url, params=c) for c in categories)
-        self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
+        try:
+            gs = (grequests.get(self.api_url, params=c) for c in categories)
+            self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
+        except Exception as e:
+            log.error(e)
+            gs = (requests.get(self.api_url, params=c) for c in categories)
+            self.m3u_items += list(chain(*(self.process(r) for r in gs)))
 
         self.m3u = "".join(self.m3u_items)
         self.categories = categories if extract_categories else None

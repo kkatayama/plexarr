@@ -60,7 +60,7 @@ class HTPC_API(object):
         Returns:
             channels (list) - of json objects
         """
-        host = eval(f"dict(htpc.{host}.items())")
+        host = eval(f"dict(self.{host}.items())")
         if ".44" in host["ip"]:
             xepg = f'/home/{host["username"]}/.xteve/xepg.json'
         else:

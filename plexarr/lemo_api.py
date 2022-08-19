@@ -5,6 +5,7 @@ from pathlib import Path
 from itertools import chain
 from teddy import getLogger
 import requests
+import os
 
 
 log = getLogger()

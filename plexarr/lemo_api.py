@@ -61,7 +61,7 @@ class LemoAPI:
             gs = (grequests.get(self.api_url, params=c) for c in categories)
             self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
         except Exception as e:
-            log.error(e)
+            log.error(e.__dict__)
             gs = (requests.get(self.api_url, params=c) for c in categories)
             self.m3u_items += list(chain(*(self.process(r) for r in gs)))
 

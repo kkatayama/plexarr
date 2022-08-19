@@ -8,6 +8,13 @@ import requests
 
 
 log = getLogger()
+HTTPBIN_URL = os.environ.get('HTTPBIN_URL', 'http://httpbin.org/')
+
+def httpbin(*suffix):
+    """Returns url for HTTPBIN resource."""
+    return HTTPBIN_URL + '/'.join(suffix)
+
+
 class LemoAPI:
     """MultiThreaded API For LemoIPTV"""
 
@@ -58,7 +65,7 @@ class LemoAPI:
         p.update({"action": "get_live_streams"})
         categories = [dict(**p, **{"category_id": c["category_id"]}) for c in self.cats]
         try:
-            gs = (grequests.get(self.api_url, params=c) for c in categories)
+            gs = [(grequests.get(httpbin('delay/1'), timeout=0.001), grequests.get(self.api_url, params=c) for c in categories)]
             self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
         except Exception as e:
             log.error(e.__dict__)

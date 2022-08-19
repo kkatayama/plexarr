@@ -54,6 +54,25 @@ class HTPC_API(object):
         self.mal = config['mal']
         self.og = config['og']
 
+    def getXEPG(self, host='og', outfile='lemo_xepg.json'):
+        """Download xTeVe xepg file: ~/.xteve/xepg.json
+
+        Returns:
+            channels (list) - of json objects
+        """
+        host = eval(f"dict(htpc.{host}.items())")
+        if ".44" in host["ip"]:
+            xepg = f'/home/{host["username"]}/.xteve/xepg.json'
+        else:
+            xepg = f'/Users/{host["username"]}/.xteve/xepg.json'
+
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+            with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
+                scp.get(remote_path=xepg, local_path=outfile)
+
+
     def getMovieDownloads(self):
         """List all downloaded movies that need to be imported into Radarr
 

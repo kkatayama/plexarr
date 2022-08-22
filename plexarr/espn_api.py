@@ -1,5 +1,6 @@
 from datetime import datetime as dt
 from pathlib import Path
+from rich import print
 from furl import furl
 import requests
 import json
@@ -42,10 +43,11 @@ class ESPN_API(object):
         # -- read cached data if exists: plexarr/data/nfl_teams_2022.js
         js = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.js')
         if js.exists() and not update:
+            print(f'loading from cache: "{js}"')
             with open(str(js)) as f:
                 return json.load(f)
 
-        # --- get all team links
+            # 95--- get all team links
         data = data if data else self.PARAMS
         path = f'/seasons/{year}/teams'
         team_links = [item['$ref'] for item in self.get(path=path, data=data)['items']]

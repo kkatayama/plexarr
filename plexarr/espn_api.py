@@ -4,6 +4,7 @@ from rich import print
 from furl import furl
 import requests
 import json
+import re
 
 
 class ESPN_API(object):

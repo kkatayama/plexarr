@@ -40,10 +40,10 @@ class ESPN_API(object):
         year = year if year else self.YEAR
 
         # -- read cached data if exists: plexarr/data/nfl_teams_2022.js
-        # js = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.js')
-        # if js.exists() and not update:
-        #     with open(str(js)) as f:
-        #         return json.load(f)
+        js = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.js')
+        if js.exists() and not update:
+            with open(str(js)) as f:
+                return json.load(f)
 
         # --- get all team links
         data = data if data else self.PARAMS

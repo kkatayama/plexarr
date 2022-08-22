@@ -143,10 +143,10 @@ class KemoAPI(object):
 
     def xmlNFL(self):
         """Generate xml for NFL Streams"""
+        nfl_teams = getNFLTeams()
         channels = []
         programs = []
         for stream in self.getStreamsNFL():
-            nfl_teams = getNFLTeams()
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"

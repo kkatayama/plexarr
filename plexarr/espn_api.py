@@ -37,7 +37,7 @@ class ESPN_API(object):
         r = requests.get(url, params=params)
         return r.json()
 
-    def getTeams(self, year=0, data={}, update=False):
+    def getNFLTeams(self, year=0, data={}, update=False):
         year = year if year else self.YEAR
 
         # -- read cached data if exists: plexarr/data/nfl_teams_2022.js

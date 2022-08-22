@@ -9,11 +9,12 @@ from teddy import convertEPGTime, getEPGTimeNow
 from bottle import template
 from furl import furl
 # from .utils import gen_xmltv_xml
+# from .utils import getNFLTeams
 
-from .utils import getNFLTeams
+from .espn_api import ESPN_API
 
 
-class KemoAPI(object):
+class KemoAPI(ESPN_API):
     """
     REST API Wrapper for Kemo/Lemo TV
 
@@ -46,6 +47,7 @@ class KemoAPI(object):
         }
         self.CATEGORY = {}
         self.STREAMS = {}
+        super().__init__()
 
     def getCategories(self, groups):
         """Get All Categories in Matching Groups"""
@@ -96,6 +98,7 @@ class KemoAPI(object):
         streams = self.getStreams(terms=terms)
         return streams
 
+
     def m3uNFL(self):
         """Generate m3u for NFL Streams"""
         m3u = "#EXTM3U\n"
@@ -143,11 +146,19 @@ class KemoAPI(object):
 
     def xmlNFL(self):
         """Generate xml for NFL Streams"""
-        nfl_teams = getNFLTeams()
+        nfl_teams = self.getNFLTeams()
+        regex = (
+            rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
+            rf"(?P<team1>(?:{teams}))*(\svs\s+)*"
+            rf"(?P<team2>(?:{teams}))*(\s*@\s*|\s*\(\s*)*"
+            rf"(?P<time>\d+:\d+\s*\w+)*(\)|)*"
+        )
+        m = re.compile(regex)
         channels = []
         programs = []
         for stream in self.getStreamsNFL():
             tvg_id = stream.get("stream_id")
+
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
             # tvg_group = "NFL Sunday Games"

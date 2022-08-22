@@ -14,7 +14,7 @@ from furl import furl
 from .espn_api import ESPN_API
 
 
-class KemoAPI(ESPN_API):
+class KemoAPI(object):
     """
     REST API Wrapper for Kemo/Lemo TV
 
@@ -47,7 +47,7 @@ class KemoAPI(ESPN_API):
         }
         self.CATEGORY = {}
         self.STREAMS = {}
-        super().__init__()
+        self.espn = ESPN_API()
 
     def getCategories(self, groups):
         """Get All Categories in Matching Groups"""

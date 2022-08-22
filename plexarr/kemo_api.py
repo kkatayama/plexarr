@@ -12,7 +12,23 @@ from furl import furl
 
 
 class KemoAPI(object):
-    """REST API Wrapper for GitHub"""
+    """
+    REST API Wrapper for Kemo/Lemo TV
+
+    Example Usage:
+    from plexarr import KemoAPI
+    from rich import print
+
+    kemo = KemoAPI()
+    for stream in kemo.getStreamsNFL():
+        info = {
+            "tvg_id": stream.get("stream_id"),
+            "tvg_name": stream.get("name").split(":")[0].strip(),
+            "tvg_logo": stream.get("stream_icon"),
+            "epg_desc": stream.get("name").split(":", maxsplit=1)[1].strip(),
+        }
+        print(info)
+    """
 
     def __init__(self):
         """Configs"""

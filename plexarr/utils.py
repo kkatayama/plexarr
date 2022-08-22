@@ -2,6 +2,10 @@ import re
 import json
 from furl import furl
 
+from nfl_data_py import import_team_desc, import_schedules
+from datetime import datetime as dt
+from pathlib import Path
+
 
 # -- https://stackoverflow.com/a/41510011/3370913
 def camel_case(s):
@@ -112,3 +116,35 @@ def m3u_to_json(src):
         )
     data.update({"streams": streams})
     return json.dumps(data)
+
+
+def getNFLTeams():
+    # -- get NFL season start year
+    today = dt.now()
+    year = (today.year - 1) if (today.month < 3) else today.year
+
+    # -- read cached data if exists: plexarr/data/nfl_teams_2022.js
+    js = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.js')
+    if js.exists():
+        with open(str(js)) as f:
+            return json.load(f)
+    else:
+        # -- fetch NFL data
+        df_schedule = import_schedules([year])
+        df_teams = import_team_desc()
+        df_week1 = df_schedule[(df_schedule["week"] == 1)]
+
+        # -- index filters
+        week1_home_teams = df_teams["team_abbr"].isin(df_week1["home_team"])
+        week1_away_teams = df_teams["team_abbr"].isin(df_week1["away_team"])
+
+        # -- merge + filter data
+        df = df_teams[(week1_home_teams) | (week1_away_teams)]
+        df = df[["team_name", "team_nick", "team_abbr", "team_conf", "team_division"]]
+        df.reset_index(drop=True, inplace=True)
+
+        # -- cache data
+        df.to_json(str(js), orient='records', indent=2)
+
+        # -- return List of Team Objects (records)
+        return df.to_dict(orient="records")

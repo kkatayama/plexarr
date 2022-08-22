@@ -1,3 +1,4 @@
 
 include README.md
 include plexarr/templates/epg.tpl
+include plexarr/data/*

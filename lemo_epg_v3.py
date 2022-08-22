@@ -1,6 +1,6 @@
 #!/usr/local/bin/genv python3
 import grequests
-from plexarr import LemoAPI
+from plexarr.lemo_api import LemoAPI
 from bottle import template
 from pathlib import Path
 

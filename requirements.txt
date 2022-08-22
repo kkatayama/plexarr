@@ -1,4 +1,10 @@
 requests
+grequests
 paramiko
 scp
 sh
+rich
+pandas
+bottle
+furl
+nfl_data_py

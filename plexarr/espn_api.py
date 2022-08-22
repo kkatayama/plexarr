@@ -75,11 +75,56 @@ class ESPN_API(object):
         return teams
 
     def parseNFLInfo(self, line):
+        """
+        Parse NFL Info From Channel Name Description
+
+        from plexarr.espn_api import ESPN_API
+        from rich import print
+        import re
+
+        tests = [
+            "USA NFL Sunday 705: Las Vegas Raiders vs Minnesota Vikings @ 04:25 PM",
+            "USA NFL Sunday Night: Cincinnati Bengals vs Los Angeles Rams @ 06:30 PM",
+            "USA NFL Sunday 705: Philadelphia Eagles vs  Cleveland Browns @ 01:00 PM",
+            "USA NFL Sunday 706: New York Giants vs Cincinnati Bengals @ 07:00 PM",
+            "USA NFL Sunday 707: Arizona Cardinals vs Baltimore Ravens @ 08:00 PM",
+            "USA NFL Sunday 707: Arizona Cardinals vs Baltimore Ravens (08:00 PM)",
+            "USA NFL Sunday 708:",
+            "USA NFL Sunday 708",
+        ]
+        espn = ESPN_API()
+        teams = "|".join([team["team_name"] for team in espn.getNFLTeams()])
+        regex = rf"(?P<channel>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*(?P<team1>(?:{teams}))*(\svs\s+)*(?P<team2>(?:{teams}))*(\s*@\s*|\s*\(\s*)*(?P<time>\d+:\d+\s*\w+)*(\)|)*"
+        m = re.compile(regex)
+        for test in tests:
+            print(test)
+            print(m.search(test).groupdict())
+
+        # -- OUTPUTS -- #
+        loading from cache: "/Users/katayama/.pyenv/versions/3.9.1/lib/python3.9/site-packages/plexarr/data/nfl_teams_2022.js"
+        USA NFL Sunday 705: Las Vegas Raiders vs Minnesota Vikings @ 04:25 PM
+        {'channel': 'USA NFL Sunday 705', 'team1': 'Las Vegas Raiders', 'team2': 'Minnesota Vikings', 'time': '04:25 PM'}
+        USA NFL Sunday Night: Cincinnati Bengals vs Los Angeles Rams @ 06:30 PM
+        {'channel': 'USA NFL Sunday Night', 'team1': 'Cincinnati Bengals', 'team2': 'Los Angeles Rams', 'time': '06:30 PM'}
+        USA NFL Sunday 705: Philadelphia Eagles vs  Cleveland Browns @ 01:00 PM
+        {'channel': 'USA NFL Sunday 705', 'team1': 'Philadelphia Eagles', 'team2': 'Cleveland Browns', 'time': '01:00 PM'}
+        USA NFL Sunday 706: New York Giants vs Cincinnati Bengals @ 07:00 PM
+        {'channel': 'USA NFL Sunday 706', 'team1': 'New York Giants', 'team2': 'Cincinnati Bengals', 'time': '07:00 PM'}
+        USA NFL Sunday 707: Arizona Cardinals vs Baltimore Ravens @ 08:00 PM
+        {'channel': 'USA NFL Sunday 707', 'team1': 'Arizona Cardinals', 'team2': 'Baltimore Ravens', 'time': '08:00 PM'}
+        USA NFL Sunday 707: Arizona Cardinals vs Baltimore Ravens (08:00 PM)
+        {'channel': 'USA NFL Sunday 707', 'team1': 'Arizona Cardinals', 'team2': 'Baltimore Ravens', 'time': '08:00 PM'}
+        USA NFL Sunday 708:
+        {'channel': 'USA NFL Sunday 708', 'team1': None, 'team2': None, 'time': None}
+        USA NFL Sunday 708
+        {'channel': 'USA NFL Sunday 708', 'team1': None, 'team2': None, 'time': None}
+        """
         nfl_teams = self.getNFLTeams()
         regex = (
             rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
-            rf"(?P<team1>(?:{teams}))*(\svs\s+)*"
-            rf"(?P<team2>(?:{teams}))*(\s*@\s*|\s*\(\s*)*"
+            rf"(?P<team1>(?:{nfl_teams}))*(\svs\s+)*"
+            rf"(?P<team2>(?:{nfl_teams}))*(\s*@\s*|\s*\(\s*)*"
             rf"(?P<time>\d+:\d+\s*\w+)*(\)|)*"
         )
         m = re.compile(regex)
+        return

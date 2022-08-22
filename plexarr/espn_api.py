@@ -57,8 +57,8 @@ class ESPN_API(object):
             for link in team_links:
                 team_info = self.getURL(url=link)
                 team = {
-                    "team_id": team_info["id"],
                     "team_name": team_info["displayName"],
+                    "team_id": team_info["id"],
                     "team_nick": team_info["name"],
                     "team_abbr": team_info["abbreviation"],
                     "team_area": team_info["location"],

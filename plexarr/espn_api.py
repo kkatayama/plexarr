@@ -120,7 +120,7 @@ class ESPN_API(object):
         USA NFL Sunday 708
         {'channel': 'USA NFL Sunday 708', 'team1': None, 'team2': None, 'time': None}
         """
-        nfl_teams = self.getNFLTeams()
+        nfl_teams = = "|".join([team["team_name"] for team in self.getNFLTeams()])
         regex = (
             rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
             rf"(?P<team1>(?:{nfl_teams}))*(\svs\s+)*"

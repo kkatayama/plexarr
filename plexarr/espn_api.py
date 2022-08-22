@@ -36,12 +36,12 @@ class ESPN_API(object):
         r = requests.get(url, params=params)
         return r.json()
 
-    def getTeams(self, year=0, data={}):
+    def getTeams(self, year=0, data={}, update=False):
         year = year if year else self.YEAR
 
         # -- read cached data if exists: plexarr/data/nfl_teams_2022.js
         js = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.js')
-        if js.exists():
+        if js.exists() and not update:
             with open(str(js)) as f:
                 return json.load(f)
 
@@ -55,6 +55,7 @@ class ESPN_API(object):
         for link in team_links:
             team_info = self.getURL(url=link)
             team = {
+                "team_id": team_info["id"],
                 "team_name": team_info["displayName"],
                 "team_nick": team_info["name"],
                 "team_abbr": team_info["abbreviation"],

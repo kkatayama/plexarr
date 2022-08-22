@@ -146,18 +146,12 @@ class KemoAPI(object):
 
     def xmlNFL(self):
         """Generate xml for NFL Streams"""
-        nfl_teams = self.getNFLTeams()
-        regex = (
-            rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
-            rf"(?P<team1>(?:{teams}))*(\svs\s+)*"
-            rf"(?P<team2>(?:{teams}))*(\s*@\s*|\s*\(\s*)*"
-            rf"(?P<time>\d+:\d+\s*\w+)*(\)|)*"
-        )
-        m = re.compile(regex)
         channels = []
         programs = []
         for stream in self.getStreamsNFL():
             tvg_id = stream.get("stream_id")
+            nfl_info = self.espn.parseNFLInfo(stream.get("name"))
+            print(nfl_info)
 
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"

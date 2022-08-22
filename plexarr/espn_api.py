@@ -73,3 +73,13 @@ class ESPN_API(object):
             with open(str(js), 'w') as f:
                 json.dump(teams, f, indent=2)
         return teams
+
+    def parseNFLInfo(self, line):
+        nfl_teams = self.getNFLTeams()
+        regex = (
+            rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
+            rf"(?P<team1>(?:{teams}))*(\svs\s+)*"
+            rf"(?P<team2>(?:{teams}))*(\s*@\s*|\s*\(\s*)*"
+            rf"(?P<time>\d+:\d+\s*\w+)*(\)|)*"
+        )
+        m = re.compile(regex)

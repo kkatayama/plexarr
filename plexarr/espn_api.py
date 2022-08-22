@@ -69,3 +69,4 @@ class ESPN_API(object):
         # -- cache team data
         with open(str(js), 'w') as f:
             json.dump(teams, f, indent=2)
+        return teams

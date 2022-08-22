@@ -45,31 +45,31 @@ class ESPN_API(object):
         if js.exists() and not update:
             print(f'loading from cache: "{js}"')
             with open(str(js)) as f:
-                return json.load(f)
+                teams = json.load(f)
+        else:
+            # --- get all team links
+            data = data if data else self.PARAMS
+            path = f'/seasons/{year}/teams'
+            team_links = [item['$ref'] for item in self.get(path=path, data=data)['items']]
 
-            # 95--- get all team links
-        data = data if data else self.PARAMS
-        path = f'/seasons/{year}/teams'
-        team_links = [item['$ref'] for item in self.get(path=path, data=data)['items']]
+            # -- fetch and parse all team links
+            teams = []
+            for link in team_links:
+                team_info = self.getURL(url=link)
+                team = {
+                    "team_id": team_info["id"],
+                    "team_name": team_info["displayName"],
+                    "team_nick": team_info["name"],
+                    "team_abbr": team_info["abbreviation"],
+                    "team_area": team_info["location"],
+                    "team_venue": team_info["venue"]["fullName"]
+                }
+                teams.append(team)
 
-        # -- fetch and parse all team links
-        teams = []
-        for link in team_links:
-            team_info = self.getURL(url=link)
-            team = {
-                "team_id": team_info["id"],
-                "team_name": team_info["displayName"],
-                "team_nick": team_info["name"],
-                "team_abbr": team_info["abbreviation"],
-                "team_area": team_info["location"],
-                "team_venue": team_info["venue"]["fullName"]
-            }
-            teams.append(team)
+            # -- sort teams
+            teams = sorted(teams, key=lambda x: x["team_name"])
 
-        # -- sort teams
-        teams = sorted(teams, key=lambda x: x["team_name"])
-
-        # -- cache team data
-        with open(str(js), 'w') as f:
-            json.dump(teams, f, indent=2)
+            # -- cache team data
+            with open(str(js), 'w') as f:
+                json.dump(teams, f, indent=2)
         return teams

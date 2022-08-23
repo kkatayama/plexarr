@@ -1,10 +1,13 @@
-import re
+import xmltodict
 import json
-from furl import furl
+import re
 
-from nfl_data_py import import_team_desc, import_schedules
 from datetime import datetime as dt
 from pathlib import Path
+from furl import furl
+
+
+from nfl_data_py import import_team_desc, import_schedules
 import pandas as pd
 
 
@@ -117,6 +120,71 @@ def m3u_to_json(src):
         )
     data.update({"streams": streams})
     return json.dumps(data)
+
+def epg_to_dict(src):
+    # -- https://github.com/martinblech/xmltodict | https://github.com/dart-neitro/xmltodict3
+    """
+    <?xml version="1.0" encoding="utf-8"?>
+    <tv>
+        <generator-info-name>IPTV</generator-info-name>
+        <channel id="fox8wghp.us">
+                <display-name>USA FOX 8 WGHP HIGH POINT</display-name>
+                <icon src="https://tse1.mm.bing.net/th?id=OIP.STWepjwC5f9QLqwGq-eRVAAAAA&amp;pid=Api&amp;rs=1&amp;c=1&amp;qlt=95&amp;w=85&amp;h=113"></icon>
+        </channel>
+        <programme start="20220218080000 +0000" stop="20220218103000 +0000" start_timestamp="1645171200" stop_timestamp="1645180200" channel="abckmiz.us">
+                <title>ABC World News Now</title>
+                <desc>This news broadcast presents the morning's top stories and breaking news from around the world.</desc>
+        </programme>
+    </tv>
+    {
+        'tv': {
+            'generator-info-name': 'IPTV',
+            'channel': [
+                {'@id': 'fox8wghp.us', 'display-name': 'USA FOX 8 WGHP HIGH POINT', 'icon': {'@src': 'https://tse1.mm.bing.net/th?id=OIP.STWepjwC5f9QLqwGq-eRVAAAAA&pid=Api&rs=1&c=1&qlt=95&w=85&h=113'}},
+            ],
+            'programme': [
+                {'@start': '20220218080000 +0000', '@stop': '20220218103000 +0000', '@start_timestamp': '1645171200', '@stop_timestamp': '1645180200', '@channel': 'abckmiz.us',
+                    'title': 'ABC World News Now',
+                    'desc': "This news broadcast presents the morning's top stories and breaking news from around the world."
+                },
+            ]
+        }
+    }
+    """
+    xml = Path(src).read_text() if Path(src).is_file() else src
+    # return xmltodict.parse(xml, attr_prefix="", dict_constructor=dict)
+    return xmltodict.parse(xml, dict_constructor=dict)
+
+def dict_to_epg(src):
+    """
+    <?xml version="1.0" encoding="utf-8"?>
+    <tv>
+        <generator-info-name>IPTV</generator-info-name>
+        <channel id="fox8wghp.us">
+                <display-name>USA FOX 8 WGHP HIGH POINT</display-name>
+                <icon src="https://tse1.mm.bing.net/th?id=OIP.STWepjwC5f9QLqwGq-eRVAAAAA&amp;pid=Api&amp;rs=1&amp;c=1&amp;qlt=95&amp;w=85&amp;h=113"></icon>
+        </channel>
+        <programme start="20220218080000 +0000" stop="20220218103000 +0000" start_timestamp="1645171200" stop_timestamp="1645180200" channel="abckmiz.us">
+                <title>ABC World News Now</title>
+                <desc>This news broadcast presents the morning's top stories and breaking news from around the world.</desc>
+        </programme>
+    </tv>
+    {
+        'tv': {
+            'generator-info-name': 'IPTV',
+            'channel': [
+                {'@id': 'fox8wghp.us', 'display-name': 'USA FOX 8 WGHP HIGH POINT', 'icon': {'@src': 'https://tse1.mm.bing.net/th?id=OIP.STWepjwC5f9QLqwGq-eRVAAAAA&pid=Api&rs=1&c=1&qlt=95&w=85&h=113'}},
+            ],
+            'programme': [
+                {'@start': '20220218080000 +0000', '@stop': '20220218103000 +0000', '@start_timestamp': '1645171200', '@stop_timestamp': '1645180200', '@channel': 'abckmiz.us',
+                    'title': 'ABC World News Now',
+                    'desc': "This news broadcast presents the morning's top stories and breaking news from around the world."
+                },
+            ]
+        }
+    }
+    """
+    return xmltodict.unparse(src, pretty=True)
 
 
 def getNFLTeams():

@@ -24,12 +24,14 @@ class PlexPy(PlexServer):
         self.ALERT_TYPES = literal_eval(config['plex'].get('ALERT_TYPES'))
         self.utils = utils
         if int(float(server)) == 1:
+            self.server = 'plex'
             self.api_url = config['plex'].get('api_url').strip('/') + '/'
             self.api_key = config['plex'].get('api_key')
             super().__init__(baseurl=self.api_url, token=self.api_key)
         else:
-            self.api_url = config['plex2'].get('api_url').strip('/') + '/'
-            self.api_key = config['plex2'].get('api_key')
+            self.server = f'plex{server}'
+            self.api_url = config[server].get('api_url').strip('/') + '/'
+            self.api_key = config[server].get('api_key')
             super().__init__(baseurl=self.api_url, token=self.api_key)
 
 

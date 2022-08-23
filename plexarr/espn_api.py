@@ -1,7 +1,9 @@
+from .utils import to_csv, read_csv
 from datetime import datetime as dt
 from pathlib import Path
 from rich import print
 from furl import furl
+import pandas as pd
 import requests
 import json
 import re
@@ -15,6 +17,9 @@ class ESPN_API(object):
         self.API_URL = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
         self.PARAMS = {'lang': 'en', 'region': 'us', 'limit': 32}
         self.YEAR = self.getYear()
+        self.df_teams = self.getNFLTeams()
+        if not Path(__file__).parent.joinpath(f'data/nfl_schedule_{self.YEAR}.csv').exists():
+            self.getNFLSchedule()
 
     def getYear(self):
         """get NFL season start year"""
@@ -38,42 +43,101 @@ class ESPN_API(object):
         r = requests.get(url, params=params)
         return r.json()
 
+    def getItems(self, path='/', data={}):
+        """Requests Nested get(): [getURL()] Wrapper"""
+        print(f'path = "{path}"')
+        return [self.getURL(item["$ref"]) for item in self.get(path=path, data=data)["items"]]
+
     def getNFLTeams(self, year=0, data={}, update=False):
         year = year if year else self.YEAR
 
         # -- read cached data if exists: plexarr/data/nfl_teams_2022.js
-        js = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.js')
-        if js.exists() and not update:
-            print(f'loading from cache: "{js}"')
-            with open(str(js)) as f:
-                teams = json.load(f)
+        csv = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.csv')
+        if csv.exists() and not update:
+            print(f'loading from cache: "{csv}"')
+            df_teams = read_csv(csv)
+            # with open(str(js)) as f:
+            #     teams = json.load(f)
         else:
+            print(f'first run...\ncaching: "{csv}"')
             # --- get all team links
             data = data if data else self.PARAMS
             path = f'/seasons/{year}/teams'
-            team_links = [item['$ref'] for item in self.get(path=path, data=data)['items']]
+            # ref_links = [item['$ref'] for item in self.get(path=path, data=data)['items']]
 
-            # -- fetch and parse all team links
+            # # -- fetch and parse all team links
             teams = []
-            for link in team_links:
-                team_info = self.getURL(url=link)
+            # for link in ref_links:
+            #     team_info = self.getURL(url=link)
+            for item in self.getItems(path=path, data=data):
                 team = {
-                    "team_name": team_info["displayName"],
-                    "team_id": team_info["id"],
-                    "team_nick": team_info["name"],
-                    "team_abbr": team_info["abbreviation"],
-                    "team_area": team_info["location"],
-                    "team_venue": team_info["venue"]["fullName"]
+                    "team_name": item["displayName"],
+                    "team_id": item["id"],
+                    "team_nick": item["name"],
+                    "team_abbr": item["abbreviation"],
+                    "team_area": item["location"],
+                    "team_venue": item["venue"]["fullName"]
                 }
                 teams.append(team)
 
             # -- sort teams
             teams = sorted(teams, key=lambda x: x["team_name"])
-
+            df_teams = pd.DataFrame.from_records(teams)
             # -- cache team data
-            with open(str(js), 'w') as f:
-                json.dump(teams, f, indent=2)
-        return teams
+            # with open(str(js), 'w') as f:
+            #     json.dump(teams, f, indent=2)
+            to_csv(df_teams, csv)
+        return df_teams
+
+    def getNFLSchedule(self, year=0, data={}, update=False):
+        year = year if year else self.YEAR
+
+        # -- read cached data if exists: plexarr/data/nfl_teams_2022.js
+        csv = Path(__file__).parent.joinpath(f'data/nfl_schedule_{year}.csv')
+        if csv.exists() and not update:
+            print(f'loading from cache: "{csv}"')
+            df_schedule = read_csv(csv)
+            # with open(str(csv)) as f:
+            #     teams = json.load(f)
+        else:
+            print(f'first run...\ncaching: "{csv}"')
+            # -- fetch and parse all season types
+            data = data if data else self.PARAMS
+            path = f'/seasons/{year}/types'
+            schedule = []
+            for season in self.getItems(path=path, data=data):
+                path_weeks = f'{path}/{season["id"]}/weeks'
+                for week in self.getItems(path=path_weeks, data=data):
+                    path_events = f'{path_weeks}/{week["number"]}/events'
+                    for event in self.getItems(path=path_events, data=data):
+                        df_event = pd.DataFrame.from_records([
+                            {"team_id": team["id"], "homeAway": team["homeAway"]}
+                            for team in event["competitions"][0]["competitors"]
+                        ])
+                        df_game = df_event.merge(self.df_teams)
+                        home = df_game[df_game["homeAway"] == "home"].squeeze()
+                        away = df_game[df_game["homeAway"] == "away"].squeeze()
+
+                        game = {
+                            "season": season["name"],
+                            "season_type": season["id"],
+                            "week_name": week["text"],
+                            "week_start": week["startDate"],
+                            "week_end": week["endDate"],
+                            "game_name": event["name"],
+                            "game_short": event["shortName"],
+                            "game_date": event["date"],
+                            "home_team": "" if home.empty else home["team_name"] ,
+                            "home_venue": "" if home.empty else home["team_venue"],
+                            "away_team": "" if away.empty else away["team_name"],
+                        }
+                        schedule.append(game)
+            df_schedule = pd.DataFrame.from_records(schedule)
+            df_schedule["week_start"] = pd.to_datetime(df_schedule["week_start"])
+            df_schedule["week_end"] = pd.to_datetime(df_schedule["week_end"])
+            df_schedule["game_date"] = pd.to_datetime(df_schedule["game_date"])
+            to_csv(df_schedule, csv)
+        return df_schedule
 
     def parseNFLInfo(self, line):
         """
@@ -120,7 +184,8 @@ class ESPN_API(object):
         USA NFL Sunday 708
         {'channel': 'USA NFL Sunday 708', 'team1': None, 'team2': None, 'time': None}
         """
-        nfl_teams = = "|".join([team["team_name"] for team in self.getNFLTeams()])
+        # nfl_teams = "|".join([team["team_name"] for team in self.NFL_TEAMS])
+        nfl_teams = "|".join(self.df_teams["team_name"])
         regex = (
             rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
             rf"(?P<team1>(?:{nfl_teams}))*(\svs\s+)*"
@@ -128,4 +193,4 @@ class ESPN_API(object):
             rf"(?P<time>\d+:\d+\s*\w+)*(\)|)*"
         )
         m = re.compile(regex)
-        return
+        return m.search(line).groupdict()

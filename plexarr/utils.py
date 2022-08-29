@@ -257,6 +257,7 @@ def _send_udp(to, packet):
     sock.close()
 
 def find_xteve_devices():
+    """Find All xTeVe Devices"""
     payload = "\r\n".join(
         [
             "M-SEARCH * HTTP/1.1",

@@ -6,9 +6,13 @@ from datetime import datetime as dt
 from pathlib import Path
 from furl import furl
 
-
 from nfl_data_py import import_team_desc, import_schedules
 import pandas as pd
+
+import time
+import socket
+import select
+from contextlib import contextmanager
 
 
 # -- https://stackoverflow.com/a/41510011/3370913
@@ -238,3 +242,56 @@ def read_csv(path):
                    nrows=1).iloc[0].to_dict().items() if 'date' in value]
     # Read the rest of the lines with the types from above
     return pd.read_csv(path, dtype=dtypes, parse_dates=parse_dates, skiprows=[1]).fillna('')
+
+
+# -- https://github.com/cherezov/dlnap/blob/08001ef6e1246215bc71bd2f4220b982dbb8b395/dlnap/dlnap.py#L375
+@contextmanager
+def _send_udp(to, packet):
+    """Send UDP message to group
+    to -- (host, port) group to send the packet to
+    packet -- message to send
+    """
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+    sock.sendto(packet.encode(), to)
+    yield sock
+    sock.close()
+
+def find_xteve_devices():
+    payload = "\r\n".join(
+        [
+            "M-SEARCH * HTTP/1.1",
+            "User-Agent: {}/{}".format(
+                "Mozilla",
+                "5.0 (Macintosh; Intel Mac OS X 10.15; rv:104.0) Gecko/20100101 Firefox/104.0",
+            ),
+            "HOST: {}:{}".format("239.255.255.250", 1900),
+            "Accept: */*",
+            'MAN: "ssdp:discover"',
+            "ST: {}".format("ssdp:all"),
+            "MX: {}".format(3),
+            "",
+            "",
+        ]
+    )
+    timeout = 1
+    devices = {}
+    with _send_udp(SSDP_GROUP, payload) as sock:
+        start = time.time()
+        while True:
+            if time.time() - start > timeout:
+                break
+            r, w, x = select.select([sock], [], [sock], 1)
+            if sock in r:
+                data, addr = sock.recvfrom(1024)
+                if b"xteve" in data:
+                    m = re.search(rb"(LOCATION:\s+)(?P<location>.*)(\r\n)", data)
+                    ip = addr[0]
+                    location = furl(m.groupdict()["location"].decode())
+                    m3u = location.join('/m3u/xteve.m3u')
+                    epg = location.join('/xmltv/xteve.xml')
+                    devices[ip] = {
+                        'location': location.url,
+                        'm3u': m3u,
+                        'epg': epg,
+                    }
+    return devices

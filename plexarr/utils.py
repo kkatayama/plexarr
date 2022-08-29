@@ -275,7 +275,7 @@ def find_xteve_devices():
         ]
     )
     timeout = 1
-    devices = {}
+    devices = []
     with _send_udp(("239.255.255.250", 1900), payload) as sock:
         start = time.time()
         while True:
@@ -290,9 +290,10 @@ def find_xteve_devices():
                     location = furl(m.groupdict()["location"].decode())
                     m3u = location.join('/m3u/xteve.m3u')
                     epg = location.join('/xmltv/xteve.xml')
-                    devices[ip] = {
+                    devices.append({
+                        'ip': ip,
                         'location': location.url,
                         'm3u': m3u.url,
                         'epg': epg.url,
-                    }
+                    })
     return devices

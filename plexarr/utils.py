@@ -155,7 +155,11 @@ def epg_to_dict(src):
         }
     }
     """
-    xml = Path(src).read_text() if Path(src).is_file() else src
+
+    if len(src) > 100:
+        xml = src
+    else:
+        xml = Path(src).read_text() if Path(src).is_file() else src
     # return xmltodict.parse(xml, attr_prefix="", dict_constructor=dict)
     return xmltodict.parse(xml, dict_constructor=dict)
 

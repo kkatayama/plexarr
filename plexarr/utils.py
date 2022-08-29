@@ -292,12 +292,12 @@ def find_xteve_devices():
                     m = re.search(rb"(LOCATION:\s+)(?P<location>.*)(\r\n)", data)
                     ip = addr[0]
                     location = furl(m.groupdict()["location"].decode())
-                    m3u = location.join('/m3u/xteve.m3u')
-                    epg = location.join('/xmltv/xteve.xml')
+                    m3u = location.join('/m3u/xteve.m3u').url
+                    epg = location.join('/xmltv/xteve.xml').url
                     devices.append({
                         'ip': ip,
                         'location': location.url,
-                        'm3u': m3u.url,
-                        'epg': epg.url,
+                        'm3u': m3u,
+                        'epg': epg,
                     })
     return devices

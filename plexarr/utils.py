@@ -276,7 +276,7 @@ def find_xteve_devices():
     )
     timeout = 1
     devices = {}
-    with _send_udp(SSDP_GROUP, payload) as sock:
+    with _send_udp(("239.255.255.250", 1900), payload) as sock:
         start = time.time()
         while True:
             if time.time() - start > timeout:

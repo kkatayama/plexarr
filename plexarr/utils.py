@@ -292,7 +292,7 @@ def find_xteve_devices():
                     epg = location.join('/xmltv/xteve.xml')
                     devices[ip] = {
                         'location': location.url,
-                        'm3u': m3u,
-                        'epg': epg,
+                        'm3u': m3u.url,
+                        'epg': epg.url,
                     }
     return devices

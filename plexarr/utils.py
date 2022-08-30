@@ -96,13 +96,16 @@ def m3u_to_json(src):
     temp_info = temp.pop(0)
 
     data = {}
-    regex_info = r'#EXTM3U url-tvg="(?P<url_tvg>.*)" x-tvg-url="(?P<x_tvg_url>.*)"'
-    info = re.search(regex_info, temp_info).groupdict()
+    regex_info = r"""
+        #EXTM3U url-tvg="(?P<url_tvg>.*)" x-tvg-url="(?P<x_tvg_url>.*)"   |
+        #EXTM3U(.*)
+    """
+    info = re.search(regex_info, temp_info, re.VERBOSE).groupdict()
     data.update(info)
 
     streams = []
     regex_stream = r"""
-        [#]EXTINF:(?P<ext_inf>\d+)                          | # TODO
+        [#]EXTINF:(?P<ext_inf>(\d|-)+)                          | # TODO
         channelID=["](?P<channelID>[^"]+)["]     | # Channel ID
         tvg-chno=["](?P<tvg_chno>[^"]+)["]       | # TVG Number
         tvg-name=["](?P<tvg_name>[^"]+)["]       | # TVG Name

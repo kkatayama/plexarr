@@ -252,55 +252,30 @@ def read_csv(path):
 
 
 # -- https://github.com/cherezov/dlnap/blob/08001ef6e1246215bc71bd2f4220b982dbb8b395/dlnap/dlnap.py#L375
-@contextmanager
-def _send_udp(to, packet):
-    """Send UDP message to group
-    to -- (host, port) group to send the packet to
-    packet -- message to send
-    """
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    sock.sendto(packet.encode(), to)
-    yield sock
-    sock.close()
-
+# -- https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/
 def find_xteve_devices():
     """Find All xTeVe Devices"""
-    payload = "\r\n".join(
-        [
-            "M-SEARCH * HTTP/1.1",
-            "User-Agent: {}/{}".format(
-                "Mozilla",
-                "5.0 (Macintosh; Intel Mac OS X 10.15; rv:104.0) Gecko/20100101 Firefox/104.0",
-            ),
-            "HOST: {}:{}".format("239.255.255.250", 1900),
-            "Accept: */*",
-            'MAN: "ssdp:discover"',
-            "ST: {}".format("ssdp:all"),
-            "MX: {}".format(3),
-            "",
-            "",
-        ]
-    )
-    timeout = 1
+    payload = "\r\n".join([
+        "M-SEARCH * HTTP/1.1", "HOST: 239.255.255.250:1900",
+        'MAN: "ssdp:discover"',"ST: ssdp:all",
+        "MX: 3", "", "",
+    ])
     devices = []
-    with _send_udp(("239.255.255.250", 1900), payload) as sock:
-        start = time.time()
-        while True:
-            if time.time() - start > timeout:
-                break
-            r, w, x = select.select([sock], [], [sock], 1)
-            if sock in r:
-                data, addr = sock.recvfrom(1024)
-                if b"xteve" in data:
-                    m = re.search(rb"(LOCATION:\s+)(?P<location>.*)(\r\n)", data)
-                    ip = addr[0]
-                    location = furl(m.groupdict()["location"].decode())
-                    m3u = location.join('/m3u/xteve.m3u').url
-                    epg = location.join('/xmltv/xteve.xml').url
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
+        sock.settimeout(1)
+        sock.sendto(payload.encode(), ("239.255.255.250", 1900))
+        try:
+            while True:
+                resp, (addr, port) = sock.recvfrom(1024)
+                data = resp.decode()
+                if "xteve" in data:
+                    location = furl(*re.search(r"LOCATION:\s+(.*)\r\n", data).groups())
                     devices.append({
-                        'ip': ip,
+                        'ip': addr, 'port': port,
                         'location': location.url,
-                        'm3u': m3u,
-                        'epg': epg,
+                        'm3u': location.join('/m3u/xteve.m3u').url,
+                        'epg': location.join('/xmltv/xteve.xml').url,
                     })
+        except socket.timeout:
+            pass
     return devices

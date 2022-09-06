@@ -324,13 +324,13 @@ class YouTubeDLP(object):
             yt_dlp.utils.std_headers.update(self.headers)
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
-            return ytdl.download_with_info_file(self.video_url)
-            # ytdl.add_post_processor(FinishedPP())
-            # data = ytdl.extract_info(self.video_url)
-            # info = json.dumps(ytdl.sanitize_info(data))
-            # self.data = data
-            # self.info = info
-            # return "Download Finished!"
+            # return ytdl.download_with_info_file(self.video_url)
+            ytdl.add_post_processor(FinishedPP())
+            data = ytdl.extract_info(self.video_url)
+            info = json.dumps(ytdl.sanitize_info(data))
+            self.data = data
+            self.info = info
+            return "Download Finished!"
 
 
     def dVideo(self, title='', video_url='', path='', **kwargs):

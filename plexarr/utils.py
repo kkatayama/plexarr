@@ -19,6 +19,8 @@ from contextlib import contextmanager
 def get_py_path():
     # return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
     env = inspect.currentframe().f_back.f_locals
+    if ((not env.get('_dh')) and (not env.get('__file__'))):
+        env = inspect.currentframe().f_back.f_back.f_locals
     if env.get('_dh'):
         print('==ipython shell==')
         if env.get('__file__'):

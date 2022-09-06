@@ -15,6 +15,9 @@ import select
 from contextlib import contextmanager
 
 
+def get_py_path():
+    return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
+
 # -- https://stackoverflow.com/a/41510011/3370913
 def camel_case(s):
     RE_WORDS = re.compile(r'''

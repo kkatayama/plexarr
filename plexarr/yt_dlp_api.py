@@ -44,7 +44,7 @@ class FinishedPP(yt_dlp.postprocessor.PostProcessor):
         """Only Function"""
         # self.to_screen("Finalizing Conversion....")
         print("Finalizing Conversion....")
-        print(info)
+        # print(info)
         return [], info
 
 

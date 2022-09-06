@@ -66,16 +66,11 @@ class LemoAPI:
         p.update({"action": "get_live_streams"})
         categories = [dict(**p, **{"category_id": c["category_id"]}) for c in self.cats]
 
-        gs = (grequests.get(self.api_url, params=c) for c in categories)
-        self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
-
-        '''
         batch_size = 8
         payloads = [categories[i:i*batch_size] for i in range(0, len(categories), batch_size)]
         for batch in payloads:
-            gs = (grequests.get(self.api_url, params=payload) for payload in batch)
+            gs = (grequests.get(self.api_url, params=payload, stream=False) for payload in batch)
             self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
-        '''
         """
         try:
             # gs = [(grequests.get(httpbin('delay/1'), timeout=0.001), grequests.get(self.api_url, params=c) for c in categories)]

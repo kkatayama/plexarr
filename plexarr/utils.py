@@ -20,8 +20,14 @@ def get_py_path():
     # return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
     env = inspect.currentframe().f_back.f_locals
     if env.get('_dh'):
-        return Path(env["_dh"][0], env["__file__"]).resolve()
-    return Path(env["__file__"]).resolve()
+        print('==ipython shell==')
+        if env.get('__file__'):
+            return Path(env["_dh"][0], env["__file__"]).resolve().parent
+        print('<File.py>: NOT FOUND!')
+        print('Next time run with:\n  ipython -i -- <File.py>')
+        print('using cwd()')
+        return Path(env["_dh"][0])
+    return Path(env["__file__"]).resolve().parent
 
 # -- https://stackoverflow.com/a/41510011/3370913
 def camel_case(s):

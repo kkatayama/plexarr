@@ -5,6 +5,7 @@ import re
 from datetime import datetime as dt
 from pathlib import Path
 from furl import furl
+import inspect
 
 from nfl_data_py import import_team_desc, import_schedules
 import pandas as pd
@@ -16,7 +17,8 @@ from contextlib import contextmanager
 
 
 def get_py_path():
-    return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
+    # return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
+    return inspect.currentframe().f_back.f_locals
 
 # -- https://stackoverflow.com/a/41510011/3370913
 def camel_case(s):

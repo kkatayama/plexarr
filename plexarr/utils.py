@@ -18,7 +18,8 @@ from contextlib import contextmanager
 
 def get_py_path():
     # return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
-    return inspect.currentframe().f_back.f_locals
+    env_info = inspect.currentframe().f_back.f_locals
+    return Path(env_info["_dh"][0]) if env_info.get('_dh') else Path(env_info["__file__"])
 
 # -- https://stackoverflow.com/a/41510011/3370913
 def camel_case(s):

@@ -276,7 +276,7 @@ def find_xteve_devices():
         'MAN: "ssdp:discover"',"ST: ssdp:all",
         "MX: 3", "", "",
     ])
-    devices = []
+    devices = set
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
         sock.settimeout(1)
         sock.sendto(payload.encode(), ("239.255.255.250", 1900))
@@ -286,7 +286,7 @@ def find_xteve_devices():
                 data = resp.decode()
                 if "xteve" in data:
                     location = furl(*re.search(r"LOCATION:\s+(.*)\r\n", data).groups())
-                    devices.append({
+                    devices.add({
                         'ip': addr, 'port': port,
                         'location': location.url,
                         'm3u': location.join('/m3u/xteve.m3u').url,
@@ -294,4 +294,4 @@ def find_xteve_devices():
                     })
         except socket.timeout:
             pass
-    return devices
+    return list(devices)

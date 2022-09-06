@@ -67,16 +67,17 @@ class LemoAPI:
         categories = [dict(**p, **{"category_id": c["category_id"]}) for c in self.cats]
 
         batch_size = 8
-        # payloads = [categories[i:i*batch_size] for i in range(0, len(categories), batch_size)]
-        # for batch in payloads:
-        #     gs = (grequests.get(self.api_url, params=payload, stream=False) for payload in batch)
-        #     self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
-        payloads = categories[:]
-        while payloads:
-            batch = payloads[:batch_size]
+        payloads = [categories[i:i+batch_size] for i in range(0, len(categories), batch_size)]
+        for batch in payloads:
             gs = (grequests.get(self.api_url, params=payload, stream=False) for payload in batch)
             self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
-            payloads = payloads[batch_size:]
+
+        # payloads = categories[:]
+        # while payloads:
+        #     batch = payloads[:batch_size]
+        #     gs = (grequests.get(self.api_url, params=payload, stream=False) for payload in batch)
+        #     self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
+        #     payloads = payloads[batch_size:]
 
         """
         try:

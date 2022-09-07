@@ -57,7 +57,7 @@ class PlutoAPI(ChapoAPI):
         stream = next(self.getStreams(terms="Pluto: Science", bad_terms="2"))
         stream_id = stream.get("stream_id")
 
-        tvg_cuid = 280
+        tvg_cuid = 501
         tvg_id = "SCIENCE"
         tvg_name = "Pluto Science"
         tvg_logo = self.channel_info["featuredImage"]["path"]

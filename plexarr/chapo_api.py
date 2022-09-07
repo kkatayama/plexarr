@@ -92,7 +92,7 @@ class ChapoAPI(object):
     def m3uNFL(self):
         """Generate m3u for NFL Streams"""
         m3u = "#EXTM3U\n"
-        tvg_cuid = 801
+        tvg_cuid = 702
         for i, stream in enumerate(self.getStreamsNFL(terms=['nfl 0', 'nfl 1'])):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
@@ -107,7 +107,7 @@ class ChapoAPI(object):
     def m3uNBA(self):
         """Generate m3u for NBA Streams"""
         m3u = "#EXTM3U\n"
-        tvg_cuid = 901
+        tvg_cuid = 801
         for i, stream in enumerate(self.getStreamsNBA()):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()

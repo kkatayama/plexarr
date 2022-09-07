@@ -9,28 +9,39 @@ import os
 
 
 log = getLogger()
-HTTPBIN_URL = os.environ.get('HTTPBIN_URL', 'http://httpbin.org/')
 
-def httpbin(*suffix):
-    """Returns url for HTTPBIN resource."""
-    return HTTPBIN_URL + '/'.join(suffix)
-
-
-class LemoAPI:
-    """MultiThreaded API For LemoIPTV"""
+class XtreamAPI:
+    """MultiThreaded API For LemoIPTV and ChapoIPTV"""
 
     def __init__(self):
         """Configs"""
         config = ConfigParser()
         config.read(Path(Path.home(), ".config/plexarr.ini"))
 
-        self.api_url = config["lemo"].get("api_url")
-        self.username = config["lemo"].get("username")
-        self.password = config["lemo"].get("password")
-        self.groups = literal_eval(config["lemo"].get("lemo_groups"))
-        self.params = {"username": self.username, "password": self.password}
-        self.category = {}
-        self.streams = []
+        self.lemo = {
+            "api_url": config["lemo"].get("api_url"),
+            "username": config["lemo"].get("username"),
+            "password": config["lemo"].get("password"),
+            "groups": literal_eval(config["lemo"].get("lemo_groups")),
+            "params": {
+                "username": config["lemo"].get("username"),
+                "password": config["lemo"].get("password")
+            },
+            "category": {},
+            "streams": [],
+        }
+        self.chapo = {
+            "api_url": config["chapo"].get("api_url"),
+            "username": config["chapo"].get("username"),
+            "password": config["chapo"].get("password"),
+            "groups": literal_eval(config["chapo"].get("chapo_groups")),
+            "params": {
+                "username": config["chapo"].get("username"),
+                "password": config["chapo"].get("password")
+            },
+            "category": {},
+            "streams": [],
+        }
 
     def genInfo(self, s):
         tvg_id = s["epg_channel_id"] if s.get("epg_channel_id") else ""
@@ -39,63 +50,62 @@ class LemoAPI:
         tvg_group = next((c["category_name"] for c in self.cats if s["category_id"] == c["category_id"]), "")
         return f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
 
-    def genM3u(self, s):
-        return self.api_url.replace(
+    def genM3U(self, s, iptv):
+        api_url = eval(f'self.{iptv}["api_url"]')
+        username = eval(f'self.{iptv}["username"]')
+        password = eval(f'self.{iptv}["password"]')
+
+        return api_url.replace(
             "/player_api.php",
-            f':80/{self.username}/{self.password}/{s.get("stream_id")}.ts\n',
+            f':80/{username}/{password}/{s.get("stream_id")}.ts\n',
         )
 
-    def process(self, r, **kwargs):
+    def process(self, r, iptv, **kwargs):
         streams = r.json()
         self.streams += streams
         m3u_streams = []
         for s in streams:
-            m3u_streams += [self.genInfo(s)] + [self.genM3u(s)]
+            m3u_streams += [self.genInfo(s)] + [self.genM3U(s, iptv)]
         return m3u_streams
 
-    def getCategories(self):
+    def getCategories(self, iptv):
         """Get All Categories in Matching Groups"""
-        payload = self.params
+        api_url = eval(f'self.{iptv}["api_url"]')
+        payload = eval(f'self.{iptv}["params"]')
+        groups = eval(f'self.{iptv}["groups"]')
         payload.update({"action": "get_live_categories"})
-        r = requests.get(url=self.api_url, params=payload)
-        return list(filter(lambda x: x["category_name"] in self.groups, r.json()))
 
-    def parseCategories(self, extract_categories=False):
+        r = requests.get(url=api_url, params=payload)
+        return list(filter(lambda x: x["category_name"] in groups, r.json()))
+
+    def parseCategories(self, extract_categories, iptv):
         self.m3u_items = ["#EXTM3U\n"]
-        p = self.params
+        api_url = eval(f'self.{iptv}["api_url"]')
+        p = eval(f'self.{iptv}["params"]')
         p.update({"action": "get_live_streams"})
         categories = [dict(**p, **{"category_id": c["category_id"]}) for c in self.cats]
-        try:
-            # gs = [(grequests.get(httpbin('delay/1'), timeout=0.001), grequests.get(self.api_url, params=c) for c in categories)]
-            gs = (grequests.get(lemo.api_url, params=c) for c in categories)
-            self.m3u_items += list(chain(*(self.process(r) for r in grequests.map(gs))))
-        except Exception as e:
-            log.error(e.__dict__)
-            gs = (requests.get(self.api_url, params=c) for c in categories)
-            self.m3u_items += list(chain(*(self.process(r) for r in gs)))
+
+        batch_size = 8
+        payloads = [categories[i:i+batch_size] for i in range(0, len(categories), batch_size)]
+        for batch in payloads:
+            gs = (grequests.get(api_url, params=payload, stream=False) for payload in batch)
+            self.m3u_items += list(chain(*(self.process(r, iptv) for r in grequests.map(gs))))
 
         self.m3u = "".join(self.m3u_items)
         self.categories = categories if extract_categories else None
         return self.m3u
 
-    def getM3U(self, extract_categories=False):
+    def getM3U(self, extract_categories=False, iptv=''):
         self.streams = []
-        self.cats = self.getCategories()
-        return self.parseCategories(extract_categories)
+        self.cats = self.getCategories(iptv)
+        return self.parseCategories(extract_categories, iptv)
 
-    def validateM3U(self, m3u_file="/Users/katayama/Documents/MangoBoat/IP_TV_Stuff/KEMO_iPTV/lemo.m3u"):
-        with open(m3u_file) as f:
-            m3u_raw = f.read()
-        for line in self.m3u.splitlines():
-            if line not in m3u_raw:
-                print(line)
 
 
 
 # -- TESTING -- #
-# lemo = LemoAPI(groups=lemo_groups)
-# lemo_m3u = lemo.getM3U(extract_streams=True, extract_categories=True)
-# lemo.validateM3U()
+# lemo = XtreamAPI()
+# lemo_m3u = lemo.getM3U(extract_categories=True, iptv='lemo')
 
 # print("\n".join(lemo_m3u.splitlines()[:20]))
 # print("".join(lemo.m3u_items[:10]))

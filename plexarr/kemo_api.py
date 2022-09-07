@@ -64,7 +64,7 @@ class KemoAPI(object):
             return list(filter(lambda x: x["category_name"] in groups, r.json()))
         if terms:
             terms = [terms] if isinstance(terms, str) else terms
-            return list(filter(lambda x: any(term in x["name"].lower() for term in terms), r.json()))
+            return list(filter(lambda x: any(term in x["category_name"].lower() for term in terms), r.json()))
         return r.json()
 
     def getCategory(self, query=''):

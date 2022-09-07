@@ -72,12 +72,16 @@ class ChapoAPI(object):
         r = requests.get(url=self.API_URL, params=payload)
         return (stream for stream in r.json() if terms.lower() in stream.get('name').lower() and bad_terms not in stream.get('name'))
 
-    def getStreamsNFL(self):
+    def getStreamsNFL(self, terms=[], rejects=[]):
         """Get NFL Streams"""
+        terms = [terms.lower()] if isinstance(terms, str) else [t.lower() for t in terms]
+        rejects = [rejects.lower()] if isinstance(rejects, str) else [r.lower() for r in rejects]
+
         self.setCategory(query="NFL")
         # streams = self.getStreams(terms="Gamepass")
-        streams = self.getStreams(terms="PM")
-        return streams
+        # streams = self.getStreams(terms="PM")
+        streams = self.getStreams()
+        return list(filter(lambda x: any(t in x["name"].lower() and all(r not in x["name"].lower() for r in rejects) for t in terms), streams))
 
     def getStreamsNBA(self):
         """Get NBA Streams"""
@@ -89,7 +93,7 @@ class ChapoAPI(object):
         """Generate m3u for NFL Streams"""
         m3u = "#EXTM3U\n"
         tvg_cuid = 801
-        for i, stream in enumerate(self.getStreamsNFL()):
+        for i, stream in enumerate(self.getStreamsNFL(terms=['nfl 0', 'nfl 1'])):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = stream.get("stream_icon")

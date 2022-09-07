@@ -49,12 +49,23 @@ class KemoAPI(object):
         self.STREAMS = {}
         self.espn = ESPN_API()
 
-    def getCategories(self, groups):
-        """Get All Categories in Matching Groups"""
+    def getCategories(self, groups='', terms=''):
+        """
+        Get All Categories in Matching Groups
+
+        ARGS:
+            groups (str|list) - ex: "USA Sports" or ['USA News', 'USA Sports']
+        """
         payload = self.PARAMS
         payload.update({'action': 'get_live_categories'})
         r = requests.get(url=self.API_URL, params=payload)
-        return list(filter(lambda x: x["category_name"] in groups, r.json()))
+
+        if groups:
+            return list(filter(lambda x: x["category_name"] in groups, r.json()))
+        if terms:
+            terms = [terms] if isinstance(terms, str) else terms
+            return list(filter(lambda x: any(term in x["name"].lower() for term in terms), r.json()))
+        return r.json()
 
     def getCategory(self, query=''):
         """Get Category using query filter"""

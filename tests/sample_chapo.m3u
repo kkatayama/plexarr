@@ -1,0 +1,20 @@
+#EXTM3U
+#EXT-X-SESSION-DATA:DATA-ID="com.xui.1_5_12r2"
+#EXTINF:-1 xui-id="2623851" tvg-id="" tvg-name="24/7 12 oz Mouse" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 12 oz Mouse
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzXntcuQQLaneP23NPZ-1QWQ
+#EXTINF:-1 xui-id="2623852" tvg-id="" tvg-name="24/7 24" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 24
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzQjePRo0pUwgqvPJLt8Ns9Y
+#EXTINF:-1 xui-id="2623853" tvg-id="" tvg-name="24/7 24 Legacy" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 24 Legacy
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzaRKqSN2hp4jheJHcs88YKM
+#EXTINF:-1 xui-id="2623854" tvg-id="" tvg-name="24/7 30 Rock" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 30 Rock
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzTM5a7VpjMyvVtiEllel9Lo
+#EXTINF:-1 xui-id="2623855" tvg-id="" tvg-name="24/7 50 States of Fright" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 50 States of Fright
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzSZSaiFdgni0ctSxB-ksPAc
+#EXTINF:-1 xui-id="2623856" tvg-id="" tvg-name="24/7 666 Park Avenue" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 666 Park Avenue
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzemnJ-_VC4Yqy0NlSz0nqG0
+#EXTINF:-1 xui-id="2623850" tvg-id="" tvg-name="24/7 8 Simple Rules" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 8 Simple Rules
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzeN90PoJXgZhSHbH28iCjgI
+#EXTINF:-1 xui-id="2623857" tvg-id="" tvg-name="24/7 90210" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 90210
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzbwxyy_5GaqcIaF0b0_6g3I
+#EXTINF:-1 xui-id="2623858" tvg-id="" tvg-name="24/7 A Crime to Remember" tvg-logo="https://media.discordapp.net/attachments/675489656758075453/823920396775718982/247.png" group-title="24/7 (A-D)",24/7 A Crime to Remember
+http://tigerfights.xyz:80/play/5Qvy-RegyMyj3k4rSIvpzfgnpxxJ4YAID_VFlLADDBU

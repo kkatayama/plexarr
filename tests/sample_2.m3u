@@ -1,0 +1,15 @@
+#EXTM3U
+#EXT-X-PLAYLIST-TYPE:EVENT
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.00,
+http://fileSequence0.ts
+#EXTINF:10.0,
+http://fileSequence1.ts
+#EXTINF:10.0,
+http://fileSequence2.ts
+#EXTINF:10.0,
+http://fileSequence3.ts
+#EXTINF:10.0,
+http://fileSequence4.ts

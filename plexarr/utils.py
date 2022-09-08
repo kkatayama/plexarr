@@ -15,6 +15,10 @@ import socket
 import select
 from contextlib import contextmanager
 
+import m3u8
+from m3u8 import protocol
+from m3u8.parser import save_segment_custom_value
+
 
 def get_py_path():
     # return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
@@ -108,8 +112,19 @@ def gen_xmltv_xml(channels=[], programs=[], url=''):
 
 
 def m3u_to_json(src):
+    # -- cleanup excess new-lines
+    src = re.sub(r'\n+', '\n', src.strip())
     temp = src.splitlines()
     temp_info = temp.pop(0)
+
+    # -- handle lemo xui m3u with extra line of info
+    extra_info = []
+    for i, tmp in enumerate(temp):
+        if not tmp.startswith(('#EXTINF', 'http')):
+            extra_info.append(tmp)
+        else:
+            break
+    temp = temp[i:]
 
     data = {}
     regex_info = r"""
@@ -144,8 +159,59 @@ def m3u_to_json(src):
     data.update({"streams": streams})
     return json.dumps(data)
 
+
 def m3u_to_dict(src):
-    return json.loads(m3u_to_json(src))
+    def parse_iptv_attributes(line, lineno, data, state):
+        # Customize parsing #EXTINF
+        if line.startswith(protocol.extinf):
+            title = ''
+            chunks = line.replace(protocol.extinf + ':', '').split(',', 1)
+            if len(chunks) == 2:
+                duration_and_props, title = chunks
+            elif len(chunks) == 1:
+                duration_and_props = chunks[0]
+
+            additional_props = {}
+            chunks = duration_and_props.strip().split(' ', 1)
+            if len(chunks) == 2:
+                duration, raw_props = chunks
+                matched_props = re.finditer(r'([\w\-]+)="([^"]*)"', raw_props)
+                for match in matched_props:
+                    additional_props[match.group(1)] = match.group(2)
+            else:
+                duration = duration_and_props
+
+            if 'segment' not in state:
+                state['segment'] = {}
+            state['segment']['duration'] = float(duration)
+            state['segment']['title'] = title
+
+            # Helper function for saving custom values
+            save_segment_custom_value(state, 'extinf_props', additional_props)
+
+            # Tell 'main parser' that we expect an URL on next lines
+            state['expect_segment'] = True
+
+            # Tell 'main parser' that it can go to next line, we've parsed current fully.
+            return True
+    def getStreamID(url):
+        path = Path(str(furl(url).path))
+        path = Path(str(path).removesuffix(''.join(path.suffixes)))
+        stream_id = path.name
+        return stream_id
+
+    parsed = m3u8.load(src, custom_tags_parser=parse_iptv_attributes)
+    m3u = [dict(s.custom_parser_values['extinf_props'], **{"url": s.uri, "title": s.title,
+                   "stream_id": getStreamID(s.uri), "duration": int(s.duration)})
+           for s in parsed.segments]
+    return m3u
+
+def dict_to_m3u(src):
+    m3u = ['#EXTM3U']
+    for s in streams:
+        m3u += [f'#EXTINF:{s.get("duration")} tvg-id="{s.get("tvg-id")}" tvg-name="{s.get("tvg-name")} tvg-logo="{s.get("tvg-logo")}" group-title="{s.get("group-title")}",{s.get("title")}']
+        m3u += [f'{s.get("url")}']
+    rturn '\n'.join(m3u)
 
 def epg_to_dict(src):
     # -- https://github.com/martinblech/xmltodict | https://github.com/dart-neitro/xmltodict3

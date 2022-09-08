@@ -18,6 +18,7 @@ class KemoAPI(object):
     """
     REST API Wrapper for Kemo/Lemo TV
 
+
     Example Usage:
     from plexarr import KemoAPI
     from rich import print

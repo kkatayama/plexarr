@@ -1,0 +1,20 @@
+#EXTM3U
+#EXT-X-SESSION-DATA:DATA-ID="com.xui.1_5_5r2"
+#EXTINF:-1 tvg-id="aande.us" tvg-name="USA A&E UHD" tvg-logo="http://ky-iptv.com:80/images/99c72d95a86eff2ae1aa0246e6e5833b.png" group-title="USA Entertainment",USA A&E UHD
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175784.m3u8
+#EXTINF:-1 tvg-id="accuweather.us" tvg-name="USA AccuWeather" tvg-logo="http://ky-iptv.com:80/images/71a6d51dfa6ed2b5d4231fdd8c21e1b0.png" group-title="USA Entertainment",USA AccuWeather
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175785.m3u8
+#EXTINF:-1 tvg-id="amc.us" tvg-name="USA AMC" tvg-logo="http://ky-iptv.com:80/images/970fd4a37554c8e2229b0e660999c7dc.png" group-title="USA Entertainment",USA AMC
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175787.m3u8
+#EXTINF:-1 tvg-id="amc.us" tvg-name="USA AMC East LHD" tvg-logo="http://ky-iptv.com:80/images/970fd4a37554c8e2229b0e660999c7dc.png" group-title="USA Entertainment",USA AMC East LHD
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175788.m3u8
+#EXTINF:-1 tvg-id="americanheroeschannel.us" tvg-name="USA American Heroes" tvg-logo="http://ky-iptv.com:80/images/ae947b80c743140e312a9990d2e542aa.png" group-title="USA Entertainment",USA American Heroes
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175790.m3u8
+#EXTINF:-1 tvg-id="animalplanet.us" tvg-name="USA Animal Planet East" tvg-logo="http://ky-iptv.com:80/images/e59d288f9bc82a1143dcf385457b5ac0.png" group-title="USA Entertainment",USA Animal Planet East
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175791.m3u8
+#EXTINF:-1 tvg-id="animalplanet.us" tvg-name="USA Animal Planet East UHD" tvg-logo="http://ky-iptv.com:80/images/e59d288f9bc82a1143dcf385457b5ac0.png" group-title="USA Entertainment",USA Animal Planet East UHD
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175793.m3u8
+#EXTINF:-1 tvg-id="APLP" tvg-name="USA Animal Planet West" tvg-logo="http://ky-iptv.com:80/images/84fc1bae60a71d7a802858f8dee6cda0.png" group-title="USA Entertainment",USA Animal Planet West
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175794.m3u8
+#EXTINF:-1 tvg-id="antennatv.us" tvg-name="USA Antenna" tvg-logo="http://ky-iptv.com:80/images/0a1d439983dade9c75bfb3cde9904ddc.png" group-title="USA Entertainment",USA Antenna
+http://line.lemotv.cc:80/***REMOVED***/***REMOVED***/175795.m3u8

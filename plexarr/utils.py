@@ -208,7 +208,7 @@ def m3u_to_dict(src):
 
 def dict_to_m3u(src):
     m3u = ['#EXTM3U']
-    for s in streams:
+    for s in src:
         m3u += [f'#EXTINF:{s.get("duration")} tvg-id="{s.get("tvg-id")}" tvg-name="{s.get("tvg-name")} tvg-logo="{s.get("tvg-logo")}" group-title="{s.get("group-title")}",{s.get("title")}']
         m3u += [f'{s.get("url")}']
     return '\n'.join(m3u)

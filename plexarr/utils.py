@@ -144,6 +144,9 @@ def m3u_to_json(src):
     data.update({"streams": streams})
     return json.dumps(data)
 
+def m3u_to_dict(src):
+    return json.loads(m3u_to_json(src))
+
 def epg_to_dict(src):
     # -- https://github.com/martinblech/xmltodict | https://github.com/dart-neitro/xmltodict3
     """

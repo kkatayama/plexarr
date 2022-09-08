@@ -211,7 +211,7 @@ def dict_to_m3u(src):
     for s in streams:
         m3u += [f'#EXTINF:{s.get("duration")} tvg-id="{s.get("tvg-id")}" tvg-name="{s.get("tvg-name")} tvg-logo="{s.get("tvg-logo")}" group-title="{s.get("group-title")}",{s.get("title")}']
         m3u += [f'{s.get("url")}']
-    rturn '\n'.join(m3u)
+    return '\n'.join(m3u)
 
 def epg_to_dict(src):
     # -- https://github.com/martinblech/xmltodict | https://github.com/dart-neitro/xmltodict3

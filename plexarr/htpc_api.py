@@ -189,7 +189,7 @@ class HTPC_API(object):
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
             with SFTPClient.from_transport(ssh_imac.get_transport()) as sftp:
                 # --sftp = ssh_imac.open_sftp()
-                shows = [s for s in sftp.listdir(imac["yt_series"])]
+                shows = list(filter(lambda x: 'DS_Store' not in x, [s for s in sftp.listdir(imac["yt_series"])]))
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None

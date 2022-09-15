@@ -226,7 +226,7 @@ class HTPC_API(object):
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
             with SFTPClient.from_transport(ssh_imac.get_transport()) as sftp:
-                seasons = [s for s in sftp.listdir(str(Path(imac["yt_series"], show)))]
+                seasons =  list(filter(lambda x: 'DS_Store' not in x, [s for s in sftp.listdir(str(Path(imac["yt_series"], show)))]))
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None
@@ -263,7 +263,7 @@ class HTPC_API(object):
             ssh_imac.load_system_host_keys()
             ssh_imac.connect(hostname=imac["ip"], port=imac["port"], username=imac["username"], sock=vm_channel)
             with SFTPClient.from_transport(ssh_imac.get_transport()) as sftp:
-                episodes = [s for s in sftp.listdir(str(Path(imac["yt_series"], show, season)))]
+                episodes =  list(filter(lambda x: 'DS_Store' not in x, [s for s in sftp.listdir(str(Path(imac["yt_series"], show, season)))]))
 
         # -- CLOSE JUMP HOST CONNECTION IF USED -- #
         ssh_jump.close() if vm_channel else None

@@ -419,7 +419,7 @@ class HTPC_API(object):
         remote_folder = str(Path(imac["yt_series"], show, season))
         vm_channel = None
         net_host = getNetHost()
-        print(f'HOST NETWORK: "{net_host}"')
+        # print(f'HOST NETWORK: "{net_host}"')
 
         # -- NEED TO USE JUMP HOST ??? -- #
         if "windy.pickle" not in net_host:
@@ -435,7 +435,7 @@ class HTPC_API(object):
             vm_channel = vm_transport.open_channel("direct-tcpip", dest_addr, local_addr)
 
         # -- TRANSFER TO IMAC -- #
-        print(f' + dest host: {imac}')
+        # print(f' + dest host: {imac}')
         with SSHClient() as ssh_imac:
             ssh_imac.set_missing_host_key_policy(AutoAddPolicy())
             ssh_imac.load_system_host_keys()
@@ -561,13 +561,13 @@ class HTPC_API(object):
                         dst_path = str(Path(imac["yt_series"], dst_video).with_suffix(ext))
 
                         b1, b2 = ("[", "\[")
-                        print(f"src_path: {src_path}")
-                        print(f"dst_path: {dst_path}")
+                        # print(f"src_path: {src_path}")
+                        # print(f"dst_path: {dst_path}")
 
                         try:
                             cmd = f'cp {src_path} {dst_path}'
                             stdin, stdout, stderr = ssh_imac.exec_command(cmd)
-                            print(f"cmd: {cmd.replace(b1, b2)}")
+                            # print(f"cmd: {cmd.replace(b1, b2)}")
                         except Exception:
                             pass
 

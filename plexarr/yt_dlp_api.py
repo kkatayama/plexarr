@@ -8,6 +8,7 @@ import yt_dlp
 import yt_dlp.utils
 from rich import print, inspect
 from rich.progress import Progress
+from rich.console import escape
 
 
 class MyLogger(object):
@@ -33,7 +34,7 @@ class MyLogger(object):
 
     def error(self, msg):
         """Error"""
-        print(msg)
+        print(escape(msg))
         pass
 
 
@@ -338,11 +339,11 @@ class YouTubeDLP(object):
 
             # -- ATTEMPT TO SKIP PRIVATE VIDEOS -- #
             ytdl.add_post_processor(FinishedPP())
-            self.error_code = ytdl.download(self.video_url)
-            self.data = ytdl.extract_info(self.video_url, download=False)
+            # self.error_code = ytdl.download(self.video_url)
+            self.data = ytdl.extract_info(self.video_url, download=True)
             self.info = ytdl.sanitize_info(self.data)
-            if self.error_code:
-                print(f'[red]FAILED DOWNLOADS FROM[/]: [orange]"{self.video_url}"[/]\n[red]  ERROR_CODE: [/] "{self.error_code}"')
+            # if self.error_code:
+            #     print(f'[red]FAILED DOWNLOADS FROM[/]: [orange]"{self.video_url}"[/]\n[red]  ERROR_CODE: [/] "{self.error_code}"')
             return "Download Finished!"
 
     def dVideo(self, title='', video_url='', path='', **kwargs):

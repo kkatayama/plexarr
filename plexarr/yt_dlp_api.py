@@ -282,7 +282,8 @@ class YouTubeDLP(object):
         self.writeautomaticsub = False
         self.subtitlesformat = 'srt'
         self.subtitleslangs = ['en']
-        self.download_archive = False
+        self.download_archive = ''
+        self.ignoreerrors = False
         self.__dict__.update(kwargs)
 
         if '%' not in self.f_name:
@@ -305,6 +306,7 @@ class YouTubeDLP(object):
             'subtitlesformat': self.subtitlesformat,
             'subtitleslangs': self.subtitleslangs,
             'download_archive': self.download_archive,
+            'ignoreerrors': self.ignoreerrors,
             'cookiefile': self.cookies,
             'format': self.format,
             'outtmpl': self.f_name,
@@ -325,13 +327,23 @@ class YouTubeDLP(object):
 
         with yt_dlp.YoutubeDL(ytdl_opts) as ytdl:
             # return ytdl.download_with_info_file(self.video_url)
-            ytdl.add_post_processor(FinishedPP())
-            data = ytdl.extract_info(self.video_url)
-            info = json.dumps(ytdl.sanitize_info(data))
-            self.data = data
-            self.info = info
-            return "Download Finished!"
 
+            # -- ORIGINAL METHOD -- #
+            # ytdl.add_post_processor(FinishedPP())
+            # data = ytdl.extract_info(self.video_url)
+            # info = json.dumps(ytdl.sanitize_info(data))
+            # self.data = data
+            # self.info = info
+            # return "Download Finished!"
+
+            # -- ATTEMPT TO SKIP PRIVATE VIDEOS -- #
+            ytdl.add_post_processor(FinishedPP())
+            error_code = ytdl.download(self.video_url)
+            self.data = ytdl.extract_info(self.video_url, download=False)
+            self.info = json.dumps(ytdl.sanitize_info(self.data))
+            if error_code:
+                print(f'[red]FAILED DOWNLOADS FROM[/]: [orange]"{self.video_url}"[/]\n[red]  FAILED: [/] "{self.info["title"]}"')
+            return "Download Finished!"
 
     def dVideo(self, title='', video_url='', path='', **kwargs):
         """Downlod youtube video into folder

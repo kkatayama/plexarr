@@ -33,7 +33,7 @@ class MyLogger(object):
 
     def error(self, msg):
         """Error"""
-        print(escape(msg))
+        print(msg)
         pass
 
 

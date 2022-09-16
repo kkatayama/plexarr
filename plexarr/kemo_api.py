@@ -88,12 +88,21 @@ class KemoAPI(object):
         payload.update({'action': 'get_live_streams'})
         payload.update({'category_id': self.CATEGORY.get("category_id")})
         r = requests.get(url=self.API_URL, params=payload)
-        return (stream for stream in r.json() if terms.lower() in stream.get('name').lower())
+        streams = r.json()
+
+        if isinstance(terms, str):
+            return (stream for stream in streams if terms.lower() in stream.get('name').lower())
+        if isinstance(terms, list):
+            all_streams = []
+            for term in terms:
+                all_streams += [stream for stream in streams if term.lower() in stream.get('name').lower()]
+            return all_streams
+        return streams
 
     def getStreamsNFL(self):
         """Get NFL Streams"""
         self.setCategory(query="NFL")
-        streams = self.getStreams(terms="USA NFL Sunday 7")
+        streams = self.getStreams(terms=["USA NFL Thursday Night", "USA NFL Sunday Night", "USA NFL Monday Night", "USA NFL Sunday 7"])
         return streams
 
     def getStreamsNBA(self):

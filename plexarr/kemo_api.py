@@ -172,7 +172,7 @@ class KemoAPI(object):
         for stream in self.getStreamsNFL():
             tvg_id = stream.get("stream_id")
             nfl_info = self.espn.parseNFLInfo(stream.get("name"))
-            print(nfl_info)
+            # print(nfl_info)
 
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"

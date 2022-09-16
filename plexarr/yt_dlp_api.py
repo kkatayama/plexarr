@@ -1,14 +1,18 @@
 import json
 import os
+import re
 # import shutil
 from configparser import ConfigParser
 from pathlib import Path
 
 import yt_dlp
 import yt_dlp.utils
-from rich import inspect
+from rich import print, inspect
 from rich.progress import Progress
 
+
+def clean(text):
+    return text.replace('\x1b[0;31m', '[red]').replace('\x1b[0m', '[/]')
 
 class MyLogger(object):
     """Handle Log Output"""
@@ -33,7 +37,7 @@ class MyLogger(object):
 
     def error(self, msg):
         """Error"""
-        print(msg)
+        print(clean(msg))
         pass
 
 

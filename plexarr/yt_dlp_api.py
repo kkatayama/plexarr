@@ -338,11 +338,11 @@ class YouTubeDLP(object):
 
             # -- ATTEMPT TO SKIP PRIVATE VIDEOS -- #
             ytdl.add_post_processor(FinishedPP())
-            error_code = ytdl.download(self.video_url)
+            self.error_code = ytdl.download(self.video_url)
             self.data = ytdl.extract_info(self.video_url, download=False)
             self.info = ytdl.sanitize_info(self.data)
             if error_code:
-                print(f'[red]FAILED DOWNLOADS FROM[/]: [orange]"{self.video_url}"[/]\n[red]  ERROR_CODE: [/] "{error_code}"')
+                print(f'[red]FAILED DOWNLOADS FROM[/]: [orange]"{self.video_url}"[/]\n[red]  ERROR_CODE: [/] "{self.error_code}"')
             return "Download Finished!"
 
     def dVideo(self, title='', video_url='', path='', **kwargs):

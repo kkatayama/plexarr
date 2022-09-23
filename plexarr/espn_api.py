@@ -54,7 +54,7 @@ class ESPN_API(object):
         # -- read cached data if exists: plexarr/data/nfl_teams_2022.js
         csv = Path(__file__).parent.joinpath(f'data/nfl_teams_{year}.csv')
         if csv.exists() and not update:
-            print(f'loading from cache: "{csv}"')
+            # print(f'loading from cache: "{csv}"')
             df_teams = read_csv(csv)
             # with open(str(js)) as f:
             #     teams = json.load(f)

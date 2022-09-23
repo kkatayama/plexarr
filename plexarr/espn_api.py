@@ -188,11 +188,12 @@ class ESPN_API(object):
         #nfl_teams = "|".join(self.df_teams["team_name"])
 
         nfl_teams = "|".join(self.df_teams.team_name.values)
-        regex = (
-            rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
-            rf"(?P<team1>(?:{nfl_teams}))*(\svs\s+)*"
-            rf"(?P<team2>(?:{nfl_teams}))*(\s*@\s*|\s*\(\s*)*"
-            rf"(?P<time>\d+:\d+\s*\w+)*(\)|)*"
-        )
-        m = re.compile(regex)
+        # regex = (
+        #     rf"(?P<tvg_name>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*"
+        #     rf"(?P<team1>(?:{nfl_teams}))*(\svs\s+)*"
+        #     rf"(?P<team2>(?:{nfl_teams}))*(\s*@\s*|\s*\(\s*)*"
+        #     rf"(?P<time>\d+:\d+\s*\w+)*(\)|)*"
+        # )
+        regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nfl_teams}))[vs\s]*(?P<team2>({nfl_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
+        m = re.compile(regex. re.IGNORECASE)
         return m.search(line).groupdict()

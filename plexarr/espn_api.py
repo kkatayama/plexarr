@@ -198,4 +198,4 @@ class ESPN_API(object):
 
         nfl_teams = "|".join(self.df_teams.team_name.values)
         regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nfl_teams}))[vs\s]*(?P<team2>({nfl_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
-        return re.search(regex, line, flags=re.IGNORECASE)
+        return re.search(regex, line, flags=re.IGNORECASE).groupdict()

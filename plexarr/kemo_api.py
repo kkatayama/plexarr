@@ -180,10 +180,11 @@ class KemoAPI(object):
             if epg_desc:
                 try:
                     nfl_info = self.espn.parseNFLInfo(stream.get("name"))
+                    ds_teams = [nfl_info["team1"], nfl_info["team2"]]
                     df_sched = self.espn.getNFLSchedule()
                     date_now = getEPGTimeNow(dt_obj=True)
                     df_week = df_sched[((df_sched["week_start"] <= date_now) & (date_now <= df_sched["week_end"]))]
-                    df_game = df_week[(df_week["home_team"].isin(teams) & df_week["away_team"].isin(teams))].iloc[0]
+                    df_game = df_week[(df_week["home_team"].isin(ds_teams) & df_week["away_team"].isin(ds_teams))].iloc[0]
 
                     epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
                     epg_start = convertEPGTime(df_game.game_date, epg_fmt=True)

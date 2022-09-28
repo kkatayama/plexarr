@@ -3,7 +3,8 @@ from configparser import ConfigParser
 from ast import literal_eval
 from pathlib import Path
 from itertools import chain
-from teddy import getLogger
+# from teddy import getLogger
+from .utils import getLogger
 import requests
 import os
 

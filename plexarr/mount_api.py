@@ -8,7 +8,8 @@ from furl import furl
 from pymediainfo import MediaInfo
 from rich import print
 from sh import sudo
-from teddy import find_cmd, process_handbrake_output
+# from teddy import find_cmd, process_handbrake_output
+from .utils import find_cmd, process_handbrake_output
 
 
 class MountAPI(object):

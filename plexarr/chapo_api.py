@@ -7,7 +7,8 @@ import pandas as pd
 import requests
 # from pandas.tseries.offsets import Week
 from rich import inspect
-from teddy import convertEPGTime, getEPGTimeNow
+# from teddy import convertEPGTime, getEPGTimeNow
+from .utils import convertEPGTime, getEPGTimeNow
 from bottle import template
 from furl import furl
 # from .utils import gen_xmltv_xml

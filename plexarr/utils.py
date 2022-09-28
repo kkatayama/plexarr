@@ -22,6 +22,7 @@ from m3u8.parser import save_segment_custom_value
 from logging.handlers import TimedRotatingFileHandler
 import coloredlogs
 import logging
+import sys
 import os
 
 
@@ -412,3 +413,125 @@ def getLogger(level='DEBUG', suppressLibLogs=False):
     else:
         coloredlogs.install(level=level, fmt=log_format, field_styles=field_styles, level_styles=level_styles)
     return logger
+
+
+def convertEPGTime(p_time="", dt_obj=False, epg_fmt=False):
+    """Convert EPG Programme "start" and/or "stop" time from UTC to EST
+
+    Note:
+        Do not enable `dt_obj` and `epg_fmt` at the same time.
+        Setting `dt_obj` takes precedence over `epg_fmt`.
+
+    Args:
+        p_time (str, datetime): The datetime string (or object) to convert
+        dt_obj (:obj:`bool`, optional): Request datetime object. Default=False
+        epg_fmt (bool, optional): Request epg formatted string. Default=False
+
+    Returns:
+        Converted EST time as a datetime or str object
+
+    Examples:
+        >>> convertEPGTime("20210803180000 +0000")
+        '2021-08-03 02:00:00 PM'
+
+        >>> convertEPGTime("20210803180000 +0000", epg_fmt=True)
+        '20210803140000 -0400'
+
+        >>> convertEPGTime("20210803180000 +0000", dt_obj=True)
+        Timestamp('2021-08-03 14:00:00-0400', tz='US/Eastern')
+
+    """
+    est_dt = pd.to_datetime(p_time).tz_convert('US/Eastern')
+    if dt_obj:
+        return est_dt
+    if epg_fmt:
+        return est_dt.strftime("%Y%m%d%H%M%S %z")
+    return est_dt.strftime("%Y-%m-%d %I:%M:%S %p")
+
+
+def getEPGTimeNow(dt_obj=False, epg_fmt=False):
+    """Return EPG Programme "start" and/or "stop" time based on current time (30 minute start)
+
+    Args:
+        dt_obj (:obj:`bool`, optional): Request datetime object. Default=False
+        epg_fmt (bool, optional): Request epg formatted string. Default=False
+
+    Returns:
+        The current time as a datetime or str object
+
+    Examples:
+    >>> getEPGTimeNow()
+    '2021-08-03 04:00:00 PM'
+
+    >>> getEPGTimeNow(epg_fmt=True)
+    '20210803160000 -0400'
+
+    >>> getEPGTimeNow(dt_obj=True)
+    Timestamp('2021-08-03 16:00:00-0400', tz='US/Eastern')
+    """
+    est_dt = pd.to_datetime(time.time(), unit='s', utc=True).tz_convert('US/Eastern').floor('30min')
+    if dt_obj:
+        return est_dt
+    if epg_fmt:
+        return est_dt.strftime("%Y%m%d%H%M%S %z")
+    return est_dt.strftime("%Y-%m-%d %I:%M:%S %p")
+
+
+def find_cmd(cmd, find_all=False):
+    cmds = []
+    for cmd_path in filter(os.path.isdir, os.environ['PATH'].split(':')):
+        if cmd.lower() in map(str.lower, os.listdir(cmd_path)):
+            index = list(map(str.lower, os.listdir(cmd_path))).index(cmd.lower())
+            bin_cmd = os.path.join(cmd_path, os.listdir(cmd_path)[index])
+            if find_all:
+                cmds += [bin_cmd]
+            else:
+                return bin_cmd
+    return cmds
+
+
+# -- taken from: "https://github.com/apsun/AniConvert/blob/master/aniconvert.py"
+def process_handbrake_output(process):
+    def print_err(message="", end="\n", flush=False):
+        print(message, end=end, file=sys.stderr)
+        if flush:
+            sys.stderr.flush()
+
+    pattern1 = re.compile(r"Encoding: task \d+ of \d+, (\d+\.\d\d) %")
+    pattern2 = re.compile(
+        r"Encoding: task \d+ of \d+, (\d+\.\d\d) % "
+        r"\((\d+\.\d\d) fps, avg (\d+\.\d\d) fps, ETA (\d\dh\d\dm\d\ds)\)")
+    percent_complete = None
+    current_fps = None
+    average_fps = None
+    estimated_time = None
+    prev_message = ""
+    format_str = "Progress: {percent:.2f}% done"
+    long_format_str = format_str + " (FPS: {fps:.2f}, average FPS: {avg_fps:.2f}, ETA: {eta})"
+    try:
+        while True:
+            output = process.stdout.readline()
+            if len(output) == 0:
+                break
+            output = output.rstrip()
+            match = pattern1.match(output)
+            if not match:
+                continue
+            percent_complete = float(match.group(1))
+            match = pattern2.match(output)
+            if match:
+                format_str = long_format_str
+                current_fps = float(match.group(2))
+                average_fps = float(match.group(3))
+                estimated_time = match.group(4)
+            message = format_str.format(
+                percent=percent_complete,
+                fps=current_fps,
+                avg_fps=average_fps,
+                eta=estimated_time)
+            print_err(message, end="")
+            blank_count = max(len(prev_message) - len(message), 0)
+            print_err(" " * blank_count, end="\r")
+            prev_message = message
+    finally:
+        print_err(flush=True)

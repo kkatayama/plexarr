@@ -1,4 +1,5 @@
-from teddy import getEPGTimeNow, convertEPGTime
+# from teddy import getEPGTimeNow, convertEPGTime
+from .utils import getEPGTimeNow, convertEPGTime
 from .chapo_api import ChapoAPI
 from pathlib import Path
 from bottle import template

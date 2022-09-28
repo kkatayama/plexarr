@@ -1,4 +1,4 @@
-from configparser import ConfigParser
+0;from configparser import ConfigParser
 from itertools import chain
 from pathlib import Path
 
@@ -43,7 +43,7 @@ class KemoAPI(object):
         self.API_URL = conf.get("api_url")
         self.USERNAME = conf.get("username")
         self.PASSWORD = conf.get("password")
-        self.PARAMS = {"username": username, "password": password}
+        self.PARAMS = {"username": self.USERNAME, "password": self.PASSWORD}
         self.CATEGORY = {}
         self.STREAMS = {}
         self.espn = ESPN_API()

@@ -160,7 +160,7 @@ class KemoAPI(object):
         USERNAME = eval(f'self.{iptv}["username"]')
         PASSWORD = eval(f'self.{iptv}["password"]')
         m3u = "#EXTM3U\n"
-        tvg_cuid = 100
+        tvg_cuid = 801
         for i, stream in enumerate(self.getStreamsNBA(iptv=iptv)):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()

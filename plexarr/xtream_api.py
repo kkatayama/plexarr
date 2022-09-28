@@ -3,7 +3,8 @@ from configparser import ConfigParser
 from ast import literal_eval
 from pathlib import Path
 from itertools import chain
-from teddy import getLogger
+# from teddy import getLogger
+from .utils import getLogger
 import requests
 import os
 
@@ -26,6 +27,18 @@ class XtreamAPI:
             "params": {
                 "username": config["lemo"].get("username"),
                 "password": config["lemo"].get("password")
+            },
+            "category": {},
+            "streams": [],
+        }
+        self.lemo2 = {
+            "api_url": config["lemo2"].get("api_url"),
+            "username": config["lemo2"].get("username"),
+            "password": config["lemo2"].get("password"),
+            "groups": literal_eval(config["lemo2"].get("lemo_groups")),
+            "params": {
+                "username": config["lemo2"].get("username"),
+                "password": config["lemo2"].get("password")
             },
             "category": {},
             "streams": [],

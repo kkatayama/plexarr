@@ -19,6 +19,11 @@ import m3u8
 from m3u8 import protocol
 from m3u8.parser import save_segment_custom_value
 
+from logging.handlers import TimedRotatingFileHandler
+import coloredlogs
+import logging
+import os
+
 
 def get_py_path():
     # return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
@@ -364,3 +369,46 @@ def find_xteve_devices():
         except socket.timeout:
             pass
     return pd.DataFrame(devices).drop_duplicates().to_dict('records')
+
+
+# -- LOGGER CONFIGS -- #
+MODULE = coloredlogs.find_program_name()
+LOG_FILE = 'logs/{}.log'.format(os.path.splitext(MODULE)[0])
+field_styles = {
+    'asctime': {'color': 221, 'bright': True},
+    'programname': {'color': 45, 'faint': True},
+    'funcName': {'color': 177, 'normal': True},
+    'lineno': {'color': 'cyan', 'bright': True}
+}
+level_styles = {
+    "debug": {'color': 'green', 'bright': True},
+    "info": {'color': 'white', 'bright': True},
+    "warning": {'color': "yellow", 'normal': True},
+    "error": {'color': "red", 'bright': True},
+    "critical": {'color': 'red', 'bold': True, 'background': 'red'}
+}
+log_format = "[%(asctime)s] [%(levelname)-8s] [%(programname)s: %(funcName)s();%(lineno)s] %(message)s"
+
+
+def getFileHandler():
+    log_file_formatter = coloredlogs.ColoredFormatter(log_format, field_styles=field_styles, level_styles=level_styles)
+    log_file_handler = TimedRotatingFileHandler(LOG_FILE, when='midnight')
+    log_file_handler.addFilter(coloredlogs.ProgramNameFilter())
+    log_file_handler.setFormatter(log_file_formatter)
+    return log_file_handler
+
+
+def getLogger(level='DEBUG', suppressLibLogs=False):
+    # -- create log directory if needed -- #
+    Path(LOG_FILE).parent.mkdir(exist_ok=True)
+
+    # -- CREATE LOGGER -- #
+    logger = logging.getLogger(MODULE)
+    logger.setLevel(eval(f'logging.{level}'))
+    logger.addHandler(getFileHandler())
+    if suppressLibLogs:
+        # -- hide log messages from imported libraries
+        coloredlogs.install(level=level, fmt=log_format, field_styles=field_styles, level_styles=level_styles, logger=logger)
+    else:
+        coloredlogs.install(level=level, fmt=log_format, field_styles=field_styles, level_styles=level_styles)
+    return logger

@@ -99,6 +99,14 @@ class KemoAPI(object):
             return all_streams
         return streams
 
+    def getEPG(self, stream_id=0):
+        """Get All EPG for Live Stream"""
+        payload = self.PARAMS
+        payload.update({'action': 'get_simple_data_table'})
+        payload.update({'stream_id': stream_id})
+        r = requests.get(url=self.API_URL, params=payload)
+        return r.json()
+
     def getStreamsNFL(self):
         """Get NFL Streams"""
         self.setCategory(query="NFL")

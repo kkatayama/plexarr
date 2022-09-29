@@ -90,7 +90,7 @@ class ESPN_API(object):
             to_csv(df_teams, csv)
         return df_teams
 
-    def getNBATeams(self, year=0, data={}):
+    def getNBATeams(self, year=0, data={}, update=False):
         back_up = str(self.API_URL)
         self.API_URL = 'http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba'
         year = year if year else self.YEAR

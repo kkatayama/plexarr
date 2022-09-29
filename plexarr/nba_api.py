@@ -17,6 +17,8 @@ class NBA_API(object):
         """Endpoints: https://github.com/kshvmdn/nba.js/blob/master/docs/api/DATA.md"""
         self.API_URL = "http://data.nba.net"
         self.YEAR = self.getYear()
+        self.df_teams = self.getNBATeams()
+
 
     def get(self, path='/'):
         """Requests GET Wrapper"""
@@ -35,10 +37,11 @@ class NBA_API(object):
         year = (today.year - 1) if (today.month < 3) else today.year
         return year
 
-    def getNBATeams(self):
+    def getNBATeams(self, year=0):
         espn = ESPN_API(load=False)
         df_espn_teams = espn.getNBATeams(year=self.YEAR)
 
+        year = year if year else self.YEAR
         path_teams = f'/prod/v2/{self.YEAR}/teams.json'
         teams = []
         for item in self.get(path_teams)["league"]["vegas"]:
@@ -52,3 +55,22 @@ class NBA_API(object):
             teams.append(team)
         df_teams = pd.DataFrame.from_records(teams)
         return df_teams.join(df_espn_teams.set_index('team_name'), on='team_name')
+
+    def getNBASchedule(self, year=0):
+        year = year if year else self.YEAR
+        path_schedule = f'/prod/v2/{year}/schedule.json'
+        schedule = []
+        for event in self.get(path=path_schedule)["league"]["standard"]:
+            game_time = pd.to_datetime(event["startTimeUTC"]).tz_convert(tz='US/Eastern')
+            home = df_teams[df_teams["team_id"] == event["hTeam"]["teamId"]].squeeze()
+            away = df_teams[df_teams["team_id"] == event["vTeam"]["teamId"]].squeeze()
+            game = {
+                "day_start": game_time.replace(hour=0, minute=0, second=0),
+                "day_end": game_time.replace(hour=23, minute=59, second=59),
+                "game_time": game_time,
+                "home_team": "" if home.empty else home["team_name"] ,
+                "home_venue": "" if home.empty else home["team_venue"],
+                "away_team": "" if away.empty else away["team_name"],
+            }
+            schedule.append(game)
+        return pd.DataFrame.from_records(schedule)

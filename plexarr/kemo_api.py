@@ -1,4 +1,4 @@
-0;from configparser import ConfigParser
+from configparser import ConfigParser
 from itertools import chain
 from pathlib import Path
 

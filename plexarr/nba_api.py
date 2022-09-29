@@ -41,7 +41,7 @@ class NBA_API(object):
 
         path_teams = f'/prod/v2/{self.YEAR}/teams.json'
         teams = []
-        for item in self.get(path_teams)["league"]["standard"]:
+        for item in self.get(path_teams)["league"]["vegas"]:
             team = {
                 "team_name": item["fullName"],
                 "team_id": item["teamId"],

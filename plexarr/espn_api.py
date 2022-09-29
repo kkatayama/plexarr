@@ -12,14 +12,15 @@ import re
 class ESPN_API(object):
     """REST API Wrapper for GitHub"""
 
-    def __init__(self):
+    def __init__(self, load=True):
         """Endpoints: https://gist.github.com/nntrn/ee26cb2a0716de0947a0a4e9a157bc1c"""
         self.PARAMS = {'lang': 'en', 'region': 'us', 'limit': 32}
         self.YEAR = self.getYear()
         self.API_URL = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
-        self.df_teams = self.getNFLTeams()
-        if not Path(__file__).parent.joinpath(f'data/nfl_schedule_{self.YEAR}.csv').exists():
-            self.getNFLSchedule()
+        if load:
+            self.df_teams = self.getNFLTeams()
+            if not Path(__file__).parent.joinpath(f'data/nfl_schedule_{self.YEAR}.csv').exists():
+                self.getNFLSchedule()
 
     def getYear(self):
         """get NFL season start year"""

@@ -35,7 +35,7 @@ class KemoAPI(object):
         print(info)
     """
 
-    def __init__(self, iptv='lemo', sport='nfl'):
+    def __init__(self, iptv='lemo'):
         """Configs"""
         config = ConfigParser()
         config.read(Path(Path.home(), '.config/plexarr.ini'))
@@ -46,7 +46,7 @@ class KemoAPI(object):
         self.PARAMS = {"username": self.USERNAME, "password": self.PASSWORD}
         self.CATEGORY = {}
         self.STREAMS = {}
-        self.espn = ESPN_API(sport=sport)
+        self.espn = ESPN_API()
 
     def getCategories(self, groups='', terms=''):
         """

@@ -51,5 +51,4 @@ class NBA_API(object):
             }
             teams.append(team)
         df_teams = pd.DataFrame.from_records(teams)
-        df_teams.join(df_espn_teams.set_index('team_name'), on='team_name')
-        return df_teams
+        return df_teams.join(df_espn_teams.set_index('team_name'), on='team_name')

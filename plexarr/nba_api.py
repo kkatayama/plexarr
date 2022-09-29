@@ -64,7 +64,8 @@ class NBA_API(object):
                     "team_id": item["teamId"],
                     "team_nick": item["nickname"],
                     "team_abbr": item["tricode"],
-                    "team_area": item["city"]
+                    "team_area": item["city"],
+                    "team_venue": "overseas"
                 })
         return pd.concat([df_teams, pd.DataFrame.from_records(teams)])
 

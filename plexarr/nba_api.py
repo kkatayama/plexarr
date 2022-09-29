@@ -14,9 +14,8 @@ class NBA_API(object):
     """REST API Wrapper for data.nba.net"""
 
     def __init__(self):
-        # self.API_URL = "http://data.nba.net/10s/prod/v1/today.json"
-        self.API_URL = "http://data.nba.net/prod/v2/today.json"
-        self.PATHS = self.getURL(self.API_URL).get("links")
+        """Endpoints: https://github.com/kshvmdn/nba.js/blob/master/docs/api/DATA.md"""
+        self.API_URL = "http://data.nba.net"
         self.YEAR = self.getYear()
 
     def get(self, path='/'):
@@ -36,11 +35,11 @@ class NBA_API(object):
         year = (today.year - 1) if (today.month < 3) else today.year
         return year
 
-
     def getNBATeams(self):
         espn = ESPN_API(load=False)
+        df_espn_teams = espn.getNBATeams(year=self.YEAR)
 
-        path_teams = self.PATHS.get('teams')
+        path_teams = f'/prod/v2/{self.YEAR}/teams.json'
         teams = []
         for item in self.get(path_teams)["league"]["standard"]:
             team = {
@@ -51,4 +50,6 @@ class NBA_API(object):
                 "team_area": item["city"]
             }
             teams.append(team)
-        return teams
+        df_teams = pd.DataFrame.from_records(teams)
+        df_teams.join(df_espn_teams.set_index('team_name'), on='team_name')
+        return df_teams

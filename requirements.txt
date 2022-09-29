@@ -4,8 +4,10 @@ coloredlogs
 furl
 grequests
 m3u8
+mock
 netifaces
 nfl_data_py
+numpy
 pandas
 paramiko
 plexapi

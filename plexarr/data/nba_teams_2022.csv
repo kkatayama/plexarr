@@ -1,0 +1,32 @@
+team_name,team_id,team_nick,team_abbr,team_area,team_venue
+object,object,object,object,object,object
+Atlanta Hawks,1,Hawks,ATL,Atlanta,State Farm Arena
+Boston Celtics,2,Celtics,BOS,Boston,TD Garden
+Brooklyn Nets,17,Nets,BKN,Brooklyn,Prudential Center
+Charlotte Hornets,30,Hornets,CHA,Charlotte,Spectrum Center
+Chicago Bulls,4,Bulls,CHI,Chicago,United Center
+Cleveland Cavaliers,5,Cavaliers,CLE,Cleveland,Rocket Mortgage FieldHouse
+Dallas Mavericks,6,Mavericks,DAL,Dallas,American Airlines Center
+Denver Nuggets,7,Nuggets,DEN,Denver,Ball Arena
+Detroit Pistons,8,Pistons,DET,Detroit,Little Caesars Arena
+Golden State Warriors,9,Warriors,GS,Golden State,ORACLE Arena
+Houston Rockets,10,Rockets,HOU,Houston,Toyota Center (Houston)
+Indiana Pacers,11,Pacers,IND,Indiana,Gainbridge Coliseum
+LA Clippers,12,Clippers,LAC,LA,crypto.com Arena
+Los Angeles Lakers,13,Lakers,LAL,Los Angeles,crypto.com Arena
+Memphis Grizzlies,29,Grizzlies,MEM,Memphis,FedExForum
+Miami Heat,14,Heat,MIA,Miami,FTX Arena
+Milwaukee Bucks,15,Bucks,MIL,Milwaukee,BMO Harris Bradley Center
+Minnesota Timberwolves,16,Timberwolves,MIN,Minnesota,Target Center
+New Orleans Pelicans,3,Pelicans,NO,New Orleans,Smoothie King Center
+New York Knicks,18,Knicks,NY,New York,Madison Square Garden
+Oklahoma City Thunder,25,Thunder,OKC,Oklahoma City,Paycom Center
+Orlando Magic,19,Magic,ORL,Orlando,Amway Center
+Philadelphia 76ers,20,76ers,PHI,Philadelphia,Wells Fargo Center
+Phoenix Suns,21,Suns,PHX,Phoenix,Footprint Center
+Portland Trail Blazers,22,Trail Blazers,POR,Portland,Moda Center
+Sacramento Kings,23,Kings,SAC,Sacramento,Sleep Train Arena
+San Antonio Spurs,24,Spurs,SA,San Antonio,AT&T Center
+Toronto Raptors,28,Raptors,TOR,Toronto,Scotiabank Arena
+Utah Jazz,26,Jazz,UTAH,Utah,Vivint Arena
+Washington Wizards,27,Wizards,WSH,Washington,Capital One Arena

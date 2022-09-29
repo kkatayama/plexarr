@@ -24,8 +24,8 @@ class ESPN_API(object):
         if sport == 'nba':
             self.API_URL = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba"
             self.df_teams = self.getNBATeams()
-            if not Path(__file__).parent.joinpath(f'data/nba_schedule_{self.YEAR}.csv').exists():
-                self.getNBASchedule()
+            #if not Path(__file__).parent.joinpath(f'data/nba_schedule_{self.YEAR}.csv').exists():
+            #    self.getNBASchedule()
         self.sport = sport
 
     def getYear(self):

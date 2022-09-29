@@ -54,7 +54,19 @@ class NBA_API(object):
             }
             teams.append(team)
         df_teams = pd.DataFrame.from_records(teams)
-        return df_teams.join(df_espn_teams.set_index('team_name'), on='team_name')
+        df_teams = df_teams.join(df_espn_teams.set_index('team_name'), on='team_name')
+
+        teams = []
+        for item in self.get(path_teams)["league"]["standard"]:
+            if item["fullName"] not in df_teams["team_name"].values:
+                teams.append({
+                    "team_name": item["fullName"],
+                    "team_id": item["teamId"],
+                    "team_nick": item["nickname"],
+                    "team_abbr": item["tricode"],
+                    "team_area": item["city"]
+                })
+        return pd.concat([df_teams, pd.DataFrame.from_records(teams)])
 
     def getNBASchedule(self, year=0):
         df_teams = self.df_teams

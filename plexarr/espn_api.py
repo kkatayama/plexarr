@@ -90,6 +90,30 @@ class ESPN_API(object):
             to_csv(df_teams, csv)
         return df_teams
 
+    def getNBATeams(self, year=0, data={}):
+        back_up = str(self.API_URL)
+        self.API_URL = 'http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba'
+        year = year if year else self.YEAR
+        data = data if data else self.PARAMS
+        path = f'/seasons/{year}/teams'
+        teams = []
+        for item in self.getItems(path=path, data=data):
+            team = {
+                "team_name": item["displayName"],
+                "team_id": item["id"],
+                "team_nick": item["name"],
+                "team_abbr": item["abbreviation"],
+                "team_area": item["location"],
+                "team_venue": item["venue"]["fullName"]
+            }
+            teams.append(team)
+
+        # -- sort teams
+        teams = sorted(teams, key=lambda x: x["team_name"])
+        df_teams = pd.DataFrame.from_records(teams)
+        self.API_URL = str(back_up)
+        return df_teams
+
 
     def getNFLSchedule(self, year=0, data={}, update=False):
         year = year if year else self.YEAR

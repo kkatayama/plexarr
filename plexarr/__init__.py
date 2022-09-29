@@ -33,4 +33,4 @@ __all__ = [
     'YouTubeAPI',
     'YouTubeDLP'
 ]
-__version__ = "1.1.329"
+__version__ = "1.1.330"

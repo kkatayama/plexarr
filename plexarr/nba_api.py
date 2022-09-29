@@ -88,3 +88,18 @@ class NBA_API(object):
             }
             schedule.append(game)
         return pd.DataFrame.from_records(schedule)
+
+    def parseNBAInfo(self, line):
+        """
+        tests = [
+            "USA NBA 01: Miami Heat vs Boston Celtics @ 08:30 PM",
+            "USA NBA 02: Miami Heat vs Boston Celtics @ 08:30 PM"
+        ]
+        nba_teams = "|".join(nba.df_teams.team_name.values)
+        regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vs\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
+        for line in tests:
+            print(re.search(regex, line, flags=re.IGNORECASE).groupdict())
+        """
+        nba_teams = "|".join(self.df_teams.team_name.values)
+        regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vs\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
+        return re.search(regex, line, flags=re.IGNORECASE).groupdict()

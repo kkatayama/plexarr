@@ -13,6 +13,7 @@ from furl import furl
 # from .utils import getNFLTeams
 
 from .espn_api import ESPN_API
+from .nba_api import NBA_API
 
 
 class KemoAPI(object):
@@ -47,6 +48,7 @@ class KemoAPI(object):
         self.CATEGORY = {}
         self.STREAMS = {}
         self.espn = ESPN_API()
+        self.nba = NBA_API()
 
     def getCategories(self, groups='', terms=''):
         """
@@ -207,7 +209,7 @@ class KemoAPI(object):
         """Generate xml NBA Streams"""
         channels = []
         programs = []
-        date_now = getEPGTimeNow(dt_obj=True).date()
+        date_now = getEPGTimeNow(dt_obj=True)
         for stream in self.getStreamsNBA():
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
@@ -217,6 +219,11 @@ class KemoAPI(object):
             epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
             if epg_desc:
                 try:
+                    nba_info = self.nba.parseNBAInfo(stream.get("name"))
+                    ds_teams = [nba_info["team1"], nba_info["team2"]]
+                    df_sched = self.nba.getNBASchedule()
+                    df_date = df_sched[((df_sched["day_start"] <= date_now) & (date_now <= df_sched["day_end"]))]
+
                     epg_title = epg_desc.split('@')[0].strip()
                     game_time = epg_desc.split('@')[1].strip()
                     game_datetime = pd.to_datetime(f'{date_now} {game_time}')

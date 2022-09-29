@@ -223,19 +223,25 @@ class KemoAPI(object):
                     ds_teams = [nba_info["team1"], nba_info["team2"]]
                     df_sched = self.nba.getNBASchedule()
                     df_date = df_sched[((df_sched["day_start"] <= date_now) & (date_now <= df_sched["day_end"]))]
+                    df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
 
-                    epg_title = epg_desc.split('@')[0].strip()
-                    game_time = epg_desc.split('@')[1].strip()
-                    game_datetime = pd.to_datetime(f'{date_now} {game_time}')
-                    epg_start = convertEPGTime(game_datetime.tz_localize('US/Eastern'), epg_fmt=True)
+                    epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
+                    epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-
-                    if ((date_now - game_datetime.date()).days < 5):
-                        channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
-                        programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
-
                 except Exception:
-                    pass
+                    epg_title = "== PARSER FAILED =="
+                    epg_desc = stream.get("name")
+                    epg_start = getEPGTimeNow(epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+            else:
+                epg_title = "NO GAME RIGHT NOW?"
+                epg_desc = "OFF AIR"
+                epg_start = getEPGTimeNow(epg_fmt=True)
+                epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+            programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
         tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))

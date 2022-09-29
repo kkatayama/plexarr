@@ -57,6 +57,7 @@ class NBA_API(object):
         return df_teams.join(df_espn_teams.set_index('team_name'), on='team_name')
 
     def getNBASchedule(self, year=0):
+        df_teams = self.df_teams
         year = year if year else self.YEAR
         path_schedule = f'/prod/v2/{year}/schedule.json'
         schedule = []

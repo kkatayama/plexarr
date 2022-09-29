@@ -42,7 +42,7 @@ class NBA_API(object):
 
         path_teams = self.PATHS.get('teams')
         teams = []
-        for item in self.get(path_teams):
+        for item in self.get(path_teams)["league"]["standard"]:
             team = {
                 "team_name": item["fullName"],
                 "team_id": item["teamId"],

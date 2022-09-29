@@ -12,14 +12,21 @@ import re
 class ESPN_API(object):
     """REST API Wrapper for GitHub"""
 
-    def __init__(self):
+    def __init__(self, sport='nfl'):
         """Endpoints: https://gist.github.com/nntrn/ee26cb2a0716de0947a0a4e9a157bc1c"""
-        self.API_URL = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
         self.PARAMS = {'lang': 'en', 'region': 'us', 'limit': 32}
         self.YEAR = self.getYear()
-        self.df_teams = self.getNFLTeams()
-        if not Path(__file__).parent.joinpath(f'data/nfl_schedule_{self.YEAR}.csv').exists():
-            self.getNFLSchedule()
+        if sport == 'nfl':
+            self.API_URL = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
+            self.df_teams = self.getNFLTeams()
+            if not Path(__file__).parent.joinpath(f'data/nfl_schedule_{self.YEAR}.csv').exists():
+                self.getNFLSchedule()
+        if sport == 'nba':
+            self.API_URL = "http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba"
+            self.df_teams = self.getNBATeams()
+            if not Path(__file__).parent.joinpath(f'data/nba_schedule_{self.YEAR}.csv').exists():
+                self.getNBASchedule()
+        self.sport = sport
 
     def getYear(self):
         """get NFL season start year"""
@@ -88,6 +95,37 @@ class ESPN_API(object):
             #     json.dump(teams, f, indent=2)
             to_csv(df_teams, csv)
         return df_teams
+
+    def getNBATeams(self, year=0, data={}, update=False):
+        year = year if year else self.YEAR
+
+        # -- read cached data if exists: plexarr/data/nba_teams_2022.js
+        csv = Path(__file__).parent.joinpath(f'data/nba_teams_{year}.csv')
+        if csv.exists() and not update:
+            df_teams = read_csv(csv)
+        else:
+            print(f'first run...\ncaching: "{csv}"')
+            # --- get all team links
+            data = data if data else self.PARAMS
+            path = f'/seasons/{year}/teams'
+            teams = []
+            for item in self.getItems(path=path, data=data):
+                team = {
+                    "team_name": item["displayName"],
+                    "team_id": item["id"],
+                    "team_nick": item["name"],
+                    "team_abbr": item["abbreviation"],
+                    "team_area": item["location"],
+                    "team_venue": item["venue"]["fullName"]
+                }
+                teams.append(team)
+
+            # -- sort teams
+            teams = sorted(teams, key=lambda x: x["team_name"])
+            df_teams = pd.DataFrame.from_records(teams)
+            to_csv(df_teams, csv)
+        return df_teams
+
 
     def getNFLSchedule(self, year=0, data={}, update=False):
         year = year if year else self.YEAR

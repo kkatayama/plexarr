@@ -37,7 +37,7 @@ class NBA_API(object):
         return year
 
 
-    def getNBATeams():
+    def getNBATeams(self):
         espn = ESPN_API(load=False)
 
         path_teams = self.PATHS.get('teams')

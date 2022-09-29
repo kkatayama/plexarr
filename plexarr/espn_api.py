@@ -177,6 +177,55 @@ class ESPN_API(object):
             to_csv(df_schedule, csv)
         return df_schedule
 
+
+    def getNBASchedule(self, year=0, data={}, update=False):
+        year = year if year else self.YEAR
+
+        # -- read cached data if exists: plexarr/data/nba_teams_2022.js
+        csv = Path(__file__).parent.joinpath(f'data/nba_schedule_{year}.csv')
+        if csv.exists() and not update:
+            # print(f'loading from cache: "{csv}"')
+            df_schedule = read_csv(csv)
+        else:
+            print(f'first run...\ncaching: "{csv}"')
+            # -- fetch and parse all season types
+            data = data if data else self.PARAMS
+            path = f'/seasons/{year}/types'
+            schedule = []
+            for season in self.getItems(path=path, data=data):
+                path_weeks = f'{path}/{season["id"]}/weeks'
+                for week in self.getItems(path=path_weeks, data=data):
+                    path_events = f'{path_weeks}/{week["number"]}/events'
+                    for event in self.getItems(path=path_events, data=data):
+                        df_event = pd.DataFrame.from_records([
+                            {"team_id": team["id"], "homeAway": team["homeAway"]}
+                            for team in event["competitions"][0]["competitors"]
+                        ])
+                        df_game = df_event.merge(self.df_teams)
+                        home = df_game[df_game["homeAway"] == "home"].squeeze()
+                        away = df_game[df_game["homeAway"] == "away"].squeeze()
+
+                        game = {
+                            "season": season["name"],
+                            "season_type": season["id"],
+                            "week_name": week["text"],
+                            "week_start": week["startDate"],
+                            "week_end": week["endDate"],
+                            "game_name": event["name"],
+                            "game_short": event["shortName"],
+                            "game_date": event["date"],
+                            "home_team": "" if home.empty else home["team_name"] ,
+                            "home_venue": "" if home.empty else home["team_venue"],
+                            "away_team": "" if away.empty else away["team_name"],
+                        }
+                        schedule.append(game)
+            df_schedule = pd.DataFrame.from_records(schedule)
+            df_schedule["week_start"] = pd.to_datetime(df_schedule["week_start"])
+            df_schedule["week_end"] = pd.to_datetime(df_schedule["week_end"])
+            df_schedule["game_date"] = pd.to_datetime(df_schedule["game_date"])
+            to_csv(df_schedule, csv)
+        return df_schedule
+
     def parseNFLInfo(self, line):
         """
         Parse NFL Info From Channel Name Description

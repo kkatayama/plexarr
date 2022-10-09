@@ -10,7 +10,7 @@ from .pluto_api import PlutoAPI
 from .radarr_api import RadarrAPI
 from .sonarr_api import SonarrAPI
 from .tmdb_api import TmdbAPI
-from .utorrent_api import uTorrentAPI
+#from .utorrent_api import uTorrentAPI
 from .youtube_api import YouTubeAPI
 from .yt_dlp_api import YouTubeDLP
 

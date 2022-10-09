@@ -29,7 +29,7 @@ __all__ = [
     'RadarrAPI',
     'SonarrAPI',
     'TmdbAPI',
-    'uTorrentAPI',
+    # 'uTorrentAPI',
     'YouTubeAPI',
     'YouTubeDLP'
 ]

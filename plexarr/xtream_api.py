@@ -43,18 +43,18 @@ class XtreamAPI:
             "category": {},
             "streams": [],
         }
-        self.chapo = {
-            "api_url": config["chapo"].get("api_url"),
-            "username": config["chapo"].get("username"),
-            "password": config["chapo"].get("password"),
-            "groups": literal_eval(config["chapo"].get("chapo_groups")),
-            "params": {
-                "username": config["chapo"].get("username"),
-                "password": config["chapo"].get("password")
-            },
-            "category": {},
-            "streams": [],
-        }
+        # self.chapo = {
+        #     "api_url": config["chapo"].get("api_url"),
+        #     "username": config["chapo"].get("username"),
+        #     "password": config["chapo"].get("password"),
+        #     "groups": literal_eval(config["chapo"].get("chapo_groups")),
+        #     "params": {
+        #         "username": config["chapo"].get("username"),
+        #         "password": config["chapo"].get("password")
+        #     },
+        #     "category": {},
+        #     "streams": [],
+        # }
 
     def genInfo(self, s):
         tvg_id = s["epg_channel_id"] if s.get("epg_channel_id") else ""

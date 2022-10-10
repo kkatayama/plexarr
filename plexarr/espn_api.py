@@ -192,12 +192,14 @@ class ESPN_API(object):
             "USA NFL Sunday 708",
         ]
         espn = ESPN_API()
-        teams = "|".join([team["team_name"] for team in espn.getNFLTeams()])
-        regex = rf"(?P<channel>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*(?P<team1>(?:{teams}))*(\svs\s+)*(?P<team2>(?:{teams}))*(\s*@\s*|\s*\(\s*)*(?P<time>\d+:\d+\s*\w+)*(\)|)*"
-        m = re.compile(regex)
+        # teams = "|".join([team["team_name"] for team in espn.getNFLTeams()])
+        # regex = rf"(?P<channel>\w+\s+\w+\s+\w+\s+(\d+|\w+))(\s|:)*(?P<team1>(?:{teams}))*(\svs\s+)*(?P<team2>(?:{teams}))*(\s*@\s*|\s*\(\s*)*(?P<time>\d+:\d+\s*\w+)*(\)|)*"
+        # m = re.compile(regex)
+        nfl_teams = "|".join(espn.getNFLTeams().team_name.values)
+        regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nfl_teams}))[vsat\s]*(?P<team2>({nfl_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
         for test in tests:
             print(test)
-            print(m.search(test).groupdict())
+            print(re.search(regex, line, flags=re.IGNORECASE).groupdict())
 
         # -- OUTPUTS -- #
         loading from cache: "/Users/katayama/.pyenv/versions/3.9.1/lib/python3.9/site-packages/plexarr/data/nfl_teams_2022.js"

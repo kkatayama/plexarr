@@ -182,27 +182,34 @@ class KemoAPI(object):
             tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
             # tvg_group = "NFL Sunday Games"
 
-            epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
-            # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
-            if epg_desc:
-                try:
-                    nfl_info = self.espn.parseNFLInfo(stream.get("name"))
-                    ds_teams = [nfl_info["team1"], nfl_info["team2"]]
-                    df_sched = self.espn.getNFLSchedule()
-                    df_week = df_sched[((df_sched["week_start"] <= date_now) & (date_now <= df_sched["week_end"]))]
-                    df_game = df_week[(df_week["home_team"].isin(ds_teams) & df_week["away_team"].isin(ds_teams))].iloc[0]
+            epg_info = stream.get("name").split(":", maxsplit=1)
+            try:
+                epg_desc = epg_info[1].strip()
+                # if epg_desc := stream.get("name").split(":", maxsplit=1)[1].strip():
+                if epg_desc:
+                    try:
+                        nfl_info = self.espn.parseNFLInfo(stream.get("name"))
+                        ds_teams = [nfl_info["team1"], nfl_info["team2"]]
+                        df_sched = self.espn.getNFLSchedule()
+                        df_week = df_sched[((df_sched["week_start"] <= date_now) & (date_now <= df_sched["week_end"]))]
+                        df_game = df_week[(df_week["home_team"].isin(ds_teams) & df_week["away_team"].isin(ds_teams))].iloc[0]
 
-                    epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
-                    epg_start = convertEPGTime(df_game.game_date, epg_fmt=True)
-                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-                except Exception:
-                    epg_title = "== PARSER FAILED =="
-                    epg_desc = stream.get("name")
+                        epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
+                        epg_start = convertEPGTime(df_game.game_date, epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                    except Exception:
+                        epg_title = "== PARSER FAILED =="
+                        epg_desc = stream.get("name")
+                        epg_start = getEPGTimeNow(epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                else:
+                    epg_title = "NO GAME RIGHT NOW?"
+                    epg_desc = "OFF AIR"
                     epg_start = getEPGTimeNow(epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-            else:
+            except Exception:
                 epg_title = "NO GAME RIGHT NOW?"
-                epg_desc = "OFF AIR"
+                epg_desc = "OFF AIR (no description...)"
                 epg_start = getEPGTimeNow(epg_fmt=True)
                 epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
 
@@ -225,26 +232,33 @@ class KemoAPI(object):
             tvg_logo = "http://line.lemotv.cc/images/118ae626674246e6d081a4ff16921b19.png"
             # tvg_group = "NBA Games"
 
-            epg_desc = stream.get("name").split(":", maxsplit=1)[1].strip()
-            if epg_desc:
-                try:
-                    nba_info = self.nba.parseNBAInfo(stream.get("name"))
-                    ds_teams = [nba_info["team1"], nba_info["team2"]]
-                    df_sched = self.nba.getNBASchedule()
-                    df_date = df_sched[((df_sched["day_start"] <= date_now) & (date_now <= df_sched["day_end"]))]
-                    df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+            epg_info = stream.get("name").split(":", maxsplit=1)
+            try:
+                epg_desc = epg_info[1].strip()
+                if epg_desc:
+                    try:
+                        nba_info = self.nba.parseNBAInfo(stream.get("name"))
+                        ds_teams = [nba_info["team1"], nba_info["team2"]]
+                        df_sched = self.nba.getNBASchedule()
+                        df_date = df_sched[((df_sched["day_start"] <= date_now) & (date_now <= df_sched["day_end"]))]
+                        df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
 
-                    epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
-                    epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
-                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-                except Exception:
-                    epg_title = "== PARSER FAILED =="
-                    epg_desc = stream.get("name")
+                        epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
+                        epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                    except Exception:
+                        epg_title = "== PARSER FAILED =="
+                        epg_desc = stream.get("name")
+                        epg_start = getEPGTimeNow(epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                else:
+                    epg_title = "NO GAME RIGHT NOW?"
+                    epg_desc = "OFF AIR"
                     epg_start = getEPGTimeNow(epg_fmt=True)
                     epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-            else:
+            except Exception:
                 epg_title = "NO GAME RIGHT NOW?"
-                epg_desc = "OFF AIR"
+                epg_desc = "OFF AIR (no description...)"
                 epg_start = getEPGTimeNow(epg_fmt=True)
                 epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
 

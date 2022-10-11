@@ -3,6 +3,7 @@ bs4
 coloredlogs
 furl
 grequests
+lxml
 m3u8
 mock
 netifaces

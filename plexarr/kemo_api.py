@@ -40,6 +40,7 @@ class KemoAPI(object):
     Example NBA Usage:
 
     from plexarr.kemo_api import KemoAPI
+    from plexarr.nba_api import NBA_API
     from plexarr.utils import getEPGTimeNow, convertEPGTime
     from rich import print
     import pandas as pd
@@ -62,7 +63,7 @@ class KemoAPI(object):
             try:
                 df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
             except Exception:
-                dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), epg_fmt=True)
+                dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), dt_obj=True)
                 df_date = df_sched[((df_sched["day_start"] <= dt_now) & (dt_now <= df_sched["day_end"]))]
                 df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
 
@@ -282,15 +283,14 @@ class KemoAPI(object):
                         try:
                             df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
                         except Exception:
-                            dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), epg_fmt=True)
+                            dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), dt_obj=True)
                             df_date = df_sched[((df_sched["day_start"] <= dt_now) & (dt_now <= df_sched["day_end"]))]
                             df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
 
                         epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
                         epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
                         epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-                    except Exception as e:
-                        print(e)
+                    except Exception:
                         epg_title = "== PARSER FAILED =="
                         epg_desc = stream.get("name")
                         epg_start = getEPGTimeNow(epg_fmt=True)

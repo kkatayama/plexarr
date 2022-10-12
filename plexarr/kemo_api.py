@@ -22,7 +22,8 @@ class KemoAPI(object):
     REST API Wrapper for Kemo/Lemo TV
 
 
-    Example Usage:
+    Example NFL Usage:
+
     from plexarr import KemoAPI
     from rich import print
 
@@ -35,6 +36,42 @@ class KemoAPI(object):
             "epg_desc": stream.get("name").split(":", maxsplit=1)[1].strip(),
         }
         print(info)
+
+    Example NBA Usage:
+
+    from plexarr.kemo_api import KemoAPI
+    from plexarr.utils import getEPGTimeNow, convertEPGTime
+    from rich import print
+    import pandas as pd
+
+
+    kemo = KemoAPI()
+    date_now = getEPGTimeNow(dt_obj=True)
+    for stream in kemo.getStreamsNBA():
+        tvg_id = stream.get("stream_id")
+        tvg_name = stream.get("name").split(":")[0].strip()
+        tvg_logo = "http://line.lemotv.cc/images/118ae626674246e6d081a4ff16921b19.png"
+        epg_info = stream.get("name").split(":", maxsplit=1)
+        epg_desc = epg_info[1].strip()
+
+        if epg_desc:
+            nba_info = nba.parseNBAInfo(stream.get("name"))
+            ds_teams = [nba_info["team1"], nba_info["team2"]]
+            df_sched = nba.getNBASchedule()
+            df_date = df_sched[((df_sched["day_start"] <= date_now) & (date_now <= df_sched["day_end"]))]
+            try:
+                df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+            except Exception:
+                dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), epg_fmt=True)
+                df_date = df_sched[((df_sched["day_start"] <= dt_now) & (dt_now <= df_sched["day_end"]))]
+                df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+
+            epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
+            epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
+            epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+            print({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+            print({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
     """
 
     def __init__(self, iptv='lemo'):
@@ -192,7 +229,12 @@ class KemoAPI(object):
                         ds_teams = [nfl_info["team1"], nfl_info["team2"]]
                         df_sched = self.espn.getNFLSchedule()
                         df_week = df_sched[((df_sched["week_start"] <= date_now) & (date_now <= df_sched["week_end"]))]
-                        df_game = df_week[(df_week["home_team"].isin(ds_teams) & df_week["away_team"].isin(ds_teams))].iloc[0]
+                        try:
+                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+                        except Exception:
+                            dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), epg_fmt=True)
+                            df_date = df_sched[((df_sched["day_start"] <= dt_now) & (dt_now <= df_sched["day_end"]))]
+                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
 
                         epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
                         epg_start = convertEPGTime(df_game.game_date, epg_fmt=True)

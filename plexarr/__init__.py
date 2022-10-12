@@ -13,26 +13,26 @@ from .tmdb_api import TmdbAPI
 #from .utorrent_api import uTorrentAPI
 from .youtube_api import YouTubeAPI
 from .yt_dlp_api import YouTubeDLP
-from .htpc_api import HTPC_API
+# from .htpc_api import HTPC_API
 
 
-__all__ = [
-    'ChapoAPI',
-    'GitHubAPI',
-    'KemoAPI',
-    # 'LemoAPI'
-    'MountAPI',
-    'NZBHydraAPI',
-    'OmbiAPI',
-    'PlexAPI',
-    'PlexPy',
-    'PlutoAPI',
-    'RadarrAPI',
-    'SonarrAPI',
-    'TmdbAPI',
-    # 'uTorrentAPI',
-    'YouTubeAPI',
-    'YouTubeDLP'
-]
+# __all__ = [
+#     'ChapoAPI',
+#     'GitHubAPI',
+#     'KemoAPI',
+#     # 'LemoAPI'
+#     'MountAPI',
+#     'NZBHydraAPI',
+#     'OmbiAPI',
+#     'PlexAPI',
+#     'PlexPy',
+#     'PlutoAPI',
+#     'RadarrAPI',
+#     'SonarrAPI',
+#     'TmdbAPI',
+#     # 'uTorrentAPI',
+#     'YouTubeAPI',
+#     'YouTubeDLP'
+# ]
 
-__version__ = "1.1.351"
+__version__ = "1.1.352"

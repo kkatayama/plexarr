@@ -234,7 +234,8 @@ class KemoAPI(object):
                         epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
                         epg_start = convertEPGTime(df_game.game_date, epg_fmt=True)
                         epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-                    except Exception:
+                    except Exception as e:
+                        print(e)
                         epg_title = "== PARSER FAILED =="
                         epg_desc = stream.get("name")
                         epg_start = getEPGTimeNow(epg_fmt=True)
@@ -288,7 +289,8 @@ class KemoAPI(object):
                         epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
                         epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
                         epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
-                    except Exception:
+                    except Exception as e:
+                        print(e)
                         epg_title = "== PARSER FAILED =="
                         epg_desc = stream.get("name")
                         epg_start = getEPGTimeNow(epg_fmt=True)

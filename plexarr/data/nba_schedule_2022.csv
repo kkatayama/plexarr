@@ -1,0 +1,1302 @@
+day_start,day_end,game_time,home_team,home_venue,away_team
+"datetime64[ns, US/Eastern]","datetime64[ns, US/Eastern]","datetime64[ns, US/Eastern]",object,object,object
+2022-09-30 00:00:00-04:00,2022-09-30 23:59:59-04:00,2022-09-30 06:00:00-04:00,Washington Wizards,Capital One Arena,Golden State Warriors
+2022-09-30 00:00:00-04:00,2022-09-30 23:59:59-04:00,2022-09-30 22:00:00-04:00,LA Clippers,crypto.com Arena,Ra'anana Maccabi Ra'anana
+2022-10-01 00:00:00-04:00,2022-10-01 23:59:59-04:00,2022-10-01 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Memphis Grizzlies
+2022-10-02 00:00:00-04:00,2022-10-02 23:59:59-04:00,2022-10-02 01:00:00-04:00,Golden State Warriors,ORACLE Arena,Washington Wizards
+2022-10-02 00:00:00-04:00,2022-10-02 23:59:59-04:00,2022-10-02 13:00:00-04:00,Boston Celtics,TD Garden,Charlotte Hornets
+2022-10-02 00:00:00-04:00,2022-10-02 23:59:59-04:00,2022-10-02 18:00:00-04:00,Toronto Raptors,Scotiabank Arena,Utah Jazz
+2022-10-02 00:00:00-04:00,2022-10-02 23:59:59-04:00,2022-10-02 19:00:00-04:00,Houston Rockets,Toyota Center (Houston),San Antonio Spurs
+2022-10-02 00:00:00-04:00,2022-10-02 23:59:59-04:00,2022-10-02 22:00:00-04:00,Phoenix Suns,Footprint Center,Adelaide 36ers
+2022-10-03 00:00:00-04:00,2022-10-03 23:59:59-04:00,2022-10-03 19:30:00-04:00,Brooklyn Nets,Prudential Center,Philadelphia 76ers
+2022-10-03 00:00:00-04:00,2022-10-03 23:59:59-04:00,2022-10-03 20:00:00-04:00,Memphis Grizzlies,FedExForum,Orlando Magic
+2022-10-03 00:00:00-04:00,2022-10-03 23:59:59-04:00,2022-10-03 21:00:00-04:00,Denver Nuggets,Ball Arena,Oklahoma City Thunder
+2022-10-03 00:00:00-04:00,2022-10-03 23:59:59-04:00,2022-10-03 22:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Sacramento Kings
+2022-10-03 00:00:00-04:00,2022-10-03 23:59:59-04:00,2022-10-03 22:30:00-04:00,LA Clippers,crypto.com Arena,Portland Trail Blazers
+2022-10-04 00:00:00-04:00,2022-10-04 23:59:59-04:00,2022-10-04 19:00:00-04:00,New York Knicks,Madison Square Garden,Detroit Pistons
+2022-10-04 00:00:00-04:00,2022-10-04 23:59:59-04:00,2022-10-04 19:30:00-04:00,Miami Heat,FTX Arena,Minnesota Timberwolves
+2022-10-04 00:00:00-04:00,2022-10-04 23:59:59-04:00,2022-10-04 21:30:00-04:00,Chicago Bulls,United Center,New Orleans Pelicans
+2022-10-04 00:00:00-04:00,2022-10-04 23:59:59-04:00,2022-10-04 22:00:00-04:00,Portland Trail Blazers,Moda Center,Utah Jazz
+2022-10-05 00:00:00-04:00,2022-10-05 23:59:59-04:00,2022-10-05 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Indiana Pacers
+2022-10-05 00:00:00-04:00,2022-10-05 23:59:59-04:00,2022-10-05 19:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Cleveland Cavaliers
+2022-10-05 00:00:00-04:00,2022-10-05 23:59:59-04:00,2022-10-05 19:30:00-04:00,Boston Celtics,TD Garden,Toronto Raptors
+2022-10-05 00:00:00-04:00,2022-10-05 23:59:59-04:00,2022-10-05 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,Dallas Mavericks
+2022-10-05 00:00:00-04:00,2022-10-05 23:59:59-04:00,2022-10-05 22:00:00-04:00,Los Angeles Lakers,crypto.com Arena,Phoenix Suns
+2022-10-06 00:00:00-04:00,2022-10-06 23:59:59-04:00,2022-10-06 12:00:00-04:00,Atlanta Hawks,State Farm Arena,Milwaukee Bucks
+2022-10-06 00:00:00-04:00,2022-10-06 23:59:59-04:00,2022-10-06 19:30:00-04:00,Brooklyn Nets,Prudential Center,Miami Heat
+2022-10-06 00:00:00-04:00,2022-10-06 23:59:59-04:00,2022-10-06 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,Adelaide 36ers
+2022-10-06 00:00:00-04:00,2022-10-06 23:59:59-04:00,2022-10-06 20:00:00-04:00,San Antonio Spurs,AT&T Center,Orlando Magic
+2022-10-06 00:00:00-04:00,2022-10-06 23:59:59-04:00,2022-10-06 22:00:00-04:00,Portland Trail Blazers,Moda Center,Ra'anana Maccabi Ra'anana
+2022-10-06 00:00:00-04:00,2022-10-06 23:59:59-04:00,2022-10-06 22:00:00-04:00,Los Angeles Lakers,crypto.com Arena,Minnesota Timberwolves
+2022-10-07 00:00:00-04:00,2022-10-07 23:59:59-04:00,2022-10-07 19:30:00-04:00,Charlotte Hornets,Spectrum Center,Boston Celtics
+2022-10-07 00:00:00-04:00,2022-10-07 23:59:59-04:00,2022-10-07 19:30:00-04:00,New York Knicks,Madison Square Garden,Indiana Pacers
+2022-10-07 00:00:00-04:00,2022-10-07 23:59:59-04:00,2022-10-07 20:00:00-04:00,Chicago Bulls,United Center,Denver Nuggets
+2022-10-07 00:00:00-04:00,2022-10-07 23:59:59-04:00,2022-10-07 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Toronto Raptors
+2022-10-07 00:00:00-04:00,2022-10-07 23:59:59-04:00,2022-10-07 20:00:00-04:00,Memphis Grizzlies,FedExForum,Miami Heat
+2022-10-07 00:00:00-04:00,2022-10-07 23:59:59-04:00,2022-10-07 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Detroit Pistons
+2022-10-07 00:00:00-04:00,2022-10-07 23:59:59-04:00,2022-10-07 20:30:00-04:00,Dallas Mavericks,American Airlines Center,Orlando Magic
+2022-10-08 00:00:00-04:00,2022-10-08 23:59:59-04:00,2022-10-08 12:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Atlanta Hawks
+2022-10-09 00:00:00-04:00,2022-10-09 23:59:59-04:00,2022-10-09 18:00:00-04:00,Toronto Raptors,Scotiabank Arena,Chicago Bulls
+2022-10-09 00:00:00-04:00,2022-10-09 23:59:59-04:00,2022-10-09 19:00:00-04:00,Oklahoma City Thunder,Paycom Center,Ra'anana Maccabi Ra'anana
+2022-10-09 00:00:00-04:00,2022-10-09 23:59:59-04:00,2022-10-09 19:00:00-04:00,San Antonio Spurs,AT&T Center,New Orleans Pelicans
+2022-10-09 00:00:00-04:00,2022-10-09 23:59:59-04:00,2022-10-09 20:30:00-04:00,Golden State Warriors,ORACLE Arena,Los Angeles Lakers
+2022-10-09 00:00:00-04:00,2022-10-09 23:59:59-04:00,2022-10-09 21:00:00-04:00,Sacramento Kings,Sleep Train Arena,Portland Trail Blazers
+2022-10-09 00:00:00-04:00,2022-10-09 23:59:59-04:00,2022-10-09 22:30:00-04:00,LA Clippers,crypto.com Arena,Minnesota Timberwolves
+2022-10-10 00:00:00-04:00,2022-10-10 23:59:59-04:00,2022-10-10 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Washington Wizards
+2022-10-10 00:00:00-04:00,2022-10-10 23:59:59-04:00,2022-10-10 19:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Philadelphia 76ers
+2022-10-10 00:00:00-04:00,2022-10-10 23:59:59-04:00,2022-10-10 19:30:00-04:00,Miami Heat,FTX Arena,Houston Rockets
+2022-10-10 00:00:00-04:00,2022-10-10 23:59:59-04:00,2022-10-10 21:00:00-04:00,Denver Nuggets,Ball Arena,Phoenix Suns
+2022-10-11 00:00:00-04:00,2022-10-11 23:59:59-04:00,2022-10-11 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Oklahoma City Thunder
+2022-10-11 00:00:00-04:00,2022-10-11 23:59:59-04:00,2022-10-11 19:00:00-04:00,Orlando Magic,Amway Center,Memphis Grizzlies
+2022-10-11 00:00:00-04:00,2022-10-11 23:59:59-04:00,2022-10-11 20:00:00-04:00,Chicago Bulls,United Center,Milwaukee Bucks
+2022-10-11 00:00:00-04:00,2022-10-11 23:59:59-04:00,2022-10-11 21:00:00-04:00,Utah Jazz,Vivint Arena,San Antonio Spurs
+2022-10-11 00:00:00-04:00,2022-10-11 23:59:59-04:00,2022-10-11 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Portland Trail Blazers
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 19:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Atlanta Hawks
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,New York Knicks
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 19:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Charlotte Hornets
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 19:30:00-04:00,Miami Heat,FTX Arena,New Orleans Pelicans
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 19:30:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Brooklyn Nets
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 22:00:00-04:00,Los Angeles Lakers,crypto.com Arena,Minnesota Timberwolves
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 22:00:00-04:00,Phoenix Suns,Footprint Center,Sacramento Kings
+2022-10-12 00:00:00-04:00,2022-10-12 23:59:59-04:00,2022-10-12 22:30:00-04:00,LA Clippers,crypto.com Arena,Denver Nuggets
+2022-10-13 00:00:00-04:00,2022-10-13 23:59:59-04:00,2022-10-13 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Memphis Grizzlies
+2022-10-13 00:00:00-04:00,2022-10-13 23:59:59-04:00,2022-10-13 20:00:00-04:00,San Antonio Spurs,AT&T Center,Oklahoma City Thunder
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Houston Rockets
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 19:00:00-04:00,Orlando Magic,Amway Center,Cleveland Cavaliers
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 19:00:00-04:00,Toronto Raptors,Scotiabank Arena,Boston Celtics
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 19:30:00-04:00,New York Knicks,Madison Square Garden,Washington Wizards
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 20:00:00-04:00,Minnesota Timberwolves,Target Center,Brooklyn Nets
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Atlanta Hawks
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 21:00:00-04:00,Utah Jazz,Vivint Arena,Dallas Mavericks
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Denver Nuggets
+2022-10-14 00:00:00-04:00,2022-10-14 23:59:59-04:00,2022-10-14 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Los Angeles Lakers
+2022-10-18 00:00:00-04:00,2022-10-18 23:59:59-04:00,2022-10-18 19:30:00-04:00,Boston Celtics,TD Garden,Philadelphia 76ers
+2022-10-18 00:00:00-04:00,2022-10-18 23:59:59-04:00,2022-10-18 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Los Angeles Lakers
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Orlando Magic
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Washington Wizards
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Houston Rockets
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 19:30:00-04:00,Brooklyn Nets,Prudential Center,New Orleans Pelicans
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 19:30:00-04:00,Miami Heat,FTX Arena,Chicago Bulls
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Cleveland Cavaliers
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 19:30:00-04:00,Memphis Grizzlies,FedExForum,New York Knicks
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 20:00:00-04:00,Minnesota Timberwolves,Target Center,Oklahoma City Thunder
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 20:00:00-04:00,San Antonio Spurs,AT&T Center,Charlotte Hornets
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 21:00:00-04:00,Utah Jazz,Vivint Arena,Denver Nuggets
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 22:00:00-04:00,Phoenix Suns,Footprint Center,Dallas Mavericks
+2022-10-19 00:00:00-04:00,2022-10-19 23:59:59-04:00,2022-10-19 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Portland Trail Blazers
+2022-10-20 00:00:00-04:00,2022-10-20 23:59:59-04:00,2022-10-20 19:30:00-04:00,Philadelphia 76ers,Wells Fargo Center,Milwaukee Bucks
+2022-10-20 00:00:00-04:00,2022-10-20 23:59:59-04:00,2022-10-20 22:00:00-04:00,Los Angeles Lakers,crypto.com Arena,LA Clippers
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 19:00:00-04:00,Charlotte Hornets,Spectrum Center,New Orleans Pelicans
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,San Antonio Spurs
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 19:00:00-04:00,Washington Wizards,Capital One Arena,Chicago Bulls
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Orlando Magic
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 19:30:00-04:00,Brooklyn Nets,Prudential Center,Toronto Raptors
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 19:30:00-04:00,Miami Heat,FTX Arena,Boston Celtics
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 19:30:00-04:00,New York Knicks,Madison Square Garden,Detroit Pistons
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Memphis Grizzlies
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 20:00:00-04:00,Minnesota Timberwolves,Target Center,Utah Jazz
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Denver Nuggets
+2022-10-21 00:00:00-04:00,2022-10-21 23:59:59-04:00,2022-10-21 22:00:00-04:00,Portland Trail Blazers,Moda Center,Phoenix Suns
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 18:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,San Antonio Spurs
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Detroit Pistons
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 19:00:00-04:00,Orlando Magic,Amway Center,Boston Celtics
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 20:00:00-04:00,Miami Heat,FTX Arena,Toronto Raptors
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 20:00:00-04:00,Chicago Bulls,United Center,Cleveland Cavaliers
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Houston Rockets
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 20:30:00-04:00,Dallas Mavericks,American Airlines Center,Memphis Grizzlies
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 21:00:00-04:00,Denver Nuggets,Ball Arena,Oklahoma City Thunder
+2022-10-22 00:00:00-04:00,2022-10-22 23:59:59-04:00,2022-10-22 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,LA Clippers
+2022-10-23 00:00:00-04:00,2022-10-23 23:59:59-04:00,2022-10-23 15:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Portland Trail Blazers
+2022-10-23 00:00:00-04:00,2022-10-23 23:59:59-04:00,2022-10-23 17:00:00-04:00,Atlanta Hawks,State Farm Arena,Charlotte Hornets
+2022-10-23 00:00:00-04:00,2022-10-23 23:59:59-04:00,2022-10-23 19:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Washington Wizards
+2022-10-23 00:00:00-04:00,2022-10-23 23:59:59-04:00,2022-10-23 19:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Utah Jazz
+2022-10-23 00:00:00-04:00,2022-10-23 23:59:59-04:00,2022-10-23 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,Minnesota Timberwolves
+2022-10-23 00:00:00-04:00,2022-10-23 23:59:59-04:00,2022-10-23 20:30:00-04:00,Golden State Warriors,ORACLE Arena,Sacramento Kings
+2022-10-23 00:00:00-04:00,2022-10-23 23:59:59-04:00,2022-10-23 22:00:00-04:00,LA Clippers,crypto.com Arena,Phoenix Suns
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 19:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Indiana Pacers
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 19:30:00-04:00,Miami Heat,FTX Arena,Toronto Raptors
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 19:30:00-04:00,New York Knicks,Madison Square Garden,Orlando Magic
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 20:00:00-04:00,Chicago Bulls,United Center,Boston Celtics
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Utah Jazz
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 20:00:00-04:00,Memphis Grizzlies,FedExForum,Brooklyn Nets
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 20:00:00-04:00,Minnesota Timberwolves,Target Center,San Antonio Spurs
+2022-10-24 00:00:00-04:00,2022-10-24 23:59:59-04:00,2022-10-24 22:00:00-04:00,Portland Trail Blazers,Moda Center,Denver Nuggets
+2022-10-25 00:00:00-04:00,2022-10-25 23:59:59-04:00,2022-10-25 19:00:00-04:00,Washington Wizards,Capital One Arena,Detroit Pistons
+2022-10-25 00:00:00-04:00,2022-10-25 23:59:59-04:00,2022-10-25 19:30:00-04:00,New Orleans Pelicans,Smoothie King Center,Dallas Mavericks
+2022-10-25 00:00:00-04:00,2022-10-25 23:59:59-04:00,2022-10-25 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,LA Clippers
+2022-10-25 00:00:00-04:00,2022-10-25 23:59:59-04:00,2022-10-25 22:00:00-04:00,Phoenix Suns,Footprint Center,Golden State Warriors
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 19:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Orlando Magic
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Atlanta Hawks
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 19:30:00-04:00,New York Knicks,Madison Square Garden,Charlotte Hornets
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Philadelphia 76ers
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 19:30:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Brooklyn Nets
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 20:00:00-04:00,Chicago Bulls,United Center,Indiana Pacers
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 20:00:00-04:00,Minnesota Timberwolves,Target Center,San Antonio Spurs
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 21:00:00-04:00,Utah Jazz,Vivint Arena,Houston Rockets
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 22:00:00-04:00,Denver Nuggets,Ball Arena,Los Angeles Lakers
+2022-10-26 00:00:00-04:00,2022-10-26 23:59:59-04:00,2022-10-26 22:00:00-04:00,Portland Trail Blazers,Moda Center,Miami Heat
+2022-10-27 00:00:00-04:00,2022-10-27 23:59:59-04:00,2022-10-27 19:30:00-04:00,Brooklyn Nets,Prudential Center,Dallas Mavericks
+2022-10-27 00:00:00-04:00,2022-10-27 23:59:59-04:00,2022-10-27 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,LA Clippers
+2022-10-27 00:00:00-04:00,2022-10-27 23:59:59-04:00,2022-10-27 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Miami Heat
+2022-10-27 00:00:00-04:00,2022-10-27 23:59:59-04:00,2022-10-27 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Memphis Grizzlies
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Atlanta Hawks
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 19:00:00-04:00,Orlando Magic,Amway Center,Charlotte Hornets
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 19:30:00-04:00,Boston Celtics,TD Garden,Cleveland Cavaliers
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Philadelphia 76ers
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 19:30:00-04:00,Washington Wizards,Capital One Arena,Indiana Pacers
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,New York Knicks
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 20:00:00-04:00,Minnesota Timberwolves,Target Center,Los Angeles Lakers
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 20:30:00-04:00,San Antonio Spurs,AT&T Center,Chicago Bulls
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 21:00:00-04:00,Denver Nuggets,Ball Arena,Utah Jazz
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 22:00:00-04:00,Phoenix Suns,Footprint Center,New Orleans Pelicans
+2022-10-28 00:00:00-04:00,2022-10-28 23:59:59-04:00,2022-10-28 22:00:00-04:00,Portland Trail Blazers,Moda Center,Houston Rockets
+2022-10-29 00:00:00-04:00,2022-10-29 23:59:59-04:00,2022-10-29 18:00:00-04:00,Sacramento Kings,Sleep Train Arena,Miami Heat
+2022-10-29 00:00:00-04:00,2022-10-29 23:59:59-04:00,2022-10-29 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Golden State Warriors
+2022-10-29 00:00:00-04:00,2022-10-29 23:59:59-04:00,2022-10-29 19:30:00-04:00,Brooklyn Nets,Prudential Center,Indiana Pacers
+2022-10-29 00:00:00-04:00,2022-10-29 23:59:59-04:00,2022-10-29 20:00:00-04:00,Chicago Bulls,United Center,Philadelphia 76ers
+2022-10-29 00:00:00-04:00,2022-10-29 23:59:59-04:00,2022-10-29 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Atlanta Hawks
+2022-10-29 00:00:00-04:00,2022-10-29 23:59:59-04:00,2022-10-29 21:00:00-04:00,Dallas Mavericks,American Airlines Center,Oklahoma City Thunder
+2022-10-29 00:00:00-04:00,2022-10-29 23:59:59-04:00,2022-10-29 21:00:00-04:00,Utah Jazz,Vivint Arena,Memphis Grizzlies
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 15:00:00-04:00,LA Clippers,crypto.com Arena,New Orleans Pelicans
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 18:00:00-04:00,Boston Celtics,TD Garden,Washington Wizards
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 18:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,New York Knicks
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 18:00:00-04:00,Detroit Pistons,Little Caesars Arena,Golden State Warriors
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 19:00:00-04:00,San Antonio Spurs,AT&T Center,Minnesota Timberwolves
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 19:30:00-04:00,Dallas Mavericks,American Airlines Center,Orlando Magic
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 21:00:00-04:00,Phoenix Suns,Footprint Center,Houston Rockets
+2022-10-30 00:00:00-04:00,2022-10-30 23:59:59-04:00,2022-10-30 21:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Denver Nuggets
+2022-10-31 00:00:00-04:00,2022-10-31 23:59:59-04:00,2022-10-31 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Sacramento Kings
+2022-10-31 00:00:00-04:00,2022-10-31 23:59:59-04:00,2022-10-31 19:00:00-04:00,Washington Wizards,Capital One Arena,Philadelphia 76ers
+2022-10-31 00:00:00-04:00,2022-10-31 23:59:59-04:00,2022-10-31 19:30:00-04:00,Brooklyn Nets,Prudential Center,Indiana Pacers
+2022-10-31 00:00:00-04:00,2022-10-31 23:59:59-04:00,2022-10-31 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Atlanta Hawks
+2022-10-31 00:00:00-04:00,2022-10-31 23:59:59-04:00,2022-10-31 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Detroit Pistons
+2022-10-31 00:00:00-04:00,2022-10-31 23:59:59-04:00,2022-10-31 21:00:00-04:00,Utah Jazz,Vivint Arena,Memphis Grizzlies
+2022-10-31 00:00:00-04:00,2022-10-31 23:59:59-04:00,2022-10-31 22:30:00-04:00,LA Clippers,crypto.com Arena,Houston Rockets
+2022-11-01 00:00:00-04:00,2022-11-01 23:59:59-04:00,2022-11-01 19:30:00-04:00,Brooklyn Nets,Prudential Center,Chicago Bulls
+2022-11-01 00:00:00-04:00,2022-11-01 23:59:59-04:00,2022-11-01 19:30:00-04:00,Miami Heat,FTX Arena,Golden State Warriors
+2022-11-01 00:00:00-04:00,2022-11-01 23:59:59-04:00,2022-11-01 19:30:00-04:00,Oklahoma City Thunder,Paycom Center,Orlando Magic
+2022-11-01 00:00:00-04:00,2022-11-01 23:59:59-04:00,2022-11-01 22:00:00-04:00,Phoenix Suns,Footprint Center,Minnesota Timberwolves
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 19:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Boston Celtics
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 19:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Washington Wizards
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 19:30:00-04:00,Miami Heat,FTX Arena,Sacramento Kings
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 19:30:00-04:00,New York Knicks,Madison Square Garden,Atlanta Hawks
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 19:30:00-04:00,Chicago Bulls,United Center,Charlotte Hornets
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),LA Clippers
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Detroit Pistons
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 20:00:00-04:00,San Antonio Spurs,AT&T Center,Toronto Raptors
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 20:30:00-04:00,Dallas Mavericks,American Airlines Center,Utah Jazz
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 22:00:00-04:00,Portland Trail Blazers,Moda Center,Memphis Grizzlies
+2022-11-02 00:00:00-04:00,2022-11-02 23:59:59-04:00,2022-11-02 22:30:00-04:00,Los Angeles Lakers,crypto.com Arena,New Orleans Pelicans
+2022-11-03 00:00:00-04:00,2022-11-03 23:59:59-04:00,2022-11-03 19:00:00-04:00,Orlando Magic,Amway Center,Golden State Warriors
+2022-11-03 00:00:00-04:00,2022-11-03 23:59:59-04:00,2022-11-03 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,Denver Nuggets
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Cleveland Cavaliers
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Miami Heat
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 19:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,New York Knicks
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 19:00:00-04:00,Washington Wizards,Capital One Arena,Brooklyn Nets
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 19:30:00-04:00,Boston Celtics,TD Garden,Chicago Bulls
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 20:00:00-04:00,Memphis Grizzlies,FedExForum,Charlotte Hornets
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 20:00:00-04:00,San Antonio Spurs,AT&T Center,LA Clippers
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 20:30:00-04:00,Dallas Mavericks,American Airlines Center,Toronto Raptors
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 20:30:00-04:00,New Orleans Pelicans,Smoothie King Center,Golden State Warriors
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 22:00:00-04:00,Minnesota Timberwolves,Target Center,Milwaukee Bucks
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 22:00:00-04:00,Phoenix Suns,Footprint Center,Portland Trail Blazers
+2022-11-04 00:00:00-04:00,2022-11-04 23:59:59-04:00,2022-11-04 22:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Utah Jazz
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 17:00:00-04:00,Orlando Magic,Amway Center,Sacramento Kings
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Brooklyn Nets
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 19:30:00-04:00,Atlanta Hawks,State Farm Arena,New Orleans Pelicans
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 19:30:00-04:00,New York Knicks,Madison Square Garden,Boston Celtics
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Oklahoma City Thunder
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 20:00:00-04:00,Minnesota Timberwolves,Target Center,Houston Rockets
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 21:00:00-04:00,Denver Nuggets,Ball Arena,San Antonio Spurs
+2022-11-05 00:00:00-04:00,2022-11-05 23:59:59-04:00,2022-11-05 22:00:00-04:00,Phoenix Suns,Footprint Center,Portland Trail Blazers
+2022-11-06 00:00:00-04:00,2022-11-06 23:59:59-05:00,2022-11-06 15:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Cleveland Cavaliers
+2022-11-06 00:00:00-04:00,2022-11-06 23:59:59-05:00,2022-11-06 18:00:00-05:00,Toronto Raptors,Scotiabank Arena,Chicago Bulls
+2022-11-06 00:00:00-04:00,2022-11-06 23:59:59-05:00,2022-11-06 18:00:00-05:00,Memphis Grizzlies,FedExForum,Washington Wizards
+2022-11-06 00:00:00-04:00,2022-11-06 23:59:59-05:00,2022-11-06 22:00:00-05:00,LA Clippers,crypto.com Arena,Utah Jazz
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Washington Wizards
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 19:15:00-05:00,Orlando Magic,Amway Center,Houston Rockets
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 19:30:00-05:00,Detroit Pistons,Little Caesars Arena,Oklahoma City Thunder
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 19:45:00-05:00,Indiana Pacers,Gainbridge Coliseum,New Orleans Pelicans
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 20:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Phoenix Suns
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 20:15:00-05:00,Atlanta Hawks,State Farm Arena,Milwaukee Bucks
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 20:30:00-05:00,Miami Heat,FTX Arena,Portland Trail Blazers
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 20:45:00-05:00,Chicago Bulls,United Center,Toronto Raptors
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 21:00:00-05:00,Memphis Grizzlies,FedExForum,Boston Celtics
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 21:15:00-05:00,Minnesota Timberwolves,Target Center,New York Knicks
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 21:30:00-05:00,San Antonio Spurs,AT&T Center,Denver Nuggets
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 21:45:00-05:00,Dallas Mavericks,American Airlines Center,Brooklyn Nets
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Sacramento Kings
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 22:15:00-05:00,Utah Jazz,Vivint Arena,Los Angeles Lakers
+2022-11-07 00:00:00-05:00,2022-11-07 23:59:59-05:00,2022-11-07 22:30:00-05:00,LA Clippers,crypto.com Arena,Cleveland Cavaliers
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Portland Trail Blazers
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Denver Nuggets
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 19:00:00-05:00,Orlando Magic,Amway Center,Dallas Mavericks
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Utah Jazz
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 19:30:00-05:00,Boston Celtics,TD Garden,Detroit Pistons
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 19:30:00-05:00,Brooklyn Nets,Prudential Center,New York Knicks
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Houston Rockets
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 20:00:00-05:00,Chicago Bulls,United Center,New Orleans Pelicans
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 20:00:00-05:00,Minnesota Timberwolves,Target Center,Phoenix Suns
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Milwaukee Bucks
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 20:00:00-05:00,San Antonio Spurs,AT&T Center,Memphis Grizzlies
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 22:00:00-05:00,LA Clippers,crypto.com Arena,Los Angeles Lakers
+2022-11-09 00:00:00-05:00,2022-11-09 23:59:59-05:00,2022-11-09 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Cleveland Cavaliers
+2022-11-10 00:00:00-05:00,2022-11-10 23:59:59-05:00,2022-11-10 19:00:00-05:00,Washington Wizards,Capital One Arena,Dallas Mavericks
+2022-11-10 00:00:00-05:00,2022-11-10 23:59:59-05:00,2022-11-10 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Philadelphia 76ers
+2022-11-10 00:00:00-05:00,2022-11-10 23:59:59-05:00,2022-11-10 19:30:00-05:00,Miami Heat,FTX Arena,Charlotte Hornets
+2022-11-10 00:00:00-05:00,2022-11-10 23:59:59-05:00,2022-11-10 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Portland Trail Blazers
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 19:00:00-05:00,Boston Celtics,TD Garden,Denver Nuggets
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 19:00:00-05:00,Orlando Magic,Amway Center,Phoenix Suns
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 19:30:00-05:00,New York Knicks,Madison Square Garden,Detroit Pistons
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Toronto Raptors
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 20:00:00-05:00,San Antonio Spurs,AT&T Center,Milwaukee Bucks
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 21:30:00-05:00,Memphis Grizzlies,FedExForum,Minnesota Timberwolves
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Cleveland Cavaliers
+2022-11-11 00:00:00-05:00,2022-11-11 23:59:59-05:00,2022-11-11 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Sacramento Kings
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 16:00:00-05:00,LA Clippers,crypto.com Arena,Brooklyn Nets
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 18:00:00-05:00,Washington Wizards,Capital One Arena,Utah Jazz
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Boston Celtics
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Toronto Raptors
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Atlanta Hawks
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 20:00:00-05:00,Miami Heat,FTX Arena,Charlotte Hornets
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Portland Trail Blazers
+2022-11-12 00:00:00-05:00,2022-11-12 23:59:59-05:00,2022-11-12 20:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Houston Rockets
+2022-11-13 00:00:00-05:00,2022-11-13 23:59:59-05:00,2022-11-13 12:00:00-05:00,New York Knicks,Madison Square Garden,Oklahoma City Thunder
+2022-11-13 00:00:00-05:00,2022-11-13 23:59:59-05:00,2022-11-13 18:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Minnesota Timberwolves
+2022-11-13 00:00:00-05:00,2022-11-13 23:59:59-05:00,2022-11-13 18:00:00-05:00,Washington Wizards,Capital One Arena,Memphis Grizzlies
+2022-11-13 00:00:00-05:00,2022-11-13 23:59:59-05:00,2022-11-13 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Utah Jazz
+2022-11-13 00:00:00-05:00,2022-11-13 23:59:59-05:00,2022-11-13 20:00:00-05:00,Chicago Bulls,United Center,Denver Nuggets
+2022-11-13 00:00:00-05:00,2022-11-13 23:59:59-05:00,2022-11-13 21:00:00-05:00,Sacramento Kings,Sleep Train Arena,Golden State Warriors
+2022-11-13 00:00:00-05:00,2022-11-13 23:59:59-05:00,2022-11-13 21:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Brooklyn Nets
+2022-11-14 00:00:00-05:00,2022-11-14 23:59:59-05:00,2022-11-14 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Toronto Raptors
+2022-11-14 00:00:00-05:00,2022-11-14 23:59:59-05:00,2022-11-14 19:00:00-05:00,Orlando Magic,Amway Center,Charlotte Hornets
+2022-11-14 00:00:00-05:00,2022-11-14 23:59:59-05:00,2022-11-14 19:30:00-05:00,Boston Celtics,TD Garden,Oklahoma City Thunder
+2022-11-14 00:00:00-05:00,2022-11-14 23:59:59-05:00,2022-11-14 19:30:00-05:00,Miami Heat,FTX Arena,Phoenix Suns
+2022-11-14 00:00:00-05:00,2022-11-14 23:59:59-05:00,2022-11-14 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),LA Clippers
+2022-11-14 00:00:00-05:00,2022-11-14 23:59:59-05:00,2022-11-14 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Atlanta Hawks
+2022-11-14 00:00:00-05:00,2022-11-14 23:59:59-05:00,2022-11-14 22:00:00-05:00,Golden State Warriors,ORACLE Arena,San Antonio Spurs
+2022-11-15 00:00:00-05:00,2022-11-15 23:59:59-05:00,2022-11-15 19:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Memphis Grizzlies
+2022-11-15 00:00:00-05:00,2022-11-15 23:59:59-05:00,2022-11-15 20:30:00-05:00,Dallas Mavericks,American Airlines Center,LA Clippers
+2022-11-15 00:00:00-05:00,2022-11-15 23:59:59-05:00,2022-11-15 22:00:00-05:00,Utah Jazz,Vivint Arena,New York Knicks
+2022-11-15 00:00:00-05:00,2022-11-15 23:59:59-05:00,2022-11-15 22:00:00-05:00,Portland Trail Blazers,Moda Center,San Antonio Spurs
+2022-11-15 00:00:00-05:00,2022-11-15 23:59:59-05:00,2022-11-15 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Brooklyn Nets
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Indiana Pacers
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 19:00:00-05:00,Orlando Magic,Amway Center,Minnesota Timberwolves
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 19:00:00-05:00,Washington Wizards,Capital One Arena,Oklahoma City Thunder
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Boston Celtics
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Miami Heat
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Cleveland Cavaliers
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Chicago Bulls
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Houston Rockets
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 22:00:00-05:00,Denver Nuggets,Ball Arena,New York Knicks
+2022-11-16 00:00:00-05:00,2022-11-16 23:59:59-05:00,2022-11-16 22:00:00-05:00,Phoenix Suns,Footprint Center,Golden State Warriors
+2022-11-17 00:00:00-05:00,2022-11-17 23:59:59-05:00,2022-11-17 22:00:00-05:00,Portland Trail Blazers,Moda Center,Brooklyn Nets
+2022-11-17 00:00:00-05:00,2022-11-17 23:59:59-05:00,2022-11-17 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,San Antonio Spurs
+2022-11-17 00:00:00-05:00,2022-11-17 23:59:59-05:00,2022-11-17 22:30:00-05:00,LA Clippers,crypto.com Arena,Detroit Pistons
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 19:00:00-05:00,Washington Wizards,Capital One Arena,Miami Heat
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Charlotte Hornets
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Milwaukee Bucks
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 20:00:00-05:00,Chicago Bulls,United Center,Orlando Magic
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Indiana Pacers
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 20:00:00-05:00,Memphis Grizzlies,FedExForum,Oklahoma City Thunder
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Denver Nuggets
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 20:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Boston Celtics
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 21:00:00-05:00,Utah Jazz,Vivint Arena,Phoenix Suns
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 22:00:00-05:00,Golden State Warriors,ORACLE Arena,New York Knicks
+2022-11-18 00:00:00-05:00,2022-11-18 23:59:59-05:00,2022-11-18 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Detroit Pistons
+2022-11-19 00:00:00-05:00,2022-11-19 23:59:59-05:00,2022-11-19 18:00:00-05:00,Atlanta Hawks,State Farm Arena,Toronto Raptors
+2022-11-19 00:00:00-05:00,2022-11-19 23:59:59-05:00,2022-11-19 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Orlando Magic
+2022-11-19 00:00:00-05:00,2022-11-19 23:59:59-05:00,2022-11-19 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Minnesota Timberwolves
+2022-11-19 00:00:00-05:00,2022-11-19 23:59:59-05:00,2022-11-19 22:00:00-05:00,Portland Trail Blazers,Moda Center,Utah Jazz
+2022-11-19 00:00:00-05:00,2022-11-19 23:59:59-05:00,2022-11-19 22:30:00-05:00,LA Clippers,crypto.com Arena,San Antonio Spurs
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 15:30:00-05:00,Phoenix Suns,Footprint Center,New York Knicks
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 18:00:00-05:00,Washington Wizards,Capital One Arena,Charlotte Hornets
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 18:00:00-05:00,Sacramento Kings,Sleep Train Arena,Detroit Pistons
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 19:00:00-05:00,Brooklyn Nets,Prudential Center,Memphis Grizzlies
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Miami Heat
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 19:00:00-05:00,Houston Rockets,Toyota Center (Houston),Golden State Warriors
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 19:30:00-05:00,Dallas Mavericks,American Airlines Center,Denver Nuggets
+2022-11-20 00:00:00-05:00,2022-11-20 23:59:59-05:00,2022-11-20 21:30:00-05:00,Los Angeles Lakers,crypto.com Arena,San Antonio Spurs
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Atlanta Hawks
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Orlando Magic
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 20:00:00-05:00,Chicago Bulls,United Center,Boston Celtics
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Portland Trail Blazers
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 20:00:00-05:00,Minnesota Timberwolves,Target Center,Miami Heat
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Golden State Warriors
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,New York Knicks
+2022-11-21 00:00:00-05:00,2022-11-21 23:59:59-05:00,2022-11-21 22:30:00-05:00,LA Clippers,crypto.com Arena,Utah Jazz
+2022-11-22 00:00:00-05:00,2022-11-22 23:59:59-05:00,2022-11-22 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Brooklyn Nets
+2022-11-22 00:00:00-05:00,2022-11-22 23:59:59-05:00,2022-11-22 20:00:00-05:00,Memphis Grizzlies,FedExForum,Sacramento Kings
+2022-11-22 00:00:00-05:00,2022-11-22 23:59:59-05:00,2022-11-22 21:00:00-05:00,Denver Nuggets,Ball Arena,Detroit Pistons
+2022-11-22 00:00:00-05:00,2022-11-22 23:59:59-05:00,2022-11-22 22:00:00-05:00,Phoenix Suns,Footprint Center,Los Angeles Lakers
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Philadelphia 76ers
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Portland Trail Blazers
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Minnesota Timberwolves
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Sacramento Kings
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 19:30:00-05:00,Boston Celtics,TD Garden,Dallas Mavericks
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 19:30:00-05:00,Miami Heat,FTX Arena,Washington Wizards
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Brooklyn Nets
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Chicago Bulls
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Denver Nuggets
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 20:00:00-05:00,San Antonio Spurs,AT&T Center,New Orleans Pelicans
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 21:00:00-05:00,Utah Jazz,Vivint Arena,Detroit Pistons
+2022-11-23 00:00:00-05:00,2022-11-23 23:59:59-05:00,2022-11-23 22:00:00-05:00,Golden State Warriors,ORACLE Arena,LA Clippers
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 17:00:00-05:00,Charlotte Hornets,Spectrum Center,Minnesota Timberwolves
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 19:00:00-05:00,Orlando Magic,Amway Center,Philadelphia 76ers
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 19:30:00-05:00,New York Knicks,Madison Square Garden,Portland Trail Blazers
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,Boston Celtics,TD Garden,Sacramento Kings
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Brooklyn Nets
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,Miami Heat,FTX Arena,Washington Wizards
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Atlanta Hawks
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,Memphis Grizzlies,FedExForum,New Orleans Pelicans
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Cleveland Cavaliers
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Chicago Bulls
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 20:00:00-05:00,San Antonio Spurs,AT&T Center,Los Angeles Lakers
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 21:00:00-05:00,Phoenix Suns,Footprint Center,Detroit Pistons
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Utah Jazz
+2022-11-25 00:00:00-05:00,2022-11-25 23:59:59-05:00,2022-11-25 22:30:00-05:00,LA Clippers,crypto.com Arena,Denver Nuggets
+2022-11-26 00:00:00-05:00,2022-11-26 23:59:59-05:00,2022-11-26 17:00:00-05:00,Toronto Raptors,Scotiabank Arena,Dallas Mavericks
+2022-11-26 00:00:00-05:00,2022-11-26 23:59:59-05:00,2022-11-26 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Oklahoma City Thunder
+2022-11-26 00:00:00-05:00,2022-11-26 23:59:59-05:00,2022-11-26 20:00:00-05:00,San Antonio Spurs,AT&T Center,Los Angeles Lakers
+2022-11-26 00:00:00-05:00,2022-11-26 23:59:59-05:00,2022-11-26 21:00:00-05:00,Phoenix Suns,Footprint Center,Utah Jazz
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 15:00:00-05:00,Brooklyn Nets,Prudential Center,Portland Trail Blazers
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 15:30:00-05:00,Minnesota Timberwolves,Target Center,Golden State Warriors
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 16:00:00-05:00,LA Clippers,crypto.com Arena,Indiana Pacers
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 17:00:00-05:00,Atlanta Hawks,State Farm Arena,Miami Heat
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 18:00:00-05:00,Boston Celtics,TD Garden,Washington Wizards
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 18:00:00-05:00,Detroit Pistons,Little Caesars Arena,Cleveland Cavaliers
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 18:00:00-05:00,New York Knicks,Madison Square Garden,Memphis Grizzlies
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 18:00:00-05:00,Orlando Magic,Amway Center,Philadelphia 76ers
+2022-11-27 00:00:00-05:00,2022-11-27 23:59:59-05:00,2022-11-27 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Dallas Mavericks
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Atlanta Hawks
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 19:00:00-05:00,Washington Wizards,Capital One Arena,Minnesota Timberwolves
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 19:30:00-05:00,Boston Celtics,TD Garden,Charlotte Hornets
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 19:30:00-05:00,Brooklyn Nets,Prudential Center,Orlando Magic
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Cleveland Cavaliers
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Oklahoma City Thunder
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 21:00:00-05:00,Denver Nuggets,Ball Arena,Houston Rockets
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 21:00:00-05:00,Utah Jazz,Vivint Arena,Chicago Bulls
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Phoenix Suns
+2022-11-28 00:00:00-05:00,2022-11-28 23:59:59-05:00,2022-11-28 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Indiana Pacers
+2022-11-29 00:00:00-05:00,2022-11-29 23:59:59-05:00,2022-11-29 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,New York Knicks
+2022-11-29 00:00:00-05:00,2022-11-29 23:59:59-05:00,2022-11-29 19:30:00-05:00,Dallas Mavericks,American Airlines Center,Golden State Warriors
+2022-11-29 00:00:00-05:00,2022-11-29 23:59:59-05:00,2022-11-29 22:00:00-05:00,Portland Trail Blazers,Moda Center,LA Clippers
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Philadelphia 76ers
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 19:00:00-05:00,Orlando Magic,Amway Center,Atlanta Hawks
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 19:30:00-05:00,Boston Celtics,TD Garden,Miami Heat
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 19:30:00-05:00,Brooklyn Nets,Prudential Center,Washington Wizards
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 19:30:00-05:00,New York Knicks,Madison Square Garden,Milwaukee Bucks
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 20:00:00-05:00,Minnesota Timberwolves,Target Center,Memphis Grizzlies
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Toronto Raptors
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,San Antonio Spurs
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 21:00:00-05:00,Denver Nuggets,Ball Arena,Houston Rockets
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 21:00:00-05:00,Phoenix Suns,Footprint Center,Chicago Bulls
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 21:00:00-05:00,Utah Jazz,Vivint Arena,LA Clippers
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Indiana Pacers
+2022-11-30 00:00:00-05:00,2022-11-30 23:59:59-05:00,2022-11-30 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Portland Trail Blazers
+2022-12-01 00:00:00-05:00,2022-12-01 23:59:59-05:00,2022-12-01 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Dallas Mavericks
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Washington Wizards
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Denver Nuggets
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 19:30:00-05:00,Boston Celtics,TD Garden,Miami Heat
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 19:30:00-05:00,Brooklyn Nets,Prudential Center,Toronto Raptors
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Orlando Magic
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 19:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Los Angeles Lakers
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 20:00:00-05:00,Memphis Grizzlies,FedExForum,Philadelphia 76ers
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 20:00:00-05:00,San Antonio Spurs,AT&T Center,New Orleans Pelicans
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 21:00:00-05:00,Phoenix Suns,Footprint Center,Houston Rockets
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 21:00:00-05:00,Utah Jazz,Vivint Arena,Indiana Pacers
+2022-12-02 00:00:00-05:00,2022-12-02 23:59:59-05:00,2022-12-02 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Chicago Bulls
+2022-12-03 00:00:00-05:00,2022-12-03 23:59:59-05:00,2022-12-03 12:30:00-05:00,New York Knicks,Madison Square Garden,Dallas Mavericks
+2022-12-03 00:00:00-05:00,2022-12-03 23:59:59-05:00,2022-12-03 16:00:00-05:00,LA Clippers,crypto.com Arena,Sacramento Kings
+2022-12-03 00:00:00-05:00,2022-12-03 23:59:59-05:00,2022-12-03 18:00:00-05:00,Charlotte Hornets,Spectrum Center,Milwaukee Bucks
+2022-12-03 00:00:00-05:00,2022-12-03 23:59:59-05:00,2022-12-03 20:00:00-05:00,Toronto Raptors,Scotiabank Arena,Orlando Magic
+2022-12-03 00:00:00-05:00,2022-12-03 23:59:59-05:00,2022-12-03 20:00:00-05:00,Minnesota Timberwolves,Target Center,Oklahoma City Thunder
+2022-12-03 00:00:00-05:00,2022-12-03 23:59:59-05:00,2022-12-03 20:30:00-05:00,Golden State Warriors,ORACLE Arena,Houston Rockets
+2022-12-03 00:00:00-05:00,2022-12-03 23:59:59-05:00,2022-12-03 21:00:00-05:00,Utah Jazz,Vivint Arena,Portland Trail Blazers
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 15:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Denver Nuggets
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 16:00:00-05:00,San Antonio Spurs,AT&T Center,Phoenix Suns
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 18:00:00-05:00,Brooklyn Nets,Prudential Center,Boston Celtics
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 18:00:00-05:00,Detroit Pistons,Little Caesars Arena,Memphis Grizzlies
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 18:00:00-05:00,New York Knicks,Madison Square Garden,Cleveland Cavaliers
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 18:00:00-05:00,Washington Wizards,Capital One Arena,Los Angeles Lakers
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 18:00:00-05:00,Sacramento Kings,Sleep Train Arena,Chicago Bulls
+2022-12-04 00:00:00-05:00,2022-12-04 23:59:59-05:00,2022-12-04 21:00:00-05:00,Portland Trail Blazers,Moda Center,Indiana Pacers
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 19:00:00-05:00,Charlotte Hornets,Spectrum Center,LA Clippers
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 19:00:00-05:00,Orlando Magic,Amway Center,Milwaukee Bucks
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Oklahoma City Thunder
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Boston Celtics
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Philadelphia 76ers
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 20:00:00-05:00,Memphis Grizzlies,FedExForum,Miami Heat
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Phoenix Suns
+2022-12-05 00:00:00-05:00,2022-12-05 23:59:59-05:00,2022-12-05 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Indiana Pacers
+2022-12-06 00:00:00-05:00,2022-12-06 23:59:59-05:00,2022-12-06 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Los Angeles Lakers
+2022-12-06 00:00:00-05:00,2022-12-06 23:59:59-05:00,2022-12-06 19:30:00-05:00,Miami Heat,FTX Arena,Detroit Pistons
+2022-12-06 00:00:00-05:00,2022-12-06 23:59:59-05:00,2022-12-06 22:00:00-05:00,Denver Nuggets,Ball Arena,Dallas Mavericks
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 19:00:00-05:00,Orlando Magic,Amway Center,LA Clippers
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 19:30:00-05:00,Brooklyn Nets,Prudential Center,Charlotte Hornets
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 19:30:00-05:00,New York Knicks,Madison Square Garden,Atlanta Hawks
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Los Angeles Lakers
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 20:00:00-05:00,Chicago Bulls,United Center,Washington Wizards
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 20:00:00-05:00,Memphis Grizzlies,FedExForum,Oklahoma City Thunder
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Sacramento Kings
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 20:00:00-05:00,Minnesota Timberwolves,Target Center,Indiana Pacers
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Detroit Pistons
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 21:00:00-05:00,Utah Jazz,Vivint Arena,Golden State Warriors
+2022-12-07 00:00:00-05:00,2022-12-07 23:59:59-05:00,2022-12-07 22:00:00-05:00,Phoenix Suns,Footprint Center,Boston Celtics
+2022-12-08 00:00:00-05:00,2022-12-08 23:59:59-05:00,2022-12-08 19:30:00-05:00,Miami Heat,FTX Arena,LA Clippers
+2022-12-08 00:00:00-05:00,2022-12-08 23:59:59-05:00,2022-12-08 20:30:00-05:00,San Antonio Spurs,AT&T Center,Houston Rockets
+2022-12-08 00:00:00-05:00,2022-12-08 23:59:59-05:00,2022-12-08 22:00:00-05:00,Portland Trail Blazers,Moda Center,Denver Nuggets
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 19:00:00-05:00,Charlotte Hornets,Spectrum Center,New York Knicks
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Washington Wizards
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 19:00:00-05:00,Orlando Magic,Amway Center,Toronto Raptors
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 19:30:00-05:00,Brooklyn Nets,Prudential Center,Atlanta Hawks
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Sacramento Kings
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Los Angeles Lakers
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 20:00:00-05:00,Memphis Grizzlies,FedExForum,Detroit Pistons
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 20:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Phoenix Suns
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 21:00:00-05:00,Utah Jazz,Vivint Arena,Minnesota Timberwolves
+2022-12-09 00:00:00-05:00,2022-12-09 23:59:59-05:00,2022-12-09 22:00:00-05:00,Dallas Mavericks,American Airlines Center,Milwaukee Bucks
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 17:00:00-05:00,Miami Heat,FTX Arena,San Antonio Spurs
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Brooklyn Nets
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 19:00:00-05:00,Washington Wizards,Capital One Arena,LA Clippers
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Oklahoma City Thunder
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 20:00:00-05:00,Chicago Bulls,United Center,Dallas Mavericks
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 20:30:00-05:00,Golden State Warriors,ORACLE Arena,Boston Celtics
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 21:00:00-05:00,Denver Nuggets,Ball Arena,Utah Jazz
+2022-12-10 00:00:00-05:00,2022-12-10 23:59:59-05:00,2022-12-10 22:00:00-05:00,Portland Trail Blazers,Moda Center,Minnesota Timberwolves
+2022-12-11 00:00:00-05:00,2022-12-11 23:59:59-05:00,2022-12-11 15:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Phoenix Suns
+2022-12-11 00:00:00-05:00,2022-12-11 23:59:59-05:00,2022-12-11 18:00:00-05:00,Detroit Pistons,Little Caesars Arena,Los Angeles Lakers
+2022-12-11 00:00:00-05:00,2022-12-11 23:59:59-05:00,2022-12-11 18:00:00-05:00,New York Knicks,Madison Square Garden,Sacramento Kings
+2022-12-11 00:00:00-05:00,2022-12-11 23:59:59-05:00,2022-12-11 18:00:00-05:00,Orlando Magic,Amway Center,Toronto Raptors
+2022-12-11 00:00:00-05:00,2022-12-11 23:59:59-05:00,2022-12-11 18:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Charlotte Hornets
+2022-12-11 00:00:00-05:00,2022-12-11 23:59:59-05:00,2022-12-11 18:30:00-05:00,Atlanta Hawks,State Farm Arena,Chicago Bulls
+2022-12-11 00:00:00-05:00,2022-12-11 23:59:59-05:00,2022-12-11 19:00:00-05:00,Houston Rockets,Toyota Center (Houston),Milwaukee Bucks
+2022-12-12 00:00:00-05:00,2022-12-12 23:59:59-05:00,2022-12-12 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Miami Heat
+2022-12-12 00:00:00-05:00,2022-12-12 23:59:59-05:00,2022-12-12 19:00:00-05:00,Washington Wizards,Capital One Arena,Brooklyn Nets
+2022-12-12 00:00:00-05:00,2022-12-12 23:59:59-05:00,2022-12-12 20:00:00-05:00,Memphis Grizzlies,FedExForum,Atlanta Hawks
+2022-12-12 00:00:00-05:00,2022-12-12 23:59:59-05:00,2022-12-12 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Oklahoma City Thunder
+2022-12-12 00:00:00-05:00,2022-12-12 23:59:59-05:00,2022-12-12 20:30:00-05:00,San Antonio Spurs,AT&T Center,Cleveland Cavaliers
+2022-12-12 00:00:00-05:00,2022-12-12 23:59:59-05:00,2022-12-12 22:00:00-05:00,Portland Trail Blazers,Moda Center,Minnesota Timberwolves
+2022-12-12 00:00:00-05:00,2022-12-12 23:59:59-05:00,2022-12-12 22:30:00-05:00,LA Clippers,crypto.com Arena,Boston Celtics
+2022-12-13 00:00:00-05:00,2022-12-13 23:59:59-05:00,2022-12-13 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Sacramento Kings
+2022-12-13 00:00:00-05:00,2022-12-13 23:59:59-05:00,2022-12-13 19:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Golden State Warriors
+2022-12-13 00:00:00-05:00,2022-12-13 23:59:59-05:00,2022-12-13 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Phoenix Suns
+2022-12-13 00:00:00-05:00,2022-12-13 23:59:59-05:00,2022-12-13 21:00:00-05:00,Utah Jazz,Vivint Arena,New Orleans Pelicans
+2022-12-13 00:00:00-05:00,2022-12-13 23:59:59-05:00,2022-12-13 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Boston Celtics
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Detroit Pistons
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Golden State Warriors
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 19:00:00-05:00,Orlando Magic,Amway Center,Atlanta Hawks
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Sacramento Kings
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 19:30:00-05:00,Chicago Bulls,United Center,New York Knicks
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Miami Heat
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 20:00:00-05:00,San Antonio Spurs,AT&T Center,Portland Trail Blazers
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 21:00:00-05:00,Dallas Mavericks,American Airlines Center,Cleveland Cavaliers
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 21:00:00-05:00,Denver Nuggets,Ball Arena,Washington Wizards
+2022-12-14 00:00:00-05:00,2022-12-14 23:59:59-05:00,2022-12-14 22:00:00-05:00,LA Clippers,crypto.com Arena,Minnesota Timberwolves
+2022-12-15 00:00:00-05:00,2022-12-15 23:59:59-05:00,2022-12-15 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Miami Heat
+2022-12-15 00:00:00-05:00,2022-12-15 23:59:59-05:00,2022-12-15 20:00:00-05:00,Memphis Grizzlies,FedExForum,Milwaukee Bucks
+2022-12-15 00:00:00-05:00,2022-12-15 23:59:59-05:00,2022-12-15 21:00:00-05:00,Utah Jazz,Vivint Arena,New Orleans Pelicans
+2022-12-15 00:00:00-05:00,2022-12-15 23:59:59-05:00,2022-12-15 22:30:00-05:00,LA Clippers,crypto.com Arena,Phoenix Suns
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Atlanta Hawks
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Sacramento Kings
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 19:30:00-05:00,Boston Celtics,TD Garden,Orlando Magic
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Indiana Pacers
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Golden State Warriors
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Brooklyn Nets
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 20:00:00-05:00,Chicago Bulls,United Center,New York Knicks
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Minnesota Timberwolves
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Portland Trail Blazers
+2022-12-16 00:00:00-05:00,2022-12-16 23:59:59-05:00,2022-12-16 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Denver Nuggets
+2022-12-17 00:00:00-05:00,2022-12-17 23:59:59-05:00,2022-12-17 16:00:00-05:00,LA Clippers,crypto.com Arena,Washington Wizards
+2022-12-17 00:00:00-05:00,2022-12-17 23:59:59-05:00,2022-12-17 17:00:00-05:00,San Antonio Spurs,AT&T Center,Miami Heat
+2022-12-17 00:00:00-05:00,2022-12-17 23:59:59-05:00,2022-12-17 20:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Dallas Mavericks
+2022-12-17 00:00:00-05:00,2022-12-17 23:59:59-05:00,2022-12-17 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Portland Trail Blazers
+2022-12-17 00:00:00-05:00,2022-12-17 23:59:59-05:00,2022-12-17 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Utah Jazz
+2022-12-17 00:00:00-05:00,2022-12-17 23:59:59-05:00,2022-12-17 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Memphis Grizzlies
+2022-12-17 00:00:00-05:00,2022-12-17 23:59:59-05:00,2022-12-17 21:00:00-05:00,Phoenix Suns,Footprint Center,New Orleans Pelicans
+2022-12-18 00:00:00-05:00,2022-12-18 23:59:59-05:00,2022-12-18 15:00:00-05:00,Boston Celtics,TD Garden,Orlando Magic
+2022-12-18 00:00:00-05:00,2022-12-18 23:59:59-05:00,2022-12-18 17:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,New York Knicks
+2022-12-18 00:00:00-05:00,2022-12-18 23:59:59-05:00,2022-12-18 18:00:00-05:00,Detroit Pistons,Little Caesars Arena,Brooklyn Nets
+2022-12-18 00:00:00-05:00,2022-12-18 23:59:59-05:00,2022-12-18 18:00:00-05:00,Toronto Raptors,Scotiabank Arena,Golden State Warriors
+2022-12-18 00:00:00-05:00,2022-12-18 23:59:59-05:00,2022-12-18 19:00:00-05:00,Minnesota Timberwolves,Target Center,Chicago Bulls
+2022-12-18 00:00:00-05:00,2022-12-18 23:59:59-05:00,2022-12-18 20:00:00-05:00,Denver Nuggets,Ball Arena,Charlotte Hornets
+2022-12-18 00:00:00-05:00,2022-12-18 23:59:59-05:00,2022-12-18 21:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Washington Wizards
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Utah Jazz
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Toronto Raptors
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Orlando Magic
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),San Antonio Spurs
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 20:00:00-05:00,Minnesota Timberwolves,Target Center,Dallas Mavericks
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Milwaukee Bucks
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Portland Trail Blazers
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 21:00:00-05:00,Phoenix Suns,Footprint Center,Los Angeles Lakers
+2022-12-19 00:00:00-05:00,2022-12-19 23:59:59-05:00,2022-12-19 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Charlotte Hornets
+2022-12-20 00:00:00-05:00,2022-12-20 23:59:59-05:00,2022-12-20 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Utah Jazz
+2022-12-20 00:00:00-05:00,2022-12-20 23:59:59-05:00,2022-12-20 19:30:00-05:00,Miami Heat,FTX Arena,Chicago Bulls
+2022-12-20 00:00:00-05:00,2022-12-20 23:59:59-05:00,2022-12-20 19:30:00-05:00,New York Knicks,Madison Square Garden,Golden State Warriors
+2022-12-20 00:00:00-05:00,2022-12-20 23:59:59-05:00,2022-12-20 21:00:00-05:00,Phoenix Suns,Footprint Center,Washington Wizards
+2022-12-20 00:00:00-05:00,2022-12-20 23:59:59-05:00,2022-12-20 22:00:00-05:00,Denver Nuggets,Ball Arena,Memphis Grizzlies
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Milwaukee Bucks
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Detroit Pistons
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Chicago Bulls
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 19:30:00-05:00,Boston Celtics,TD Garden,Indiana Pacers
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 19:30:00-05:00,Brooklyn Nets,Prudential Center,Golden State Warriors
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 19:30:00-05:00,New York Knicks,Madison Square Garden,Toronto Raptors
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Orlando Magic
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 20:00:00-05:00,Minnesota Timberwolves,Target Center,Dallas Mavericks
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Portland Trail Blazers
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Los Angeles Lakers
+2022-12-21 00:00:00-05:00,2022-12-21 23:59:59-05:00,2022-12-21 22:30:00-05:00,LA Clippers,crypto.com Arena,Charlotte Hornets
+2022-12-22 00:00:00-05:00,2022-12-22 23:59:59-05:00,2022-12-22 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,San Antonio Spurs
+2022-12-22 00:00:00-05:00,2022-12-22 23:59:59-05:00,2022-12-22 21:00:00-05:00,Utah Jazz,Vivint Arena,Washington Wizards
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 19:00:00-05:00,Orlando Magic,Amway Center,San Antonio Spurs
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,LA Clippers
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Detroit Pistons
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 19:30:00-05:00,Boston Celtics,TD Garden,Minnesota Timberwolves
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 19:30:00-05:00,Brooklyn Nets,Prudential Center,Milwaukee Bucks
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Toronto Raptors
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 19:30:00-05:00,New York Knicks,Madison Square Garden,Chicago Bulls
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 20:00:00-05:00,Miami Heat,FTX Arena,Indiana Pacers
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Dallas Mavericks
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,New Orleans Pelicans
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 21:00:00-05:00,Denver Nuggets,Ball Arena,Portland Trail Blazers
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 22:00:00-05:00,Phoenix Suns,Footprint Center,Memphis Grizzlies
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Washington Wizards
+2022-12-23 00:00:00-05:00,2022-12-23 23:59:59-05:00,2022-12-23 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Charlotte Hornets
+2022-12-25 00:00:00-05:00,2022-12-25 23:59:59-05:00,2022-12-25 12:00:00-05:00,New York Knicks,Madison Square Garden,Philadelphia 76ers
+2022-12-25 00:00:00-05:00,2022-12-25 23:59:59-05:00,2022-12-25 14:30:00-05:00,Dallas Mavericks,American Airlines Center,Los Angeles Lakers
+2022-12-25 00:00:00-05:00,2022-12-25 23:59:59-05:00,2022-12-25 17:00:00-05:00,Boston Celtics,TD Garden,Milwaukee Bucks
+2022-12-25 00:00:00-05:00,2022-12-25 23:59:59-05:00,2022-12-25 20:00:00-05:00,Golden State Warriors,ORACLE Arena,Memphis Grizzlies
+2022-12-25 00:00:00-05:00,2022-12-25 23:59:59-05:00,2022-12-25 22:30:00-05:00,Denver Nuggets,Ball Arena,Phoenix Suns
+2022-12-26 00:00:00-05:00,2022-12-26 23:59:59-05:00,2022-12-26 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Brooklyn Nets
+2022-12-26 00:00:00-05:00,2022-12-26 23:59:59-05:00,2022-12-26 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,LA Clippers
+2022-12-26 00:00:00-05:00,2022-12-26 23:59:59-05:00,2022-12-26 19:30:00-05:00,Miami Heat,FTX Arena,Minnesota Timberwolves
+2022-12-26 00:00:00-05:00,2022-12-26 23:59:59-05:00,2022-12-26 20:00:00-05:00,Chicago Bulls,United Center,Houston Rockets
+2022-12-26 00:00:00-05:00,2022-12-26 23:59:59-05:00,2022-12-26 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Indiana Pacers
+2022-12-26 00:00:00-05:00,2022-12-26 23:59:59-05:00,2022-12-26 20:00:00-05:00,San Antonio Spurs,AT&T Center,Utah Jazz
+2022-12-26 00:00:00-05:00,2022-12-26 23:59:59-05:00,2022-12-26 22:00:00-05:00,Portland Trail Blazers,Moda Center,Charlotte Hornets
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 19:00:00-05:00,Orlando Magic,Amway Center,Los Angeles Lakers
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 19:00:00-05:00,Washington Wizards,Capital One Arena,Philadelphia 76ers
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 19:30:00-05:00,Boston Celtics,TD Garden,Houston Rockets
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 19:30:00-05:00,Indiana Pacers,Gainbridge Coliseum,Atlanta Hawks
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,LA Clippers
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 20:00:00-05:00,Memphis Grizzlies,FedExForum,Phoenix Suns
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,San Antonio Spurs
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 20:30:00-05:00,Dallas Mavericks,American Airlines Center,New York Knicks
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Charlotte Hornets
+2022-12-27 00:00:00-05:00,2022-12-27 23:59:59-05:00,2022-12-27 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Denver Nuggets
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Orlando Magic
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 19:00:00-05:00,Washington Wizards,Capital One Arena,Phoenix Suns
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Brooklyn Nets
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 19:30:00-05:00,Miami Heat,FTX Arena,Los Angeles Lakers
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 20:00:00-05:00,Chicago Bulls,United Center,Milwaukee Bucks
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Minnesota Timberwolves
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Utah Jazz
+2022-12-28 00:00:00-05:00,2022-12-28 23:59:59-05:00,2022-12-28 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Denver Nuggets
+2022-12-29 00:00:00-05:00,2022-12-29 23:59:59-05:00,2022-12-29 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Oklahoma City Thunder
+2022-12-29 00:00:00-05:00,2022-12-29 23:59:59-05:00,2022-12-29 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Cleveland Cavaliers
+2022-12-29 00:00:00-05:00,2022-12-29 23:59:59-05:00,2022-12-29 19:30:00-05:00,Boston Celtics,TD Garden,LA Clippers
+2022-12-29 00:00:00-05:00,2022-12-29 23:59:59-05:00,2022-12-29 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Memphis Grizzlies
+2022-12-29 00:00:00-05:00,2022-12-29 23:59:59-05:00,2022-12-29 20:00:00-05:00,San Antonio Spurs,AT&T Center,New York Knicks
+2022-12-29 00:00:00-05:00,2022-12-29 23:59:59-05:00,2022-12-29 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Houston Rockets
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 19:00:00-05:00,Orlando Magic,Amway Center,Washington Wizards
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Los Angeles Lakers
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Phoenix Suns
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 20:00:00-05:00,Chicago Bulls,United Center,Detroit Pistons
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Minnesota Timberwolves
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 20:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Philadelphia 76ers
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 21:00:00-05:00,Denver Nuggets,Ball Arena,Miami Heat
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Portland Trail Blazers
+2022-12-30 00:00:00-05:00,2022-12-30 23:59:59-05:00,2022-12-30 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Utah Jazz
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 15:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,LA Clippers
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Brooklyn Nets
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 19:00:00-05:00,Chicago Bulls,United Center,Cleveland Cavaliers
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 19:00:00-05:00,Houston Rockets,Toyota Center (Houston),New York Knicks
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 19:00:00-05:00,San Antonio Spurs,AT&T Center,Dallas Mavericks
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 20:00:00-05:00,Memphis Grizzlies,FedExForum,New Orleans Pelicans
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 20:00:00-05:00,Minnesota Timberwolves,Target Center,Detroit Pistons
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Philadelphia 76ers
+2022-12-31 00:00:00-05:00,2022-12-31 23:59:59-05:00,2022-12-31 21:00:00-05:00,Utah Jazz,Vivint Arena,Miami Heat
+2023-01-01 00:00:00-05:00,2023-01-01 23:59:59-05:00,2023-01-01 20:00:00-05:00,Memphis Grizzlies,FedExForum,Sacramento Kings
+2023-01-01 00:00:00-05:00,2023-01-01 23:59:59-05:00,2023-01-01 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Washington Wizards
+2023-01-01 00:00:00-05:00,2023-01-01 23:59:59-05:00,2023-01-01 20:00:00-05:00,Denver Nuggets,Ball Arena,Boston Celtics
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 15:00:00-05:00,New York Knicks,Madison Square Garden,Phoenix Suns
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Los Angeles Lakers
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Chicago Bulls
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Toronto Raptors
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,New Orleans Pelicans
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 19:30:00-05:00,Brooklyn Nets,Prudential Center,San Antonio Spurs
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Dallas Mavericks
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 20:00:00-05:00,Minnesota Timberwolves,Target Center,Denver Nuggets
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Atlanta Hawks
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 22:00:00-05:00,Portland Trail Blazers,Moda Center,Detroit Pistons
+2023-01-02 00:00:00-05:00,2023-01-02 23:59:59-05:00,2023-01-02 22:30:00-05:00,LA Clippers,crypto.com Arena,Miami Heat
+2023-01-03 00:00:00-05:00,2023-01-03 23:59:59-05:00,2023-01-03 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Washington Wizards
+2023-01-03 00:00:00-05:00,2023-01-03 23:59:59-05:00,2023-01-03 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Boston Celtics
+2023-01-03 00:00:00-05:00,2023-01-03 23:59:59-05:00,2023-01-03 21:00:00-05:00,Utah Jazz,Vivint Arena,Sacramento Kings
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Memphis Grizzlies
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Phoenix Suns
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 19:00:00-05:00,Orlando Magic,Amway Center,Oklahoma City Thunder
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Indiana Pacers
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 19:30:00-05:00,New York Knicks,Madison Square Garden,San Antonio Spurs
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Milwaukee Bucks
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 20:00:00-05:00,Chicago Bulls,United Center,Brooklyn Nets
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 20:00:00-05:00,Minnesota Timberwolves,Target Center,Portland Trail Blazers
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Houston Rockets
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Detroit Pistons
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Miami Heat
+2023-01-04 00:00:00-05:00,2023-01-04 23:59:59-05:00,2023-01-04 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Atlanta Hawks
+2023-01-05 00:00:00-05:00,2023-01-05 23:59:59-05:00,2023-01-05 19:00:00-05:00,Orlando Magic,Amway Center,Memphis Grizzlies
+2023-01-05 00:00:00-05:00,2023-01-05 23:59:59-05:00,2023-01-05 19:30:00-05:00,Dallas Mavericks,American Airlines Center,Boston Celtics
+2023-01-05 00:00:00-05:00,2023-01-05 23:59:59-05:00,2023-01-05 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Utah Jazz
+2023-01-05 00:00:00-05:00,2023-01-05 23:59:59-05:00,2023-01-05 22:00:00-05:00,Denver Nuggets,Ball Arena,LA Clippers
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Portland Trail Blazers
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Chicago Bulls
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,New York Knicks
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Charlotte Hornets
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Washington Wizards
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 20:00:00-05:00,San Antonio Spurs,AT&T Center,Detroit Pistons
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 20:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Brooklyn Nets
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 21:00:00-05:00,Minnesota Timberwolves,Target Center,LA Clippers
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 21:00:00-05:00,Denver Nuggets,Ball Arena,Cleveland Cavaliers
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 22:00:00-05:00,Phoenix Suns,Footprint Center,Miami Heat
+2023-01-06 00:00:00-05:00,2023-01-06 23:59:59-05:00,2023-01-06 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Atlanta Hawks
+2023-01-07 00:00:00-05:00,2023-01-07 23:59:59-05:00,2023-01-07 18:00:00-05:00,San Antonio Spurs,AT&T Center,Boston Celtics
+2023-01-07 00:00:00-05:00,2023-01-07 23:59:59-05:00,2023-01-07 20:00:00-05:00,Chicago Bulls,United Center,Utah Jazz
+2023-01-07 00:00:00-05:00,2023-01-07 23:59:59-05:00,2023-01-07 20:00:00-05:00,Dallas Mavericks,American Airlines Center,New Orleans Pelicans
+2023-01-07 00:00:00-05:00,2023-01-07 23:59:59-05:00,2023-01-07 20:30:00-05:00,Golden State Warriors,ORACLE Arena,Orlando Magic
+2023-01-07 00:00:00-05:00,2023-01-07 23:59:59-05:00,2023-01-07 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Los Angeles Lakers
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 15:00:00-05:00,Detroit Pistons,Little Caesars Arena,Philadelphia 76ers
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 15:30:00-05:00,Toronto Raptors,Scotiabank Arena,Portland Trail Blazers
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 17:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Charlotte Hornets
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 18:00:00-05:00,Miami Heat,FTX Arena,Brooklyn Nets
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 18:00:00-05:00,Memphis Grizzlies,FedExForum,Utah Jazz
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 19:00:00-05:00,Houston Rockets,Toyota Center (Houston),Minnesota Timberwolves
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 19:00:00-05:00,Oklahoma City Thunder,Paycom Center,Dallas Mavericks
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 20:00:00-05:00,Phoenix Suns,Footprint Center,Cleveland Cavaliers
+2023-01-08 00:00:00-05:00,2023-01-08 23:59:59-05:00,2023-01-08 21:00:00-05:00,LA Clippers,crypto.com Arena,Atlanta Hawks
+2023-01-09 00:00:00-05:00,2023-01-09 23:59:59-05:00,2023-01-09 19:00:00-05:00,Washington Wizards,Capital One Arena,New Orleans Pelicans
+2023-01-09 00:00:00-05:00,2023-01-09 23:59:59-05:00,2023-01-09 19:30:00-05:00,Boston Celtics,TD Garden,Chicago Bulls
+2023-01-09 00:00:00-05:00,2023-01-09 23:59:59-05:00,2023-01-09 19:30:00-05:00,New York Knicks,Madison Square Garden,Milwaukee Bucks
+2023-01-09 00:00:00-05:00,2023-01-09 23:59:59-05:00,2023-01-09 20:00:00-05:00,Memphis Grizzlies,FedExForum,San Antonio Spurs
+2023-01-09 00:00:00-05:00,2023-01-09 23:59:59-05:00,2023-01-09 21:00:00-05:00,Denver Nuggets,Ball Arena,Los Angeles Lakers
+2023-01-09 00:00:00-05:00,2023-01-09 23:59:59-05:00,2023-01-09 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Orlando Magic
+2023-01-10 00:00:00-05:00,2023-01-10 23:59:59-05:00,2023-01-10 19:30:00-05:00,Miami Heat,FTX Arena,Oklahoma City Thunder
+2023-01-10 00:00:00-05:00,2023-01-10 23:59:59-05:00,2023-01-10 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Detroit Pistons
+2023-01-10 00:00:00-05:00,2023-01-10 23:59:59-05:00,2023-01-10 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Charlotte Hornets
+2023-01-10 00:00:00-05:00,2023-01-10 23:59:59-05:00,2023-01-10 21:00:00-05:00,Utah Jazz,Vivint Arena,Cleveland Cavaliers
+2023-01-10 00:00:00-05:00,2023-01-10 23:59:59-05:00,2023-01-10 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Phoenix Suns
+2023-01-10 00:00:00-05:00,2023-01-10 23:59:59-05:00,2023-01-10 22:00:00-05:00,Portland Trail Blazers,Moda Center,Orlando Magic
+2023-01-10 00:00:00-05:00,2023-01-10 23:59:59-05:00,2023-01-10 22:30:00-05:00,LA Clippers,crypto.com Arena,Dallas Mavericks
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Minnesota Timberwolves
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 19:00:00-05:00,Washington Wizards,Capital One Arena,Chicago Bulls
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Milwaukee Bucks
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 19:30:00-05:00,Boston Celtics,TD Garden,New Orleans Pelicans
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 19:30:00-05:00,New York Knicks,Madison Square Garden,Indiana Pacers
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 20:00:00-05:00,Memphis Grizzlies,FedExForum,San Antonio Spurs
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 21:00:00-05:00,Denver Nuggets,Ball Arena,Phoenix Suns
+2023-01-11 00:00:00-05:00,2023-01-11 23:59:59-05:00,2023-01-11 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Houston Rockets
+2023-01-12 00:00:00-05:00,2023-01-12 23:59:59-05:00,2023-01-12 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Oklahoma City Thunder
+2023-01-12 00:00:00-05:00,2023-01-12 23:59:59-05:00,2023-01-12 19:30:00-05:00,Brooklyn Nets,Prudential Center,Boston Celtics
+2023-01-12 00:00:00-05:00,2023-01-12 23:59:59-05:00,2023-01-12 19:30:00-05:00,Miami Heat,FTX Arena,Milwaukee Bucks
+2023-01-12 00:00:00-05:00,2023-01-12 23:59:59-05:00,2023-01-12 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Charlotte Hornets
+2023-01-12 00:00:00-05:00,2023-01-12 23:59:59-05:00,2023-01-12 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Dallas Mavericks
+2023-01-12 00:00:00-05:00,2023-01-12 23:59:59-05:00,2023-01-12 22:00:00-05:00,Portland Trail Blazers,Moda Center,Cleveland Cavaliers
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,New Orleans Pelicans
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Atlanta Hawks
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 19:00:00-05:00,Washington Wizards,Capital One Arena,New York Knicks
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 19:30:00-05:00,San Antonio Spurs,AT&T Center,Golden State Warriors
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 20:00:00-05:00,Chicago Bulls,United Center,Oklahoma City Thunder
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 20:00:00-05:00,Minnesota Timberwolves,Target Center,Phoenix Suns
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 21:00:00-05:00,Utah Jazz,Vivint Arena,Orlando Magic
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 22:00:00-05:00,LA Clippers,crypto.com Arena,Denver Nuggets
+2023-01-13 00:00:00-05:00,2023-01-13 23:59:59-05:00,2023-01-13 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Houston Rockets
+2023-01-14 00:00:00-05:00,2023-01-14 23:59:59-05:00,2023-01-14 13:00:00-05:00,Miami Heat,FTX Arena,Milwaukee Bucks
+2023-01-14 00:00:00-05:00,2023-01-14 23:59:59-05:00,2023-01-14 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Boston Celtics
+2023-01-14 00:00:00-05:00,2023-01-14 23:59:59-05:00,2023-01-14 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Memphis Grizzlies
+2023-01-14 00:00:00-05:00,2023-01-14 23:59:59-05:00,2023-01-14 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Atlanta Hawks
+2023-01-14 00:00:00-05:00,2023-01-14 23:59:59-05:00,2023-01-14 20:00:00-05:00,Minnesota Timberwolves,Target Center,Cleveland Cavaliers
+2023-01-14 00:00:00-05:00,2023-01-14 23:59:59-05:00,2023-01-14 21:00:00-05:00,Utah Jazz,Vivint Arena,Philadelphia 76ers
+2023-01-14 00:00:00-05:00,2023-01-14 23:59:59-05:00,2023-01-14 22:00:00-05:00,Portland Trail Blazers,Moda Center,Dallas Mavericks
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 13:00:00-05:00,Detroit Pistons,Little Caesars Arena,New York Knicks
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 15:00:00-05:00,LA Clippers,crypto.com Arena,Houston Rockets
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 15:30:00-05:00,Chicago Bulls,United Center,Golden State Warriors
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 18:00:00-05:00,Brooklyn Nets,Prudential Center,Oklahoma City Thunder
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 19:00:00-05:00,San Antonio Spurs,AT&T Center,Sacramento Kings
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 20:00:00-05:00,Denver Nuggets,Ball Arena,Orlando Magic
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 21:00:00-05:00,Portland Trail Blazers,Moda Center,Dallas Mavericks
+2023-01-15 00:00:00-05:00,2023-01-15 23:59:59-05:00,2023-01-15 21:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Philadelphia 76ers
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 13:00:00-05:00,Charlotte Hornets,Spectrum Center,Boston Celtics
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 14:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Indiana Pacers
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 15:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,New Orleans Pelicans
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 15:00:00-05:00,New York Knicks,Madison Square Garden,Toronto Raptors
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 15:00:00-05:00,Washington Wizards,Capital One Arena,Golden State Warriors
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 15:30:00-05:00,Atlanta Hawks,State Farm Arena,Miami Heat
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 16:00:00-05:00,Minnesota Timberwolves,Target Center,Utah Jazz
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 18:00:00-05:00,Memphis Grizzlies,FedExForum,Phoenix Suns
+2023-01-16 00:00:00-05:00,2023-01-16 23:59:59-05:00,2023-01-16 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Houston Rockets
+2023-01-17 00:00:00-05:00,2023-01-17 23:59:59-05:00,2023-01-17 19:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Toronto Raptors
+2023-01-17 00:00:00-05:00,2023-01-17 23:59:59-05:00,2023-01-17 20:00:00-05:00,San Antonio Spurs,AT&T Center,Brooklyn Nets
+2023-01-17 00:00:00-05:00,2023-01-17 23:59:59-05:00,2023-01-17 21:00:00-05:00,Denver Nuggets,Ball Arena,Portland Trail Blazers
+2023-01-17 00:00:00-05:00,2023-01-17 23:59:59-05:00,2023-01-17 22:00:00-05:00,LA Clippers,crypto.com Arena,Philadelphia 76ers
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 19:30:00-05:00,New York Knicks,Madison Square Garden,Washington Wizards
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 19:30:00-05:00,Dallas Mavericks,American Airlines Center,Atlanta Hawks
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Charlotte Hornets
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 20:00:00-05:00,Memphis Grizzlies,FedExForum,Cleveland Cavaliers
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Miami Heat
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Indiana Pacers
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 21:00:00-05:00,Utah Jazz,Vivint Arena,LA Clippers
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 22:00:00-05:00,Denver Nuggets,Ball Arena,Minnesota Timberwolves
+2023-01-18 00:00:00-05:00,2023-01-18 23:59:59-05:00,2023-01-18 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Sacramento Kings
+2023-01-19 00:00:00-05:00,2023-01-19 23:59:59-05:00,2023-01-19 15:00:00-05:00,Detroit Pistons,Little Caesars Arena,Chicago Bulls
+2023-01-19 00:00:00-05:00,2023-01-19 23:59:59-05:00,2023-01-19 19:30:00-05:00,Boston Celtics,TD Garden,Golden State Warriors
+2023-01-19 00:00:00-05:00,2023-01-19 23:59:59-05:00,2023-01-19 20:00:00-05:00,Minnesota Timberwolves,Target Center,Toronto Raptors
+2023-01-19 00:00:00-05:00,2023-01-19 23:59:59-05:00,2023-01-19 22:00:00-05:00,Phoenix Suns,Footprint Center,Brooklyn Nets
+2023-01-19 00:00:00-05:00,2023-01-19 23:59:59-05:00,2023-01-19 22:00:00-05:00,Portland Trail Blazers,Moda Center,Philadelphia 76ers
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 19:00:00-05:00,Orlando Magic,Amway Center,New Orleans Pelicans
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 19:30:00-05:00,Atlanta Hawks,State Farm Arena,New York Knicks
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Golden State Warriors
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 19:30:00-05:00,Dallas Mavericks,American Airlines Center,Miami Heat
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 20:00:00-05:00,San Antonio Spurs,AT&T Center,LA Clippers
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 21:00:00-05:00,Denver Nuggets,Ball Arena,Indiana Pacers
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 21:00:00-05:00,Utah Jazz,Vivint Arena,Brooklyn Nets
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Memphis Grizzlies
+2023-01-20 00:00:00-05:00,2023-01-20 23:59:59-05:00,2023-01-20 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Oklahoma City Thunder
+2023-01-21 00:00:00-05:00,2023-01-21 23:59:59-05:00,2023-01-21 17:00:00-05:00,Toronto Raptors,Scotiabank Arena,Boston Celtics
+2023-01-21 00:00:00-05:00,2023-01-21 23:59:59-05:00,2023-01-21 19:00:00-05:00,Washington Wizards,Capital One Arena,Orlando Magic
+2023-01-21 00:00:00-05:00,2023-01-21 23:59:59-05:00,2023-01-21 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Charlotte Hornets
+2023-01-21 00:00:00-05:00,2023-01-21 23:59:59-05:00,2023-01-21 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Milwaukee Bucks
+2023-01-21 00:00:00-05:00,2023-01-21 23:59:59-05:00,2023-01-21 20:00:00-05:00,Minnesota Timberwolves,Target Center,Houston Rockets
+2023-01-21 00:00:00-05:00,2023-01-21 23:59:59-05:00,2023-01-21 21:00:00-05:00,Phoenix Suns,Footprint Center,Indiana Pacers
+2023-01-21 00:00:00-05:00,2023-01-21 23:59:59-05:00,2023-01-21 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Philadelphia 76ers
+2023-01-22 00:00:00-05:00,2023-01-22 23:59:59-05:00,2023-01-22 15:30:00-05:00,Miami Heat,FTX Arena,New Orleans Pelicans
+2023-01-22 00:00:00-05:00,2023-01-22 23:59:59-05:00,2023-01-22 18:00:00-05:00,Toronto Raptors,Scotiabank Arena,New York Knicks
+2023-01-22 00:00:00-05:00,2023-01-22 23:59:59-05:00,2023-01-22 19:30:00-05:00,Dallas Mavericks,American Airlines Center,LA Clippers
+2023-01-22 00:00:00-05:00,2023-01-22 23:59:59-05:00,2023-01-22 20:00:00-05:00,Denver Nuggets,Ball Arena,Oklahoma City Thunder
+2023-01-22 00:00:00-05:00,2023-01-22 23:59:59-05:00,2023-01-22 20:00:00-05:00,Phoenix Suns,Footprint Center,Memphis Grizzlies
+2023-01-22 00:00:00-05:00,2023-01-22 23:59:59-05:00,2023-01-22 20:30:00-05:00,Golden State Warriors,ORACLE Arena,Brooklyn Nets
+2023-01-22 00:00:00-05:00,2023-01-22 23:59:59-05:00,2023-01-22 21:00:00-05:00,Portland Trail Blazers,Moda Center,Los Angeles Lakers
+2023-01-23 00:00:00-05:00,2023-01-23 23:59:59-05:00,2023-01-23 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Milwaukee Bucks
+2023-01-23 00:00:00-05:00,2023-01-23 23:59:59-05:00,2023-01-23 19:00:00-05:00,Orlando Magic,Amway Center,Boston Celtics
+2023-01-23 00:00:00-05:00,2023-01-23 23:59:59-05:00,2023-01-23 20:00:00-05:00,Chicago Bulls,United Center,Atlanta Hawks
+2023-01-23 00:00:00-05:00,2023-01-23 23:59:59-05:00,2023-01-23 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Minnesota Timberwolves
+2023-01-23 00:00:00-05:00,2023-01-23 23:59:59-05:00,2023-01-23 21:00:00-05:00,Utah Jazz,Vivint Arena,Charlotte Hornets
+2023-01-23 00:00:00-05:00,2023-01-23 23:59:59-05:00,2023-01-23 22:00:00-05:00,Portland Trail Blazers,Moda Center,San Antonio Spurs
+2023-01-23 00:00:00-05:00,2023-01-23 23:59:59-05:00,2023-01-23 22:30:00-05:00,Sacramento Kings,Sleep Train Arena,Memphis Grizzlies
+2023-01-24 00:00:00-05:00,2023-01-24 23:59:59-05:00,2023-01-24 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Chicago Bulls
+2023-01-24 00:00:00-05:00,2023-01-24 23:59:59-05:00,2023-01-24 19:30:00-05:00,Miami Heat,FTX Arena,Boston Celtics
+2023-01-24 00:00:00-05:00,2023-01-24 23:59:59-05:00,2023-01-24 19:30:00-05:00,New York Knicks,Madison Square Garden,Cleveland Cavaliers
+2023-01-24 00:00:00-05:00,2023-01-24 23:59:59-05:00,2023-01-24 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Denver Nuggets
+2023-01-24 00:00:00-05:00,2023-01-24 23:59:59-05:00,2023-01-24 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Washington Wizards
+2023-01-24 00:00:00-05:00,2023-01-24 23:59:59-05:00,2023-01-24 21:00:00-05:00,Phoenix Suns,Footprint Center,Charlotte Hornets
+2023-01-24 00:00:00-05:00,2023-01-24 23:59:59-05:00,2023-01-24 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,LA Clippers
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 19:00:00-05:00,Orlando Magic,Amway Center,Indiana Pacers
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Brooklyn Nets
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Washington Wizards
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Denver Nuggets
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Minnesota Timberwolves
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Atlanta Hawks
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Memphis Grizzlies
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 22:00:00-05:00,Portland Trail Blazers,Moda Center,Utah Jazz
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Toronto Raptors
+2023-01-25 00:00:00-05:00,2023-01-25 23:59:59-05:00,2023-01-25 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,San Antonio Spurs
+2023-01-26 00:00:00-05:00,2023-01-26 23:59:59-05:00,2023-01-26 19:30:00-05:00,Boston Celtics,TD Garden,New York Knicks
+2023-01-26 00:00:00-05:00,2023-01-26 23:59:59-05:00,2023-01-26 19:30:00-05:00,Brooklyn Nets,Prudential Center,Detroit Pistons
+2023-01-26 00:00:00-05:00,2023-01-26 23:59:59-05:00,2023-01-26 19:30:00-05:00,Charlotte Hornets,Spectrum Center,Chicago Bulls
+2023-01-26 00:00:00-05:00,2023-01-26 23:59:59-05:00,2023-01-26 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Cleveland Cavaliers
+2023-01-26 00:00:00-05:00,2023-01-26 23:59:59-05:00,2023-01-26 22:00:00-05:00,Phoenix Suns,Footprint Center,Dallas Mavericks
+2023-01-26 00:00:00-05:00,2023-01-26 23:59:59-05:00,2023-01-26 22:30:00-05:00,LA Clippers,crypto.com Arena,San Antonio Spurs
+2023-01-27 00:00:00-05:00,2023-01-27 23:59:59-05:00,2023-01-27 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Milwaukee Bucks
+2023-01-27 00:00:00-05:00,2023-01-27 23:59:59-05:00,2023-01-27 19:30:00-05:00,Minnesota Timberwolves,Target Center,Memphis Grizzlies
+2023-01-27 00:00:00-05:00,2023-01-27 23:59:59-05:00,2023-01-27 20:00:00-05:00,Miami Heat,FTX Arena,Orlando Magic
+2023-01-27 00:00:00-05:00,2023-01-27 23:59:59-05:00,2023-01-27 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Cleveland Cavaliers
+2023-01-27 00:00:00-05:00,2023-01-27 23:59:59-05:00,2023-01-27 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Toronto Raptors
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 15:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Denver Nuggets
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 17:30:00-05:00,Brooklyn Nets,Prudential Center,New York Knicks
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Houston Rockets
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 19:00:00-05:00,Orlando Magic,Amway Center,Chicago Bulls
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 19:30:00-05:00,Atlanta Hawks,State Farm Arena,LA Clippers
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 20:00:00-05:00,Minnesota Timberwolves,Target Center,Sacramento Kings
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Washington Wizards
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 20:00:00-05:00,San Antonio Spurs,AT&T Center,Phoenix Suns
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 20:30:00-05:00,Boston Celtics,TD Garden,Los Angeles Lakers
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 21:00:00-05:00,Utah Jazz,Vivint Arena,Dallas Mavericks
+2023-01-28 00:00:00-05:00,2023-01-28 23:59:59-05:00,2023-01-28 22:00:00-05:00,Portland Trail Blazers,Moda Center,Toronto Raptors
+2023-01-29 00:00:00-05:00,2023-01-29 23:59:59-05:00,2023-01-29 13:00:00-05:00,Charlotte Hornets,Spectrum Center,Miami Heat
+2023-01-29 00:00:00-05:00,2023-01-29 23:59:59-05:00,2023-01-29 18:00:00-05:00,Memphis Grizzlies,FedExForum,Indiana Pacers
+2023-01-29 00:00:00-05:00,2023-01-29 23:59:59-05:00,2023-01-29 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,LA Clippers
+2023-01-29 00:00:00-05:00,2023-01-29 23:59:59-05:00,2023-01-29 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,New Orleans Pelicans
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Orlando Magic
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 19:30:00-05:00,Brooklyn Nets,Prudential Center,Los Angeles Lakers
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 20:00:00-05:00,Minnesota Timberwolves,Target Center,Sacramento Kings
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Golden State Warriors
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 20:00:00-05:00,San Antonio Spurs,AT&T Center,Washington Wizards
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Detroit Pistons
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 21:00:00-05:00,Phoenix Suns,Footprint Center,Toronto Raptors
+2023-01-30 00:00:00-05:00,2023-01-30 23:59:59-05:00,2023-01-30 22:00:00-05:00,Portland Trail Blazers,Moda Center,Atlanta Hawks
+2023-01-31 00:00:00-05:00,2023-01-31 23:59:59-05:00,2023-01-31 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Miami Heat
+2023-01-31 00:00:00-05:00,2023-01-31 23:59:59-05:00,2023-01-31 19:30:00-05:00,New York Knicks,Madison Square Garden,Los Angeles Lakers
+2023-01-31 00:00:00-05:00,2023-01-31 23:59:59-05:00,2023-01-31 20:00:00-05:00,Chicago Bulls,United Center,LA Clippers
+2023-01-31 00:00:00-05:00,2023-01-31 23:59:59-05:00,2023-01-31 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Charlotte Hornets
+2023-01-31 00:00:00-05:00,2023-01-31 23:59:59-05:00,2023-01-31 22:00:00-05:00,Denver Nuggets,Ball Arena,New Orleans Pelicans
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Washington Wizards
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Orlando Magic
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 19:00:00-05:00,Memphis Grizzlies,FedExForum,Portland Trail Blazers
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 19:30:00-05:00,Boston Celtics,TD Garden,Brooklyn Nets
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Oklahoma City Thunder
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 20:00:00-05:00,Minnesota Timberwolves,Target Center,Golden State Warriors
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 20:00:00-05:00,San Antonio Spurs,AT&T Center,Sacramento Kings
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 21:00:00-05:00,Utah Jazz,Vivint Arena,Toronto Raptors
+2023-02-01 00:00:00-05:00,2023-02-01 23:59:59-05:00,2023-02-01 22:00:00-05:00,Phoenix Suns,Footprint Center,Atlanta Hawks
+2023-02-02 00:00:00-05:00,2023-02-02 23:59:59-05:00,2023-02-02 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Los Angeles Lakers
+2023-02-02 00:00:00-05:00,2023-02-02 23:59:59-05:00,2023-02-02 19:30:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Memphis Grizzlies
+2023-02-02 00:00:00-05:00,2023-02-02 23:59:59-05:00,2023-02-02 19:30:00-05:00,New York Knicks,Madison Square Garden,Miami Heat
+2023-02-02 00:00:00-05:00,2023-02-02 23:59:59-05:00,2023-02-02 20:00:00-05:00,Chicago Bulls,United Center,Charlotte Hornets
+2023-02-02 00:00:00-05:00,2023-02-02 23:59:59-05:00,2023-02-02 20:30:00-05:00,Dallas Mavericks,American Airlines Center,New Orleans Pelicans
+2023-02-02 00:00:00-05:00,2023-02-02 23:59:59-05:00,2023-02-02 21:00:00-05:00,Denver Nuggets,Ball Arena,Golden State Warriors
+2023-02-02 00:00:00-05:00,2023-02-02 23:59:59-05:00,2023-02-02 22:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,LA Clippers
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Charlotte Hornets
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Sacramento Kings
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 19:00:00-05:00,Washington Wizards,Capital One Arena,Portland Trail Blazers
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 19:30:00-05:00,Boston Celtics,TD Garden,Phoenix Suns
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Toronto Raptors
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 20:00:00-05:00,Minnesota Timberwolves,Target Center,Orlando Magic
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 20:00:00-05:00,San Antonio Spurs,AT&T Center,Philadelphia 76ers
+2023-02-03 00:00:00-05:00,2023-02-03 23:59:59-05:00,2023-02-03 21:00:00-05:00,Utah Jazz,Vivint Arena,Atlanta Hawks
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 18:00:00-05:00,Brooklyn Nets,Prudential Center,Washington Wizards
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Phoenix Suns
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 19:00:00-05:00,New York Knicks,Madison Square Garden,LA Clippers
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 20:00:00-05:00,Chicago Bulls,United Center,Portland Trail Blazers
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Miami Heat
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Los Angeles Lakers
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Houston Rockets
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 20:30:00-05:00,Golden State Warriors,ORACLE Arena,Dallas Mavericks
+2023-02-04 00:00:00-05:00,2023-02-04 23:59:59-05:00,2023-02-04 21:00:00-05:00,Denver Nuggets,Ball Arena,Atlanta Hawks
+2023-02-05 00:00:00-05:00,2023-02-05 23:59:59-05:00,2023-02-05 13:00:00-05:00,Charlotte Hornets,Spectrum Center,Orlando Magic
+2023-02-05 00:00:00-05:00,2023-02-05 23:59:59-05:00,2023-02-05 17:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Cleveland Cavaliers
+2023-02-05 00:00:00-05:00,2023-02-05 23:59:59-05:00,2023-02-05 18:00:00-05:00,New York Knicks,Madison Square Garden,Philadelphia 76ers
+2023-02-05 00:00:00-05:00,2023-02-05 23:59:59-05:00,2023-02-05 18:00:00-05:00,Memphis Grizzlies,FedExForum,Toronto Raptors
+2023-02-05 00:00:00-05:00,2023-02-05 23:59:59-05:00,2023-02-05 19:00:00-05:00,Minnesota Timberwolves,Target Center,Denver Nuggets
+2023-02-05 00:00:00-05:00,2023-02-05 23:59:59-05:00,2023-02-05 19:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Sacramento Kings
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Boston Celtics
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 19:00:00-05:00,Washington Wizards,Capital One Arena,Cleveland Cavaliers
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 19:30:00-05:00,Brooklyn Nets,Prudential Center,LA Clippers
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 20:00:00-05:00,Chicago Bulls,United Center,San Antonio Spurs
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Sacramento Kings
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 21:00:00-05:00,Utah Jazz,Vivint Arena,Dallas Mavericks
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Oklahoma City Thunder
+2023-02-06 00:00:00-05:00,2023-02-06 23:59:59-05:00,2023-02-06 22:00:00-05:00,Portland Trail Blazers,Moda Center,Milwaukee Bucks
+2023-02-07 00:00:00-05:00,2023-02-07 23:59:59-05:00,2023-02-07 19:00:00-05:00,Orlando Magic,Amway Center,New York Knicks
+2023-02-07 00:00:00-05:00,2023-02-07 23:59:59-05:00,2023-02-07 19:30:00-05:00,Brooklyn Nets,Prudential Center,Phoenix Suns
+2023-02-07 00:00:00-05:00,2023-02-07 23:59:59-05:00,2023-02-07 19:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Atlanta Hawks
+2023-02-07 00:00:00-05:00,2023-02-07 23:59:59-05:00,2023-02-07 20:00:00-05:00,Memphis Grizzlies,FedExForum,Chicago Bulls
+2023-02-07 00:00:00-05:00,2023-02-07 23:59:59-05:00,2023-02-07 22:00:00-05:00,Denver Nuggets,Ball Arena,Minnesota Timberwolves
+2023-02-07 00:00:00-05:00,2023-02-07 23:59:59-05:00,2023-02-07 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Oklahoma City Thunder
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Detroit Pistons
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 19:00:00-05:00,Washington Wizards,Capital One Arena,Charlotte Hornets
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 19:30:00-05:00,Boston Celtics,TD Garden,Philadelphia 76ers
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 19:30:00-05:00,Miami Heat,FTX Arena,Indiana Pacers
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,San Antonio Spurs
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Sacramento Kings
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 21:00:00-05:00,Utah Jazz,Vivint Arena,Minnesota Timberwolves
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 22:00:00-05:00,LA Clippers,crypto.com Arena,Dallas Mavericks
+2023-02-08 00:00:00-05:00,2023-02-08 23:59:59-05:00,2023-02-08 22:00:00-05:00,Portland Trail Blazers,Moda Center,Golden State Warriors
+2023-02-09 00:00:00-05:00,2023-02-09 23:59:59-05:00,2023-02-09 19:00:00-05:00,Orlando Magic,Amway Center,Denver Nuggets
+2023-02-09 00:00:00-05:00,2023-02-09 23:59:59-05:00,2023-02-09 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Phoenix Suns
+2023-02-09 00:00:00-05:00,2023-02-09 23:59:59-05:00,2023-02-09 19:30:00-05:00,Brooklyn Nets,Prudential Center,Chicago Bulls
+2023-02-09 00:00:00-05:00,2023-02-09 23:59:59-05:00,2023-02-09 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Milwaukee Bucks
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,San Antonio Spurs
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Phoenix Suns
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,New York Knicks
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 19:30:00-05:00,Boston Celtics,TD Garden,Charlotte Hornets
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Utah Jazz
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 20:00:00-05:00,Miami Heat,FTX Arena,Houston Rockets
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 20:00:00-05:00,Memphis Grizzlies,FedExForum,Minnesota Timberwolves
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 22:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Cleveland Cavaliers
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 22:00:00-05:00,Portland Trail Blazers,Moda Center,Oklahoma City Thunder
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Dallas Mavericks
+2023-02-10 00:00:00-05:00,2023-02-10 23:59:59-05:00,2023-02-10 22:30:00-05:00,LA Clippers,crypto.com Arena,Milwaukee Bucks
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 18:00:00-05:00,Brooklyn Nets,Prudential Center,Philadelphia 76ers
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Denver Nuggets
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 19:00:00-05:00,Orlando Magic,Amway Center,Miami Heat
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 19:00:00-05:00,Washington Wizards,Capital One Arena,Indiana Pacers
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 19:30:00-05:00,Atlanta Hawks,State Farm Arena,San Antonio Spurs
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 19:30:00-05:00,New York Knicks,Madison Square Garden,Utah Jazz
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 20:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Chicago Bulls
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 20:30:00-05:00,Golden State Warriors,ORACLE Arena,Los Angeles Lakers
+2023-02-11 00:00:00-05:00,2023-02-11 23:59:59-05:00,2023-02-11 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Dallas Mavericks
+2023-02-12 00:00:00-05:00,2023-02-12 23:59:59-05:00,2023-02-12 14:00:00-05:00,Boston Celtics,TD Garden,Memphis Grizzlies
+2023-02-12 00:00:00-05:00,2023-02-12 23:59:59-05:00,2023-02-12 15:00:00-05:00,Toronto Raptors,Scotiabank Arena,Detroit Pistons
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Atlanta Hawks
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,San Antonio Spurs
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Utah Jazz
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Houston Rockets
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 19:30:00-05:00,Miami Heat,FTX Arena,Denver Nuggets
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 19:30:00-05:00,New York Knicks,Madison Square Garden,Brooklyn Nets
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 20:00:00-05:00,Chicago Bulls,United Center,Orlando Magic
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,New Orleans Pelicans
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Minnesota Timberwolves
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Washington Wizards
+2023-02-13 00:00:00-05:00,2023-02-13 23:59:59-05:00,2023-02-13 22:00:00-05:00,Portland Trail Blazers,Moda Center,Los Angeles Lakers
+2023-02-14 00:00:00-05:00,2023-02-14 23:59:59-05:00,2023-02-14 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Orlando Magic
+2023-02-14 00:00:00-05:00,2023-02-14 23:59:59-05:00,2023-02-14 19:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Boston Celtics
+2023-02-14 00:00:00-05:00,2023-02-14 23:59:59-05:00,2023-02-14 21:00:00-05:00,Phoenix Suns,Footprint Center,Sacramento Kings
+2023-02-14 00:00:00-05:00,2023-02-14 23:59:59-05:00,2023-02-14 22:00:00-05:00,LA Clippers,crypto.com Arena,Golden State Warriors
+2023-02-14 00:00:00-05:00,2023-02-14 23:59:59-05:00,2023-02-14 22:00:00-05:00,Portland Trail Blazers,Moda Center,Washington Wizards
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 19:00:00-05:00,Charlotte Hornets,Spectrum Center,San Antonio Spurs
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Chicago Bulls
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Cleveland Cavaliers
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 19:30:00-05:00,Atlanta Hawks,State Farm Arena,New York Knicks
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 19:30:00-05:00,Boston Celtics,TD Garden,Detroit Pistons
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 19:30:00-05:00,Brooklyn Nets,Prudential Center,Miami Heat
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 20:00:00-05:00,Memphis Grizzlies,FedExForum,Utah Jazz
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Houston Rockets
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 21:00:00-05:00,Denver Nuggets,Ball Arena,Dallas Mavericks
+2023-02-15 00:00:00-05:00,2023-02-15 23:59:59-05:00,2023-02-15 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,New Orleans Pelicans
+2023-02-16 00:00:00-05:00,2023-02-16 23:59:59-05:00,2023-02-16 19:30:00-05:00,Chicago Bulls,United Center,Milwaukee Bucks
+2023-02-16 00:00:00-05:00,2023-02-16 23:59:59-05:00,2023-02-16 20:00:00-05:00,Minnesota Timberwolves,Target Center,Washington Wizards
+2023-02-16 00:00:00-05:00,2023-02-16 23:59:59-05:00,2023-02-16 22:00:00-05:00,Phoenix Suns,Footprint Center,LA Clippers
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Denver Nuggets
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Boston Celtics
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 19:00:00-05:00,Orlando Magic,Amway Center,Detroit Pistons
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 19:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Memphis Grizzlies
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,New Orleans Pelicans
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 20:30:00-05:00,Dallas Mavericks,American Airlines Center,San Antonio Spurs
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 21:00:00-05:00,Utah Jazz,Vivint Arena,Oklahoma City Thunder
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Golden State Warriors
+2023-02-23 00:00:00-05:00,2023-02-23 23:59:59-05:00,2023-02-23 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Portland Trail Blazers
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 19:00:00-05:00,Washington Wizards,Capital One Arena,New York Knicks
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Cleveland Cavaliers
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 19:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Miami Heat
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 20:00:00-05:00,Minnesota Timberwolves,Target Center,Charlotte Hornets
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 21:00:00-05:00,Phoenix Suns,Footprint Center,Oklahoma City Thunder
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 22:00:00-05:00,Chicago Bulls,United Center,Brooklyn Nets
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Houston Rockets
+2023-02-24 00:00:00-05:00,2023-02-24 23:59:59-05:00,2023-02-24 22:30:00-05:00,LA Clippers,crypto.com Arena,Sacramento Kings
+2023-02-25 00:00:00-05:00,2023-02-25 23:59:59-05:00,2023-02-25 12:00:00-05:00,Detroit Pistons,Little Caesars Arena,Toronto Raptors
+2023-02-25 00:00:00-05:00,2023-02-25 23:59:59-05:00,2023-02-25 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Miami Heat
+2023-02-25 00:00:00-05:00,2023-02-25 23:59:59-05:00,2023-02-25 19:00:00-05:00,Orlando Magic,Amway Center,Indiana Pacers
+2023-02-25 00:00:00-05:00,2023-02-25 23:59:59-05:00,2023-02-25 19:30:00-05:00,New York Knicks,Madison Square Garden,New Orleans Pelicans
+2023-02-25 00:00:00-05:00,2023-02-25 23:59:59-05:00,2023-02-25 20:00:00-05:00,Memphis Grizzlies,FedExForum,Denver Nuggets
+2023-02-25 00:00:00-05:00,2023-02-25 23:59:59-05:00,2023-02-25 20:30:00-05:00,Philadelphia 76ers,Wells Fargo Center,Boston Celtics
+2023-02-25 00:00:00-05:00,2023-02-25 23:59:59-05:00,2023-02-25 21:00:00-05:00,Utah Jazz,Vivint Arena,San Antonio Spurs
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 13:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Phoenix Suns
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 15:00:00-05:00,Atlanta Hawks,State Farm Arena,Brooklyn Nets
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 15:30:00-05:00,Chicago Bulls,United Center,Washington Wizards
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 15:30:00-05:00,Dallas Mavericks,American Airlines Center,Los Angeles Lakers
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 18:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Toronto Raptors
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 19:00:00-05:00,Oklahoma City Thunder,Paycom Center,Sacramento Kings
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 19:30:00-05:00,Golden State Warriors,ORACLE Arena,Minnesota Timberwolves
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 21:00:00-05:00,Portland Trail Blazers,Moda Center,Houston Rockets
+2023-02-26 00:00:00-05:00,2023-02-26 23:59:59-05:00,2023-02-26 22:00:00-05:00,Denver Nuggets,Ball Arena,LA Clippers
+2023-02-27 00:00:00-05:00,2023-02-27 23:59:59-05:00,2023-02-27 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Detroit Pistons
+2023-02-27 00:00:00-05:00,2023-02-27 23:59:59-05:00,2023-02-27 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Miami Heat
+2023-02-27 00:00:00-05:00,2023-02-27 23:59:59-05:00,2023-02-27 19:30:00-05:00,New York Knicks,Madison Square Garden,Boston Celtics
+2023-02-27 00:00:00-05:00,2023-02-27 23:59:59-05:00,2023-02-27 20:00:00-05:00,New Orleans Pelicans,Smoothie King Center,Orlando Magic
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Washington Wizards
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 19:30:00-05:00,Brooklyn Nets,Prudential Center,Milwaukee Bucks
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 19:30:00-05:00,Toronto Raptors,Scotiabank Arena,Chicago Bulls
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Denver Nuggets
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 20:00:00-05:00,Memphis Grizzlies,FedExForum,Los Angeles Lakers
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Sacramento Kings
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Indiana Pacers
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 21:00:00-05:00,Utah Jazz,Vivint Arena,San Antonio Spurs
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 22:00:00-05:00,Golden State Warriors,ORACLE Arena,Portland Trail Blazers
+2023-02-28 00:00:00-05:00,2023-02-28 23:59:59-05:00,2023-02-28 22:00:00-05:00,LA Clippers,crypto.com Arena,Minnesota Timberwolves
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Phoenix Suns
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Chicago Bulls
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 19:30:00-05:00,Boston Celtics,TD Garden,Cleveland Cavaliers
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 19:30:00-05:00,Miami Heat,FTX Arena,Philadelphia 76ers
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 19:30:00-05:00,New York Knicks,Madison Square Garden,Brooklyn Nets
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Memphis Grizzlies
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 20:00:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Orlando Magic
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Los Angeles Lakers
+2023-03-01 00:00:00-05:00,2023-03-01 23:59:59-05:00,2023-03-01 22:00:00-05:00,Portland Trail Blazers,Moda Center,New Orleans Pelicans
+2023-03-02 00:00:00-05:00,2023-03-02 23:59:59-05:00,2023-03-02 19:00:00-05:00,Washington Wizards,Capital One Arena,Toronto Raptors
+2023-03-02 00:00:00-05:00,2023-03-02 23:59:59-05:00,2023-03-02 19:30:00-05:00,Dallas Mavericks,American Airlines Center,Philadelphia 76ers
+2023-03-02 00:00:00-05:00,2023-03-02 23:59:59-05:00,2023-03-02 20:30:00-05:00,San Antonio Spurs,AT&T Center,Indiana Pacers
+2023-03-02 00:00:00-05:00,2023-03-02 23:59:59-05:00,2023-03-02 22:00:00-05:00,Golden State Warriors,ORACLE Arena,LA Clippers
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Orlando Magic
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Portland Trail Blazers
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 19:30:00-05:00,Boston Celtics,TD Garden,Brooklyn Nets
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 20:00:00-05:00,Miami Heat,FTX Arena,New York Knicks
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 20:00:00-05:00,Chicago Bulls,United Center,Phoenix Suns
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Utah Jazz
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 22:00:00-05:00,Denver Nuggets,Ball Arena,Memphis Grizzlies
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 22:00:00-05:00,Golden State Warriors,ORACLE Arena,New Orleans Pelicans
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,LA Clippers
+2023-03-03 00:00:00-05:00,2023-03-03 23:59:59-05:00,2023-03-03 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Minnesota Timberwolves
+2023-03-04 00:00:00-05:00,2023-03-04 23:59:59-05:00,2023-03-04 17:00:00-05:00,Washington Wizards,Capital One Arena,Toronto Raptors
+2023-03-04 00:00:00-05:00,2023-03-04 23:59:59-05:00,2023-03-04 20:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Detroit Pistons
+2023-03-04 00:00:00-05:00,2023-03-04 23:59:59-05:00,2023-03-04 20:00:00-05:00,Miami Heat,FTX Arena,Atlanta Hawks
+2023-03-04 00:00:00-05:00,2023-03-04 23:59:59-05:00,2023-03-04 20:00:00-05:00,San Antonio Spurs,AT&T Center,Houston Rockets
+2023-03-04 00:00:00-05:00,2023-03-04 23:59:59-05:00,2023-03-04 20:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Philadelphia 76ers
+2023-03-04 00:00:00-05:00,2023-03-04 23:59:59-05:00,2023-03-04 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,Minnesota Timberwolves
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 13:00:00-05:00,Dallas Mavericks,American Airlines Center,Phoenix Suns
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 15:30:00-05:00,Chicago Bulls,United Center,Indiana Pacers
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 15:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Golden State Warriors
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 18:00:00-05:00,Brooklyn Nets,Prudential Center,Charlotte Hornets
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 18:00:00-05:00,Orlando Magic,Amway Center,Portland Trail Blazers
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 19:00:00-05:00,Houston Rockets,Toyota Center (Houston),San Antonio Spurs
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 19:00:00-05:00,Oklahoma City Thunder,Paycom Center,Utah Jazz
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 19:30:00-05:00,Boston Celtics,TD Garden,New York Knicks
+2023-03-05 00:00:00-05:00,2023-03-05 23:59:59-05:00,2023-03-05 22:00:00-05:00,LA Clippers,crypto.com Arena,Memphis Grizzlies
+2023-03-06 00:00:00-05:00,2023-03-06 23:59:59-05:00,2023-03-06 19:00:00-05:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Boston Celtics
+2023-03-06 00:00:00-05:00,2023-03-06 23:59:59-05:00,2023-03-06 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Philadelphia 76ers
+2023-03-06 00:00:00-05:00,2023-03-06 23:59:59-05:00,2023-03-06 19:00:00-05:00,Washington Wizards,Capital One Arena,Milwaukee Bucks
+2023-03-06 00:00:00-05:00,2023-03-06 23:59:59-05:00,2023-03-06 19:30:00-05:00,Miami Heat,FTX Arena,Atlanta Hawks
+2023-03-06 00:00:00-05:00,2023-03-06 23:59:59-05:00,2023-03-06 21:00:00-05:00,Denver Nuggets,Ball Arena,Toronto Raptors
+2023-03-06 00:00:00-05:00,2023-03-06 23:59:59-05:00,2023-03-06 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,New Orleans Pelicans
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Portland Trail Blazers
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 19:00:00-05:00,Orlando Magic,Amway Center,Milwaukee Bucks
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 19:30:00-05:00,New York Knicks,Madison Square Garden,Charlotte Hornets
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 19:30:00-05:00,Minnesota Timberwolves,Target Center,Philadelphia 76ers
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Brooklyn Nets
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 20:00:00-05:00,Oklahoma City Thunder,Paycom Center,Golden State Warriors
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 20:30:00-05:00,Dallas Mavericks,American Airlines Center,Utah Jazz
+2023-03-07 00:00:00-05:00,2023-03-07 23:59:59-05:00,2023-03-07 22:00:00-05:00,Los Angeles Lakers,crypto.com Arena,Memphis Grizzlies
+2023-03-08 00:00:00-05:00,2023-03-08 23:59:59-05:00,2023-03-08 19:00:00-05:00,Washington Wizards,Capital One Arena,Atlanta Hawks
+2023-03-08 00:00:00-05:00,2023-03-08 23:59:59-05:00,2023-03-08 19:30:00-05:00,Boston Celtics,TD Garden,Portland Trail Blazers
+2023-03-08 00:00:00-05:00,2023-03-08 23:59:59-05:00,2023-03-08 19:30:00-05:00,Miami Heat,FTX Arena,Cleveland Cavaliers
+2023-03-08 00:00:00-05:00,2023-03-08 23:59:59-05:00,2023-03-08 19:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Dallas Mavericks
+2023-03-08 00:00:00-05:00,2023-03-08 23:59:59-05:00,2023-03-08 21:00:00-05:00,Denver Nuggets,Ball Arena,Chicago Bulls
+2023-03-08 00:00:00-05:00,2023-03-08 23:59:59-05:00,2023-03-08 21:00:00-05:00,Phoenix Suns,Footprint Center,Oklahoma City Thunder
+2023-03-08 00:00:00-05:00,2023-03-08 23:59:59-05:00,2023-03-08 22:00:00-05:00,LA Clippers,crypto.com Arena,Toronto Raptors
+2023-03-09 00:00:00-05:00,2023-03-09 23:59:59-05:00,2023-03-09 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Charlotte Hornets
+2023-03-09 00:00:00-05:00,2023-03-09 23:59:59-05:00,2023-03-09 19:00:00-05:00,Indiana Pacers,Gainbridge Coliseum,Houston Rockets
+2023-03-09 00:00:00-05:00,2023-03-09 23:59:59-05:00,2023-03-09 19:00:00-05:00,Orlando Magic,Amway Center,Utah Jazz
+2023-03-09 00:00:00-05:00,2023-03-09 23:59:59-05:00,2023-03-09 19:30:00-05:00,Milwaukee Bucks,BMO Harris Bradley Center,Brooklyn Nets
+2023-03-09 00:00:00-05:00,2023-03-09 23:59:59-05:00,2023-03-09 22:00:00-05:00,Memphis Grizzlies,FedExForum,Golden State Warriors
+2023-03-09 00:00:00-05:00,2023-03-09 23:59:59-05:00,2023-03-09 22:00:00-05:00,Sacramento Kings,Sleep Train Arena,New York Knicks
+2023-03-10 00:00:00-05:00,2023-03-10 23:59:59-05:00,2023-03-10 19:00:00-05:00,Philadelphia 76ers,Wells Fargo Center,Portland Trail Blazers
+2023-03-10 00:00:00-05:00,2023-03-10 23:59:59-05:00,2023-03-10 19:00:00-05:00,Washington Wizards,Capital One Arena,Atlanta Hawks
+2023-03-10 00:00:00-05:00,2023-03-10 23:59:59-05:00,2023-03-10 20:00:00-05:00,Miami Heat,FTX Arena,Cleveland Cavaliers
+2023-03-10 00:00:00-05:00,2023-03-10 23:59:59-05:00,2023-03-10 20:00:00-05:00,Minnesota Timberwolves,Target Center,Brooklyn Nets
+2023-03-10 00:00:00-05:00,2023-03-10 23:59:59-05:00,2023-03-10 20:00:00-05:00,San Antonio Spurs,AT&T Center,Denver Nuggets
+2023-03-10 00:00:00-05:00,2023-03-10 23:59:59-05:00,2023-03-10 22:30:00-05:00,Los Angeles Lakers,crypto.com Arena,Toronto Raptors
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 16:00:00-05:00,LA Clippers,crypto.com Arena,New York Knicks
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 19:00:00-05:00,Charlotte Hornets,Spectrum Center,Utah Jazz
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 19:00:00-05:00,Detroit Pistons,Little Caesars Arena,Indiana Pacers
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 19:00:00-05:00,Orlando Magic,Amway Center,Miami Heat
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 19:30:00-05:00,Atlanta Hawks,State Farm Arena,Boston Celtics
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 20:00:00-05:00,Houston Rockets,Toyota Center (Houston),Chicago Bulls
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 20:00:00-05:00,Memphis Grizzlies,FedExForum,Dallas Mavericks
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 20:30:00-05:00,New Orleans Pelicans,Smoothie King Center,Oklahoma City Thunder
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 20:30:00-05:00,Golden State Warriors,ORACLE Arena,Milwaukee Bucks
+2023-03-11 00:00:00-05:00,2023-03-11 23:59:59-05:00,2023-03-11 22:00:00-05:00,Phoenix Suns,Footprint Center,Sacramento Kings
+2023-03-12 00:00:00-05:00,2023-03-12 23:59:59-04:00,2023-03-12 15:30:00-04:00,Denver Nuggets,Ball Arena,Brooklyn Nets
+2023-03-12 00:00:00-05:00,2023-03-12 23:59:59-04:00,2023-03-12 17:00:00-04:00,Charlotte Hornets,Spectrum Center,Cleveland Cavaliers
+2023-03-12 00:00:00-05:00,2023-03-12 23:59:59-04:00,2023-03-12 18:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Washington Wizards
+2023-03-12 00:00:00-05:00,2023-03-12 23:59:59-04:00,2023-03-12 19:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Portland Trail Blazers
+2023-03-12 00:00:00-05:00,2023-03-12 23:59:59-04:00,2023-03-12 19:00:00-04:00,San Antonio Spurs,AT&T Center,Oklahoma City Thunder
+2023-03-12 00:00:00-05:00,2023-03-12 23:59:59-04:00,2023-03-12 21:00:00-04:00,Los Angeles Lakers,crypto.com Arena,New York Knicks
+2023-03-13 00:00:00-04:00,2023-03-13 23:59:59-04:00,2023-03-13 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Indiana Pacers
+2023-03-13 00:00:00-04:00,2023-03-13 23:59:59-04:00,2023-03-13 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Minnesota Timberwolves
+2023-03-13 00:00:00-04:00,2023-03-13 23:59:59-04:00,2023-03-13 19:30:00-04:00,Miami Heat,FTX Arena,Utah Jazz
+2023-03-13 00:00:00-04:00,2023-03-13 23:59:59-04:00,2023-03-13 19:30:00-04:00,Dallas Mavericks,American Airlines Center,Memphis Grizzlies
+2023-03-13 00:00:00-04:00,2023-03-13 23:59:59-04:00,2023-03-13 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Boston Celtics
+2023-03-13 00:00:00-04:00,2023-03-13 23:59:59-04:00,2023-03-13 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Phoenix Suns
+2023-03-13 00:00:00-04:00,2023-03-13 23:59:59-04:00,2023-03-13 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Milwaukee Bucks
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Cleveland Cavaliers
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 19:00:00-04:00,Washington Wizards,Capital One Arena,Detroit Pistons
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Denver Nuggets
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Los Angeles Lakers
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,Brooklyn Nets
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 20:00:00-04:00,San Antonio Spurs,AT&T Center,Orlando Magic
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 22:00:00-04:00,Phoenix Suns,Footprint Center,Milwaukee Bucks
+2023-03-14 00:00:00-04:00,2023-03-14 23:59:59-04:00,2023-03-14 22:00:00-04:00,Portland Trail Blazers,Moda Center,New York Knicks
+2023-03-15 00:00:00-04:00,2023-03-15 23:59:59-04:00,2023-03-15 19:30:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Philadelphia 76ers
+2023-03-15 00:00:00-04:00,2023-03-15 23:59:59-04:00,2023-03-15 19:30:00-04:00,Miami Heat,FTX Arena,Memphis Grizzlies
+2023-03-15 00:00:00-04:00,2023-03-15 23:59:59-04:00,2023-03-15 20:00:00-04:00,Chicago Bulls,United Center,Sacramento Kings
+2023-03-15 00:00:00-04:00,2023-03-15 23:59:59-04:00,2023-03-15 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Los Angeles Lakers
+2023-03-15 00:00:00-04:00,2023-03-15 23:59:59-04:00,2023-03-15 20:00:00-04:00,Minnesota Timberwolves,Target Center,Boston Celtics
+2023-03-15 00:00:00-04:00,2023-03-15 23:59:59-04:00,2023-03-15 20:30:00-04:00,San Antonio Spurs,AT&T Center,Dallas Mavericks
+2023-03-15 00:00:00-04:00,2023-03-15 23:59:59-04:00,2023-03-15 22:00:00-04:00,LA Clippers,crypto.com Arena,Golden State Warriors
+2023-03-16 00:00:00-04:00,2023-03-16 23:59:59-04:00,2023-03-16 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Denver Nuggets
+2023-03-16 00:00:00-04:00,2023-03-16 23:59:59-04:00,2023-03-16 19:30:00-04:00,Brooklyn Nets,Prudential Center,Sacramento Kings
+2023-03-16 00:00:00-04:00,2023-03-16 23:59:59-04:00,2023-03-16 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Oklahoma City Thunder
+2023-03-16 00:00:00-04:00,2023-03-16 23:59:59-04:00,2023-03-16 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Indiana Pacers
+2023-03-16 00:00:00-04:00,2023-03-16 23:59:59-04:00,2023-03-16 22:00:00-04:00,Phoenix Suns,Footprint Center,Orlando Magic
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Philadelphia 76ers
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Golden State Warriors
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 19:30:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Washington Wizards
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 20:00:00-04:00,Chicago Bulls,United Center,Minnesota Timberwolves
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),New Orleans Pelicans
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 20:00:00-04:00,San Antonio Spurs,AT&T Center,Memphis Grizzlies
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 22:00:00-04:00,Portland Trail Blazers,Moda Center,Boston Celtics
+2023-03-17 00:00:00-04:00,2023-03-17 23:59:59-04:00,2023-03-17 22:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Dallas Mavericks
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 13:00:00-04:00,New York Knicks,Madison Square Garden,Denver Nuggets
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 15:00:00-04:00,LA Clippers,crypto.com Arena,Orlando Magic
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Philadelphia 76ers
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 19:00:00-04:00,Toronto Raptors,Scotiabank Arena,Minnesota Timberwolves
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 20:00:00-04:00,Washington Wizards,Capital One Arena,Sacramento Kings
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 20:00:00-04:00,Chicago Bulls,United Center,Miami Heat
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 20:00:00-04:00,Memphis Grizzlies,FedExForum,Golden State Warriors
+2023-03-18 00:00:00-04:00,2023-03-18 23:59:59-04:00,2023-03-18 21:00:00-04:00,Utah Jazz,Vivint Arena,Boston Celtics
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 15:30:00-04:00,Brooklyn Nets,Prudential Center,Denver Nuggets
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 15:30:00-04:00,Oklahoma City Thunder,Paycom Center,Phoenix Suns
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 16:00:00-04:00,San Antonio Spurs,AT&T Center,Atlanta Hawks
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 18:00:00-04:00,Detroit Pistons,Little Caesars Arena,Miami Heat
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 19:00:00-04:00,Houston Rockets,Toyota Center (Houston),New Orleans Pelicans
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Toronto Raptors
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 21:00:00-04:00,Portland Trail Blazers,Moda Center,LA Clippers
+2023-03-19 00:00:00-04:00,2023-03-19 23:59:59-04:00,2023-03-19 21:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Orlando Magic
+2023-03-20 00:00:00-04:00,2023-03-20 23:59:59-04:00,2023-03-20 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Indiana Pacers
+2023-03-20 00:00:00-04:00,2023-03-20 23:59:59-04:00,2023-03-20 19:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Chicago Bulls
+2023-03-20 00:00:00-04:00,2023-03-20 23:59:59-04:00,2023-03-20 19:30:00-04:00,New York Knicks,Madison Square Garden,Minnesota Timberwolves
+2023-03-20 00:00:00-04:00,2023-03-20 23:59:59-04:00,2023-03-20 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Golden State Warriors
+2023-03-20 00:00:00-04:00,2023-03-20 23:59:59-04:00,2023-03-20 20:00:00-04:00,Memphis Grizzlies,FedExForum,Dallas Mavericks
+2023-03-20 00:00:00-04:00,2023-03-20 23:59:59-04:00,2023-03-20 21:00:00-04:00,Utah Jazz,Vivint Arena,Sacramento Kings
+2023-03-21 00:00:00-04:00,2023-03-21 23:59:59-04:00,2023-03-21 19:00:00-04:00,Orlando Magic,Amway Center,Washington Wizards
+2023-03-21 00:00:00-04:00,2023-03-21 23:59:59-04:00,2023-03-21 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Detroit Pistons
+2023-03-21 00:00:00-04:00,2023-03-21 23:59:59-04:00,2023-03-21 19:30:00-04:00,Brooklyn Nets,Prudential Center,Cleveland Cavaliers
+2023-03-21 00:00:00-04:00,2023-03-21 23:59:59-04:00,2023-03-21 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,San Antonio Spurs
+2023-03-21 00:00:00-04:00,2023-03-21 23:59:59-04:00,2023-03-21 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Boston Celtics
+2023-03-21 00:00:00-04:00,2023-03-21 23:59:59-04:00,2023-03-21 22:30:00-04:00,LA Clippers,crypto.com Arena,Oklahoma City Thunder
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 19:00:00-04:00,Washington Wizards,Capital One Arena,Denver Nuggets
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 19:30:00-04:00,Miami Heat,FTX Arena,New York Knicks
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Indiana Pacers
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 19:30:00-04:00,Dallas Mavericks,American Airlines Center,Golden State Warriors
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 20:00:00-04:00,Chicago Bulls,United Center,Philadelphia 76ers
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 20:00:00-04:00,Memphis Grizzlies,FedExForum,Houston Rockets
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,San Antonio Spurs
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 20:00:00-04:00,Minnesota Timberwolves,Target Center,Atlanta Hawks
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 21:00:00-04:00,Utah Jazz,Vivint Arena,Portland Trail Blazers
+2023-03-22 00:00:00-04:00,2023-03-22 23:59:59-04:00,2023-03-22 22:00:00-04:00,Los Angeles Lakers,crypto.com Arena,Phoenix Suns
+2023-03-23 00:00:00-04:00,2023-03-23 23:59:59-04:00,2023-03-23 19:00:00-04:00,Orlando Magic,Amway Center,New York Knicks
+2023-03-23 00:00:00-04:00,2023-03-23 23:59:59-04:00,2023-03-23 19:30:00-04:00,Brooklyn Nets,Prudential Center,Cleveland Cavaliers
+2023-03-23 00:00:00-04:00,2023-03-23 23:59:59-04:00,2023-03-23 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Charlotte Hornets
+2023-03-23 00:00:00-04:00,2023-03-23 23:59:59-04:00,2023-03-23 22:30:00-04:00,LA Clippers,crypto.com Arena,Oklahoma City Thunder
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 19:00:00-04:00,Boston Celtics,TD Garden,Indiana Pacers
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 19:00:00-04:00,Washington Wizards,Capital One Arena,San Antonio Spurs
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Detroit Pistons
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 20:00:00-04:00,Memphis Grizzlies,FedExForum,Houston Rockets
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 20:30:00-04:00,Dallas Mavericks,American Airlines Center,Charlotte Hornets
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 21:00:00-04:00,Utah Jazz,Vivint Arena,Milwaukee Bucks
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Philadelphia 76ers
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 22:00:00-04:00,Portland Trail Blazers,Moda Center,Chicago Bulls
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Phoenix Suns
+2023-03-24 00:00:00-04:00,2023-03-24 23:59:59-04:00,2023-03-24 22:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Oklahoma City Thunder
+2023-03-25 00:00:00-04:00,2023-03-25 23:59:59-04:00,2023-03-25 17:00:00-04:00,Atlanta Hawks,State Farm Arena,Indiana Pacers
+2023-03-25 00:00:00-04:00,2023-03-25 23:59:59-04:00,2023-03-25 20:00:00-04:00,Miami Heat,FTX Arena,Brooklyn Nets
+2023-03-25 00:00:00-04:00,2023-03-25 23:59:59-04:00,2023-03-25 21:00:00-04:00,Denver Nuggets,Ball Arena,Milwaukee Bucks
+2023-03-25 00:00:00-04:00,2023-03-25 23:59:59-04:00,2023-03-25 22:00:00-04:00,Phoenix Suns,Footprint Center,Philadelphia 76ers
+2023-03-25 00:00:00-04:00,2023-03-25 23:59:59-04:00,2023-03-25 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Utah Jazz
+2023-03-25 00:00:00-04:00,2023-03-25 23:59:59-04:00,2023-03-25 22:30:00-04:00,LA Clippers,crypto.com Arena,New Orleans Pelicans
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 13:00:00-04:00,Charlotte Hornets,Spectrum Center,Dallas Mavericks
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 15:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Chicago Bulls
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 18:00:00-04:00,Atlanta Hawks,State Farm Arena,Memphis Grizzlies
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 18:00:00-04:00,Boston Celtics,TD Garden,San Antonio Spurs
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 18:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Houston Rockets
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 18:00:00-04:00,Orlando Magic,Amway Center,Brooklyn Nets
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 18:00:00-04:00,Toronto Raptors,Scotiabank Arena,Washington Wizards
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 19:00:00-04:00,Portland Trail Blazers,Moda Center,Oklahoma City Thunder
+2023-03-26 00:00:00-04:00,2023-03-26 23:59:59-04:00,2023-03-26 20:30:00-04:00,Golden State Warriors,ORACLE Arena,Minnesota Timberwolves
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Milwaukee Bucks
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Dallas Mavericks
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 19:30:00-04:00,New York Knicks,Madison Square Garden,Houston Rockets
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 21:00:00-04:00,Utah Jazz,Vivint Arena,Phoenix Suns
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 21:30:00-04:00,Denver Nuggets,Ball Arena,Philadelphia 76ers
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 22:00:00-04:00,Portland Trail Blazers,Moda Center,New Orleans Pelicans
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Minnesota Timberwolves
+2023-03-27 00:00:00-04:00,2023-03-27 23:59:59-04:00,2023-03-27 22:30:00-04:00,LA Clippers,crypto.com Arena,Chicago Bulls
+2023-03-28 00:00:00-04:00,2023-03-28 23:59:59-04:00,2023-03-28 19:00:00-04:00,Washington Wizards,Capital One Arena,Boston Celtics
+2023-03-28 00:00:00-04:00,2023-03-28 23:59:59-04:00,2023-03-28 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Cleveland Cavaliers
+2023-03-28 00:00:00-04:00,2023-03-28 23:59:59-04:00,2023-03-28 19:30:00-04:00,Toronto Raptors,Scotiabank Arena,Miami Heat
+2023-03-28 00:00:00-04:00,2023-03-28 23:59:59-04:00,2023-03-28 20:00:00-04:00,Memphis Grizzlies,FedExForum,Orlando Magic
+2023-03-28 00:00:00-04:00,2023-03-28 23:59:59-04:00,2023-03-28 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,Charlotte Hornets
+2023-03-28 00:00:00-04:00,2023-03-28 23:59:59-04:00,2023-03-28 22:00:00-04:00,Golden State Warriors,ORACLE Arena,New Orleans Pelicans
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Milwaukee Bucks
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 19:30:00-04:00,Brooklyn Nets,Prudential Center,Houston Rockets
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 19:30:00-04:00,New York Knicks,Madison Square Garden,Miami Heat
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 19:30:00-04:00,Philadelphia 76ers,Wells Fargo Center,Dallas Mavericks
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 20:00:00-04:00,Chicago Bulls,United Center,Los Angeles Lakers
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 20:00:00-04:00,Memphis Grizzlies,FedExForum,LA Clippers
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 20:00:00-04:00,Oklahoma City Thunder,Paycom Center,Detroit Pistons
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 20:00:00-04:00,San Antonio Spurs,AT&T Center,Utah Jazz
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 22:00:00-04:00,Phoenix Suns,Footprint Center,Minnesota Timberwolves
+2023-03-29 00:00:00-04:00,2023-03-29 23:59:59-04:00,2023-03-29 22:00:00-04:00,Portland Trail Blazers,Moda Center,Sacramento Kings
+2023-03-30 00:00:00-04:00,2023-03-30 23:59:59-04:00,2023-03-30 19:30:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Boston Celtics
+2023-03-30 00:00:00-04:00,2023-03-30 23:59:59-04:00,2023-03-30 22:00:00-04:00,Denver Nuggets,Ball Arena,New Orleans Pelicans
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Chicago Bulls
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Oklahoma City Thunder
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 19:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Toronto Raptors
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 19:00:00-04:00,Washington Wizards,Capital One Arena,Orlando Magic
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 19:30:00-04:00,Boston Celtics,TD Garden,Utah Jazz
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 19:30:00-04:00,Brooklyn Nets,Prudential Center,Atlanta Hawks
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 19:30:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,New York Knicks
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Detroit Pistons
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 20:00:00-04:00,Memphis Grizzlies,FedExForum,LA Clippers
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 20:00:00-04:00,Minnesota Timberwolves,Target Center,Los Angeles Lakers
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 22:00:00-04:00,Golden State Warriors,ORACLE Arena,San Antonio Spurs
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 22:00:00-04:00,Portland Trail Blazers,Moda Center,Sacramento Kings
+2023-03-31 00:00:00-04:00,2023-03-31 23:59:59-04:00,2023-03-31 22:30:00-04:00,Phoenix Suns,Footprint Center,Denver Nuggets
+2023-04-01 00:00:00-04:00,2023-04-01 23:59:59-04:00,2023-04-01 19:30:00-04:00,Miami Heat,FTX Arena,Dallas Mavericks
+2023-04-01 00:00:00-04:00,2023-04-01 23:59:59-04:00,2023-04-01 20:30:00-04:00,New Orleans Pelicans,Smoothie King Center,LA Clippers
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 13:00:00-04:00,Charlotte Hornets,Spectrum Center,Toronto Raptors
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 15:30:00-04:00,Brooklyn Nets,Prudential Center,Utah Jazz
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 15:30:00-04:00,Chicago Bulls,United Center,Memphis Grizzlies
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 15:30:00-04:00,Minnesota Timberwolves,Target Center,Portland Trail Blazers
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 18:00:00-04:00,Atlanta Hawks,State Farm Arena,Dallas Mavericks
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 18:00:00-04:00,New York Knicks,Madison Square Garden,Washington Wizards
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 18:00:00-04:00,Orlando Magic,Amway Center,Detroit Pistons
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 18:00:00-04:00,Sacramento Kings,Sleep Train Arena,San Antonio Spurs
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 19:00:00-04:00,Houston Rockets,Toyota Center (Houston),Los Angeles Lakers
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 19:00:00-04:00,Oklahoma City Thunder,Paycom Center,Phoenix Suns
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 20:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Indiana Pacers
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Philadelphia 76ers
+2023-04-02 00:00:00-04:00,2023-04-02 23:59:59-04:00,2023-04-02 20:30:00-04:00,Denver Nuggets,Ball Arena,Golden State Warriors
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Toronto Raptors
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Miami Heat
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 19:00:00-04:00,Orlando Magic,Amway Center,Cleveland Cavaliers
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 19:00:00-04:00,Washington Wizards,Capital One Arena,Milwaukee Bucks
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 19:30:00-04:00,Brooklyn Nets,Prudential Center,Minnesota Timberwolves
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 20:00:00-04:00,Philadelphia 76ers,Wells Fargo Center,Boston Celtics
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 20:00:00-04:00,Chicago Bulls,United Center,Atlanta Hawks
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 20:00:00-04:00,Houston Rockets,Toyota Center (Houston),Denver Nuggets
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 20:00:00-04:00,Memphis Grizzlies,FedExForum,Portland Trail Blazers
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Sacramento Kings
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 21:00:00-04:00,Utah Jazz,Vivint Arena,Los Angeles Lakers
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 22:00:00-04:00,Golden State Warriors,ORACLE Arena,Oklahoma City Thunder
+2023-04-04 00:00:00-04:00,2023-04-04 23:59:59-04:00,2023-04-04 22:00:00-04:00,Phoenix Suns,Footprint Center,San Antonio Spurs
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 19:00:00-04:00,Detroit Pistons,Little Caesars Arena,Brooklyn Nets
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,New York Knicks
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Washington Wizards
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 19:30:00-04:00,Boston Celtics,TD Garden,Toronto Raptors
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 19:30:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Chicago Bulls
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,Memphis Grizzlies
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 20:30:00-04:00,Dallas Mavericks,American Airlines Center,Sacramento Kings
+2023-04-05 00:00:00-04:00,2023-04-05 23:59:59-04:00,2023-04-05 22:00:00-04:00,LA Clippers,crypto.com Arena,Los Angeles Lakers
+2023-04-06 00:00:00-04:00,2023-04-06 23:59:59-04:00,2023-04-06 19:00:00-04:00,Orlando Magic,Amway Center,Cleveland Cavaliers
+2023-04-06 00:00:00-04:00,2023-04-06 23:59:59-04:00,2023-04-06 19:30:00-04:00,Philadelphia 76ers,Wells Fargo Center,Miami Heat
+2023-04-06 00:00:00-04:00,2023-04-06 23:59:59-04:00,2023-04-06 20:00:00-04:00,San Antonio Spurs,AT&T Center,Portland Trail Blazers
+2023-04-06 00:00:00-04:00,2023-04-06 23:59:59-04:00,2023-04-06 21:00:00-04:00,Utah Jazz,Vivint Arena,Oklahoma City Thunder
+2023-04-06 00:00:00-04:00,2023-04-06 23:59:59-04:00,2023-04-06 22:00:00-04:00,Phoenix Suns,Footprint Center,Denver Nuggets
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 19:00:00-04:00,Charlotte Hornets,Spectrum Center,Houston Rockets
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 19:00:00-04:00,Indiana Pacers,Gainbridge Coliseum,Detroit Pistons
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 19:00:00-04:00,Washington Wizards,Capital One Arena,Miami Heat
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 19:30:00-04:00,Atlanta Hawks,State Farm Arena,Philadelphia 76ers
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 19:30:00-04:00,Boston Celtics,TD Garden,Toronto Raptors
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 19:30:00-04:00,Brooklyn Nets,Prudential Center,Orlando Magic
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 20:00:00-04:00,Milwaukee Bucks,BMO Harris Bradley Center,Memphis Grizzlies
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 20:00:00-04:00,New Orleans Pelicans,Smoothie King Center,New York Knicks
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 20:30:00-04:00,Dallas Mavericks,American Airlines Center,Chicago Bulls
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 22:00:00-04:00,Sacramento Kings,Sleep Train Arena,Golden State Warriors
+2023-04-07 00:00:00-04:00,2023-04-07 23:59:59-04:00,2023-04-07 22:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Phoenix Suns
+2023-04-08 00:00:00-04:00,2023-04-08 23:59:59-04:00,2023-04-08 15:30:00-04:00,Utah Jazz,Vivint Arena,Denver Nuggets
+2023-04-08 00:00:00-04:00,2023-04-08 23:59:59-04:00,2023-04-08 16:00:00-04:00,San Antonio Spurs,AT&T Center,Minnesota Timberwolves
+2023-04-08 00:00:00-04:00,2023-04-08 23:59:59-04:00,2023-04-08 16:00:00-04:00,LA Clippers,crypto.com Arena,Portland Trail Blazers
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,Boston Celtics,TD Garden,Atlanta Hawks
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,Brooklyn Nets,Prudential Center,Philadelphia 76ers
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,Cleveland Cavaliers,Rocket Mortgage FieldHouse,Charlotte Hornets
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,Miami Heat,FTX Arena,Orlando Magic
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,New York Knicks,Madison Square Garden,Indiana Pacers
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,Toronto Raptors,Scotiabank Arena,Milwaukee Bucks
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,Washington Wizards,Capital One Arena,Houston Rockets
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 13:00:00-04:00,Chicago Bulls,United Center,Detroit Pistons
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 15:30:00-04:00,Dallas Mavericks,American Airlines Center,San Antonio Spurs
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 15:30:00-04:00,Minnesota Timberwolves,Target Center,New Orleans Pelicans
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 15:30:00-04:00,Oklahoma City Thunder,Paycom Center,Memphis Grizzlies
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 15:30:00-04:00,Denver Nuggets,Ball Arena,Sacramento Kings
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 15:30:00-04:00,Los Angeles Lakers,crypto.com Arena,Utah Jazz
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 15:30:00-04:00,Phoenix Suns,Footprint Center,LA Clippers
+2023-04-09 00:00:00-04:00,2023-04-09 23:59:59-04:00,2023-04-09 15:30:00-04:00,Portland Trail Blazers,Moda Center,Golden State Warriors

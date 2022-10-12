@@ -91,9 +91,19 @@ class NBA_API(object):
 
     def parseNBAInfo(self, line):
         """
+        from plexarr.nba_api import NBA_API
+        from rich import print
+        import re
+
         tests = [
             "USA NBA 01: Miami Heat vs Boston Celtics @ 08:30 PM",
-            "USA NBA 02: Miami Heat vs Boston Celtics @ 08:30 PM"
+            "USA NBA 02: Miami Heat vs Boston Celtics @ 08:30 PM",
+            "USA NBA 01: Oklahoma City Thunder vs Detroit Pistons @ 07:00 PM",
+            "USA NBA 02: Memphis Grizzlies vs Orlando Magic @ 07:00 PM",
+            "USA NBA 03: Memphis Grizzlies vs Orlando Magic @ 07:00 PM",
+            "USA NBA 04: Milwaukee Bucks vs Chicago Bulls @ 08:00 PM",
+            "USA NBA 05: San Antonio Spurs vs Utah Jazz @ 09:00 PM",
+            "USA NBA 06: Portland Trail Blazers vs Golden State Warriors @ 10:00 PM"
         ]
         nba_teams = "|".join(nba.df_teams.team_name.values)
         regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vs\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
@@ -101,5 +111,5 @@ class NBA_API(object):
             print(re.search(regex, line, flags=re.IGNORECASE).groupdict())
         """
         nba_teams = "|".join(self.df_teams.team_name.values)
-        regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vs\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
+        regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vsat\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
         return re.search(regex, line, flags=re.IGNORECASE).groupdict()

@@ -1,8 +1,12 @@
-# SETUP
+###############################################################################
+# Plexarr Setup                                                               #
+###############################################################################
+
 import setuptools
 from pathlib import Path
 
 
+# -- Read Files -- #
 long_description = Path('README.md').read_text()
 required = Path('requirements.txt').read_text().splitlines()
 

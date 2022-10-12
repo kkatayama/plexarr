@@ -12,14 +12,15 @@ required = Path('requirements.txt').read_text().splitlines()
 
 setuptools.setup(
     name='plexarr',
-    version='1.1.349',
+    version='1.1.350',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Unofficial Python Wrapper for the Plex, Sonarr, Radarr, and Bazarr API with Added Features',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/kkatayama/filenames',
-    packages=setuptools.find_packages(),
+    # packages=setuptools.find_packages(),
+    packages=['plexarr'],
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

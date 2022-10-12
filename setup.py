@@ -1,12 +1,10 @@
 # SETUP
 import setuptools
+from pathlib import Path
 
 
-with open('README.md') as f:
-    long_description = f.read()
-
-with open('requirements.txt') as f:
-    required = f.read().splitlines()
+long_description = Path('README.md').read_text()
+required = Path('requirements.txt').read_text().splitlines()
 
 setuptools.setup(
     name='plexarr',

@@ -229,12 +229,7 @@ class KemoAPI(object):
                         ds_teams = [nfl_info["team1"], nfl_info["team2"]]
                         df_sched = self.espn.getNFLSchedule()
                         df_week = df_sched[((df_sched["week_start"] <= date_now) & (date_now <= df_sched["week_end"]))]
-                        try:
-                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
-                        except Exception:
-                            dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), epg_fmt=True)
-                            df_date = df_sched[((df_sched["day_start"] <= dt_now) & (dt_now <= df_sched["day_end"]))]
-                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+                        df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
 
                         epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
                         epg_start = convertEPGTime(df_game.game_date, epg_fmt=True)
@@ -283,7 +278,12 @@ class KemoAPI(object):
                         ds_teams = [nba_info["team1"], nba_info["team2"]]
                         df_sched = self.nba.getNBASchedule()
                         df_date = df_sched[((df_sched["day_start"] <= date_now) & (date_now <= df_sched["day_end"]))]
-                        df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+                        try:
+                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+                        except Exception:
+                            dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), epg_fmt=True)
+                            df_date = df_sched[((df_sched["day_start"] <= dt_now) & (dt_now <= df_sched["day_end"]))]
+                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
 
                         epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
                         epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)

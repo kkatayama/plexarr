@@ -92,6 +92,7 @@ class NBA_API(object):
                 }
                 schedule.append(game)
             df_schedule = pd.DataFrame.from_records(schedule)
+            to_csv(df_schedule, csv)
         return df_schedule
 
     def parseNBAInfo(self, line):

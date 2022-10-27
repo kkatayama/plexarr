@@ -569,7 +569,7 @@ def downloadFile(url='', params={}, file_name='', file_path=''):
     try:
         with Progress(text_column, bar_column, work_column, dot, down_column, dot, speed_column, dot, time_column) as progress:
             progress.console.log(f"Requesting {url}")
-            r = requests.get(url, stream=True)
+            r = requests.get(url, params=params, stream=True)
             total = int(r.headers.get('content-length', 0))
             with open(full_path, "wb") as f:
                 if total:

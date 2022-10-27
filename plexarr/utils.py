@@ -543,15 +543,16 @@ def process_handbrake_output(process):
         print_err(flush=True)
 
 
-def downloadFile(url='', file_name='', file_path=''):
+def downloadFile(url='', params={}, file_name='', file_path=''):
     # -- Get File Path -- #
     if not file_path:
-        file_path = Path(get_py_path(), 'downloads', file_name)
-        file_path.parent.mkdir(exist_ok=True)
+        file_path = Path(get_py_path(), 'downloads')
+        file_path.mkdir(exist_ok=True)
 
     # -- Get File Name -- #
     if not file_name:
-        file_name = Path(file_path).name
+        r = requests.get(url, params=params)
+        file_name = Path(furl(r.url).path).name
 
     # -- Progress Bar Column Parameters -- #
     text_column  = TextColumn("[bold blue]{task.fields[file_name]}", justify="right")
@@ -579,3 +580,5 @@ def downloadFile(url='', file_name='', file_path=''):
         progress.console.log(f"Downloaded: {str(file_path)}")
     except KeyboardInterrupt:
         sys.exit(1)
+
+    return str(Path(file_path, file_name))

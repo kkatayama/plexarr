@@ -552,7 +552,7 @@ def downloadFile(url='', params={}, file_name='', file_path=''):
     # -- Get File Name -- #
     if not file_name:
         r = requests.get(url, params=params)
-        file_name = Path(furl(r.url)).name
+        file_name = Path(furl(r.url).pathstr).name
 
     # -- Progress Bar Column Parameters -- #
     text_column  = TextColumn("[bold blue]{task.fields[file_name]}", justify="right")

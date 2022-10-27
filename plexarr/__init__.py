@@ -35,4 +35,4 @@ from .yt_dlp_api import YouTubeDLP
 #     'YouTubeDLP'
 # ]
 
-__version__ = "1.1.360"
+__version__ = "1.1.361"

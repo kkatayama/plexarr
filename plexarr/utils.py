@@ -554,6 +554,8 @@ def downloadFile(url='', params={}, file_name='', file_path=''):
         r = requests.get(url, params=params)
         file_name = Path(furl(r.url).pathstr).name
 
+    full_path = str(Path(file_path, file_name))
+
     # -- Progress Bar Column Parameters -- #
     text_column  = TextColumn("[bold blue]{task.fields[file_name]}", justify="right")
     bar_column   = BarColumn(bar_width=None)
@@ -569,7 +571,7 @@ def downloadFile(url='', params={}, file_name='', file_path=''):
             progress.console.log(f"Requesting {url}")
             r = requests.get(url, stream=True)
             total = int(r.headers.get('content-length', 0))
-            with open(str(file_path), "wb") as f:
+            with open(full_path, "wb") as f:
                 if total:
                     task = progress.add_task("download", file_name=file_name, total=total)
                     for chunk in r.iter_content(chunk_size=65536):
@@ -581,4 +583,4 @@ def downloadFile(url='', params={}, file_name='', file_path=''):
     except KeyboardInterrupt:
         sys.exit(1)
 
-    return str(Path(file_path, file_name))
+    return full_path

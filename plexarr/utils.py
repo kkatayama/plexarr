@@ -25,6 +25,9 @@ import logging
 import sys
 import os
 
+from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn, TransferSpeedColumn
+import requests
+
 
 def get_py_path(verbose=False):
     # return Path(globals()['_dh'][0]) if globals().get('_dh') else Path(__file__)
@@ -538,3 +541,36 @@ def process_handbrake_output(process):
             prev_message = message
     finally:
         print_err(flush=True)
+
+
+def downloadFile(url, file_name):
+    # -- Get File Path -- #
+    file_path = Path(get_py_path(), 'downloads', file_name)
+    file_path.parent.mkdir(exist_ok=True)
+
+    # -- Progress Bar Column Parameters -- #
+    text_column  = TextColumn("[bold blue]{task.fields[file_name]}", justify="right")
+    bar_column   = BarColumn(bar_width=None)
+    work_column  = TextColumn("[progress.percentage]{task.percentage:>3.1f}%")
+    dot          = TextColumn("•")
+    down_column  = DownloadColumn()
+    speed_column = TransferSpeedColumn()
+    time_column  = TimeRemainingColumn()
+
+    # -- Downloading with Progress Bar -- #
+    try:
+        with Progress(text_column, bar_column, work_column, dot, down_column, dot, speed_column, dot, time_column) as progress:
+            progress.console.log(f"Requesting {url}")
+            r = requests.get(url, stream=True)
+            total = int(r.headers.get('content-length', 0))
+            with open(str(file_path), "wb") as f:
+                if total:
+                    task = progress.add_task("download", file_name=file_name, total=total)
+                    for chunk in r.iter_content(chunk_size=65536):
+                        f.write(chunk)
+                        progress.update(task, advance=len(chunk))
+                else:
+                    f.write(r.content)
+        progress.console.log(f"Downloaded: {str(file_path)}")
+    except KeyboardInterrupt:
+        sys.exit(1)

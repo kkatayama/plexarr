@@ -543,10 +543,15 @@ def process_handbrake_output(process):
         print_err(flush=True)
 
 
-def downloadFile(url, file_name):
+def downloadFile(url='', file_name='', file_path=''):
     # -- Get File Path -- #
-    file_path = Path(get_py_path(), 'downloads', file_name)
-    file_path.parent.mkdir(exist_ok=True)
+    if not file_path:
+        file_path = Path(get_py_path(), 'downloads', file_name)
+        file_path.parent.mkdir(exist_ok=True)
+
+    # -- Get File Name -- #
+    if not file_name:
+        file_name = Path(file_path).name
 
     # -- Progress Bar Column Parameters -- #
     text_column  = TextColumn("[bold blue]{task.fields[file_name]}", justify="right")

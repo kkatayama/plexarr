@@ -43,6 +43,30 @@ class XtreamAPI:
             "category": {},
             "streams": [],
         }
+        self.starr = {
+            "api_url": config["starr"].get("api_url"),
+            "username": config["starr"].get("username"),
+            "password": config["starr"].get("password"),
+            "groups": literal_eval(config["starr"].get("starr_groups")),
+            "params": {
+                "username": config["starr"].get("username"),
+                "password": config["starr"].get("password")
+            },
+            "category": {},
+            "streams": [],
+        }
+        self.starr2 = {
+            "api_url": config["starr2"].get("api_url"),
+            "username": config["starr2"].get("username"),
+            "password": config["starr2"].get("password"),
+            "groups": literal_eval(config["starr2"].get("starr_groups")),
+            "params": {
+                "username": config["starr2"].get("username"),
+                "password": config["starr2"].get("password")
+            },
+            "category": {},
+            "streams": [],
+        }
         # self.chapo = {
         #     "api_url": config["chapo"].get("api_url"),
         #     "username": config["chapo"].get("username"),

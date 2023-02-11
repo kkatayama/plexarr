@@ -12,7 +12,7 @@ required = Path('requirements.txt').read_text().splitlines()
 
 setuptools.setup(
     name='plexarr',
-    version='1.1.369',
+    version='1.1.370',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Unofficial Python Wrapper for the Plex, Sonarr, Radarr, and Bazarr API with Added Features',

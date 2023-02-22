@@ -93,7 +93,7 @@ class PlexAPI(object):
 
     def partialScan(self, library='', folder=''):
         s = self.getLibraries()
-        for d in s.select('directory'):
+        for d in s.select('Directory'):
             if d['title'] == library:
                 print('key="{}" type="{}" title="{}"'.format(d['key'], d['type'], d['title']))
                 break

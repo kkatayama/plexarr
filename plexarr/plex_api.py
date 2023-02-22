@@ -84,12 +84,12 @@ class PlexAPI(object):
     def getServerCapabilities(self):
         path = '/'
         res = self.get(path=path)
-        return BeautifulSoup(res.content, 'html5lib')
+        return BeautifulSoup(res.content, 'xml')
 
     def getLibraries(self):
         path = '/library/sections'
         res = self.get(path=path)
-        return BeautifulSoup(res.content, 'html5lib')
+        return BeautifulSoup(res.content, 'xml')
 
     def partialScan(self, library='', folder=''):
         s = self.getLibraries()

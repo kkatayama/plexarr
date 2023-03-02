@@ -25,7 +25,9 @@ class ESPN_API(object):
     def getYear(self):
         """get NFL season start year"""
         today = dt.now()
-        year = (today.year - 1) if (today.month < 3) else today.year
+        # year = (today.year - 1) if (today.month < 3) else today.year
+        # assuming next season starts in September...
+        year = (today.year - 1) if (today.month < 9) else today.year
         return year
 
     def get(self, path='/', data={}):

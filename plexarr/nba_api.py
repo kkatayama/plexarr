@@ -34,7 +34,9 @@ class NBA_API(object):
     def getYear(self):
         """get NBA season start year"""
         today = dt.now()
-        year = (today.year - 1) if (today.month < 3) else today.year
+        # year = (today.year - 1) if (today.month < 3) else today.year
+        # Season starts in October and ends in April...
+        year = (today.year - 1) if (today.month < 10) else today.year
         return year
 
     def getNBATeams(self, year=0):

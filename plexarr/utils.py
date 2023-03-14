@@ -358,7 +358,7 @@ def read_csv(path):
 
 # -- https://github.com/cherezov/dlnap/blob/08001ef6e1246215bc71bd2f4220b982dbb8b395/dlnap/dlnap.py#L375
 # -- https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/
-def find_xteve_devices():
+def find_xteve_devices(ip_only=False):
     """Find All xTeVe Devices"""
     payload = "\r\n".join([
         "M-SEARCH * HTTP/1.1", "HOST: 239.255.255.250:1900",
@@ -374,19 +374,22 @@ def find_xteve_devices():
                 resp, (addr, port) = sock.recvfrom(1024)
                 data = resp.decode()
                 if "xteve" in data:
+                    is_ip = False
                     loc = furl(*re.search(r"LOCATION:\s+(.*)\r\n", data).groups())
                     try:
                         ip_address(loc.host)
-                        location = loc
+                        location = loc;
+                        is_ip = True
                     except ValueError:
                         location = furl(f'{loc.scheme}://{loc.host}{loc.path}')
 
-                    devices.append({
-                        'ip': addr, 'port': port,
-                        'location': location.url,
-                        'm3u': location.join('/m3u/xteve.m3u').url,
-                        'epg': location.join('/xmltv/xteve.xml').url,
-                    })
+                    if (ip_only and is_ip) or (not ip_only):
+                        devices.append({
+                            'ip': addr, 'port': port,
+                            'location': location.url,
+                            'm3u': location.join('/m3u/xteve.m3u').url,
+                            'epg': location.join('/xmltv/xteve.xml').url,
+                        })
 
         except socket.timeout:
             pass

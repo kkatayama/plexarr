@@ -685,4 +685,4 @@ class Logger(object):
         console_handler.setFormatter(console_formatter)
         return console_handler
 
-log = Logger(log_console=True).createLogger()
+# log = Logger(log_console=True).createLogger()

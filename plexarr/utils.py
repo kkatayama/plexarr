@@ -359,7 +359,7 @@ def read_csv(path):
 
 # -- https://github.com/cherezov/dlnap/blob/08001ef6e1246215bc71bd2f4220b982dbb8b395/dlnap/dlnap.py#L375
 # -- https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/
-def find_xteve_devices(ip_only=False):
+def find_xteve_devices(ip_only=False, domain_only=False):
     """Find All xTeVe Devices"""
     payload = "\r\n".join([
         "M-SEARCH * HTTP/1.1", "HOST: 239.255.255.250:1900",
@@ -375,20 +375,22 @@ def find_xteve_devices(ip_only=False):
                 resp, (addr, port) = sock.recvfrom(1024)
                 data = resp.decode()
                 if "xteve" in data:
-                    is_ip = False
                     loc = furl(*re.search(r"LOCATION:\s+(.*)\r\n", data).groups())
                     try:
                         ip_address(loc.host)
                         location = loc;
                         is_ip = True
+                        is_domain = False
                     except ValueError:
+                        is_ip = False
+                        is_domain = True
                         try:
                             base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}').geturl()
                         except Exception:
                             base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}:{loc.port}').geturl()
                         location = furl(base_url).join(loc.path)
 
-                    if (ip_only and is_ip) or (not ip_only):
+                    if (ip_only and is_ip) or (domain_only and is_domain) or (not ip_only and not domain_only):
                         devices.append({
                             'ip': addr, 'port': port,
                             'location': location.url,

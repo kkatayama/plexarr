@@ -10,10 +10,11 @@ import inspect
 from nfl_data_py import import_team_desc, import_schedules
 import pandas as pd
 
+from contextlib import contextmanager
+from ipaddress import ip_address
 import time
 import socket
 import select
-from contextlib import contextmanager
 
 import m3u8
 from m3u8 import protocol
@@ -373,13 +374,20 @@ def find_xteve_devices():
                 resp, (addr, port) = sock.recvfrom(1024)
                 data = resp.decode()
                 if "xteve" in data:
-                    location = furl(*re.search(r"LOCATION:\s+(.*)\r\n", data).groups())
+                    loc = furl(*re.search(r"LOCATION:\s+(.*)\r\n", data).groups())
+                    try:
+                        ip_address(loc.host)
+                        location = loc
+                    except ValueError:
+                        location = furl(f'{loc.scheme}://{loc.host}{loc.path}')
+
                     devices.append({
                         'ip': addr, 'port': port,
                         'location': location.url,
                         'm3u': location.join('/m3u/xteve.m3u').url,
                         'epg': location.join('/xmltv/xteve.xml').url,
                     })
+
         except socket.timeout:
             pass
     return pd.DataFrame(devices).drop_duplicates().to_dict('records')

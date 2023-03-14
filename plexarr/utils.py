@@ -5,6 +5,8 @@ import re
 from datetime import datetime as dt
 from pathlib import Path
 from furl import furl
+import urllib.request
+import requests
 import inspect
 
 from nfl_data_py import import_team_desc, import_schedules
@@ -27,7 +29,6 @@ import sys
 import os
 
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn, TransferSpeedColumn
-import requests
 
 
 def get_py_path(verbose=False):
@@ -381,7 +382,11 @@ def find_xteve_devices(ip_only=False):
                         location = loc;
                         is_ip = True
                     except ValueError:
-                        location = furl(f'{loc.scheme}://{loc.host}{loc.path}')
+                        try:
+                            base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}').geturl()
+                        except Exception::
+                            base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}:{loc.port}').geturl()
+                        location = furl(base_url).join(loc.path)
 
                     if (ip_only and is_ip) or (not ip_only):
                         devices.append({

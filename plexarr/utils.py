@@ -384,7 +384,7 @@ def find_xteve_devices(ip_only=False):
                     except ValueError:
                         try:
                             base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}').geturl()
-                        except Exception::
+                        except Exception:
                             base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}:{loc.port}').geturl()
                         location = furl(base_url).join(loc.path)
 

@@ -23,6 +23,8 @@ from m3u8 import protocol
 from m3u8.parser import save_segment_custom_value
 
 from logging.handlers import TimedRotatingFileHandler
+from logging import StreamHandler
+from coloredlogs import ColoredFormatter, find_program_name, ProgramNameFilter
 import coloredlogs
 import logging
 import sys
@@ -403,49 +405,6 @@ def find_xteve_devices(ip_only=False, domain_only=False):
     return pd.DataFrame(devices).drop_duplicates().to_dict('records')
 
 
-# -- LOGGER CONFIGS -- #
-MODULE = coloredlogs.find_program_name()
-LOG_FILE = 'logs/{}.log'.format(os.path.splitext(MODULE)[0])
-field_styles = {
-    'asctime': {'color': 221, 'bright': True},
-    'programname': {'color': 45, 'faint': True},
-    'funcName': {'color': 177, 'normal': True},
-    'lineno': {'color': 'cyan', 'bright': True}
-}
-level_styles = {
-    "debug": {'color': 'green', 'bright': True},
-    "info": {'color': 'white', 'bright': True},
-    "warning": {'color': "yellow", 'normal': True},
-    "error": {'color': "red", 'bright': True},
-    "critical": {'color': 'red', 'bold': True, 'background': 'red'}
-}
-log_format = "[%(asctime)s] [%(levelname)-8s] [%(programname)s: %(funcName)s();%(lineno)s] %(message)s"
-
-
-def getFileHandler():
-    log_file_formatter = coloredlogs.ColoredFormatter(log_format, field_styles=field_styles, level_styles=level_styles)
-    log_file_handler = TimedRotatingFileHandler(LOG_FILE, when='midnight')
-    log_file_handler.addFilter(coloredlogs.ProgramNameFilter())
-    log_file_handler.setFormatter(log_file_formatter)
-    return log_file_handler
-
-
-def getLogger(level='DEBUG', suppressLibLogs=False):
-    # -- create log directory if needed -- #
-    Path(LOG_FILE).parent.mkdir(exist_ok=True)
-
-    # -- CREATE LOGGER -- #
-    logger = logging.getLogger(MODULE)
-    logger.setLevel(eval(f'logging.{level}'))
-    logger.addHandler(getFileHandler())
-    if suppressLibLogs:
-        # -- hide log messages from imported libraries
-        coloredlogs.install(level=level, fmt=log_format, field_styles=field_styles, level_styles=level_styles, logger=logger)
-    else:
-        coloredlogs.install(level=level, fmt=log_format, field_styles=field_styles, level_styles=level_styles)
-    return logger
-
-
 def convertEPGTime(p_time="", dt_obj=False, epg_fmt=False):
     """Convert EPG Programme "start" and/or "stop" time from UTC to EST
 
@@ -609,3 +568,121 @@ def downloadFile(url='', params={}, file_name='', file_path=''):
         sys.exit(1)
 
     return full_path
+
+
+# -- LOGGER CONFIGS -- #
+MODULE = coloredlogs.find_program_name()
+LOG_FILE = 'logs/{}.log'.format(os.path.splitext(MODULE)[0])
+field_styles = {
+    'asctime': {'color': 221, 'bright': True},
+    'programname': {'color': 45, 'faint': True},
+    'funcName': {'color': 177, 'normal': True},
+    'lineno': {'color': 'cyan', 'bright': True}
+}
+level_styles = {
+    "debug": {'color': 'green', 'bright': True},
+    "info": {'color': 'white', 'bright': True},
+    "warning": {'color': "yellow", 'normal': True},
+    "error": {'color': "red", 'bright': True},
+    "critical": {'color': 'red', 'bold': True, 'background': 'red'}
+}
+log_format = "[%(asctime)s] [%(levelname)-8s] [%(programname)s: %(funcName)s();%(lineno)s] %(message)s"
+
+
+def getFileHandler():
+    log_file_formatter = coloredlogs.ColoredFormatter(log_format, field_styles=field_styles, level_styles=level_styles)
+    log_file_handler = TimedRotatingFileHandler(LOG_FILE, when='midnight')
+    log_file_handler.addFilter(coloredlogs.ProgramNameFilter())
+    log_file_handler.setFormatter(log_file_formatter)
+    return log_file_handler
+
+
+def getLogger(level='DEBUG', suppressLibLogs=False):
+    # -- create log directory if needed -- #
+    Path(LOG_FILE).parent.mkdir(exist_ok=True)
+
+    # -- CREATE LOGGER -- #
+    logger = logging.getLogger(MODULE)
+    logger.setLevel(eval(f'logging.{level}'))
+    logger.addHandler(getFileHandler())
+    if suppressLibLogs:
+        # -- hide log messages from imported libraries
+        coloredlogs.install(level=level, fmt=log_format, field_styles=field_styles, level_styles=level_styles, logger=logger)
+    else:
+        coloredlogs.install(level=level, fmt=log_format, field_styles=field_styles, level_styles=level_styles)
+    return logger
+
+
+
+class Logger(object):
+    """
+    Custom Wrapper for ColoredLogs
+
+    Usage:
+        from plexarr.utils import Logger
+
+        log = Logger(log_console=True).createLogger()
+        log.debug('TEST DEBUG')
+    """
+    def __init__(self, level='DEBUG', log_file=True, log_console=False):
+        """
+        Setup for logger
+
+        Args:
+            Optional - level (str|int)      - set logging level for both log file and console output
+            Optional - log_file (bool)      - save logging output to log file
+            Optional - log_console (bool)   - display logging output to console
+        """
+        # -- LOGGER CONFIGS -- #
+        self.level = level
+        self.log_file = log_file
+        self.log_console = log_console
+        self.MODULE = find_program_name()
+        self.LOG_PATH = 'logs/{}.log'.format(os.path.splitext(self.MODULE)[0])
+        self.field_styles = {
+            'asctime': {'color': 221, 'bright': True},
+            'programname': {'color': 45, 'faint': True},
+            'funcName': {'color': 177, 'normal': True},
+            'lineno': {'color': 'cyan', 'bright': True}
+        }
+        self.level_styles = {
+            "debug": {'color': 'green', 'bright': True},
+            "info": {'color': 'white', 'bright': True},
+            "warning": {'color': "yellow", 'normal': True},
+            "error": {'color': "red", 'bright': True},
+            "critical": {'color': 'red', 'bold': True, 'background': 'red'}
+        }
+        self.log_format = "[%(asctime)s] [%(levelname)-8s] [%(programname)s: %(funcName)s();%(lineno)s] %(message)s"
+
+    def createLogger(self):
+        logger = logging.getLogger(self.MODULE)
+        logger.setLevel(eval(f'logging.{self.level}'))
+
+        if self.log_file:
+            # -- create log directory if needed -- #
+            Path(self.LOG_PATH).parent.mkdir(exist_ok=True)
+            logger.addHandler(self.getFileHandler())
+
+        if self.log_console:
+            logger.addHandler(self.getConsoleHandler())
+
+        #coloredlogs.install(level=logging.DEBUG, fmt=log_format, field_styles=field_styles, level_styles=level_styles, logger=logger)
+        return logger
+
+    def getFileHandler(self):
+        log_file_formatter = ColoredFormatter(self.log_format, field_styles=self.field_styles, level_styles=self.level_styles)
+        log_file_handler = TimedRotatingFileHandler(self.LOG_PATH, when='midnight')
+        log_file_handler.setLevel(eval(f'logging.{self.level}'))
+        log_file_handler.addFilter(ProgramNameFilter())
+        log_file_handler.setFormatter(log_file_formatter)
+        return log_file_handler
+
+    def getConsoleHandler(self):
+        console_formatter = ColoredFormatter(self.log_format, field_styles=self.field_styles, level_styles=self.level_styles)
+        console_handler = StreamHandler(sys.stdout)
+        console_handler.setLevel(eval(f'logging.{self.level}'))
+        console_handler.addFilter(ProgramNameFilter())
+        console_handler.setFormatter(console_formatter)
+        return console_handler
+
+log = Logger(log_console=True).createLogger()

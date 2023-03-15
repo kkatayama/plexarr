@@ -183,7 +183,7 @@ def m3u_to_json(src):
     return json.dumps(data)
 
 
-def m3u_to_dict(src, get_source=False):
+def m3u_to_dict(src):
     def parse_iptv_attributes(line, lineno, data, state):
         # Customize parsing #EXTINF
         if line.startswith(protocol.extinf):
@@ -227,8 +227,6 @@ def m3u_to_dict(src, get_source=False):
     m3u = [dict(s.custom_parser_values['extinf_props'], **{"url": s.uri, "title": s.title,
                    "stream_id": getStreamID(s.uri), "duration": int(s.duration)})
            for s in parsed.segments]
-    if get_source:
-        return parsed.dumps(), m3u
     return m3u
 
 def dict_to_m3u(src):

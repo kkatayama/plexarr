@@ -223,7 +223,10 @@ def m3u_to_dict(src):
         stream_id = path.name
         return stream_id
 
-    parsed = m3u8.load(src, custom_tags_parser=parse_iptv_attributes)
+    if not src.lower().startswith('http'):
+        parsed = m3u8.loads(src, custom_tags_parser=parse_iptv_attributes)
+    else:
+        parsed = m3u8.load(src, custom_tags_parser=parse_iptv_attributes)
     m3u = [dict(s.custom_parser_values['extinf_props'], **{"url": s.uri, "title": s.title,
                    "stream_id": getStreamID(s.uri), "duration": int(s.duration)})
            for s in parsed.segments]

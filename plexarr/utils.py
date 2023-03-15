@@ -308,6 +308,30 @@ def dict_to_epg(src):
     """
     return xmltodict.unparse(src, pretty=True)
 
+def replaceLogos(xteve_url='', iptv_url=''):
+    def translate(text, conversion_dict):
+        """
+        Translate words from a text using a conversion dictionary
+
+        Arguments:
+            text: the text to be translated
+            conversion_dict: the conversion dictionary
+        """
+        for key, value in conversion_dict.items():
+            text = text.replace(key, value)
+        return text
+
+    # xteve_url = "https://xteve2.mangoboat.tv/xmltv/xteve.m3u"
+    xteve_m3u = {channel.pop("title"):channel for channel in m3u_to_dict(xteve_url)}
+
+    # iptv_url = "https://proxy.hopto.org/lemo2_m3u?token=18aa90864b1a4d964f5866f4bf18e55f"
+    iptv_src = requests.get(iptv_url).text
+    iptv_m3u = {channel.pop("title"):channel for channel in m3u_to_dict(iptv_src)}
+
+    changes = {iptv_m3u[title]["tvg-logo"]:xteve_m3u[title]["tvg-logo"] for title in (xteve_m3u.keys()&iptv_m3u.keys())}
+    return translate(iptv_src, changes)
+
+
 
 def getNFLTeams():
     # -- get NFL season start year

@@ -6,6 +6,7 @@ from itertools import chain
 # from teddy import getLogger
 from .utils import getLogger
 import requests
+import re
 import os
 
 
@@ -18,67 +19,26 @@ class XtreamAPI:
         """Configs"""
         config = ConfigParser()
         config.read(Path(Path.home(), ".config/plexarr.ini"))
+        self.config = config
 
-        self.lemo = {
-            "api_url": config["lemo"].get("api_url"),
-            "username": config["lemo"].get("username"),
-            "password": config["lemo"].get("password"),
-            "groups": literal_eval(config["lemo"].get("lemo_groups")),
+    def setup(self, iptv):
+        config = self.config
+        key = re.sub(r'\d+', '', iptv)
+        groups = f'{key}_groups'
+        info = {
+            "api_url": config[iptv].get("api_url"),
+            "username": config[iptv].get("username"),
+            "password": config[iptv].get("password"),
+            "groups": literal_eval(config[iptv].get(groups)),
             "params": {
-                "username": config["lemo"].get("username"),
-                "password": config["lemo"].get("password")
+                "username": config[iptv].get("username"),
+                "password": config[iptv].get("password")
             },
             "category": {},
             "streams": [],
         }
-        self.lemo2 = {
-            "api_url": config["lemo2"].get("api_url"),
-            "username": config["lemo2"].get("username"),
-            "password": config["lemo2"].get("password"),
-            "groups": literal_eval(config["lemo2"].get("lemo_groups")),
-            "params": {
-                "username": config["lemo2"].get("username"),
-                "password": config["lemo2"].get("password")
-            },
-            "category": {},
-            "streams": [],
-        }
-        self.starr = {
-            "api_url": config["starr"].get("api_url"),
-            "username": config["starr"].get("username"),
-            "password": config["starr"].get("password"),
-            "groups": literal_eval(config["starr"].get("starr_groups")),
-            "params": {
-                "username": config["starr"].get("username"),
-                "password": config["starr"].get("password")
-            },
-            "category": {},
-            "streams": [],
-        }
-        self.starr2 = {
-            "api_url": config["starr2"].get("api_url"),
-            "username": config["starr2"].get("username"),
-            "password": config["starr2"].get("password"),
-            "groups": literal_eval(config["starr2"].get("starr_groups")),
-            "params": {
-                "username": config["starr2"].get("username"),
-                "password": config["starr2"].get("password")
-            },
-            "category": {},
-            "streams": [],
-        }
-        # self.chapo = {
-        #     "api_url": config["chapo"].get("api_url"),
-        #     "username": config["chapo"].get("username"),
-        #     "password": config["chapo"].get("password"),
-        #     "groups": literal_eval(config["chapo"].get("chapo_groups")),
-        #     "params": {
-        #         "username": config["chapo"].get("username"),
-        #         "password": config["chapo"].get("password")
-        #     },
-        #     "category": {},
-        #     "streams": [],
-        # }
+        #exec(f'self.{iptv} = info')
+        self.__dict__[iptv] = info
 
     def genInfo(self, s):
         tvg_id = s["epg_channel_id"] if s.get("epg_channel_id") else ""
@@ -133,6 +93,7 @@ class XtreamAPI:
         return self.m3u
 
     def getM3U(self, extract_categories=False, iptv=''):
+        self.setup(iptv)
         self.streams = []
         self.cats = self.getCategories(iptv)
         return self.parseCategories(extract_categories, iptv)

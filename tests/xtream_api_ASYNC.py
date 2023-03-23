@@ -1,11 +1,15 @@
-import grequests
+import nest_asyncio
+nest_asyncio.apply()
+
 from configparser import ConfigParser
 from ast import literal_eval
 from pathlib import Path
 from itertools import chain
-# from teddy import getLogger
 from .utils import getLogger
+
 import requests
+import asyncio
+import time
 import re
 import os
 
@@ -20,6 +24,7 @@ class XtreamAPI:
         config = ConfigParser()
         config.read(Path(Path.home(), ".config/plexarr.ini"))
         self.config = config
+        self.m3u_items = ["#EXTM3U\n"]
 
     def setup(self, iptv):
         """
@@ -48,7 +53,7 @@ class XtreamAPI:
                 "username": config[iptv].get("username"),
                 "password": config[iptv].get("password")
             },
-            "categories": {},
+            "category": {},
             "streams": [],
         }
         #exec(f'self.{iptv} = info')
@@ -73,37 +78,56 @@ class XtreamAPI:
 
     def process(self, r, iptv, **kwargs):
         streams = r.json()
-        self.__dict__[iptv]['streams'] += streams
+        self.streams += streams
         m3u_streams = []
         for s in streams:
             m3u_streams += [self.genInfo(s)] + [self.genM3U(s, iptv)]
         return m3u_streams
 
     def getCategories(self, iptv):
-        """Get All Categories in Matching Groups"""
+        """
+        Get All Categories in Matching Groups
+
+        Returns:
+            [
+                {'category_id': '330', 'category_name': 'US | ENTERTAINTMENT', 'parent_id': 0},
+                {'category_id': '332', 'category_name': 'US | SPORTS', 'parent_id': 0},
+                {'category_id': '336', 'category_name': 'US | FOX', 'parent_id': 0}
+            ]
+        """
+        groups = eval(f'self.{iptv}["groups"]')
         api_url = eval(f'self.{iptv}["api_url"]')
         payload = eval(f'self.{iptv}["params"]')
-        groups = eval(f'self.{iptv}["groups"]')
         payload.update({"action": "get_live_categories"})
-
         r = requests.get(url=api_url, params=payload)
         return list(filter(lambda x: x["category_name"] in groups, r.json()))
 
-    def parseCategories(self, extract_categories, iptv):
-        self.m3u_items = ["#EXTM3U\n"]
+    def getPaylods(self, iptv):
+        """
+        Generate Payloads for Requests
+            [
+                {'username': '83MRPffhy5', 'password': '85SNBP2TWq', 'action': 'get_live_streams', 'category_id': '330'},
+                {'username': '83MRPffhy5', 'password': '85SNBP2TWq', 'action': 'get_live_streams', 'category_id': '332'},
+                {'username': '83MRPffhy5', 'password': '85SNBP2TWq', 'action': 'get_live_streams', 'category_id': '336'}
+            ]
+        """
+        print('This runs Before Loop!')
+        cats = getCategories(iptv)
+        groups = eval(f'self.{iptv}["groups"]')
         api_url = eval(f'self.{iptv}["api_url"]')
-        p = eval(f'self.{iptv}["params"]')
-        p.update({"action": "get_live_streams"})
-        categories = [dict(**p, **{"category_id": c["category_id"]}) for c in self.cats]
+        payload = eval(f'self.{iptv}["params"]')
+        payload.update({"action": "get_live_streams"})
+        return [dict(**payload, **{"category_id": c["category_id"]}) for c in cats]
 
-        batch_size = 8
+
+    def parseCategories(self, extract_categories, iptv):
         payloads = [categories[i:i+batch_size] for i in range(0, len(categories), batch_size)]
         for batch in payloads:
             gs = (grequests.get(api_url, params=payload, stream=False) for payload in batch)
             self.m3u_items += list(chain(*(self.process(r, iptv) for r in grequests.map(gs))))
 
         self.m3u = "".join(self.m3u_items)
-        self.__dict__[iptv]['categories'] = categories if extract_categories else None
+        self.categories = categories if extract_categories else None
         return self.m3u
 
     def getM3U(self, extract_categories=False, iptv=''):

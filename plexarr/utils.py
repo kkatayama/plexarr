@@ -14,6 +14,7 @@ import pandas as pd
 
 from contextlib import contextmanager
 from ipaddress import ip_address
+import traceback
 import time
 import socket
 import select
@@ -388,8 +389,16 @@ def read_csv(path):
 
 # -- https://github.com/cherezov/dlnap/blob/08001ef6e1246215bc71bd2f4220b982dbb8b395/dlnap/dlnap.py#L375
 # -- https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/
-def find_xteve_devices(ip_only=False, domain_only=False):
+def find_xteve_devices(ip_only=False, domain_only=False, verbose=False):
+    # requests.packages.urllib3.disable_warnings()
     """Find All xTeVe Devices"""
+
+    def error(e):
+        program = find_program_name()
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        tb_msgs = traceback.format_exception(exc_type, exc_value, exc_tb)
+        print(f"{type(e).__name__} at line {e.__traceback__.tb_lineno} of {program}: {e}")
+
     payload = "\r\n".join([
         "M-SEARCH * HTTP/1.1", "HOST: 239.255.255.250:1900",
         'MAN: "ssdp:discover"',"ST: ssdp:all",
@@ -404,22 +413,37 @@ def find_xteve_devices(ip_only=False, domain_only=False):
                 resp, (addr, port) = sock.recvfrom(1024)
                 data = resp.decode()
                 if "xteve" in data:
+                    if verbose:
+                        print(data)
+                    url_status = True
                     loc = furl(*re.search(r"LOCATION:\s+(.*)\r\n", data).groups())
                     try:
                         ip_address(loc.host)
                         location = loc;
                         is_ip = True
                         is_domain = False
-                    except ValueError:
+                    except ValueError as e:
+                        if verbose:
+                            error(e)
                         is_ip = False
                         is_domain = True
                         try:
-                            base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}').geturl()
-                        except Exception:
-                            base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}:{loc.port}').geturl()
-                        location = furl(base_url).join(loc.path)
+                            # base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}').geturl()
+                            # base_url = requests.head(f'{loc.scheme}://{loc.host}', verify=False).url
+                            base_url = requests.head(f'{loc.scheme}://{loc.host}').url
+                        except requests.ConnectionError as e:
+                            if verbose:
+                                error(e)
+                            try:
+                                # base_url = urllib.request.urlopen(f'{loc.scheme}://{loc.host}:{loc.port}').geturl()
+                                base_url = requests.head(f'{loc.scheme}://{loc.host}:{loc.port}').url
+                            except requests.ConnectionError as e:
+                                if verbose:
+                                    error(e)
+                                url_status = False
+                        location = furl(base_url).join(loc.path) if url_status else ""
 
-                    if (ip_only and is_ip) or (domain_only and is_domain) or (not ip_only and not domain_only):
+                    if url_status  and ((ip_only and is_ip) or (domain_only and is_domain) or (not ip_only and not domain_only)):
                         devices.append({
                             'ip': addr, 'port': port,
                             'location': location.url,
@@ -427,8 +451,9 @@ def find_xteve_devices(ip_only=False, domain_only=False):
                             'epg': location.join('/xmltv/xteve.xml').url,
                         })
 
-        except socket.timeout:
-            pass
+        except socket.timeout as e:
+            if verbose:
+                error(e)
     return pd.DataFrame(devices).drop_duplicates().to_dict('records')
 
 
@@ -681,8 +706,8 @@ class Logger(object):
         }
         self.log_format = "[%(asctime)s] [%(levelname)-8s] [%(programname)s: %(funcName)s();%(lineno)s] %(message)s"
 
-    def createLogger(self):
-        logger = logging.getLogger(self.MODULE)
+    def createLogger(self, module):
+        logger = logging.getLogger(self.MODULE) if not module else logging.getLogger(module)
         logger.setLevel(eval(f'logging.{self.level}'))
 
         if self.log_file:

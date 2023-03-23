@@ -1,11 +1,14 @@
+import gevent.monkey;
+gevent.monkey.patch_all(ssl=False)
 import grequests
+
 from configparser import ConfigParser
 from ast import literal_eval
 from pathlib import Path
 from itertools import chain
 # from teddy import getLogger
 from .utils import getLogger
-import requests
+#import requests
 import re
 import os
 
@@ -48,7 +51,7 @@ class XtreamAPI:
                 "username": config[iptv].get("username"),
                 "password": config[iptv].get("password")
             },
-            "categories": {},
+            "category": {},
             "streams": [],
         }
         #exec(f'self.{iptv} = info')
@@ -73,7 +76,7 @@ class XtreamAPI:
 
     def process(self, r, iptv, **kwargs):
         streams = r.json()
-        self.__dict__[iptv]['streams'] += streams
+        self.streams += streams
         m3u_streams = []
         for s in streams:
             m3u_streams += [self.genInfo(s)] + [self.genM3U(s, iptv)]
@@ -103,7 +106,7 @@ class XtreamAPI:
             self.m3u_items += list(chain(*(self.process(r, iptv) for r in grequests.map(gs))))
 
         self.m3u = "".join(self.m3u_items)
-        self.__dict__[iptv]['categories'] = categories if extract_categories else None
+        self.categories = categories if extract_categories else None
         return self.m3u
 
     def getM3U(self, extract_categories=False, iptv=''):

@@ -689,8 +689,9 @@ class Logger(object):
         self.level = level
         self.log_file = log_file
         self.log_console = log_console
+        self.PY_PATH = get_py_path()
         self.MODULE = find_program_name()
-        self.LOG_PATH = 'logs/{}.log'.format(os.path.splitext(self.MODULE)[0])
+        self.LOG_PATH = self.PY_PATH.joinpath()'logs/{}.log'.format(os.path.splitext(self.MODULE)[0]))
         self.field_styles = {
             'asctime': {'color': 221, 'bright': True},
             'programname': {'color': 45, 'faint': True},

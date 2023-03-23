@@ -706,7 +706,7 @@ class Logger(object):
         }
         self.log_format = "[%(asctime)s] [%(levelname)-8s] [%(programname)s: %(funcName)s();%(lineno)s] %(message)s"
 
-    def createLogger(self, module):
+    def createLogger(self, module=''):
         logger = logging.getLogger(self.MODULE) if not module else logging.getLogger(module)
         logger.setLevel(eval(f'logging.{self.level}'))
 

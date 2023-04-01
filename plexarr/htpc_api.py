@@ -53,6 +53,12 @@ class HTPC_API(object):
         self.imac = config['imac']
         self.mal = config['mal']
         self.og = config['og']
+        self.hosts = {
+            'jump': dict(self.jump.items()),
+            'imac': dict(self.imac.items()),
+            'mal': dict(self.mal.items()),
+            'og': dict(self.og.items()),
+        }
 
     def getXEPG(self, host='og', outfile='lemo_xepg.json'):
         """Download xTeVe xepg file: ~/.xteve/xepg.json
@@ -288,6 +294,53 @@ class HTPC_API(object):
             with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
                 scp.get(remote_path=video_file, local_path=temp_file)
         return temp_file
+
+    def downloadFile(self, host='imac', host_path='', local_path=''):
+        """
+        Download a specific file
+
+        Args:
+            Optional - host (str)       - The host to download the file from
+            Required - host_path (str)  - The full path to the remote file to download
+            Optional - local_path (str) - The local path to save the downloaded file to
+                                        - Can be "folder" or "file_name"
+        Returns:
+            local_path (str)     - The local path to the downloaded file
+        """
+        host = self.hosts.get(host)
+        host_file = host_path
+        host_file_name = Path(host_file).parts[-1]
+        local_file = str(Path(local_path, host_file_name)) if Path(local_path).is_dir() else local_path
+
+        with SSHClient() as ssh:
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host['ip'], port=host['port'], username=host['username'])
+
+            with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
+                scp.get(remote_path=host_file, local_path=local_file)
+        return local_file
+
+    def uploadFile(self, host='imac', host_path='', local_path=''):
+        """
+        Upload a specific file to host
+
+        Args:
+            Optional - host (str)       - The host to upload the file to
+            Required - host_path (str)  - The full remote path to save the local file to
+            Optional - local_path (str) - The source path of the file to upload
+        Returns:
+            host_path (str)     - The remote path of the uploaded file
+        """
+        host = self.hosts.get(host)
+
+        with SSHClient() as ssh:
+            ssh.set_missing_host_key_policy(AutoAddPolicy())
+            ssh.load_system_host_keys()
+            ssh.connect(hostname=host["ip"], port=host["port"], username=host["username"])
+            with SCPClient(ssh.get_transport(), progress4=progress4) as scp:
+                scp.put(files=local_path, remote_path=host_path, recursive=False)
+        return host_path
+
 
     def uploadMovie(self, folder=''):
         """Upload movie directory containing movie file to host["mal"]

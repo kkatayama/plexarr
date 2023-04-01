@@ -326,7 +326,7 @@ class HTPC_API(object):
 
         Args:
             Optional - host (str)       - The host to upload the file to
-            Required - host_path (str)  - The full remote path to save the local file to
+            Required - host_path (str)  - The remote foler to save the local file to
             Optional - local_path (str) - The source path of the file to upload
         Returns:
             host_path (str)     - The remote path of the uploaded file

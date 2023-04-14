@@ -94,7 +94,8 @@ class OmbiAPI():
         Returns:
             JSON Array
         """
-        return [s for s in self.ombi.get_tv_requests() if not s["childRequests"][0].get('available')]
+        # return [s for s in self.ombi.get_tv_requests() if not s["childRequests"][0].get('available')]
+        return [s for s in self.getTvRequests() if not s["childRequests"][0].get('available')]
 
     def getMovies(self):
         """Get all movies that have been requested but not yet downloaded
@@ -102,7 +103,8 @@ class OmbiAPI():
         Returns:
             JSON Array
         """
-        return [m for m in self.ombi.movie_requests() if not m.get('available')]
+        # return [m for m in self.ombi.movie_requests() if not m.get('available')]
+        return [m for m in self.getMovieRequests() if not m.get('available')]
 
     def findShow(self, title=''):
         """Find a requested show by title
@@ -125,7 +127,8 @@ class OmbiAPI():
         Returns:
             JSON Array
         """
-        return self.ombi.get_tv_requests()
+        # return self.ombi.get_tv_requests()
+        return self.getTvRequests()
 
     def getAllMovies(self):
         """Get all movies that have been requested
@@ -133,7 +136,8 @@ class OmbiAPI():
         Returns:
             JSON Array
         """
-        return self.ombi.movie_requests()
+        # return self.ombi.get_movie_requests()
+        return self.getMovieRequests()
 
     def searchMovie(self, query='', year=None, tmdb_id=None):
         """Search for a Movie [query or tmdb_id required]

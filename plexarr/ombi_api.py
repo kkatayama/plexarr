@@ -102,7 +102,7 @@ class OmbiAPI():
         Returns:
             JSON Array
         """
-        return [m for m in self.ombi.get_movie_requests() if not m.get('available')]
+        return [m for m in self.ombi.movie_requests() if not m.get('available')]
 
     def findShow(self, title=''):
         """Find a requested show by title
@@ -133,7 +133,7 @@ class OmbiAPI():
         Returns:
             JSON Array
         """
-        return self.ombi.get_movie_requests()
+        return self.ombi.movie_requests()
 
     def searchMovie(self, query='', year=None, tmdb_id=None):
         """Search for a Movie [query or tmdb_id required]

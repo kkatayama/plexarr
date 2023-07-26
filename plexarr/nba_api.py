@@ -1,9 +1,16 @@
 from .utils import to_csv, read_csv
 from .espn_api import ESPN_API
+
+from nba_api.stats.static import teams as nba_teams
+from nba_api.stats.endpoints import leaguegamefinder
+
 from datetime import datetime as dt
+from dateutil.relativedelta import relativedelta
+from dateutil import parser
 from pathlib import Path
 from rich import print
 from furl import furl
+
 import pandas as pd
 import requests
 import json
@@ -31,6 +38,16 @@ class NBA_API(object):
         r = requests.get(url)
         return r.json()
 
+    def getYear(self, today=dt.now()):
+        """
+        get NBA season start year
+
+        Season starts in October and ends in April...
+        """
+
+        year, month = today.year, today.month
+        return year if today.month in {10,11,12} else (year - 1)
+
     def getYear(self):
         """get NBA season start year"""
         today = dt.now()
@@ -40,9 +57,10 @@ class NBA_API(object):
         return year
 
     def getNBATeams(self, year=0):
-        espn = ESPN_API(load=False)
-        df_espn_teams = espn.getNBATeams(year=self.YEAR)
-
+        #######################################################################
+        #           API No Longer Accessible?  "http://data.nba.net"          #
+        #######################################################################
+        """
         year = year if year else self.YEAR
         path_teams = f'/prod/v2/{self.YEAR}/teams.json'
         teams = []
@@ -70,16 +88,43 @@ class NBA_API(object):
                     "team_venue": "overseas"
                 })
         return pd.concat([df_teams, pd.DataFrame.from_records(teams)])
+        """
+
+        # -- pull from 'espn api' ...
+        espn = ESPN_API(load=False)
+        df_espn_teams = espn.getNBATeams(year=self.YEAR)
+
+        # -- pull from 'nba api' ...
+        teams = []
+        for item in nba_teams.get_teams():
+            team = {
+                "team_nick": item["nickname"],
+                "team_name": item["full_name"],
+                "team_id": item["id"],
+                "team_abbr": item["abbreviation"],
+                "team_area": item["city"]
+            }
+            teams.append(team)
+        teams = sorted(teams, key=lambda x: x["team_name"])
+
+        # -- combine espn and nba tables
+        df_nba_teams = pd.DataFrame.from_records(teams)
+        df_teams = df_nba_teams.join(df_espn_teams[['team_nick', 'team_venue']].set_index('team_nick'), on='team_nick')
+        return df_teams
 
     def getNBASchedule(self, year=0, update=False):
         df_teams = self.df_teams
         year = year if year else self.YEAR
-        path_schedule = f'/prod/v2/{year}/schedule.json'
         csv = Path(__file__).parent.joinpath(f'data/nba_schedule_{year}.csv')
         if csv.exists() and not update:
             df_schedule = read_csv(csv)
         else:
+            #######################################################################
+            #           API No Longer Accessible?  "http://data.nba.net"          #
+            #######################################################################
+            """
             schedule = []
+            path_schedule = f'/prod/v2/{year}/schedule.json'
             for event in self.get(path=path_schedule)["league"]["standard"]:
                 game_time = pd.to_datetime(event["startTimeUTC"]).tz_convert(tz='US/Eastern')
                 home = df_teams[df_teams["team_id"] == event["hTeam"]["teamId"]].squeeze()
@@ -94,6 +139,15 @@ class NBA_API(object):
                 }
                 schedule.append(game)
             df_schedule = pd.DataFrame.from_records(schedule)
+            """
+
+            g = leaguegamefinder.LeagueGameFinder(
+                season_nullable='2022-23', league_id_nullable='00', season_type_nullable='Regular Season'
+            )
+            games = g.get_data_frames()[0]
+            df_games = games.sort_values('GAME_DATE')
+            print(df_games.iloc[0])
+
             to_csv(df_schedule, csv)
         return df_schedule
 
@@ -122,3 +176,27 @@ class NBA_API(object):
         nba_teams = "|".join(self.df_teams.team_name.values)
         regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vsat\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
         return re.search(regex, line, flags=re.IGNORECASE).groupdict()
+
+def testGetYear():
+    """
+    ----------------------------------
+    "2023-05-01": NBA Season (2022-23)
+    "2023-06-01": NBA Season (2022-23)
+    "2023-07-01": NBA Season (2022-23)
+    "2023-08-01": NBA Season (2022-23)
+    "2023-09-01": NBA Season (2022-23)
+    "2023-10-01": NBA Season (2023-24)
+    "2023-11-01": NBA Season (2023-24)
+    "2023-12-01": NBA Season (2023-24)
+    "2024-01-01": NBA Season (2023-24)
+    "2024-02-01": NBA Season (2023-24)
+    "2024-03-01": NBA Season (2023-24)
+    "2024-04-01": NBA Season (2023-24)
+    ----------------------------------
+    """
+    print('-'*34)
+    for i in range(48):
+        today = parser.parse('2023-05-01') + relativedelta(months=i)
+        year  = getYear(today)
+        print(f'"{today.date()}": NBA Season ({year}-{year+1-2000})')
+        print('-'*34) if not ((i + 1) % 12) else ""

@@ -107,9 +107,9 @@ class ESPN_API(object):
             teams = []
             for item in self.getItems(path=path, data=data):
                 team = {
+                    "team_nick": item["name"],
                     "team_name": item["displayName"],
                     "team_id": item["id"],
-                    "team_nick": item["name"],
                     "team_abbr": item["abbreviation"],
                     "team_area": item["location"],
                     "team_venue": item["venue"]["fullName"]
@@ -120,7 +120,7 @@ class ESPN_API(object):
             teams = sorted(teams, key=lambda x: x["team_name"])
             df_teams = pd.DataFrame.from_records(teams)
             to_csv(df_teams, csv)
-        df_teams = df_teams[["team_name", "team_venue"]]
+        # df_teams = df_teams[["team_name", "team_nick", "team_venue"]]
         self.API_URL = str(back_up)
         return df_teams
 

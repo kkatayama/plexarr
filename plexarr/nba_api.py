@@ -38,6 +38,26 @@ class NBA_API(object):
         r = requests.get(url)
         return r.json()
 
+    def getGames(self, path='/scheduleLeagueV2.json', params=''):
+        url = "https://cdn.nba.com/static/json/staticData"
+        headers = {
+            'Host': 'cdn.nba.com',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0',
+            'Accept': 'application/json, text/plain, */*',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'x-nba-stats-origin': 'stats',
+            'x-nba-stats-token': 'true',
+            'Connection': 'keep-alive',
+            'Origin': 'https://cdn.nba.com',
+            'Referer': 'https://cdn.nba.com',
+            'Pragma': 'no-cache',
+            'Cache-Control': 'no-cache'
+        }
+        r = requests.get(url, headers=headers, params=params)
+        return r.json()
+
+
     def getYear(self, today=dt.now()):
         """
         get NBA season start year
@@ -132,15 +152,37 @@ class NBA_API(object):
                 schedule.append(game)
             df_schedule = pd.DataFrame.from_records(schedule)
             """
+            data = self.getGames(params = {"Season": "2022-23", "LeagueID": "00"})
+            # -- in the number of days...
+            game_days = data['leagueSchedule']['gameDates']
 
-            g = leaguegamefinder.LeagueGameFinder(
-                season_nullable='2022-23', league_id_nullable='00', season_type_nullable='Regular Season'
-            )
-            games = g.get_data_frames()[0]
-            df_games = games.sort_values('GAME_DATE')
-            print(df_games.iloc[0])
+            # -- note: using the schedule to define the range of the 2022-23 Season :)
+            # -- 2022-23 Season: (2022-09-30 - 2023-06-12)
+            # game_days = [str(parser.parse(schedule[i]["gameDate"]).date()) for i in range(len(schedule))]
+            # print(f'2022-23 Season: ({game_days[0]} - {game_days[-1]})')
 
-            to_csv(df_schedule, csv)
+            games = []
+            for game_day in range(len(game_days)):
+                games += game_days[game_day]["games"]
+
+            schedule = []
+            for game in games:
+                game_time = pd.to_datetime(game["gameDateTimeUTC"]).tz_convert(tz='US/Eastern')
+                home = df_team[(df_team["team_id"] == game["homeTeam"]["teamId"])].squeeze()
+                away = df_team[(df_team["team_id"] == game["awayTeam"]["teamId"])].squeeze()
+                event = {
+                    "day_start":  game_time.replace(hour=0, minute=0, second=0),
+                    "day_end":    game_time.replace(hour=23, minute=59, second=59),
+                    "game_time":  game_time,
+                    "home_team":  "" if home.empty else home["team_name"] ,
+                    "home_venue": "" if home.empty else home["team_venue"],
+                    "away_team":  "" if away.empty else away["team_name"],
+                }
+                schedule.append(event)
+
+                df_schedule = pd.DataFrame.from_records(schedule)
+                to_csv(df_schedule, csv)
+
         return df_schedule
 
     def parseNBAInfo(self, line):
@@ -169,26 +211,29 @@ class NBA_API(object):
         regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vsat\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
         return re.search(regex, line, flags=re.IGNORECASE).groupdict()
 
-    def testGetYear(self):
-        """
-        ----------------------------------
-        "2023-05-01": NBA Season (2022-23)
-        "2023-06-01": NBA Season (2022-23)
-        "2023-07-01": NBA Season (2022-23)
-        "2023-08-01": NBA Season (2022-23)
-        "2023-09-01": NBA Season (2022-23)
-        "2023-10-01": NBA Season (2023-24)
-        "2023-11-01": NBA Season (2023-24)
-        "2023-12-01": NBA Season (2023-24)
-        "2024-01-01": NBA Season (2023-24)
-        "2024-02-01": NBA Season (2023-24)
-        "2024-03-01": NBA Season (2023-24)
-        "2024-04-01": NBA Season (2023-24)
-        ----------------------------------
-        """
-        print('-'*34)
-        for i in range(48):
-            today = parser.parse('2023-05-01') + relativedelta(months=i)
-            year  = self.getYear(today=dt.now())
-            print(f'"{today.date()}": NBA Season ({year}-{year+1-2000})')
-            print('-'*34) if not ((i + 1) % 12) else ""
+
+def testGetYear():
+    """
+    ----------------------------------
+    "2023-05-01": NBA Season (2022-23)
+    "2023-06-01": NBA Season (2022-23)
+    "2023-07-01": NBA Season (2022-23)
+    "2023-08-01": NBA Season (2022-23)
+    "2023-09-01": NBA Season (2022-23)
+    "2023-10-01": NBA Season (2023-24)
+    "2023-11-01": NBA Season (2023-24)
+    "2023-12-01": NBA Season (2023-24)
+    "2024-01-01": NBA Season (2023-24)
+    "2024-02-01": NBA Season (2023-24)
+    "2024-03-01": NBA Season (2023-24)
+    "2024-04-01": NBA Season (2023-24)
+    ----------------------------------
+    """
+
+    nba = NBA_API()
+    print('-'*34)
+    for i in range(48):
+        today = parser.parse('2023-05-01') + relativedelta(months=i)
+        year  = nba.getYear(today=today)
+        print(f'"{today.date()}": NBA Season ({year}-{year+1-2000})')
+        print('-'*34) if not ((i + 1) % 12) else ""

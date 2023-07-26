@@ -177,26 +177,26 @@ class NBA_API(object):
         regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vsat\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
         return re.search(regex, line, flags=re.IGNORECASE).groupdict()
 
-def testGetYear():
-    """
-    ----------------------------------
-    "2023-05-01": NBA Season (2022-23)
-    "2023-06-01": NBA Season (2022-23)
-    "2023-07-01": NBA Season (2022-23)
-    "2023-08-01": NBA Season (2022-23)
-    "2023-09-01": NBA Season (2022-23)
-    "2023-10-01": NBA Season (2023-24)
-    "2023-11-01": NBA Season (2023-24)
-    "2023-12-01": NBA Season (2023-24)
-    "2024-01-01": NBA Season (2023-24)
-    "2024-02-01": NBA Season (2023-24)
-    "2024-03-01": NBA Season (2023-24)
-    "2024-04-01": NBA Season (2023-24)
-    ----------------------------------
-    """
-    print('-'*34)
-    for i in range(48):
-        today = parser.parse('2023-05-01') + relativedelta(months=i)
-        year  = getYear(today)
-        print(f'"{today.date()}": NBA Season ({year}-{year+1-2000})')
-        print('-'*34) if not ((i + 1) % 12) else ""
+    def testGetYear(self, today=dt.now()):
+        """
+        ----------------------------------
+        "2023-05-01": NBA Season (2022-23)
+        "2023-06-01": NBA Season (2022-23)
+        "2023-07-01": NBA Season (2022-23)
+        "2023-08-01": NBA Season (2022-23)
+        "2023-09-01": NBA Season (2022-23)
+        "2023-10-01": NBA Season (2023-24)
+        "2023-11-01": NBA Season (2023-24)
+        "2023-12-01": NBA Season (2023-24)
+        "2024-01-01": NBA Season (2023-24)
+        "2024-02-01": NBA Season (2023-24)
+        "2024-03-01": NBA Season (2023-24)
+        "2024-04-01": NBA Season (2023-24)
+        ----------------------------------
+        """
+        print('-'*34)
+        for i in range(48):
+            today = parser.parse('2023-05-01') + relativedelta(months=i)
+            year  = self.getYear(today)
+            print(f'"{today.date()}": NBA Season ({year}-{year+1-2000})')
+            print('-'*34) if not ((i + 1) % 12) else ""

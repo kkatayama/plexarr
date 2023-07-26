@@ -177,7 +177,7 @@ class NBA_API(object):
         regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nba_teams}))[vsat\s]*(?P<team2>({nba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
         return re.search(regex, line, flags=re.IGNORECASE).groupdict()
 
-    def testGetYear(self, today=dt.now()):
+    def testGetYear(self):
         """
         ----------------------------------
         "2023-05-01": NBA Season (2022-23)
@@ -197,6 +197,6 @@ class NBA_API(object):
         print('-'*34)
         for i in range(48):
             today = parser.parse('2023-05-01') + relativedelta(months=i)
-            year  = self.getYear(today)
+            year  = self.getYear(today=dt.now())
             print(f'"{today.date()}": NBA Season ({year}-{year+1-2000})')
             print('-'*34) if not ((i + 1) % 12) else ""

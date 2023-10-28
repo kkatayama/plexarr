@@ -6,6 +6,7 @@ grequests
 lxml
 m3u8
 mock
+nba_api
 netifaces
 nfl_data_py
 numpy

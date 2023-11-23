@@ -319,7 +319,7 @@ class KemoAPI(object):
                         epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
                         epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
                     except Exception:
-                        epg_title = "== PARSER FAILED =="
+                        epg_title = stream.get("name") # "== PARSER FAILED =="
                         epg_desc = stream.get("name")
                         epg_start = getEPGTimeNow(epg_fmt=True)
                         epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)

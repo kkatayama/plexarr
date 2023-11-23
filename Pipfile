@@ -1,0 +1,37 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+bottle = "*"
+bs4 = "*"
+coloredlogs = "*"
+furl = "*"
+grequests = "*"
+lxml = "*"
+m3u8 = "*"
+mock = "*"
+nba-api = "*"
+netifaces = "*"
+nfl-data-py = "*"
+numpy = "*"
+pandas = "*"
+paramiko = "*"
+plexapi = "*"
+pymediainfo = "*"
+pyombi = "*"
+requests = "*"
+rich = "*"
+scp = "*"
+sh = "*"
+tldextract = "*"
+tmdbsimple = "*"
+xmltodict = "*"
+youtube-dl = "*"
+yt-dlp = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

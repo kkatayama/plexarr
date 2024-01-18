@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 from itertools import chain
 from pathlib import Path
+import json
 
 import pandas as pd
 import requests
@@ -181,12 +182,45 @@ class KemoAPI(object):
         streams = self.getStreams(terms=terms)
         return streams
 
+    def loadStreamsNBA(self, t_streams=[]):
+        nba_streams_cached = Path(__file__).parent.joinpath(f'data/nba_streams.json')
+        if nba_streams_cached.exists():
+            nba_streams = json.load(nba_streams_cached.open())
+        else:
+            # json.dump(streams, nba_streams_cached.open('w'))
+            self.saveStreamsNBA(t_streams=t_streams)
+            nba_streams = json.load(nba_streams_cached.open())
+        return nba_streams
+
+    def saveStreamsNBA(self, t_streams=[]):
+        nba_streams_cached = Path(__file__).parent.joinpath(f'data/nba_streams.json')
+        nba_streams = []
+        for stream in t_streams.copy():
+            s = stream.copy()
+            s["name"] = s.get("name", "").split(':')[0].strip()
+            nba_streams.append(s)
+        json.dump(nba_streams, nba_streams_cached.open('w'))
+
     def getStreamsNBA(self):
         """Get NBA Streams"""
         self.setCategory(query="NBA")
+        """
         streams_1 = self.getStreams(terms="USA NBA 0")
         streams_2 = self.getStreams(terms="USA NBA 1")
         streams = chain(streams_1, streams_2)
+        """
+        nba_all = [f'USA NBA {str(i).zfill(2)}' for i in range(1, 19)]
+        streams = self.getStreams(terms=nba_all)
+        nba_streams = self.loadStreamsNBA(t_streams=streams)
+        if len(streams) < len(nba_streams):
+            temp_streams = streams.copy()
+            streams = []
+            for name in nba_all:
+                stream = next((s for s in temp_streams if name in s["name"]), {})
+                if not stream:
+                    stream = next((s for s in nba_streams if name in s["name"]), {})
+            streams.append(stream)
+        self.saveStreamsNBA(t_streams=streams)
         return streams
 
     def getStreamsESPN(self, terms=""):

@@ -1,3 +1,11 @@
+#################################################################################
+# TO-DO:                                                                        #
+#   * Migrate Paramiko primiives with its parent libraries: Fabric and Invoke   #
+#     - Fabric - thread safe SSH connecotor to run simultaneous commands.       #
+#              - https://www.fabfile.org/                                       #
+#     - Invoke - thread safe shell command execution as CLI tasks.              #
+#              - https://www.pyinvoke.org/                                      #
+#################################################################################
 # -- sys utils -- #
 from configparser import ConfigParser
 from pathlib import Path

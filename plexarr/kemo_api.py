@@ -185,12 +185,10 @@ class KemoAPI(object):
     def loadStreamsNBA(self, t_streams=[]):
         nba_streams_cached = Path(__file__).parent.joinpath(f'data/nba_streams.json')
         if nba_streams_cached.exists():
-            nba_streams = json.load(nba_streams_cached.open())
-        else:
+            return json.load(nba_streams_cached.open())
             # json.dump(streams, nba_streams_cached.open('w'))
-            self.saveStreamsNBA(t_streams=t_streams)
-            nba_streams = json.load(nba_streams_cached.open())
-        return nba_streams
+        self.saveStreamsNBA(t_streams=t_streams)
+        return json.load(nba_streams_cached.open())
 
     def saveStreamsNBA(self, t_streams=[]):
         nba_streams_cached = Path(__file__).parent.joinpath(f'data/nba_streams.json')
@@ -219,7 +217,7 @@ class KemoAPI(object):
                 stream = next((s for s in temp_streams if name in s["name"]), {})
                 if not stream:
                     stream = next((s for s in nba_streams if name in s["name"]), {})
-            streams.append(stream)
+                streams.append(stream)
         self.saveStreamsNBA(t_streams=streams)
         return streams
 

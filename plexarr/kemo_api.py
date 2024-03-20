@@ -226,12 +226,14 @@ class KemoAPI(object):
         self.setCategory(query="NCAA Men")
         terms = ["NCAAB"]
         streams = self.getStreams(terms=terms)
+        return streams
 
     def getStreamsNCAAW(self):
         """Get NCAAW Womens"""
         self.setCategory(query="NCAA Women")
         terms = ["NCAAW"]
         streams = self.getStreams(terms=terms)
+        return streams
 
     def getStreamsESPN(self, terms=""):
         """GET ESPN PLUS STREAMS"""

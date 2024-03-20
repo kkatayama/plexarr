@@ -221,6 +221,18 @@ class KemoAPI(object):
         self.saveStreamsNBA(t_streams=streams)
         return streams
 
+    def getStreamsNCAAB(self):
+        """Get NCAAB Mens"""
+        self.setCategory(query="NCAA Men")
+        terms = ["NCAAB"]
+        streams = self.getStreams(terms=terms)
+
+    def getStreamsNCAAW(self):
+        """Get NCAAW Womens"""
+        self.setCategory(query="NCAA Women")
+        terms = ["NCAAW"]
+        streams = self.getStreams(terms=terms)
+
     def getStreamsESPN(self, terms=""):
         """GET ESPN PLUS STREAMS"""
         self.setCategory(query="ESPN")
@@ -235,6 +247,48 @@ class KemoAPI(object):
             tvg_name = stream.get("name").split(":")[0].strip()
             tvg_logo = "http://line.lemotv.cc/images/d7a1c666d3827922b7dfb5fbb9a3b450.png"
             tvg_group = "NFL Sunday Games"
+
+            m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
+            m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+            tvg_cuid += 1
+        return m3u
+
+    def m3uNBA(self, tvg_cuid=801):
+        """Generate m3u for NBA Streams"""
+        m3u = "#EXTM3U\n"
+        for i, stream in enumerate(self.getStreamsNBA()):
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "http://line.lemotv.cc/images/118ae626674246e6d081a4ff16921b19.png"
+            tvg_group = "NBA Games"
+
+            m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
+            m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+            tvg_cuid += 1
+        return m3u
+
+    def m3uNCAAB(self, tvg_cuid=240):
+        """Generate m3u for NCAAB Streams"""
+        m3u = "#EXTM3U\n"
+        for i, stream in enumerate(self.getStreamsNCAAB()):
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
+            tvg_group = "NCAAB Games"
+
+            m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
+            m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
+            tvg_cuid += 1
+        return m3u
+
+    def m3uNCAAW(self, tvg_cuid=260):
+        """Generate m3u for NCAAB Streams"""
+        m3u = "#EXTM3U\n"
+        for i, stream in enumerate(self.getStreamsNCAAW()):
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
+            tvg_group = "NCAAW Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
             m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
@@ -355,6 +409,82 @@ class KemoAPI(object):
                         epg_desc = stream.get("name")
                         epg_start = getEPGTimeNow(epg_fmt=True)
                         epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                else:
+                    epg_title = "NO GAME RIGHT NOW?"
+                    epg_desc = "OFF AIR"
+                    epg_start = getEPGTimeNow(epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+            except Exception:
+                epg_title = "NO GAME RIGHT NOW?"
+                epg_desc = "OFF AIR (no description...)"
+                epg_start = getEPGTimeNow(epg_fmt=True)
+                epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+            programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))
+        return template(tpl, channels=channels, programs=programs, url=url)
+
+    def xmlNCAAB(self):
+        """Generate NCAAB Streams"""
+        channels = []
+        programs = []
+        date_now = getEPGTimeNow(dt_obj=True)
+        for stream in self.getStreamsNCAAB():
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
+            # tvg_group = "NBA Games"
+
+            epg_info = stream.get("name").split("NCAAB ", maxsplit=1)
+            try:
+                epg_desc = epg_info[1].strip()
+                if epg_desc:
+                    epg_title = stream.get("name") # "== PARSER FAILED =="
+                    epg_desc = stream.get("name")
+                    epg_start = getEPGTimeNow(epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                else:
+                    epg_title = "NO GAME RIGHT NOW?"
+                    epg_desc = "OFF AIR"
+                    epg_start = getEPGTimeNow(epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+            except Exception:
+                epg_title = "NO GAME RIGHT NOW?"
+                epg_desc = "OFF AIR (no description...)"
+                epg_start = getEPGTimeNow(epg_fmt=True)
+                epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+            programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))
+        return template(tpl, channels=channels, programs=programs, url=url)
+
+    def xmlNCAAW(self):
+        """Generate NCAAW Streams"""
+        channels = []
+        programs = []
+        date_now = getEPGTimeNow(dt_obj=True)
+        for stream in self.getStreamsNCAAW():
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
+            # tvg_group = "NBA Games"
+
+            epg_info = stream.get("name").split("NCAAB ", maxsplit=1)
+            try:
+                epg_desc = epg_info[1].strip()
+                if epg_desc:
+                    epg_title = stream.get("name") # "== PARSER FAILED =="
+                    epg_desc = stream.get("name")
+                    epg_start = getEPGTimeNow(epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
                 else:
                     epg_title = "NO GAME RIGHT NOW?"
                     epg_desc = "OFF AIR"

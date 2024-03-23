@@ -2,6 +2,7 @@ from configparser import ConfigParser
 from itertools import chain
 from pathlib import Path
 import json
+import re
 
 import pandas as pd
 import requests
@@ -274,7 +275,8 @@ class KemoAPI(object):
         m3u = "#EXTM3U\n"
         for i, stream in enumerate(self.getStreamsNCAAB()):
             tvg_id = stream.get("stream_id")
-            tvg_name = stream.get("name").split(":")[0].strip()
+            # tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_name = re.search(r'(NCAAB \d+)', stream.get("name")).group()
             tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
             tvg_group = "NCAAB Games"
 
@@ -288,7 +290,8 @@ class KemoAPI(object):
         m3u = "#EXTM3U\n"
         for i, stream in enumerate(self.getStreamsNCAAW()):
             tvg_id = stream.get("stream_id")
-            tvg_name = stream.get("name").split(":")[0].strip()
+            # tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_name = re.search(r'(NCAAW \d+)', stream.get("name")).group()
             tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
             tvg_group = "NCAAW Games"
 
@@ -437,11 +440,13 @@ class KemoAPI(object):
         date_now = getEPGTimeNow(dt_obj=True)
         for stream in self.getStreamsNCAAB():
             tvg_id = stream.get("stream_id")
-            tvg_name = stream.get("name").split(":")[0].strip()
+            # tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_name = re.search(r'(NCAAB \d+)', stream.get("name")).group()
             tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
             # tvg_group = "NBA Games"
 
-            epg_info = stream.get("name").split("NCAAB ", maxsplit=1)
+            # epg_info = stream.get("name").split("NCAAB ", maxsplit=1)
+            epg_info = re.split(r'NCAAB \d+\s*', stream.get("name"), maxsplit=1)
             try:
                 epg_desc = epg_info[1].strip()
                 if epg_desc:
@@ -475,11 +480,13 @@ class KemoAPI(object):
         date_now = getEPGTimeNow(dt_obj=True)
         for stream in self.getStreamsNCAAW():
             tvg_id = stream.get("stream_id")
-            tvg_name = stream.get("name").split(":")[0].strip()
+            # tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_name = re.search(r'(NCAAW \d+)', stream.get("name")).group()
             tvg_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/March_Madness_logo.svg/250px-March_Madness_logo.svg.png"
             # tvg_group = "NBA Games"
 
-            epg_info = stream.get("name").split("NCAAB ", maxsplit=1)
+            # epg_info = stream.get("name").split("NCAAB ", maxsplit=1)
+            epg_info = re.split(r'NCAAW \d+\s*', stream.get("name"), maxsplit=1)
             try:
                 epg_desc = epg_info[1].strip()
                 if epg_desc:

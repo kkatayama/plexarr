@@ -21,6 +21,7 @@ scp
 sh
 tldextract
 tmdbsimple
+urllib3=1.26.15
 xmltodict
 youtube_dl
 yt_dlp

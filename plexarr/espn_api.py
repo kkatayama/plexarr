@@ -27,7 +27,7 @@ class ESPN_API(object):
         today = dt.now()
         # year = (today.year - 1) if (today.month < 3) else today.year
         # Season starts in September and ends in January...
-        year = (today.year - 1) if (today.month < 9) else today.year
+        year = (today.year - 1) if (today.month < 8) else today.year
         return year
 
     def get(self, path='/', data={}):

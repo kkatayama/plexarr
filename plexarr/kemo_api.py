@@ -583,7 +583,7 @@ class KemoAPI(object):
 
 
     def xmlWNBA(self):
-        """Generate xml WNBA Streams (EPG)"""
+        """Generate xml WNBA Streams"""
         channels = []
         programs = []
         date_now = getEPGTimeNow(dt_obj=True)

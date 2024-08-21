@@ -59,7 +59,7 @@ class ESPN_API(object):
         return r.json()
 
     def getItem(self, path='/', data={}):
-        """Requests get()"""
+        """Requests getItem()"""
         print(f'path = "{path}"')
         return self.get(path=path, data=data)
     

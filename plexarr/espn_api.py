@@ -12,22 +12,34 @@ import re
 class ESPN_API(object):
     """REST API Wrapper for GitHub"""
 
-    def __init__(self, load=True):
+    def __init__(self, load=True, nba=False, wnba=False):
         """Endpoints: https://gist.github.com/nntrn/ee26cb2a0716de0947a0a4e9a157bc1c"""
-        self.PARAMS = {'lang': 'en', 'region': 'us', 'limit': 32}
-        self.YEAR = self.getYear()
-        self.API_URL = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
+        self.YEAR = self.getYear() if not wnba else self.getYear(month=4)
+        if nba:
+            self.API_URL = 'https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba'
+            self.PARAMS = {'lang': 'en', 'region': 'us', 'limit': 1000}
+        elif wnba:
+            self.API_URL = 'https://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba'
+            self.PARAMS = {'lang': 'en', 'region': 'us', 'limit': 1000}
+        else:
+            self.API_URL = "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
+            self.PARAMS = {'lang': 'en', 'region': 'us', 'limit': 32}
         if load:
-            self.df_teams = self.getNFLTeams()
-            if not Path(__file__).parent.joinpath(f'data/nfl_schedule_{self.YEAR}.csv').exists():
-                self.getNFLSchedule()
+            if nba:
+                self.df_teams = self.getNBATeams()
+            elif wnba:
+                self.df_teams = self.getWNBATeams()
+            else:
+                self.df_teams = self.getNFLTeams()
+                if not Path(__file__).parent.joinpath(f'data/nfl_schedule_{self.YEAR}.csv').exists():
+                    self.getNFLSchedule()
 
-    def getYear(self):
+    def getYear(self, month=8):
         """get NFL season start year"""
         today = dt.now()
         # year = (today.year - 1) if (today.month < 3) else today.year
         # Season starts in September and ends in January...
-        year = (today.year - 1) if (today.month < 8) else today.year
+        year = (today.year - 1) if (today.month < month) else today.year
         return year
 
     def get(self, path='/', data={}):
@@ -46,6 +58,11 @@ class ESPN_API(object):
         r = requests.get(url, params=params)
         return r.json()
 
+    def getItem(self, path='/', data={}):
+        """Requests get()"""
+        print(f'path = "{path}"')
+        return self.get(path=path, data=data)
+    
     def getItems(self, path='/', data={}):
         """Requests Nested get(): [getURL()] Wrapper"""
         print(f'path = "{path}"')
@@ -93,8 +110,8 @@ class ESPN_API(object):
         return df_teams
 
     def getNBATeams(self, year=0, data={}, update=False):
-        back_up = str(self.API_URL)
-        self.API_URL = 'http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba'
+        # back_up = str(self.API_URL)
+        # self.API_URL = 'http://sports.core.api.espn.com/v2/sports/basketball/leagues/nba'
         year = year if year else self.YEAR
 
         csv = Path(__file__).parent.joinpath(f'data/nba_teams_{year}.csv')
@@ -121,7 +138,40 @@ class ESPN_API(object):
             df_teams = pd.DataFrame.from_records(teams)
             to_csv(df_teams, csv)
         # df_teams = df_teams[["team_name", "team_nick", "team_venue"]]
-        self.API_URL = str(back_up)
+        # self.API_URL = str(back_up)
+        return df_teams
+
+
+    def getWNBATeams(self, year=0, data={}, update=False):
+        # back_up = str(self.API_URL)
+        # self.API_URL = 'http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba'
+        year = year if year else self.YEAR
+
+        csv = Path(__file__).parent.joinpath(f'data/wnba_teams_{year}.csv')
+        if csv.exists() and not update:
+            df_teams = read_csv(csv)
+        else:
+            print(f'first run...\ncaching: "{csv}"')
+            data = data if data else self.PARAMS
+            path = f'/seasons/{year}/teams'
+            teams = []
+            for item in self.getItems(path=path, data=data):
+                team = {
+                    "team_nick": item["name"],
+                    "team_name": item["displayName"],
+                    "team_id": item["id"],
+                    "team_abbr": item["abbreviation"],
+                    "team_area": item["location"],
+                    "team_venue": item["venue"]["fullName"]
+                }
+                teams.append(team)
+
+            # -- sort teams
+            teams = sorted(teams, key=lambda x: x["team_name"])
+            df_teams = pd.DataFrame.from_records(teams)
+            to_csv(df_teams, csv)
+        # df_teams = df_teams[["team_name", "team_nick", "team_venue"]]
+        # self.API_URL = str(back_up)
         return df_teams
 
 
@@ -175,6 +225,42 @@ class ESPN_API(object):
             to_csv(df_schedule, csv)
         return df_schedule
 
+    def getWNBASchedule(self, year=0, data={}, update=False):
+        today = pd.to_datetime('now', utc=True).tz_convert('US/Eastern').strftime("%Y%m%d")
+        year = year if year else self.YEAR
+        data = data if data else self.PARAMS
+        path = '/events'
+        data.update({"dates": today})
+        
+        schedule = []
+        for event in self.getItems(path=path, data=data):
+            season = self.getURL(url=event["seasonType"]["$ref"], data=data)
+            df_event = pd.DataFrame.from_records([
+                {"team_id": team["id"], "homeAway": team["homeAway"]}
+                for team in event["competitions"][0]["competitors"]
+            ])
+            df_game = df_event.merge(self.df_teams)
+            game_time = pd.to_datetime(event["date"], utc=True).tz_convert('US/Eastern')
+            home = df_game[df_game["homeAway"] == "home"].squeeze()
+            away = df_game[df_game["homeAway"] == "away"].squeeze()
+
+            game = {
+                "season": season["name"],
+                "season_type": season["id"],
+                "day_start":  game_time.replace(hour=0, minute=0, second=0),
+                "day_end":    game_time.replace(hour=23, minute=59, second=59),
+                "game_time":  game_time,
+                "game_name": event["name"],
+                "game_short": event["shortName"],
+                "home_team": "" if home.empty else home["team_name"] ,
+                "home_venue": "" if home.empty else home["team_venue"],
+                "away_team": "" if away.empty else away["team_name"],
+            }
+            schedule.append(game)
+        df_schedule = pd.DataFrame.from_records(schedule)
+        return df_schedule
+
+    
     def parseNFLInfo(self, line):
         """
         Parse NFL Info From Channel Name Description
@@ -236,4 +322,9 @@ class ESPN_API(object):
 
         nfl_teams = "|".join(self.df_teams.team_name.values)
         regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({nfl_teams}))[vsat\s]*(?P<team2>({nfl_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
+        return re.search(regex, line, flags=re.IGNORECASE).groupdict()
+
+    def parseWNBAInfo(self, line):
+        wnba_teams = "|".join(self.df_teams.team_name.values)
+        regex = rf'(?P<tvg_name>[\w\s]+)[:]\s+(?P<team1>({wnba_teams}))[vsat\s]*(?P<team2>({wnba_teams}))[\s@]+(?P<time>[\d:]+\s*[AMP]*)'
         return re.search(regex, line, flags=re.IGNORECASE).groupdict()

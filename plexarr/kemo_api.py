@@ -105,7 +105,7 @@ class KemoAPI(object):
             print({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
     """
 
-    def __init__(self, iptv='lemo'):
+    def __init__(self, iptv='lemo', nba=False, wnba=False):
         """Configs"""
         config = ConfigParser()
         config.read(Path(Path.home(), '.config/plexarr.ini'))
@@ -116,7 +116,7 @@ class KemoAPI(object):
         self.PARAMS = {"username": self.USERNAME, "password": self.PASSWORD}
         self.CATEGORY = {}
         self.STREAMS = {}
-        self.espn = ESPN_API()
+        self.espn = ESPN_API(wnba=wnba)
         self.nba = NBA_API()
 
     def getCategories(self, groups='', terms=''):
@@ -222,6 +222,45 @@ class KemoAPI(object):
         self.saveStreamsNBA(t_streams=streams)
         return streams
 
+    def loadStreamsWNBA(self, t_streams=[]):
+        wnba_streams_cached = Path(__file__).parent.joinpath(f'data/wnba_streams.json')
+        if wnba_streams_cached.exists():
+            return json.load(wnba_streams_cached.open())
+            # json.dump(streams, wnba_streams_cached.open('w'))
+        self.saveStreamsWNBA(t_streams=t_streams)
+        return json.load(wnba_streams_cached.open())
+
+    def saveStreamsWNBA(self, t_streams=[]):
+        wnba_streams_cached = Path(__file__).parent.joinpath(f'data/wnba_streams.json')
+        wnba_streams = []
+        for stream in t_streams.copy():
+            s = stream.copy()
+            s["name"] = s.get("name", "").split(':')[0].strip()
+            wnba_streams.append(s)
+        json.dump(wnba_streams, wnba_streams_cached.open('w'))
+
+    def getStreamsWNBA(self):
+        """Get WNBA Streams"""
+        self.setCategory(query="WNBA")
+        """
+        streams_1 = self.getStreams(terms="USA WNBA 0")
+        streams_2 = self.getStreams(terms="USA WNBA 1")
+        streams = chain(streams_1, streams_2)
+        """
+        wnba_all = [f'WNBA {str(i).zfill(2)}' for i in range(1, 6)]
+        streams = self.getStreams(terms=wnba_all)
+        wnba_streams = self.loadStreamsWNBA(t_streams=streams)
+        if len(streams) < len(wnba_streams):
+            temp_streams = streams.copy()
+            streams = []
+            for name in wnba_all:
+                stream = next((s for s in temp_streams if name in s["name"]), {})
+                if not stream:
+                    stream = next((s for s in wnba_streams if name in s["name"]), {})
+                streams.append(stream)
+        self.saveStreamsWNBA(t_streams=streams)
+        return streams
+
     def getStreamsNCAAB(self):
         """Get NCAAB Mens"""
         self.setCategory(query="NCAA Men")
@@ -300,14 +339,14 @@ class KemoAPI(object):
             tvg_cuid += 1
         return m3u
 
-    def m3uNBA(self, tvg_cuid=801):
+    def m3uWNBA(self, tvg_cuid=13):
         """Generate m3u for NBA Streams"""
         m3u = "#EXTM3U\n"
-        for i, stream in enumerate(self.getStreamsNBA()):
+        for i, stream in enumerate(self.getStreamsWNBA()):
             tvg_id = stream.get("stream_id")
             tvg_name = stream.get("name").split(":")[0].strip()
-            tvg_logo = "http://line.lemotv.cc/images/118ae626674246e6d081a4ff16921b19.png"
-            tvg_group = "NBA Games"
+            tvg_logo = "https://i0.wp.com/winsidr.com/wp-content/uploads/2023/05/WNBALogo_1997.png?resize=300%2C300&ssl=1"
+            tvg_group = "WNBA Games"
 
             m3u += f'#EXTINF:-1 CUID="{tvg_cuid}" tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="{tvg_group}",{tvg_name}\n'
             m3u += self.API_URL.replace('/player_api.php', f'/{self.USERNAME}/{self.PASSWORD}/{tvg_id}\n')
@@ -537,6 +576,61 @@ class KemoAPI(object):
                         programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
                 except Exception:
                     pass
+        # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
+        url = furl(self.API_URL).origin
+        tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))
+        return template(tpl, channels=channels, programs=programs, url=url)
+
+
+    def xmlWNBA(self):
+        """Generate xml WNBA Streams"""
+        channels = []
+        programs = []
+        date_now = getEPGTimeNow(dt_obj=True)
+        for stream in self.getStreamsWNBA():
+            tvg_id = stream.get("stream_id")
+            tvg_name = stream.get("name").split(":")[0].strip()
+            tvg_logo = "https://i0.wp.com/winsidr.com/wp-content/uploads/2023/05/WNBALogo_1997.png?resize=300%2C300&ssl=1"
+            # tvg_group = "WNBA Games"
+
+            epg_info = stream.get("name").split(":", maxsplit=1)
+            try:
+                epg_desc = epg_info[1].strip()
+                if epg_desc:
+                    try:
+                        wnba_info = self.espn.parseWNBAInfo(stream.get("name"))
+                        ds_teams = [wnba_info["team1"], wnba_info["team2"]]
+                        df_sched = self.espn.getWNBASchedule()
+                        df_date = df_sched[((df_sched["day_start"] <= date_now) & (date_now <= df_sched["day_end"]))]
+                        try:
+                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+                        except Exception:
+                            dt_now = convertEPGTime(pd.to_datetime(date_now) - pd.DateOffset(hours=6), dt_obj=True)
+                            df_date = df_sched[((df_sched["day_start"] <= dt_now) & (dt_now <= df_sched["day_end"]))]
+                            df_game = df_date[(df_date["home_team"].isin(ds_teams) & df_date["away_team"].isin(ds_teams))].iloc[0]
+
+                        epg_title = f'{df_game.home_team} vs {df_game.away_team} at {df_game.home_venue}'
+                        epg_start = convertEPGTime(df_game.game_time, epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                    except Exception:
+                        epg_title = stream.get("name") # "== PARSER FAILED =="
+                        epg_desc = stream.get("name")
+                        epg_start = getEPGTimeNow(epg_fmt=True)
+                        epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+                else:
+                    epg_title = "NO GAME RIGHT NOW?"
+                    epg_desc = "OFF AIR"
+                    epg_start = getEPGTimeNow(epg_fmt=True)
+                    epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+            except Exception:
+                epg_title = "NO GAME RIGHT NOW?"
+                epg_desc = "OFF AIR (no description...)"
+                epg_start = getEPGTimeNow(epg_fmt=True)
+                epg_stop = convertEPGTime(pd.to_datetime(epg_start) + pd.DateOffset(hours=3), epg_fmt=True)
+
+            channels.append({"tvg_id": tvg_id, "tvg_name": tvg_name, "tvg_logo": tvg_logo, "epg_desc": epg_desc})
+            programs.append({"tvg_id": tvg_id, "epg_title": epg_title, "epg_start": epg_start, "epg_stop": epg_stop, "epg_desc": epg_desc})
+
         # return gen_xmltv_xml(channels=channels, programs=programs, url=self.API_URL)
         url = furl(self.API_URL).origin
         tpl = str(Path(__file__).parent.joinpath("templates/epg.tpl"))

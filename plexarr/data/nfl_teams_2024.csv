@@ -1,0 +1,34 @@
+team_name,team_id,team_nick,team_abbr,team_area,team_venue
+object,object,object,object,object,object
+Arizona Cardinals,22,Cardinals,ARI,Arizona,State Farm Stadium
+Atlanta Falcons,1,Falcons,ATL,Atlanta,Mercedes-Benz Stadium
+Baltimore Ravens,33,Ravens,BAL,Baltimore,M&T Bank Stadium
+Buffalo Bills,2,Bills,BUF,Buffalo,Highmark Stadium
+Carolina Panthers,29,Panthers,CAR,Carolina,Bank of America Stadium
+Chicago Bears,3,Bears,CHI,Chicago,Soldier Field
+Cincinnati Bengals,4,Bengals,CIN,Cincinnati,Paycor Stadium
+Cleveland Browns,5,Browns,CLE,Cleveland,Cleveland Browns Stadium
+Dallas Cowboys,6,Cowboys,DAL,Dallas,AT&T Stadium
+Denver Broncos,7,Broncos,DEN,Denver,Empower Field at Mile High
+Detroit Lions,8,Lions,DET,Detroit,Ford Field
+Green Bay Packers,9,Packers,GB,Green Bay,Lambeau Field
+Houston Texans,34,Texans,HOU,Houston,NRG Stadium
+Indianapolis Colts,11,Colts,IND,Indianapolis,Lucas Oil Stadium
+Jacksonville Jaguars,30,Jaguars,JAX,Jacksonville,EverBank Stadium
+Kansas City Chiefs,12,Chiefs,KC,Kansas City,GEHA Field at Arrowhead Stadium
+Las Vegas Raiders,13,Raiders,LV,Las Vegas,Allegiant Stadium
+Los Angeles Chargers,24,Chargers,LAC,Los Angeles,Dignity Health Sports Park
+Los Angeles Rams,14,Rams,LAR,Los Angeles,Los Angeles Memorial Coliseum
+Miami Dolphins,15,Dolphins,MIA,Miami,Hard Rock Stadium
+Minnesota Vikings,16,Vikings,MIN,Minnesota,U.S. Bank Stadium
+New England Patriots,17,Patriots,NE,New England,Gillette Stadium
+New Orleans Saints,18,Saints,NO,New Orleans,Caesars Superdome
+New York Giants,19,Giants,NYG,New York,MetLife Stadium
+New York Jets,20,Jets,NYJ,New York,MetLife Stadium
+Philadelphia Eagles,21,Eagles,PHI,Philadelphia,Lincoln Financial Field
+Pittsburgh Steelers,23,Steelers,PIT,Pittsburgh,Acrisure Stadium
+San Francisco 49ers,25,49ers,SF,San Francisco,Levi's Stadium
+Seattle Seahawks,26,Seahawks,SEA,Seattle,Lumen Field
+Tampa Bay Buccaneers,27,Buccaneers,TB,Tampa Bay,Raymond James Stadium
+Tennessee Titans,10,Titans,TEN,Tennessee,Nissan Stadium
+Washington Commanders,28,Commanders,WSH,Washington,Commanders Field

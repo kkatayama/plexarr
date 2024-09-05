@@ -56,6 +56,20 @@ class SonarrAPI(RequestsAPI):
 
         return {'ERROR': 'A title or series_id parameter is required'}
 
+    def findShow(self, query: str="") -> list[dict]:
+        """Get a tv_show from the Sonarr collection by title or series_id
+
+        Args:
+            Optional - query (str) - The query terms to search the title of the TV Show
+        Returns:
+            JSON Object
+        Requirements:
+            one argument must be provided (query)
+        """
+
+        series = self.getSeries()
+        return list(filter(lambda x: query.lower() in x['title'].lower(), series))
+
     def getEpisodes(self, title='', series_id=-1):
         """Returns all episodes for the given series
 

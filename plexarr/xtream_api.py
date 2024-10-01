@@ -66,6 +66,12 @@ class XtreamAPI:
         username = eval(f'self.{iptv}["username"]')
         password = eval(f'self.{iptv}["password"]')
 
+        if "panel_api" in api_url:
+            return api_url.replace(
+                "/panel_api.php",
+                f'/{username}/password/{s.get("stream_id")}.ts\n',
+            )
+
         return api_url.replace(
             "/player_api.php",
             f':80/{username}/{password}/{s.get("stream_id")}.ts\n',

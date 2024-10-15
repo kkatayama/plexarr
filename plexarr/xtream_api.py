@@ -69,7 +69,7 @@ class XtreamAPI:
         if "panel_api" in api_url:
             return api_url.replace(
                 "/panel_api.php",
-                f'/{username}/{password}/{s.get("stream_id")}.ts\n',
+                f':443/{username}/{password}/{s.get("stream_id")}\n',
             )
 
         return api_url.replace(

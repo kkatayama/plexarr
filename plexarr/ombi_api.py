@@ -56,12 +56,32 @@ class OmbiAPI():
 
     def getUsers(self):
         """
-        Get all users for drpodown purposes
+        Get all users for dropdown purposes
 
         Return:
-            JSON Array
+            JSON Array[]
         """
         path = '/Identity/dropdown/Users'
+        return self.request(path=path).json()
+
+    def getIssues(self):
+        """
+        Get all Issues
+
+        Return:
+            JSON Array[]
+        """
+        path = '/Issues'
+        return self.request(path=path).json()
+
+    def getIssuesCount(self):
+        """
+        Get totals for all Issues count
+
+        Returns:
+            JSON Array[]
+        """
+        path = '/Issues/count'
         return self.request(path=path).json()
 
     def getMovieRequests(self):

@@ -6,6 +6,7 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 from plexapi import utils
+from plexapi.helpers import SelectOption
 from plexapi.server import PlexServer
 from rich import print
 from rich.traceback import install
@@ -28,6 +29,14 @@ class PlexPy(PlexServer):
         self.api_key = config[self.server].get('api_key')
         super().__init__(baseurl=self.api_url, token=self.api_key)
 
+    def scanLibrary(self, title: str="TV Shows", path: str="/Volumes/plex4/series8/Married at First Sight/Season 01"):
+        """PMS Partial Scan
+        """
+        header = "PMS Library & Partial Scanner"
+        placeholder = "Please Select a Library"
+        options = [s.title for s in self.library.sections()]
+        selected, index = SelectOption(header=header, placeholder=placeholder, apps=options)
+        return self.library.section(title=selected).update(path=path)
 
 class PlexAPI(object):
     """Wrapper for Plex Web API

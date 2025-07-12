@@ -6,10 +6,12 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 from plexapi import utils
-from plexapi.helpers import SelectOption
 from plexapi.server import PlexServer
 from rich import print
 from rich.traceback import install
+
+from .helpers import SelectOption
+
 
 # -- Initialize -- #
 install(show_locals=False)

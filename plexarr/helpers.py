@@ -71,3 +71,43 @@ print(f'Selected Library: {selected_library}, index = {index}')
 library = p.library.section(title=selected_library)
 library.update(path="/Volumes/plex4/series8/Married at First Sight/Season 01")
 """
+
+
+###############################################################################
+#                           CLI GUI APP - INPUT APP                           #
+###############################################################################
+class InputApp(App):
+    CSS = """
+    Screen {
+        align: center middle;
+    }
+    Input {
+        margin: 1 1;
+    }
+    Label {
+        margin: 1 2;
+    }
+    Button {
+        margin: 1 2;
+    }
+    """
+
+    def compose(self) -> ComposeResult:
+        self.first_name = ""
+        self.last_name = ""
+        yield Label("Please enter the artist name as it appears in Plex")
+        yield Input(placeholder="Artist Name", name="artist_name")
+        yield Button("Submit", id="submit", variant="success", disabled=True)
+
+    @on(Input.Changed)
+    def input_changed(self, event: Input.Changed) -> None:
+        self.artist_name = event.input.value
+        self.query_one(Button).disabled = False
+
+    @on(Button.Pressed)
+    def button_pressed(self, event: Button.Pressed):
+        self.exit(self.artist_name)
+
+
+def InputArtist():
+    return InputApp().run()

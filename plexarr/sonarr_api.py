@@ -70,34 +70,46 @@ class SonarrAPI(RequestsAPI):
         series = self.getSeries()
         return list(filter(lambda x: query.lower() in x['title'].lower(), series))
 
-    def getEpisodes(self, title='', series_id=-1):
+    def getEpisodes(self, title='', series_id=-1, s_num=-1, with_episode_files=False, with_images=False):
         """Returns all episodes for the given series
 
         Args:
             Optional - title (str) - The title of the TV Show
             Optional - series_id (int) - The Sonarr series_id
+            Optional - s_num (int) - Season Number
+            Optional - with_episode_files - Include Episode File Details
+            Optional - with_images - Include Image Links
+        Requirements:
+            one argument must be provided (title or series_id)
         Returns:
             JSON Array
         """
-        if series_id >= 0:
-            path = '/Episode'
-            data = {
-                'seriesId': series_id
-            }
-            res = self.get(path=path, data=data)
-            return res
+        data = {}
+
+        if (series_id >= 0):
+            data["seriesId"] = series_id
+
+        if (s_num >= 0):
+            data["seasonNumber"] = s_num
+
+        if (with_episode_files):
+            data["includeEpisodeFile"] = True
+
+        if (with_images):
+            data["includeImages"] = True
 
         if title:
             series = self.getSeries()
             show = next(filter(lambda x: x['title'] == title, series), None)
-            path = '/Episode'
-            data = {
-                'seriesId': show.get('id')
-            }
-            res = self.get(path=path, data=data)
-            return res
+            data['seriesId'] = show.get('id', '')
 
-    def getEpisode(self, episode_file_id=-1, title='', s_num=-1, e_num=-1):
+        path = '/Episode'
+        data['seriesId'] = series_id
+        res = self.get(path=path, data=data)
+        return res
+
+
+    def getEpisode(self, episode_id=-1, episode_file_id=-1, title='', s_num=-1, e_num=-1):
         s_num = int(s_num)
         e_num = int(e_num)
 
@@ -105,7 +117,11 @@ class SonarrAPI(RequestsAPI):
             ep_all = self.getEpisodes(title=title)
             return next(filter(lambda x: x['seasonNumber'] == s_num and x['episodeNumber'] == e_num, ep_all), None)
 
-        path = f'/EpisodeFile/{episode_file_id}'
+        if (episode_file_id >= 0):
+            path = f'/EpisodeFile/{episode_file_id}'
+            return self.get(path=path)
+
+        path = f'/Episode/{episode_id}'
         res = self.get(path=path)
         return res
 
@@ -137,24 +153,54 @@ class SonarrAPI(RequestsAPI):
 
         if ((s_num >= 0) and (e_num >= 0) and (title)):
             ep_all = self.getEpisodes(title=title)
-            ep_info = next(filter(lambda x: x['seasonNumber'] == s_num and x['episodeNumber'] == e_num, ep_all), None)
+            ep_info = next(filter(lambda x: x['seasonNumber'] == s_num and x['episodeNumber'] == e_num, ep_all), {})
             episode_file_id = ep_info["episodeFileId"]
 
         path = f'/EpisodeFile/{episode_file_id}'
         res = self.get(path=path)
         return res
 
-    def editEpisode(self, episode_data):
-        """Edit an Episode
+
+    def editEpisodes(self, episodes_data):
+        """Edit Episodes
         Args:
-            Required - episode_data (dict) - data containing Episode changes (do getEpisodes() first)
+            Required - episodes_data [dict] - data array containing Episode changes (do getEpisodes() first)
         Returns:
             JSON Response
         """
         path = '/Episode'
+        data = episodes_data
+        res = self.put(path=path, data=data)
+        return res
+
+
+    def editEpisode(self, episode_id=-1, episode_data):
+        """Edit Episode
+        Args:
+            Required - episode_id (int) - ID of Episode to Edit
+            Required - episode_data (dict) - data containing Episode changes
+        Returns:
+            JSON Response
+        """
+        path = f'/Episode/{episode_id}'
         data = episode_data
         res = self.put(path=path, data=data)
         return res
+
+
+    def editEpisodeFile(self, episode_file_id, episode_file_data):
+        """Edit Episode File
+        Args:
+            Required - episode_file_id (int) - ID of Episode File to Edit
+            Required - episode_file_data (dict) - data containing Episode File changes
+        Returns:
+            JSON Response
+        """
+        path = f"/EpisodeFile/{episode_file_id}"
+        data = episode_file_data
+        res = self.put(path=path, data=data)
+        return res
+
 
     def getIndexers(self):
         """Get a list of all Download Indexers

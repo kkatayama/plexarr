@@ -1,3 +1,4 @@
+from typing import Any
 from configparser import ConfigParser
 from pathlib import Path
 
@@ -104,7 +105,6 @@ class SonarrAPI(RequestsAPI):
             data['seriesId'] = show.get('id', '')
 
         path = '/Episode'
-        data['seriesId'] = series_id
         res = self.get(path=path, data=data)
         return res
 
@@ -161,7 +161,7 @@ class SonarrAPI(RequestsAPI):
         return res
 
 
-    def editEpisodes(self, episodes_data):
+    def editEpisodes(self, episodes_data: list[dict[str, Any]]) -> dict[str, Any]:
         """Edit Episodes
         Args:
             Required - episodes_data [dict] - data array containing Episode changes (do getEpisodes() first)
@@ -174,7 +174,7 @@ class SonarrAPI(RequestsAPI):
         return res
 
 
-    def editEpisode(self, episode_id=-1, episode_data):
+    def editEpisode(self, episode_data: dict[str, Any], episode_id: int = -1) -> dict[str, Any]:
         """Edit Episode
         Args:
             Required - episode_id (int) - ID of Episode to Edit
@@ -188,7 +188,7 @@ class SonarrAPI(RequestsAPI):
         return res
 
 
-    def editEpisodeFile(self, episode_file_id, episode_file_data):
+    def editEpisodeFile(self, episode_file_data: dict[str, Any], episode_file_id: int = -1) -> dict[str, Any]:
         """Edit Episode File
         Args:
             Required - episode_file_id (int) - ID of Episode File to Edit

@@ -140,7 +140,7 @@ class SonarrAPI(RequestsAPI):
             show = next(filter(lambda x: x['title'] == title, series), None)
             series_id = show.get('id')
 
-        if (eries_id >= 0):
+        if (series_id >= 0):
             data['seriesId'] = series_id
 
         path = '/EpisodeFile'

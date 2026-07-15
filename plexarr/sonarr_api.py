@@ -125,7 +125,7 @@ class SonarrAPI(RequestsAPI):
         res = self.get(path=path)
         return res
 
-    def getEpisodeFiles(self, title='', series_id=-1):
+    def getEpisodeFiles(self, title: str="", series_id: int=-1, s_num: int=-1):
         """Returns all episode files for the given seriesId
 
         Args:
@@ -134,18 +134,22 @@ class SonarrAPI(RequestsAPI):
         Returns:
             JSON Array
         """
+        data = {}
         if title:
             series = self.getSeries()
             show = next(filter(lambda x: x['title'] == title, series), None)
             series_id = show.get('id')
-        if series_id >= 0:
-            data = {
-                'seriesId': series_id
-            }
+
+        if (eries_id >= 0):
+            data['seriesId'] = series_id
 
         path = '/EpisodeFile'
-        res = self.get(path=path, data=data)
-        return res
+        episodes = self.get(path=path, data=data)
+
+        if (s_num >= 0):
+            return list(filter(lambda x: x["seasonNumber"] == s_num, episodes))
+        return episodes
+
 
     def getEpisodeFile(self, episode_file_id=-1, title='', s_num=-1, e_num=-1):
         s_num = int(s_num)

@@ -108,7 +108,8 @@ class PlexAPI(object):
             if d['title'] == library:
                 print('key="{}" type="{}" title="{}"'.format(d['key'], d['type'], d['title']))
                 break
-        path = 'http://192.168.1.214:32400/library/sections/{}/refresh'.format(d['key'])
+        # path = 'http://192.168.1.214:32400/library/sections/{}/refresh'.format(d['key'])
+        path = '/library/sections/{}/refresh'.format(d['key'])
         data = {
             'path': folder
         }
